@@ -1,3 +1,5 @@
+import './stylesheets/main.scss';
+
 var angular = require('angular');
 var angularTimer = require('angular-timer');
 var angularRoute = require('angular-route');
