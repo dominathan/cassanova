@@ -9,6 +9,18 @@ var FakeAccount = require('./models/fake_account')();
 var Target = require('./models/target')();
 var Photo = require('./models/photos')();
 
+var myQueryFunction = function(tableName,selection) {
+  var defer = Q.defer()
+  return function() {
+    knex(tableName).select(selection).then(function(data) {
+      defer.resolve(data);
+    }).catch(function(err) {
+      defer.reject(err);
+    })
+    return defer.promise;
+  }
+}
+
 var replServer = repl.start({
   prompt: 'cassanova :> '
 });
@@ -24,57 +36,56 @@ replServer.context.myUpdates = myUpdates;
 replServer.context.fakeAccount = FakeAccount;
 replServer.context.target = Target;
 replServer.context.photo = Photo;
+replServer.context.myQueryFunction = myQueryFunction;
 
 
 // All functions below clear and re-seed database;
 (function() {
+    knex('photos').delete()
+                .then(function(dat) { console.log("DELETING PHOTOS", dat) },
+                       function(dat) { console.log('failed photo deletion',dat) }
+                 );
+    knex('targets').delete()
+      .then(function(dat) { console.log("DELETING Targets", dat) },
+            function(dat) { console.log('failed Target deletion',dat) }
+      );
+
     knex('fake_accounts').delete()
                          .then(function(dat) { console.log("DELETING FAKE ACCOUNTS", dat) },
                                function(dat) { console.log('failed deletion',dat) }
                          );
-    knex('targets').delete()
-                   .then(function(dat) { console.log("DELETING FAKE ACCOUNTS", dat) },
-                         function(dat) { console.log('failed photo deletion',dat) }
-                   );
-    knex('photos').delete()
-                  .then(function(dat) { console.log("DELETING PHOTOS", dat) },
-                         function(dat) { console.log('failed photo deletion',dat) }
-                   );
 
     return
 })();
 (function() {
-    knex('fake_accounts').insert(FakeAccount.getProfileInfo(myProfile))
-                         .then(function(dat) {
-                                console.log("SUCCESS: INSERTING TO FAKE ACCOUNTS", dat)
-                              },
-                               function(dat) {
-                                console.log('FAILED INSERT TO FAKE ACCOUNTS',dat);
-                                throw new Error('Failed insertion to fake accounts dbtable');
-                              }
-                          );
-    myUpdates.matches.forEach(function(el) {
-      knex('targets').insert(Target.getTargetInfo(el,knex('fake_accounts').where('id','=','55f0ab2151a84db35e78dfe8')))
-                     .then(function(dat) {
-                            console.log('SUCCESS: INSERTION TO TARGETS',dat);
-                            if(el.person.photos.length > 0) {
-                              el.person.photos.forEach(function(photo) {
-                                knex('photos').insert(Photo.getPhotoInfo(el,dat))
-                                            .then(function(data) {
-                                              console.log("SUCCESS INSERTION TO PHOTOS",data);
-                                            },function(data) {
-                                              console.log("FAIL INSERTION TO PHOTOS", data);
-                                              throw new Error('Failed insertion to photos dbtable');
-                                            });
-                              });
-                            }
-
-                           },
-                           function(dat) {
-                            console.log('FAILED INSERT TO TARGETS',dat);
-                            throw new Error('Failed insertion to targets dbtable');
-                           }
-                     );
-    });
-    return
+    var fake_account;
+    knex('fake_accounts').returning('id').insert(FakeAccount.getProfileInfo(myProfile))
+       .then(function(dat) {
+         var fakeAccountId = {id: dat.pop()};
+           myUpdates.matches.forEach(function(match) {
+              knex('targets').returning('id').insert(Target.getTargetInfo(match,fakeAccountId))
+               .then(function(targetId) {
+                  var targetId = {id: targetId.pop()};
+                  if(match.person.photos.length > 0) {
+                    match.person.photos.forEach(function(photo) {
+                      knex('photos').insert(Photo.getPhotoInfo(photo,targetId))
+                        .then(function(data) {
+                          //safety
+                        },function(data) {
+                          console.log("FAIL INSERTION TO PHOTOS", data);
+                          throw new Error('Failed insertion to photos dbtable');
+                          return
+                        });
+                    });
+                  }
+               },
+               function(dat) {
+                console.log('FAILED INSERT TO TARGETS',dat);
+                throw new Error('Failed insertion to targets dbtable');
+               });
+            });
+        },function(dat) {
+          console.log('FAILED INSERT TO FAKE ACCOUNTS',dat);
+          throw new Error('Failed insertion to fake accounts dbtable');
+      })
 })();

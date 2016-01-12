@@ -2,7 +2,7 @@
 
 module.exports = function() {
   return {
-    getTargetInfo: function(targetObj,fakeAccount) {
+    getTargetInfo: function(targetObj,fakeAccountId) {
       return {
         name: targetObj['person']['name'],
         tinder_id: targetObj['person']['_id'],
@@ -10,7 +10,9 @@ module.exports = function() {
         birth_date: targetObj['person']['birth_date'],
         gender: targetObj['person']['gender'],
         match_id: targetObj['_id'],
-        fake_account_id: fakeAccount.id
+        fake_account_id: fakeAccountId.id,
+        created_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        updated_at: new Date().toISOString().slice(0, 19).replace('T', ' ')
       }
     }
   }
