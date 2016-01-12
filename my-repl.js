@@ -79,7 +79,7 @@ replServer.context.myQueryFunction = myQueryFunction;
                           //safety
                         },function(data) {
                           console.log("FAIL INSERTION TO PHOTOS", data);
-                          throw new Error('Failed insertion to photos dbtable');
+                          throw new Error('Failed insertion to photos dbtable:', data);
                           return
                         });
                     });
@@ -91,18 +91,18 @@ replServer.context.myQueryFunction = myQueryFunction;
                           //convo saved;
                         },
                         function(convoErr) {
-                          throw new Error('failed insertion to conversation');
+                          throw new Error('failed insertion to conversation: ', convoErr);
                         })
                     })
                   }
                },
                function(dat) {
                 console.log('FAILED INSERT TO TARGETS',dat);
-                throw new Error('Failed insertion to targets dbtable');
+                throw new Error('Failed insertion to targets dbtable: ', dat);
                });
             });
         },function(dat) {
           console.log('FAILED INSERT TO FAKE ACCOUNTS',dat);
-          throw new Error('Failed insertion to fake accounts dbtable');
+          throw new Error('Failed insertion to fake accounts fake accounts', dat);
       })
 })();

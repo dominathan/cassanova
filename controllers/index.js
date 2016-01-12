@@ -25,4 +25,12 @@ router.get('/targets', function(req,res,next) {
   });
 });
 
+router.get('/conversations', function(req,res,next) {
+  knex.select('*')
+    .from('conversations')
+    .then(function(data) {
+      res.json(data);
+    });
+});
+
 module.exports = router;

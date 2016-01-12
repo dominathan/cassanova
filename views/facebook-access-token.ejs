@@ -1,0 +1,21 @@
+<h1>Redirecting</h1>
+<h3><%= data.data %></h3>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+  $(function() {
+    $.ajax({
+      method: "POST",
+      url: '/api/facebook/fbtoken',
+      data: {
+        hash: window.location.hash.substring(1)
+      },
+      success: function(res) {
+        window.glob = res;
+        console.log("success: ",res);
+      },
+      error: function(err) {
+        throw new Error("Failed Post: ", err);
+      }
+    })
+  });
+</script>
