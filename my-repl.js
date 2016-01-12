@@ -8,6 +8,7 @@ var myUpdates = require('./spec/fixtures/new_updates.json');
 var FakeAccount = require('./models/fake_account')();
 var Target = require('./models/target')();
 var Photo = require('./models/photos')();
+var Conversation = require('./models/conversations')();
 
 var myQueryFunction = function(tableName,selection) {
   var defer = Q.defer()
@@ -36,11 +37,16 @@ replServer.context.myUpdates = myUpdates;
 replServer.context.fakeAccount = FakeAccount;
 replServer.context.target = Target;
 replServer.context.photo = Photo;
+replServer.context.conversation = Conversation;
 replServer.context.myQueryFunction = myQueryFunction;
 
 
 // All functions below clear and re-seed database;
 (function() {
+    knex('conversations').delete()
+                .then(function(dat) { console.log("DELETING Conversations", dat) },
+                       function(dat) { console.log('failed Conversations deletion',dat) }
+                 );
     knex('photos').delete()
                 .then(function(dat) { console.log("DELETING PHOTOS", dat) },
                        function(dat) { console.log('failed photo deletion',dat) }
@@ -63,9 +69,9 @@ replServer.context.myQueryFunction = myQueryFunction;
        .then(function(dat) {
          var fakeAccountId = {id: dat.pop()};
            myUpdates.matches.forEach(function(match) {
-              knex('targets').returning('id').insert(Target.getTargetInfo(match,fakeAccountId))
+              knex('targets').returning(['id','tinder_id']).insert(Target.getTargetInfo(match,fakeAccountId))
                .then(function(targetId) {
-                  var targetId = {id: targetId.pop()};
+                  var targetId = {id: targetId[0].id, tinder_id: targetId[0].tinder_id};
                   if(match.person.photos.length > 0) {
                     match.person.photos.forEach(function(photo) {
                       knex('photos').insert(Photo.getPhotoInfo(photo,targetId))
@@ -77,6 +83,17 @@ replServer.context.myQueryFunction = myQueryFunction;
                           return
                         });
                     });
+                  }
+                  if(match.messages.length > 0) {
+                    match.messages.forEach(function(convo) {
+                      knex('conversations').insert(Conversation.getConversationInfo(convo,fakeAccountId,targetId))
+                        .then(function(convoSave) {
+                          //convo saved;
+                        },
+                        function(convoErr) {
+                          throw new Error('failed insertion to conversation');
+                        })
+                    })
                   }
                },
                function(dat) {
