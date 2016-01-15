@@ -1,0 +1,20 @@
+<div class="chat-window" id="chat-window" data-uri="<%= @request_host %>:<%= @request_port %>/websocket">
+    <div class='current-responses' id="current_responses">
+
+        <div ng-repeat="resp in responses | orderBy: '-total_votes'" class="response">
+            <div class="arrows">
+                <div class="arrow-up" ng-click-once="submitUpvote(resp.id)"></div>
+                    <span class='votes'>{{resp.total_votes}}</span>
+                <div class="arrow-down" ng-click-once="submitDownvote(resp.id)"></div>
+            </div>
+            <div class="response-text" data-conversation-id="{{resp.id}}">
+                <p>{{resp.response_text}}</p>
+            </div>
+        </div>
+
+    </div>
+    <form>
+        <input type="text" name="suggested-response" ng-model="newResponse" class='enjoy-css' placeholder="Submit a message to send to this match!" autofocus>
+        <input type="submit" class='btn btn-primary' name="submit" value="Submit" id="submit" ng-click="submitResponse(newResponse)">
+    </form>
+</div>

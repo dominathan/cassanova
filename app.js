@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var facebookInfo = require('./services/facebook-login');
+var tinderInfo = require('./services/tinder-client');
 
 var db = require('./db/db.js');
 var routes = require('./controllers/index');
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.use('/', routes);
 app.use('/api/facebook', facebookInfo);
+app.use('/api/tinder', tinderInfo);
 app.use('/users', users);
 
 // catch 404 and forward to error handler

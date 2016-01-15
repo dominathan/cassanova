@@ -1,6 +1,7 @@
 var request = require('request');
 var express = require('express');
 var router = express.Router();
+
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var config = require("../knexfile");
@@ -39,32 +40,32 @@ router.post('/fbtoken', function(req, res){
     } else {
 
       body = JSON.parse(body);
-      console.log('GET USERID', body)
       if (!body.data.user_id) {
         throw new "Failed to get user id.";
       } else {
         fbUserId = body.data.user_id;
       }
     }
+      /**
+      * Supply facebook_auth_token, expiration_date, and userId to knex
+      * Need to change it so it is the user that logs in and not all users
+      */
     knex('fake_accounts')
       .update({ facebook_user_id: fbUserId,
                  facebook_authentication_token: access_token,
                  facebook_expiration_time: fbTokenExpiresIn.toISOString().slice(0, 19).replace('T', ' ')
                },['id','facebook_user_id','facebook_authentication_token','facebook_expiration_time'])
       .then(function(dbResponse) {
-        console.log("success saving facebook update",dbResponse);
         res.json({data: dbResponse});
       })
       .catch(function(err) {
         throw new Error('Failed Saving to Database: ', err);
       })
   });
-  /**
-  * Supply facebook_auth_token, expiration_date, and userId to knex
-  */
+
 
 });
-
+//https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=http://localhost:3000/api/facebook/fbtoken'
 router.get('/login', function(req, res){
   res.redirect('https://www.facebook.com/dialog/oauth?client_id=' + FBClientId + '&response_type=token&redirect_uri=http://localhost:' + port + '/api/facebook/fbtoken');
 });

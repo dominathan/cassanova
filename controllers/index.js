@@ -6,7 +6,6 @@ var knex = require('knex')(config[env]);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(knex);
   res.render('index', { title: 'Cassanova' });
 });
 

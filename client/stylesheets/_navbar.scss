@@ -1,0 +1,21 @@
+header {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(211,120,116);
+  padding: 0.4% 0;
+  display: block;
+  h1 {
+    color: white;
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-style: "League Gothic";
+    display: inline-block;
+  }
+  a {
+    float: left;
+    color: white;
+    margin-top: 30px;
+    padding-left: 13px;
+  }
+}

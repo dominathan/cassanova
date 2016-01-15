@@ -1,0 +1,50 @@
+* {
+  font-family: 'Didact Gothic', 'sans-serif';
+}
+
+#container {
+  // background-color: #dbe2ed;
+  background-color: #e4e7ec;
+  height: 100%;
+}
+
+div .match-panel {
+  border-color: rgb(211,120,116);
+  border-width: 3px;
+  background-color: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 8px 17px rgba(0, 0, 0, .2);
+}
+
+.panel {
+  margin-top: 6%;
+  min-height: 540px;
+  text-align: center;
+  // vertical-align: bottom;
+  img {
+    width: 50%;
+    border-radius: 100px;
+    margin-top: 3%;
+  }
+  button {
+    // vertical-align: bottom;
+  }
+}
+.match-info {
+  h4 {
+    font-size: 1.5em;
+  }
+}
+.match-bio {
+  h5 {
+    padding: 0 5%;
+    height: 175px;
+    font-size: 1.3em;
+  }
+}
+
+@import 'navbar';
+@import 'chat_window';
+@import 'iphone_window';
+@import 'clock';
+/* END COPIED IPHONE TEXT SCREEN */
