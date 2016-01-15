@@ -4,11 +4,6 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile");
 var knex = require('knex')(config[env]);
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Cassanova' });
-});
-
 // Get all fake accounts
 router.get('/fake_accounts', function(req,res,next) {
   knex.select('*').from('fake_accounts').then(function(data,err) {
@@ -16,6 +11,10 @@ router.get('/fake_accounts', function(req,res,next) {
   })
 });
 
+/*
+ * Get targets of specific fake_account
+ * Currently, the first (and only) Fake Account is returned
+ */
 router.get('/:id/targets', function(req,res,next) {
   var fakeAccountId = req.params.id;
   knex('fake_accounts').select('*')
@@ -23,13 +22,15 @@ router.get('/:id/targets', function(req,res,next) {
     return fk[0].id
   })
   .then(function(fkID) {
-    knex('targets').where('fake_account_id',fkID).then(function(data) {
+    knex('targets').where('fake_account_id',fkID).limit(9).then(function(data) {
       res.json(data);
     });
   })
 });
 
-// Get al targets
+/*
+ * Get all targets
+ */
 router.get('/targets', function(req,res,next) {
   knex.select('*').from('targets').then(function(data) {
     res.send(JSON.stringify(data));
