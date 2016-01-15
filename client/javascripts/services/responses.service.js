@@ -1,7 +1,7 @@
 (function () {
   'use strict'
   angular
-    .module("Tindergarten")
+    .module("cassanova")
     .factory('ResponseService', ["$http","$q",function ($http,$q) {
 
       function getResponses(conversationID) {

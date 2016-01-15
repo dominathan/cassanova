@@ -63,6 +63,7 @@
 	});
 
 	__webpack_require__(10);
+	__webpack_require__(12);
 
 /***/ },
 /* 1 */
@@ -30949,6 +30950,158 @@
 
 	    return {
 	      getTargets: getTargets
+	    };
+	  });
+	})();
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(13);
+	__webpack_require__(14);
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
+
+	    MessageServices.getMessages().then(function (messages) {
+	      $scope.messages = messages;
+	    });
+
+	    $scope.getResponses = function (conversationID) {
+	      ResponseService.getResponses(conversationID).then(function (data) {
+	        if (data.data.length === 0) {
+	          $scope.responses = [{ response_text: "Be the first to start a conversation",
+	            conversation_id: null,
+	            total_votes: null }];
+	        } else {
+	          $scope.responses = data.data;
+	        }
+	      });
+	    };
+
+	    $scope.submitResponse = function (response) {
+	      if (response) {
+	        var conversation_id = getConversationID();
+	        // What if there is no conversation to begin with?
+	        ResponseService.submitResponse(response, conversation_id).then(function (data) {
+	          var newObj = data.data;
+	          newObj.total_votes = 0;
+	          $scope.responses.push(newObj);
+	        });
+	        angular.element($("input[type='text']").val(""));
+	      }
+	    };
+
+	    $scope.submitUpvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'up').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    $scope.submitDownvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'down').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    function getConversationID() {
+	      var elm = angular.element($('.iphone-container').children()[$('.iphone-container').children().length - 1]);
+	      return elm.children().data('conversationId');
+	    }
+	  }]);
+	})();
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
+
+	    function getResponses(conversationID) {
+	      var deferred = $q.defer();
+	      if (!conversationID) {
+	        deferred.resolve([{ response_text: "Be the first to start a conversation",
+	          conversation_id: null,
+	          total_votes: null }]);
+	        return deferred.promise;
+	      }
+	      var url = "/responses/" + conversationID;
+	      return $http.get(url);
+	    }
+
+	    function submitResponse(response, conversation_id) {
+	      var url = '/responses/';
+	      var response = { response: { response_text: response,
+	          conversation_id: conversation_id }
+	      };
+	      return $http.post(url, response);
+	    }
+
+	    function submitVote(response, conversation_id, voteType) {
+	      var url = "/votes/";
+	      var submission;
+	      if (voteType === 'up') {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 1,
+	            down: 0 }
+	        };
+	      } else {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 0,
+	            down: 1 }
+	        };
+	      }
+	      return $http.post(url, submission);
+	    }
+
+	    return {
+	      getResponses: getResponses,
+	      submitResponse: submitResponse,
+	      submitVote: submitVote
+	    };
+	  }]);
+	})();
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
+
+	    var getMessages = function getMessages(fakeAccountID, targetID) {
+	      var url = "/fake_account/" + fakeAccountID + "/targets/" + targetID;
+	      return $http.get(url);
+	    };
+
+	    return {
+	      getMessages: getMessages
 	    };
 	  });
 	})();

@@ -1,3 +1,6 @@
+require('../services/responses.service');
+require('../services/messages.service');
+
 (function() {
   'use strict';
 
@@ -7,10 +10,13 @@
       '$scope',
       '$routeParams',
       '$location',
-      'messages',
       'ResponseService',
-      function($scope,$routeParams,$location,messages,ResponseService) {
-        $scope.messages = messages;
+      'MessageServices',
+      function($scope,$routeParams,$location,ResponseService,MessageServices) {
+
+        MessageServices.getMessages().then(function(messages) {
+          $scope.messages = messages;
+        });
 
         $scope.getResponses = function(conversationID) {
           ResponseService.getResponses(conversationID)

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('Tindergarten')
+    .module('cassanova')
     .factory('MessageServices',function($q,$http,$cacheFactory) {
 
 

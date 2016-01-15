@@ -6,7 +6,7 @@ var angularRoute = require('angular-route');
 
 angular.module('cassanova',[
   'ngRoute',
-  'timer'
+  'timer',
 ]).config(function($routeProvider) {
   $routeProvider
       .when('/', {
@@ -20,3 +20,4 @@ angular.module('cassanova',[
   });
 
 require('./controllers/home.controller');
+require('./controllers/message.controller');
