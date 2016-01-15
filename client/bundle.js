@@ -54,13 +54,15 @@
 
 	angular.module('cassanova', ['ngRoute', 'timer']).config(function ($routeProvider) {
 	  $routeProvider.when('/', {
-	    templateUrl: 'home-view.html',
+	    templateUrl: '../templates/home-view.html',
 	    controller: 'HomeController'
 	  }).when('/account/:account_id/match/:match_id/messages', {
-	    templateUrl: 'messages-view.html',
+	    templateUrl: '../templates/messages-view.html',
 	    controller: 'MessagesController'
 	  });
 	});
+
+	__webpack_require__(10);
 
 /***/ },
 /* 1 */
@@ -30909,6 +30911,47 @@
 
 	})(window, window.angular);
 
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(11);
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').controller("HomeController", ['$scope', '$location', 'HomeServices', function ($scope, $location, HomeServices) {
+	    HomeServices.getTargets(69).success(function (resp) {
+	      $scope.targets = resp;
+	    });
+	  }]);
+	})();
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('HomeServices', function ($http, $q, $cacheFactory) {
+	    var targetUrl = "/fake_accounts/:fake_account_id/targets/";
+
+	    var getTargets = function getTargets(fakeAcccountID) {
+	      var url = "api/fake_accounts/" + fakeAcccountID + "/targets/";
+	      return $http.get(url);
+	    };
+
+	    return {
+	      getTargets: getTargets
+	    };
+	  });
+	})();
 
 /***/ }
 /******/ ]);

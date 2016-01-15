@@ -1,4 +1,4 @@
-import './stylesheets/main.scss';
+import '../stylesheets/main.scss';
 
 var angular = require('angular');
 var angularTimer = require('angular-timer');
@@ -10,12 +10,13 @@ angular.module('cassanova',[
 ]).config(function($routeProvider) {
   $routeProvider
       .when('/', {
-        templateUrl: 'home-view.html',
+        templateUrl: '../templates/home-view.html',
         controller: 'HomeController'
       })
       .when('/account/:account_id/match/:match_id/messages', {
-        templateUrl: 'messages-view.html',
+        templateUrl: '../templates/messages-view.html',
         controller: 'MessagesController'
       });
   });
 
+require('./controllers/home.controller');

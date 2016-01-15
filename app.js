@@ -9,13 +9,9 @@ var tinderInfo = require('./services/tinder-client');
 
 var db = require('./db/db.js');
 var routes = require('./controllers/index');
-var users = require('./controllers/users');
+var users = require('./controllers/targets');
 
 var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -23,9 +19,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'client')));
 
-app.use('/', routes);
+app.get('/', express.static(path.join(__dirname, 'app')));
+
+app.use('/api/fake_accounts',routes);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
 app.use('/users', users);
@@ -60,7 +58,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 module.exports = app;

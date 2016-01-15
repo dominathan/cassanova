@@ -16,6 +16,18 @@ router.get('/fake_accounts', function(req,res,next) {
   })
 });
 
+router.get('/:id/targets', function(req,res,next) {
+  var fakeAccountId = req.params.id;
+  knex('fake_accounts').select('*')
+  .then(function(fk) {
+    return fk[0].id
+  })
+  .then(function(fkID) {
+    knex('targets').where('fake_account_id',fkID).then(function(data) {
+      res.json(data);
+    });
+  })
+});
 
 // Get al targets
 router.get('/targets', function(req,res,next) {
