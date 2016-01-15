@@ -1,5 +1,5 @@
-require('../services/responses.service');
-require('../services/messages.service');
+require('./messages.service');
+require('../responses/responses.service');
 
 (function() {
   'use strict';

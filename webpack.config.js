@@ -1,5 +1,5 @@
 module.exports = {
-  entry: "./client/javascripts/app.js",
+  entry: "./client/javascripts/app.module.js",
   output: {
     filename: "./client/bundle.js"
   },
@@ -14,6 +14,9 @@ module.exports = {
       }, {
         test: /\.css$|\.scss$/, // Only .css files
         loader: 'style!css!sass' // Run both loaders
+      }, {
+        test: /\.html$/,
+        loader: 'ng-cache'
       }
     ]
   }
