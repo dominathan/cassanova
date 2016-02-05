@@ -1,20 +1,18 @@
+require('./home.service');
+
 (function() {
-  'use strict';
+  'use strict'
 
   angular
     .module('cassanova')
-    .factory('HomeServices', function($http, $q, $cacheFactory) {
-      var targetUrl = "/fake_accounts/:fake_account_id/targets/";
+    .controller('HomeController', [
+      '$scope',
+      'HomeServices',
+      function ($scope,HomeServices) {
+        HomeServices.getTargets().then(function(data) {
+          console.log(data);
+          $scope.targets = data.data;
+        })
 
-      var getTargets = function(fakeAcccountID) {
-        var url = "api/fake_accounts/" + fakeAcccountID + "/targets/";
-        return $http.get(url);
-      }
-
-      return {
-        getTargets: getTargets
-      }
-
-    })
-
+    }])
 })()

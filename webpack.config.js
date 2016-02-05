@@ -16,7 +16,8 @@ module.exports = {
         loader: 'style!css!sass' // Run both loaders
       }, {
         test: /\.html$/,
-        loader: 'ng-cache'
+        loader: 'raw',
+        exclude: /node_modules/
       }
     ]
   }
