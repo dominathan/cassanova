@@ -9,10 +9,16 @@ require('./home.service');
       '$scope',
       'HomeServices',
       function ($scope,HomeServices) {
+        $scope.targets = []
         HomeServices.getTargets().then(function(data) {
           console.log(data);
-          $scope.targets = data.data;
-        })
+          data.data.forEach(function(elem,idx) {
+            if(idx % 6 === 0) {
+              $scope.targets.push(elem);
+            }
+          });
+
+        });
 
     }])
-})()
+})();

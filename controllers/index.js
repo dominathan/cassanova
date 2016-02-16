@@ -16,15 +16,25 @@ router.get('/fake_accounts', function(req,res,next) {
  * Currently, the first (and only) Fake Account is returned
  */
 router.get('/:id/targets', function(req,res,next) {
-  var fakeAccountId = req.params.id;
+  var fakeAccountId
+  if(req.params.id) {
+    fakeAccountId = req.params.id
+  } else {
+    fakeAccountId = 1;
+  }
+
   knex('fake_accounts').select('*')
   .then(function(fk) {
     return fk[0].id
   })
   .then(function(fkID) {
-    knex('targets').where('fake_account_id',fkID).limit(9).then(function(data) {
-      res.json(data);
-    });
+    knex('targets').where('fake_account_id', fkID)
+                   .innerJoin('photos','targets.id','photos.target_id')
+                   .orderBy('targets.id')
+                   .limit(54)
+    .then(function(matchObjectsWithPhotos) {
+      res.json(matchObjectsWithPhotos);
+    })
   })
 });
 

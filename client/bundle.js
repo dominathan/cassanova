@@ -71,7 +71,7 @@
 	});
 
 	__webpack_require__(9);
-	__webpack_require__(12);
+	__webpack_require__(13);
 
 /***/ },
 /* 1 */
@@ -30471,57 +30471,43 @@
 
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
-	__webpack_require__(11);
+	__webpack_require__(10);
 
 	angular.module('home', ['ngRoute']).
 	// 'ng-cache'
 	config(function ($routeProvider) {
 	  $routeProvider.when('/', {
-	    template: __webpack_require__(10),
+	    template: __webpack_require__(12),
 	    controller: 'HomeController'
 	  });
 	});
 
 /***/ },
 /* 10 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\" >\n    <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photos }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n</div>\n";
-
-/***/ },
-/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(13);
+	__webpack_require__(11);
 
 	(function () {
 	  'use strict';
 
 	  angular.module('cassanova').controller('HomeController', ['$scope', 'HomeServices', function ($scope, HomeServices) {
+	    $scope.targets = [];
 	    HomeServices.getTargets().then(function (data) {
 	      console.log(data);
-	      $scope.targets = data.data;
+	      data.data.forEach(function (elem, idx) {
+	        if (idx % 6 === 0) {
+	          $scope.targets.push(elem);
+	        }
+	      });
 	    });
 	  }]);
 	})();
 
 /***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var angular = __webpack_require__(5);
-	var angularRoute = __webpack_require__(7);
-
-	angular.module('messages', []);
-
-/***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30542,6 +30528,25 @@
 	    };
 	  });
 	})();
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"container\" >\n    <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n</div>\n";
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var angularRoute = __webpack_require__(7);
+
+	angular.module('messages', []);
 
 /***/ }
 /******/ ]);
