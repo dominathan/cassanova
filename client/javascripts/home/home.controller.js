@@ -17,6 +17,7 @@ require('./home.service');
               $scope.targets.push(elem);
             }
           });
+          window.glob = data.data;
         });
 
         function calculateAge(birthday) {

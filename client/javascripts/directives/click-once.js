@@ -1,5 +1,5 @@
 angular
-  .module('Tindergarten')
+  .module('cassanova')
   .directive('ngClickOnce', [function () {
     return {
       restrict: 'A',

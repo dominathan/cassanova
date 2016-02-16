@@ -9,6 +9,7 @@ var FakeAccount = require('./models/fake_account')();
 var Target = require('./models/target')();
 var Photo = require('./models/photos')();
 var Conversation = require('./models/conversations')();
+var _ = require('lodash');
 
 var myQueryFunction = function(tableName,selection) {
   var defer = Q.defer()
@@ -39,6 +40,7 @@ replServer.context.target = Target;
 replServer.context.photo = Photo;
 replServer.context.conversation = Conversation;
 replServer.context.myQueryFunction = myQueryFunction;
+replServer.context._ = _;
 
 
 // All functions below clear and re-seed database;

@@ -4,7 +4,6 @@ require('./home.controller');
 
 angular.module('home',[
   'ngRoute',
-  // 'ng-cache'
 ])
 .config(function($routeProvider) {
   $routeProvider

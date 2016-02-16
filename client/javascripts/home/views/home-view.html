@@ -1,6 +1,6 @@
 <div class="container" >
     <div ng-repeat="target in targets" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
-        <div class="panel panel-primary match-panel" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>
+        <div class="panel panel-primary match-panel" data-id='{{ target.target_id }}' data-fake-account-id='{{target.fake_account_id}}'>
             <h3 class="">
                 {{ target.name }}
             </h3>
@@ -14,7 +14,7 @@
               </div>
             </div>
 
-            <a href="#/account/{{target.fake_account_id}}/match/{{target.id}}/messages"><button class="btn btn-success btn-lg">Take Me By the Tongue</button></a>
+            <a href="#/account/{{target.fake_account_id}}/match/{{target.target_id}}/messages"><button class="btn btn-success btn-lg">Take Me By the Tongue</button></a>
         </div>
     </div>
 

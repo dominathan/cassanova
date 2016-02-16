@@ -7,7 +7,7 @@
 
 
       var getMessages = function(fakeAccountID,targetID) {
-        var url = "/fake_account/" + fakeAccountID + "/targets/" + targetID;
+        var url = "/api/fake_accounts/" + fakeAccountID + "/targets/" + targetID;
         return $http.get(url);
       }
 

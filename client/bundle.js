@@ -51,9 +51,7 @@
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
 
-	angular.module('cassanova', ['ngRoute',
-	// 'messages',
-	'home']).config(function ($routeProvider) {
+	angular.module('cassanova', ['ngRoute', 'messages', 'home']).config(function ($routeProvider) {
 	  $routeProvider
 	  // .when('/', {
 	  //   templateUrl: './home/views/home-view.html',
@@ -30473,9 +30471,7 @@
 	var angularRoute = __webpack_require__(7);
 	__webpack_require__(10);
 
-	angular.module('home', ['ngRoute']).
-	// 'ng-cache'
-	config(function ($routeProvider) {
+	angular.module('home', ['ngRoute']).config(function ($routeProvider) {
 	  $routeProvider.when('/', {
 	    template: __webpack_require__(12),
 	    controller: 'HomeController'
@@ -30502,6 +30498,7 @@
 	          $scope.targets.push(elem);
 	        }
 	      });
+	      window.glob = data.data;
 	    });
 
 	    function calculateAge(birthday) {
@@ -30541,7 +30538,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\" >\n    <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n</div>\n";
+	module.exports = "<div class=\"container\" >\n    <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.target_id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.target_id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n</div>\n";
 
 /***/ },
 /* 13 */
@@ -30552,7 +30549,245 @@
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
 
-	angular.module('messages', []);
+	angular.module('messages', ['ngRoute']).config(function ($routeProvider) {
+	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
+	    template: __webpack_require__(14),
+	    controller: 'MessagesController'
+	  });
+	});
+
+	__webpack_require__(15);
+	__webpack_require__(18);
+	__webpack_require__(19);
+	__webpack_require__(20);
+	__webpack_require__(21);
+	__webpack_require__(15);
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'./clock.html'\"></ng-include> -->\n    <!-- scroll-bottom=\"messages\" -->\n    <div class=\"iphone-container\" >\n        <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n            <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n               {{ msg.message }}\n               <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n            </p>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n</div>\n";
+
+/***/ },
+/* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(16);
+	__webpack_require__(17);
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
+
+	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
+	      console.log(messages);
+	      window.glob = messages.data;
+	      $scope.messages = messages.data;
+	    });
+
+	    $scope.getResponses = function (conversationID) {
+	      ResponseService.getResponses(conversationID).then(function (data) {
+	        console.log(data);
+	        if (data.length === 0) {
+	          $scope.responses = [{ response_text: "Be the first to start a conversation",
+	            conversation_id: null,
+	            total_votes: null }];
+	        } else {
+	          $scope.responses = data;
+	        }
+	      });
+	    };
+
+	    $scope.submitResponse = function (response) {
+	      if (response) {
+	        var conversation_id = getConversationID();
+	        // What if there is no conversation to begin with?
+	        ResponseService.submitResponse(response, conversation_id).then(function (data) {
+	          var newObj = data.data;
+	          newObj.total_votes = 0;
+	          $scope.responses.push(newObj);
+	        });
+	        angular.element($("input[type='text']").val(""));
+	      }
+	    };
+
+	    $scope.submitUpvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'up').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    $scope.submitDownvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'down').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    function getConversationID() {
+	      var elm = angular.element($('.iphone-container').children()[$('.iphone-container').children().length - 1]);
+	      return elm.children().data('conversationId');
+	    }
+	  }]);
+	})();
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
+
+	    var getMessages = function getMessages(fakeAccountID, targetID) {
+	      var url = "/api/fake_accounts/" + fakeAccountID + "/targets/" + targetID;
+	      return $http.get(url);
+	    };
+
+	    return {
+	      getMessages: getMessages
+	    };
+	  });
+	})();
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
+
+	    function getResponses(conversationID) {
+	      var deferred = $q.defer();
+	      if (!conversationID) {
+	        deferred.resolve([{ response_text: "Be the first to start a conversation",
+	          conversation_id: null,
+	          total_votes: null }]);
+	        return deferred.promise;
+	      }
+	      var url = "/responses/" + conversationID;
+	      return $http.get(url);
+	    }
+
+	    function submitResponse(response, conversation_id) {
+	      var url = '/responses/';
+	      var response = { response: { response_text: response,
+	          conversation_id: conversation_id }
+	      };
+	      return $http.post(url, response);
+	    }
+
+	    function submitVote(response, conversation_id, voteType) {
+	      var url = "/votes/";
+	      var submission;
+	      if (voteType === 'up') {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 1,
+	            down: 0 }
+	        };
+	      } else {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 0,
+	            down: 1 }
+	        };
+	      }
+	      return $http.post(url, submission);
+	    }
+
+	    return {
+	      getResponses: getResponses,
+	      submitResponse: submitResponse,
+	      submitVote: submitVote
+	    };
+	  }]);
+	})();
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').directive('scrollBottom', function () {
+	    return {
+	      scope: {
+	        scrollBottom: "="
+	      },
+	      link: function link(scope, element) {
+	        scope.$watch('$last', function () {
+	          setTimeout(function () {
+	            element.scrollTop(element[0].scrollHeight);
+	          });
+	        });
+	      }
+
+	    };
+	  });
+	})();
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').directive('ngClickOnce', [function () {
+	  return {
+	    restrict: 'A',
+	    link: function link(scope, element, attribute) {
+	      var clickFunction = function clickFunction() {
+	        scope.$eval(attribute.ngClickOnce);
+	        scope.$apply();
+	        element.unbind("click", clickFunction);
+	      };
+
+	      element.bind("click", clickFunction);
+	    }
+	  };
+	}]);
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"chat-window\" id=\"chat-window\" data-uri=\"<%= @request_host %>:<%= @request_port %>/websocket\">\n    <div class='current-responses' id=\"current_responses\">\n\n        <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n            <div class=\"arrows\">\n                <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                    <span class='votes'>{{resp.total_votes}}</span>\n                <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n            </div>\n            <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                <p>{{resp.response_text}}</p>\n            </div>\n        </div>\n\n    </div>\n    <form>\n        <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\" autofocus>\n        <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n    </form>\n</div>\n";
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
 
 /***/ }
 /******/ ]);

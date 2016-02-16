@@ -29,7 +29,7 @@ router.get('/:id/targets', function(req,res,next) {
   })
   .then(function(fkID) {
     knex('targets').where('fake_account_id', fkID)
-                   .innerJoin('photos','targets.id','photos.target_id')
+                   .leftOuterJoin('photos','targets.id','photos.target_id')
                    .orderBy('targets.id')
                    .limit(54)
     .then(function(matchObjectsWithPhotos) {
@@ -53,6 +53,17 @@ router.get('/conversations', function(req,res,next) {
     .then(function(data) {
       res.json(data);
     });
+});
+
+router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
+  console.log("WHAT IS TARGET ID",req.params.target_id);
+  knex.select('*')
+      .from('conversations')
+      .where('target_id',req.params.target_id)
+      .orderBy('sent_date')
+      .then(function(convos) {
+        res.json(convos)
+      });
 });
 
 module.exports = router;

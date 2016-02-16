@@ -14,19 +14,22 @@ require('../responses/responses.service');
       'MessageServices',
       function($scope,$routeParams,$location,ResponseService,MessageServices) {
 
-        MessageServices.getMessages().then(function(messages) {
-          $scope.messages = messages;
+        MessageServices.getMessages($routeParams.account_id,$routeParams.match_id).then(function(messages) {
+          console.log(messages);
+          window.glob = messages.data;
+          $scope.messages = messages.data;
         });
 
         $scope.getResponses = function(conversationID) {
           ResponseService.getResponses(conversationID)
             .then(function(data) {
-              if (data.data.length === 0) {
+              console.log(data);
+              if (data.length === 0) {
                 $scope.responses = [{ response_text: "Be the first to start a conversation",
                                       conversation_id: null,
                                       total_votes: null }];
               } else {
-                $scope.responses = data.data;
+                $scope.responses = data;
               }
             });
         };

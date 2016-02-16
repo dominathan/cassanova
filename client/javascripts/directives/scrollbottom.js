@@ -1,7 +1,7 @@
 (function() {
   'use strict'
   angular
-    .module('Tindergarten')
+    .module('cassanova')
     .directive('scrollBottom', function() {
       return {
         scope: {

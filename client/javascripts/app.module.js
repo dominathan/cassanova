@@ -5,7 +5,7 @@ var angularRoute = require('angular-route');
 
 angular.module('cassanova',[
   'ngRoute',
-  // 'messages',
+  'messages',
   'home'
 ]).config(function($routeProvider) {
   $routeProvider
@@ -27,4 +27,3 @@ angular.module('cassanova',[
 
 require('./home/home.module');
 require('./messages/messages.module');
-
