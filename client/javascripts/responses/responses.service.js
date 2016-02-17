@@ -12,12 +12,12 @@
                               total_votes: null }])
           return deferred.promise;
         }
-        var url = "/responses/" + conversationID;
+        var url = "/api/fake_accounts/responses/" + conversationID;
         return $http.get(url);
       }
 
       function submitResponse(response, conversation_id) {
-        var url = '/responses/';
+        var url = '/api/fake_accounts/responses/';
         var response = { response: { response_text: response,
                                      conversation_id: conversation_id }
                         }

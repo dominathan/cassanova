@@ -56,7 +56,6 @@ router.get('/conversations', function(req,res,next) {
 });
 
 router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
-  console.log("WHAT IS TARGET ID",req.params.target_id);
   knex.select('*')
       .from('conversations')
       .where('target_id',req.params.target_id)
@@ -66,4 +65,22 @@ router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
       });
 });
 
+router.get('/responses/:conversation_id', function(req,res,next) {
+  knex.select('*')
+      .from('responses')
+      .where('conversation_id',req.params.conversation_id)
+      .then(function(responses) {
+        res.json(responses)
+      });
+});
+
+router.post('/responses/', function(req,res,next) {
+  knex('responses')
+    .insert(req.body.response)
+    .returning('*')
+    .then(function(data) {
+      console.log(data);
+      res.json(data);
+    })
+})
 module.exports = router;

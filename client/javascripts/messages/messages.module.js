@@ -1,10 +1,11 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
-var angularTimer = require('angular-timer');
+var humanizeDuration = require('humanize-duration');
+// var angularTimer = require('angular-timer');
 
 angular.module('messages',[
   'ngRoute',
-  'timer'
+  // 'timer'
 ])
 .config(function($routeProvider) {
   $routeProvider
@@ -14,9 +15,8 @@ angular.module('messages',[
     })
 });
 
-require('./messages.controller');
 require('../directives/scrollbottom');
 require('../directives/click-once');
-require('../responses/views/chat-window.html');
+require('../responses/responses.controller')
 require('./views/clock.html');
 require('./messages.controller');
