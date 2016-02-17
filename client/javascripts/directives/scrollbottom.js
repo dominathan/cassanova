@@ -10,8 +10,8 @@
         link: function(scope, element) {
           scope.$watch('$last', function() {
             setTimeout(function() {
-              element.scrollTop(element[0].scrollHeight)
-            })
+              element[0].scrollTop = element[0].scrollHeight;
+            },10)
           })
         }
 

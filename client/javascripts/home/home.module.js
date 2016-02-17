@@ -1,5 +1,6 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
+require('humanize-duration');
 require('./home.controller');
 
 angular.module('home',[

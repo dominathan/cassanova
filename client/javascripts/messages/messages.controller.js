@@ -15,8 +15,6 @@ require('../responses/responses.service');
       function($scope,$routeParams,$location,ResponseService,MessageServices) {
 
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id).then(function(messages) {
-          console.log(messages);
-          window.glob = messages.data;
           $scope.messages = messages.data;
         });
 

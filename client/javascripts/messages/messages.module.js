@@ -1,8 +1,10 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
+var angularTimer = require('angular-timer');
 
 angular.module('messages',[
-  'ngRoute'
+  'ngRoute',
+  'timer'
 ])
 .config(function($routeProvider) {
   $routeProvider

@@ -30469,6 +30469,7 @@
 
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
+	__webpack_require__(23);
 	__webpack_require__(10);
 
 	angular.module('home', ['ngRoute']).config(function ($routeProvider) {
@@ -30548,8 +30549,9 @@
 
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
+	var angularTimer = __webpack_require__(22);
 
-	angular.module('messages', ['ngRoute']).config(function ($routeProvider) {
+	angular.module('messages', ['ngRoute', 'timer']).config(function ($routeProvider) {
 	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
 	    template: __webpack_require__(14),
 	    controller: 'MessagesController'
@@ -30569,7 +30571,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'./clock.html'\"></ng-include> -->\n    <!-- scroll-bottom=\"messages\" -->\n    <div class=\"iphone-container\" >\n        <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n            <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n               {{ msg.message }}\n               <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n            </p>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n</div>\n";
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <section id=\"clock\">\n        <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n            {{mminutes}}:{{sseconds}}\n        </timer>\n    </section>\n\n    <div class=\"iphone-container\" scroll-bottom=\"messages\">\n        <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n            <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n               {{ msg.message }}\n               <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n            </p>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n</div>\n";
 
 /***/ },
 /* 15 */
@@ -30586,8 +30588,6 @@
 	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
 
 	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
-	      console.log(messages);
-	      window.glob = messages.data;
 	      $scope.messages = messages.data;
 	    });
 
@@ -30743,8 +30743,8 @@
 	      link: function link(scope, element) {
 	        scope.$watch('$last', function () {
 	          setTimeout(function () {
-	            element.scrollTop(element[0].scrollHeight);
-	          });
+	            element[0].scrollTop = element[0].scrollHeight;
+	          }, 10);
 	        });
 	      }
 
@@ -30788,6 +30788,940 @@
 	"use strict";
 
 	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	/**
+	 * angular-timer - v1.3.3 - 2015-06-15 3:07 PM
+	 * https://github.com/siddii/angular-timer
+	 *
+	 * Copyright (c) 2015 Siddique Hameed
+	 * Licensed MIT <https://github.com/siddii/angular-timer/blob/master/LICENSE.txt>
+	 */
+	var timerModule = angular.module('timer', [])
+	  .directive('timer', ['$compile', function ($compile) {
+	    return  {
+	      restrict: 'EA',
+	      replace: false,
+	      scope: {
+	        interval: '=interval',
+	        startTimeAttr: '=startTime',
+	        endTimeAttr: '=endTime',
+	        countdownattr: '=countdown',
+	        finishCallback: '&finishCallback',
+	        autoStart: '&autoStart',
+	        language: '@?',
+	        fallback: '@?',
+	        maxTimeUnit: '='
+	      },
+	      controller: ['$scope', '$element', '$attrs', '$timeout', 'I18nService', '$interpolate', 'progressBarService', function ($scope, $element, $attrs, $timeout, I18nService, $interpolate, progressBarService) {
+
+	        // Checking for trim function since IE8 doesn't have it
+	        // If not a function, create tirm with RegEx to mimic native trim
+	        if (typeof String.prototype.trim !== 'function') {
+	          String.prototype.trim = function () {
+	            return this.replace(/^\s+|\s+$/g, '');
+	          };
+	        }
+
+	        //angular 1.2 doesn't support attributes ending in "-start", so we're
+	        //supporting both "autostart" and "auto-start" as a solution for
+	        //backward and forward compatibility.
+	        $scope.autoStart = $attrs.autoStart || $attrs.autostart;
+
+
+	        $scope.language = $scope.language || 'en';
+	        $scope.fallback = $scope.fallback || 'en';
+
+	        //allow to change the language of the directive while already launched
+	        $scope.$watch('language', function(newVal, oldVal) {
+	          if(newVal !== undefined) {
+	            i18nService.init(newVal, $scope.fallback);
+	          }
+	        });
+
+	        //init momentJS i18n, default english
+	        var i18nService = new I18nService();
+	        i18nService.init($scope.language, $scope.fallback);
+
+	        //progress bar
+	        $scope.displayProgressBar = 0;
+	        $scope.displayProgressActive = 'active'; //Bootstrap active effect for progress bar
+
+	        if ($element.html().trim().length === 0) {
+	          $element.append($compile('<span>' + $interpolate.startSymbol() + 'millis' + $interpolate.endSymbol() + '</span>')($scope));
+	        } else {
+	          $element.append($compile($element.contents())($scope));
+	        }
+
+	        $scope.startTime = null;
+	        $scope.endTime = null;
+	        $scope.timeoutId = null;
+	        $scope.countdown = $scope.countdownattr && parseInt($scope.countdownattr, 10) >= 0 ? parseInt($scope.countdownattr, 10) : undefined;
+	        $scope.isRunning = false;
+
+	        $scope.$on('timer-start', function () {
+	          $scope.start();
+	        });
+
+	        $scope.$on('timer-resume', function () {
+	          $scope.resume();
+	        });
+
+	        $scope.$on('timer-stop', function () {
+	          $scope.stop();
+	        });
+
+	        $scope.$on('timer-clear', function () {
+	          $scope.clear();
+	        });
+
+	        $scope.$on('timer-reset', function () {
+	          $scope.reset();
+	        });
+
+	        $scope.$on('timer-set-countdown', function (e, countdown) {
+	          $scope.countdown = countdown;
+	        });
+
+	        function resetTimeout() {
+	          if ($scope.timeoutId) {
+	            clearTimeout($scope.timeoutId);
+	          }
+	        }
+
+	        $scope.$watch('startTimeAttr', function(newValue, oldValue) {
+	          if (newValue !== oldValue && $scope.isRunning) {
+	            $scope.start();
+	          }
+	        });
+
+	        $scope.$watch('endTimeAttr', function(newValue, oldValue) {
+	          if (newValue !== oldValue && $scope.isRunning) {
+	            $scope.start();
+	          }
+	        });
+
+	        $scope.start = $element[0].start = function () {
+	          $scope.startTime = $scope.startTimeAttr ? moment($scope.startTimeAttr) : moment();
+	          $scope.endTime = $scope.endTimeAttr ? moment($scope.endTimeAttr) : null;
+	          if (!$scope.countdown) {
+	            $scope.countdown = $scope.countdownattr && parseInt($scope.countdownattr, 10) > 0 ? parseInt($scope.countdownattr, 10) : undefined;
+	          }
+	          resetTimeout();
+	          tick();
+	          $scope.isRunning = true;
+	        };
+
+	        $scope.resume = $element[0].resume = function () {
+	          resetTimeout();
+	          if ($scope.countdownattr) {
+	            $scope.countdown += 1;
+	          }
+	          $scope.startTime = moment().diff((moment($scope.stoppedTime).diff(moment($scope.startTime))));
+	          tick();
+	          $scope.isRunning = true;
+	        };
+
+	        $scope.stop = $scope.pause = $element[0].stop = $element[0].pause = function () {
+	          var timeoutId = $scope.timeoutId;
+	          $scope.clear();
+	          $scope.$emit('timer-stopped', {timeoutId: timeoutId, millis: $scope.millis, seconds: $scope.seconds, minutes: $scope.minutes, hours: $scope.hours, days: $scope.days});
+	        };
+
+	        $scope.clear = $element[0].clear = function () {
+	          // same as stop but without the event being triggered
+	          $scope.stoppedTime = moment();
+	          resetTimeout();
+	          $scope.timeoutId = null;
+	          $scope.isRunning = false;
+	        };
+
+	        $scope.reset = $element[0].reset = function () {
+	          $scope.startTime = $scope.startTimeAttr ? moment($scope.startTimeAttr) : moment();
+	          $scope.endTime = $scope.endTimeAttr ? moment($scope.endTimeAttr) : null;
+	          $scope.countdown = $scope.countdownattr && parseInt($scope.countdownattr, 10) > 0 ? parseInt($scope.countdownattr, 10) : undefined;
+	          resetTimeout();
+	          tick();
+	          $scope.isRunning = false;
+	          $scope.clear();
+	        };
+
+	        $element.bind('$destroy', function () {
+	          resetTimeout();
+	          $scope.isRunning = false;
+	        });
+
+
+	        function calculateTimeUnits() {
+	          var timeUnits = {}; //will contains time with units
+
+	          if ($attrs.startTime !== undefined){
+	            $scope.millis = moment().diff(moment($scope.startTimeAttr));
+	          }
+
+	          timeUnits = i18nService.getTimeUnits($scope.millis);
+
+	          // compute time values based on maxTimeUnit specification
+	          if (!$scope.maxTimeUnit || $scope.maxTimeUnit === 'day') {
+	            $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
+	            $scope.minutes = Math.floor((($scope.millis / (60000)) % 60));
+	            $scope.hours = Math.floor((($scope.millis / (3600000)) % 24));
+	            $scope.days = Math.floor((($scope.millis / (3600000)) / 24));
+	            $scope.months = 0;
+	            $scope.years = 0;
+	          } else if ($scope.maxTimeUnit === 'second') {
+	            $scope.seconds = Math.floor($scope.millis / 1000);
+	            $scope.minutes = 0;
+	            $scope.hours = 0;
+	            $scope.days = 0;
+	            $scope.months = 0;
+	            $scope.years = 0;
+	          } else if ($scope.maxTimeUnit === 'minute') {
+	            $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
+	            $scope.minutes = Math.floor($scope.millis / 60000);
+	            $scope.hours = 0;
+	            $scope.days = 0;
+	            $scope.months = 0;
+	            $scope.years = 0;
+	          } else if ($scope.maxTimeUnit === 'hour') {
+	            $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
+	            $scope.minutes = Math.floor((($scope.millis / (60000)) % 60));
+	            $scope.hours = Math.floor($scope.millis / 3600000);
+	            $scope.days = 0;
+	            $scope.months = 0;
+	            $scope.years = 0;
+	          } else if ($scope.maxTimeUnit === 'month') {
+	            $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
+	            $scope.minutes = Math.floor((($scope.millis / (60000)) % 60));
+	            $scope.hours = Math.floor((($scope.millis / (3600000)) % 24));
+	            $scope.days = Math.floor((($scope.millis / (3600000)) / 24) % 30);
+	            $scope.months = Math.floor((($scope.millis / (3600000)) / 24) / 30);
+	            $scope.years = 0;
+	          } else if ($scope.maxTimeUnit === 'year') {
+	            $scope.seconds = Math.floor(($scope.millis / 1000) % 60);
+	            $scope.minutes = Math.floor((($scope.millis / (60000)) % 60));
+	            $scope.hours = Math.floor((($scope.millis / (3600000)) % 24));
+	            $scope.days = Math.floor((($scope.millis / (3600000)) / 24) % 30);
+	            $scope.months = Math.floor((($scope.millis / (3600000)) / 24 / 30) % 12);
+	            $scope.years = Math.floor(($scope.millis / (3600000)) / 24 / 365);
+	          }
+	          // plural - singular unit decision (old syntax, for backwards compatibility and English only, could be deprecated!)
+	          $scope.secondsS = ($scope.seconds === 1) ? '' : 's';
+	          $scope.minutesS = ($scope.minutes === 1) ? '' : 's';
+	          $scope.hoursS = ($scope.hours === 1) ? '' : 's';
+	          $scope.daysS = ($scope.days === 1)? '' : 's';
+	          $scope.monthsS = ($scope.months === 1)? '' : 's';
+	          $scope.yearsS = ($scope.years === 1)? '' : 's';
+
+
+	          // new plural-singular unit decision functions (for custom units and multilingual support)
+	          $scope.secondUnit = timeUnits.seconds;
+	          $scope.minuteUnit = timeUnits.minutes;
+	          $scope.hourUnit = timeUnits.hours;
+	          $scope.dayUnit = timeUnits.days;
+	          $scope.monthUnit = timeUnits.months;
+	          $scope.yearUnit = timeUnits.years;
+
+	          //add leading zero if number is smaller than 10
+	          $scope.sseconds = $scope.seconds < 10 ? '0' + $scope.seconds : $scope.seconds;
+	          $scope.mminutes = $scope.minutes < 10 ? '0' + $scope.minutes : $scope.minutes;
+	          $scope.hhours = $scope.hours < 10 ? '0' + $scope.hours : $scope.hours;
+	          $scope.ddays = $scope.days < 10 ? '0' + $scope.days : $scope.days;
+	          $scope.mmonths = $scope.months < 10 ? '0' + $scope.months : $scope.months;
+	          $scope.yyears = $scope.years < 10 ? '0' + $scope.years : $scope.years;
+
+	        }
+
+	        //determine initial values of time units and add AddSeconds functionality
+	        if ($scope.countdownattr) {
+	          $scope.millis = $scope.countdownattr * 1000;
+
+	          $scope.addCDSeconds = $element[0].addCDSeconds = function (extraSeconds) {
+	            $scope.countdown += extraSeconds;
+	            $scope.$digest();
+	            if (!$scope.isRunning) {
+	              $scope.start();
+	            }
+	          };
+
+	          $scope.$on('timer-add-cd-seconds', function (e, extraSeconds) {
+	            $timeout(function () {
+	              $scope.addCDSeconds(extraSeconds);
+	            });
+	          });
+
+	          $scope.$on('timer-set-countdown-seconds', function (e, countdownSeconds) {
+	            if (!$scope.isRunning) {
+	              $scope.clear();
+	            }
+
+	            $scope.countdown = countdownSeconds;
+	            $scope.millis = countdownSeconds * 1000;
+	            calculateTimeUnits();
+	          });
+	        } else {
+	          $scope.millis = 0;
+	        }
+	        calculateTimeUnits();
+
+	        var tick = function tick() {
+	          var typeTimer = null; // countdown or endTimeAttr
+	          $scope.millis = moment().diff($scope.startTime);
+	          var adjustment = $scope.millis % 1000;
+
+	          if ($scope.endTimeAttr) {
+	            typeTimer = $scope.endTimeAttr;
+	            $scope.millis = moment($scope.endTime).diff(moment());
+	            adjustment = $scope.interval - $scope.millis % 1000;
+	          }
+
+	          if ($scope.countdownattr) {
+	            typeTimer = $scope.countdownattr;
+	            $scope.millis = $scope.countdown * 1000;
+	          }
+
+	          if ($scope.millis < 0) {
+	            $scope.stop();
+	            $scope.millis = 0;
+	            calculateTimeUnits();
+	            if($scope.finishCallback) {
+	              $scope.$eval($scope.finishCallback);
+	            }
+	            return;
+	          }
+	          calculateTimeUnits();
+
+	          //We are not using $timeout for a reason. Please read here - https://github.com/siddii/angular-timer/pull/5
+	          $scope.timeoutId = setTimeout(function () {
+	            tick();
+	            $scope.$digest();
+	          }, $scope.interval - adjustment);
+
+	          $scope.$emit('timer-tick', {timeoutId: $scope.timeoutId, millis: $scope.millis});
+
+	          if ($scope.countdown > 0) {
+	            $scope.countdown--;
+	          }
+	          else if ($scope.countdown <= 0) {
+	            $scope.stop();
+	            if($scope.finishCallback) {
+	              $scope.$eval($scope.finishCallback);
+	            }
+	          }
+
+	          if(typeTimer !== null){
+	            //calculate progress bar
+	            $scope.progressBar = progressBarService.calculateProgressBar($scope.startTime, $scope.millis, $scope.endTime, $scope.countdownattr);
+
+	            if($scope.progressBar === 100){
+	              $scope.displayProgressActive = ''; //No more Bootstrap active effect
+	            }
+	          }
+	        };
+
+	        if ($scope.autoStart === undefined || $scope.autoStart === true) {
+	          $scope.start();
+	        }
+	      }]
+	    };
+	    }]);
+
+	/* commonjs package manager support (eg componentjs) */
+	if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
+	  module.exports = timerModule;
+	}
+
+	var app = angular.module('timer');
+
+	app.factory('I18nService', function() {
+
+	    var I18nService = function() {};
+
+	    I18nService.prototype.language = 'en';
+	    I18nService.prototype.fallback = 'en';
+	    I18nService.prototype.timeHumanizer = {};
+
+	    I18nService.prototype.init = function init(lang, fallback) {
+	        var supported_languages = humanizeDuration.getSupportedLanguages();
+
+	        this.fallback = (fallback !== undefined) ? fallback : 'en';
+	        if (supported_languages.indexOf(fallback) === -1) {
+	            this.fallback = 'en';
+	        }
+
+	        this.language = lang;
+	        if (supported_languages.indexOf(lang) === -1) {
+	            this.language = this.fallback;
+	        }
+
+	        //moment init
+	        moment.locale(this.language); //@TODO maybe to remove, it should be handle by the user's application itself, and not inside the directive
+
+	        //human duration init, using it because momentjs does not allow accurate time (
+	        // momentJS: a few moment ago, human duration : 4 seconds ago
+	        this.timeHumanizer = humanizeDuration.humanizer({
+	            language: this.language,
+	            halfUnit:false
+	        });
+	    };
+
+	    /**
+	     * get time with units from momentJS i18n
+	     * @param {int} millis
+	     * @returns {{millis: string, seconds: string, minutes: string, hours: string, days: string, months: string, years: string}}
+	     */
+	    I18nService.prototype.getTimeUnits = function getTimeUnits(millis) {
+	        var diffFromAlarm = Math.round(millis/1000) * 1000; //time in milliseconds, get rid of the last 3 ms value to avoid 2.12 seconds display
+
+	        var time = {};
+
+	        if (typeof this.timeHumanizer != 'undefined'){
+	            time = {
+	                'millis' : this.timeHumanizer(diffFromAlarm, { units: ["milliseconds"] }),
+	                'seconds' : this.timeHumanizer(diffFromAlarm, { units: ["seconds"] }),
+	                'minutes' : this.timeHumanizer(diffFromAlarm, { units: ["minutes", "seconds"] }) ,
+	                'hours' : this.timeHumanizer(diffFromAlarm, { units: ["hours", "minutes", "seconds"] }) ,
+	                'days' : this.timeHumanizer(diffFromAlarm, { units: ["days", "hours", "minutes", "seconds"] }) ,
+	                'months' : this.timeHumanizer(diffFromAlarm, { units: ["months", "days", "hours", "minutes", "seconds"] }) ,
+	                'years' : this.timeHumanizer(diffFromAlarm, { units: ["years", "months", "days", "hours", "minutes", "seconds"] })
+	            };
+	        }
+	        else {
+	            console.error('i18nService has not been initialized. You must call i18nService.init("en") for example');
+	        }
+
+	        return time;
+	    };
+
+	    return I18nService;
+	});
+
+	var app = angular.module('timer');
+
+	app.factory('progressBarService', function() {
+
+	  var ProgressBarService = function() {};
+
+	  /**
+	   * calculate the remaining time in a progress bar in percentage
+	   * @param {momentjs} startValue in seconds
+	   * @param {integer} currentCountdown, where are we in the countdown
+	   * @param {integer} remainingTime, remaining milliseconds
+	   * @param {integer} endTime, end time, can be undefined
+	   * @param {integer} coutdown, original coutdown value, can be undefined
+	   *
+	   * joke : https://www.youtube.com/watch?v=gENVB6tjq_M
+	   * @return {float} 0 --> 100
+	   */
+	  ProgressBarService.prototype.calculateProgressBar = function calculateProgressBar(startValue, remainingTime, endTimeAttr, coutdown) {
+	    var displayProgressBar = 0,
+	      endTimeValue,
+	      initialCountdown;
+
+	    remainingTime = remainingTime / 1000; //seconds
+
+
+	    if(endTimeAttr !== null){
+	      endTimeValue = moment(endTimeAttr);
+	      initialCountdown = endTimeValue.diff(startValue, 'seconds');
+	      displayProgressBar = remainingTime * 100 / initialCountdown;
+	    }
+	    else {
+	      displayProgressBar = remainingTime * 100 / coutdown;
+	    }
+
+	    displayProgressBar = 100 - displayProgressBar; //To have 0 to 100 and not 100 to 0
+	    displayProgressBar = Math.round(displayProgressBar * 10) / 10; //learn more why : http://stackoverflow.com/questions/588004/is-floating-point-math-broken
+
+	    if(displayProgressBar > 100){ //security
+	      displayProgressBar = 100;
+	    }
+
+	    return displayProgressBar;
+	  };
+
+	  return new ProgressBarService();
+	});
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;// HumanizeDuration.js - http://git.io/j0HgmQ
+
+	;(function () {
+	  var languages = {
+	    ar: {
+	      y: function (c) { return c === 1 ? 'سنة' : 'سنوات' },
+	      mo: function (c) { return c === 1 ? 'شهر' : 'أشهر' },
+	      w: function (c) { return c === 1 ? 'أسبوع' : 'أسابيع' },
+	      d: function (c) { return c === 1 ? 'يوم' : 'أيام' },
+	      h: function (c) { return c === 1 ? 'ساعة' : 'ساعات' },
+	      m: function (c) { return c === 1 ? 'دقيقة' : 'دقائق' },
+	      s: function (c) { return c === 1 ? 'ثانية' : 'ثواني' },
+	      ms: function (c) { return c === 1 ? 'جزء من الثانية' : 'أجزاء من الثانية' },
+	      decimal: ','
+	    },
+	    ca: {
+	      y: function (c) { return 'any' + (c !== 1 ? 's' : '') },
+	      mo: function (c) { return 'mes' + (c !== 1 ? 'os' : '') },
+	      w: function (c) { return 'setman' + (c !== 1 ? 'es' : 'a') },
+	      d: function (c) { return 'di' + (c !== 1 ? 'es' : 'a') },
+	      h: function (c) { return 'hor' + (c !== 1 ? 'es' : 'a') },
+	      m: function (c) { return 'minut' + (c !== 1 ? 's' : '') },
+	      s: function (c) { return 'segon' + (c !== 1 ? 's' : '') },
+	      ms: function (c) { return 'milisegon' + (c !== 1 ? 's' : '') },
+	      decimal: ','
+	    },
+	    cs: {
+	      y: function (c) { return ['rok', 'roku', 'roky', 'let'][getCzechForm(c)] },
+	      mo: function (c) { return ['měsíc', 'měsíce', 'měsíce', 'měsíců'][getCzechForm(c)] },
+	      w: function (c) { return ['týden', 'týdne', 'týdny', 'týdnů'][getCzechForm(c)] },
+	      d: function (c) { return ['den', 'dne', 'dny', 'dní'][getCzechForm(c)] },
+	      h: function (c) { return ['hodina', 'hodiny', 'hodiny', 'hodin'][getCzechForm(c)] },
+	      m: function (c) { return ['minuta', 'minuty', 'minuty', 'minut'][getCzechForm(c)] },
+	      s: function (c) { return ['sekunda', 'sekundy', 'sekundy', 'sekund'][getCzechForm(c)] },
+	      ms: function (c) { return ['milisekunda', 'milisekundy', 'milisekundy', 'milisekund'][getCzechForm(c)] },
+	      decimal: ','
+	    },
+	    da: {
+	      y: 'år',
+	      mo: function (c) { return 'måned' + (c !== 1 ? 'er' : '') },
+	      w: function (c) { return 'uge' + (c !== 1 ? 'r' : '') },
+	      d: function (c) { return 'dag' + (c !== 1 ? 'e' : '') },
+	      h: function (c) { return 'time' + (c !== 1 ? 'r' : '') },
+	      m: function (c) { return 'minut' + (c !== 1 ? 'ter' : '') },
+	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
+	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
+	      decimal: ','
+	    },
+	    de: {
+	      y: function (c) { return 'Jahr' + (c !== 1 ? 'e' : '') },
+	      mo: function (c) { return 'Monat' + (c !== 1 ? 'e' : '') },
+	      w: function (c) { return 'Woche' + (c !== 1 ? 'n' : '') },
+	      d: function (c) { return 'Tag' + (c !== 1 ? 'e' : '') },
+	      h: function (c) { return 'Stunde' + (c !== 1 ? 'n' : '') },
+	      m: function (c) { return 'Minute' + (c !== 1 ? 'n' : '') },
+	      s: function (c) { return 'Sekunde' + (c !== 1 ? 'n' : '') },
+	      ms: function (c) { return 'Millisekunde' + (c !== 1 ? 'n' : '') },
+	      decimal: ','
+	    },
+	    en: {
+	      y: function (c) { return 'year' + (c !== 1 ? 's' : '') },
+	      mo: function (c) { return 'month' + (c !== 1 ? 's' : '') },
+	      w: function (c) { return 'week' + (c !== 1 ? 's' : '') },
+	      d: function (c) { return 'day' + (c !== 1 ? 's' : '') },
+	      h: function (c) { return 'hour' + (c !== 1 ? 's' : '') },
+	      m: function (c) { return 'minute' + (c !== 1 ? 's' : '') },
+	      s: function (c) { return 'second' + (c !== 1 ? 's' : '') },
+	      ms: function (c) { return 'millisecond' + (c !== 1 ? 's' : '') },
+	      decimal: '.'
+	    },
+	    es: {
+	      y: function (c) { return 'año' + (c !== 1 ? 's' : '') },
+	      mo: function (c) { return 'mes' + (c !== 1 ? 'es' : '') },
+	      w: function (c) { return 'semana' + (c !== 1 ? 's' : '') },
+	      d: function (c) { return 'día' + (c !== 1 ? 's' : '') },
+	      h: function (c) { return 'hora' + (c !== 1 ? 's' : '') },
+	      m: function (c) { return 'minuto' + (c !== 1 ? 's' : '') },
+	      s: function (c) { return 'segundo' + (c !== 1 ? 's' : '') },
+	      ms: function (c) { return 'milisegundo' + (c !== 1 ? 's' : '') },
+	      decimal: ','
+	    },
+	    fi: {
+	      y: function (c) { return c === 1 ? 'vuosi' : 'vuotta' },
+	      mo: function (c) { return c === 1 ? 'kuukausi' : 'kuukautta' },
+	      w: function (c) { return 'viikko' + (c !== 1 ? 'a' : '') },
+	      d: function (c) { return 'päivä' + (c !== 1 ? 'ä' : '') },
+	      h: function (c) { return 'tunti' + (c !== 1 ? 'a' : '') },
+	      m: function (c) { return 'minuutti' + (c !== 1 ? 'a' : '') },
+	      s: function (c) { return 'sekunti' + (c !== 1 ? 'a' : '') },
+	      ms: function (c) { return 'millisekunti' + (c !== 1 ? 'a' : '') },
+	      decimal: ','
+	    },
+	    fr: {
+	      y: function (c) { return 'an' + (c !== 1 ? 's' : '') },
+	      mo: 'mois',
+	      w: function (c) { return 'semaine' + (c !== 1 ? 's' : '') },
+	      d: function (c) { return 'jour' + (c !== 1 ? 's' : '') },
+	      h: function (c) { return 'heure' + (c !== 1 ? 's' : '') },
+	      m: function (c) { return 'minute' + (c !== 1 ? 's' : '') },
+	      s: function (c) { return 'seconde' + (c !== 1 ? 's' : '') },
+	      ms: function (c) { return 'milliseconde' + (c !== 1 ? 's' : '') },
+	      decimal: ','
+	    },
+	    gr: {
+	      y: function (c) { return c === 1 ? 'χρόνος' : 'χρόνια' },
+	      mo: function (c) { return c === 1 ? 'μήνας' : 'μήνες' },
+	      w: function (c) { return c === 1 ? 'εβδομάδα' : 'εβδομάδες' },
+	      d: function (c) { return c === 1 ? 'μέρα' : 'μέρες' },
+	      h: function (c) { return c === 1 ? 'ώρα' : 'ώρες' },
+	      m: function (c) { return c === 1 ? 'λεπτό' : 'λεπτά' },
+	      s: function (c) { return c === 1 ? 'δευτερόλεπτο' : 'δευτερόλεπτα' },
+	      ms: function (c) { return c === 1 ? 'χιλιοστό του δευτερολέπτου' : 'χιλιοστά του δευτερολέπτου' },
+	      decimal: ','
+	    },
+	    hu: {
+	      y: 'év',
+	      mo: 'hónap',
+	      w: 'hét',
+	      d: 'nap',
+	      h: 'óra',
+	      m: 'perc',
+	      s: 'másodperc',
+	      ms: 'ezredmásodperc',
+	      decimal: ','
+	    },
+	    it: {
+	      y: function (c) { return 'ann' + (c !== 1 ? 'i' : 'o') },
+	      mo: function (c) { return 'mes' + (c !== 1 ? 'i' : 'e') },
+	      w: function (c) { return 'settiman' + (c !== 1 ? 'e' : 'a') },
+	      d: function (c) { return 'giorn' + (c !== 1 ? 'i' : 'o') },
+	      h: function (c) { return 'or' + (c !== 1 ? 'e' : 'a') },
+	      m: function (c) { return 'minut' + (c !== 1 ? 'i' : 'o') },
+	      s: function (c) { return 'second' + (c !== 1 ? 'i' : 'o') },
+	      ms: function (c) { return 'millisecond' + (c !== 1 ? 'i' : 'o') },
+	      decimal: ','
+	    },
+	    ja: {
+	      y: '年',
+	      mo: '月',
+	      w: '週',
+	      d: '日',
+	      h: '時間',
+	      m: '分',
+	      s: '秒',
+	      ms: 'ミリ秒',
+	      decimal: '.'
+	    },
+	    ko: {
+	      y: '년',
+	      mo: '개월',
+	      w: '주일',
+	      d: '일',
+	      h: '시간',
+	      m: '분',
+	      s: '초',
+	      ms: '밀리 초',
+	      decimal: '.'
+	    },
+	    lt: {
+	      y: function (c) { return ((c % 10 === 0) || (c % 100 >= 10 && c % 100 <= 20)) ? 'metų' : 'metai' },
+	      mo: function (c) { return ['mėnuo', 'mėnesiai', 'mėnesių'][getLithuanianForm(c)] },
+	      w: function (c) { return ['savaitė', 'savaitės', 'savaičių'][getLithuanianForm(c)] },
+	      d: function (c) { return ['diena', 'dienos', 'dienų'][getLithuanianForm(c)] },
+	      h: function (c) { return ['valanda', 'valandos', 'valandų'][getLithuanianForm(c)] },
+	      m: function (c) { return ['minutė', 'minutės', 'minučių'][getLithuanianForm(c)] },
+	      s: function (c) { return ['sekundė', 'sekundės', 'sekundžių'][getLithuanianForm(c)] },
+	      ms: function (c) { return ['milisekundė', 'milisekundės', 'milisekundžių'][getLithuanianForm(c)] },
+	      decimal: ','
+	    },
+	    nl: {
+	      y: 'jaar',
+	      mo: function (c) { return c === 1 ? 'maand' : 'maanden' },
+	      w: function (c) { return c === 1 ? 'week' : 'weken' },
+	      d: function (c) { return c === 1 ? 'dag' : 'dagen' },
+	      h: 'uur',
+	      m: function (c) { return c === 1 ? 'minuut' : 'minuten' },
+	      s: function (c) { return c === 1 ? 'seconde' : 'seconden' },
+	      ms: function (c) { return c === 1 ? 'milliseconde' : 'milliseconden' },
+	      decimal: ','
+	    },
+	    no: {
+	      y: 'år',
+	      mo: function (c) { return 'måned' + (c !== 1 ? 'er' : '') },
+	      w: function (c) { return 'uke' + (c !== 1 ? 'r' : '') },
+	      d: function (c) { return 'dag' + (c !== 1 ? 'er' : '') },
+	      h: function (c) { return 'time' + (c !== 1 ? 'r' : '') },
+	      m: function (c) { return 'minutt' + (c !== 1 ? 'er' : '') },
+	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
+	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
+	      decimal: ','
+	    },
+	    pl: {
+	      y: function (c) { return ['rok', 'roku', 'lata', 'lat'][getPolishForm(c)] },
+	      mo: function (c) { return ['miesiąc', 'miesiąca', 'miesiące', 'miesięcy'][getPolishForm(c)] },
+	      w: function (c) { return ['tydzień', 'tygodnia', 'tygodnie', 'tygodni'][getPolishForm(c)] },
+	      d: function (c) { return ['dzień', 'dnia', 'dni', 'dni'][getPolishForm(c)] },
+	      h: function (c) { return ['godzina', 'godziny', 'godziny', 'godzin'][getPolishForm(c)] },
+	      m: function (c) { return ['minuta', 'minuty', 'minuty', 'minut'][getPolishForm(c)] },
+	      s: function (c) { return ['sekunda', 'sekundy', 'sekundy', 'sekund'][getPolishForm(c)] },
+	      ms: function (c) { return ['milisekunda', 'milisekundy', 'milisekundy', 'milisekund'][getPolishForm(c)] },
+	      decimal: ','
+	    },
+	    pt: {
+	      y: function (c) { return 'ano' + (c !== 1 ? 's' : '') },
+	      mo: function (c) { return c !== 1 ? 'meses' : 'mês' },
+	      w: function (c) { return 'semana' + (c !== 1 ? 's' : '') },
+	      d: function (c) { return 'dia' + (c !== 1 ? 's' : '') },
+	      h: function (c) { return 'hora' + (c !== 1 ? 's' : '') },
+	      m: function (c) { return 'minuto' + (c !== 1 ? 's' : '') },
+	      s: function (c) { return 'segundo' + (c !== 1 ? 's' : '') },
+	      ms: function (c) { return 'milissegundo' + (c !== 1 ? 's' : '') },
+	      decimal: ','
+	    },
+	    ru: {
+	      y: function (c) { return ['лет', 'год', 'года'][getSlavicForm(c)] },
+	      mo: function (c) { return ['месяцев', 'месяц', 'месяца'][getSlavicForm(c)] },
+	      w: function (c) { return ['недель', 'неделя', 'недели'][getSlavicForm(c)] },
+	      d: function (c) { return ['дней', 'день', 'дня'][getSlavicForm(c)] },
+	      h: function (c) { return ['часов', 'час', 'часа'][getSlavicForm(c)] },
+	      m: function (c) { return ['минут', 'минута', 'минуты'][getSlavicForm(c)] },
+	      s: function (c) { return ['секунд', 'секунда', 'секунды'][getSlavicForm(c)] },
+	      ms: function (c) { return ['миллисекунд', 'миллисекунда', 'миллисекунды'][getSlavicForm(c)] },
+	      decimal: ','
+	    },
+	    uk: {
+	      y: function (c) { return ['років', 'рік', 'роки'][getSlavicForm(c)] },
+	      mo: function (c) { return ['місяців', 'місяць', 'місяці'][getSlavicForm(c)] },
+	      w: function (c) { return ['неділь', 'неділя', 'неділі'][getSlavicForm(c)] },
+	      d: function (c) { return ['днів', 'день', 'дні'][getSlavicForm(c)] },
+	      h: function (c) { return ['годин', 'година', 'години'][getSlavicForm(c)] },
+	      m: function (c) { return ['хвилин', 'хвилина', 'хвилини'][getSlavicForm(c)] },
+	      s: function (c) { return ['секунд', 'секунда', 'секунди'][getSlavicForm(c)] },
+	      ms: function (c) { return ['мілісекунд', 'мілісекунда', 'мілісекунди'][getSlavicForm(c)] },
+	      decimal: ','
+	    },
+	    sv: {
+	      y: 'år',
+	      mo: function (c) { return 'månad' + (c !== 1 ? 'er' : '') },
+	      w: function (c) { return 'veck' + (c !== 1 ? 'or' : 'a') },
+	      d: function (c) { return 'dag' + (c !== 1 ? 'ar' : '') },
+	      h: function (c) { return 'timm' + (c !== 1 ? 'ar' : 'e') },
+	      m: function (c) { return 'minut' + (c !== 1 ? 'er' : '') },
+	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
+	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
+	      decimal: ','
+	    },
+	    tr: {
+	      y: 'yıl',
+	      mo: 'ay',
+	      w: 'hafta',
+	      d: 'gün',
+	      h: 'saat',
+	      m: 'dakika',
+	      s: 'saniye',
+	      ms: 'milisaniye',
+	      decimal: ','
+	    },
+	    zh_CN: {
+	      y: '年',
+	      mo: '个月',
+	      w: '周',
+	      d: '天',
+	      h: '小时',
+	      m: '分钟',
+	      s: '秒',
+	      ms: '毫秒',
+	      decimal: '.'
+	    },
+	    zh_TW: {
+	      y: '年',
+	      mo: '個月',
+	      w: '周',
+	      d: '天',
+	      h: '小時',
+	      m: '分鐘',
+	      s: '秒',
+	      ms: '毫秒',
+	      decimal: '.'
+	    }
+	  }
+
+	  // You can create a humanizer, which returns a function with defaults
+	  // parameters.
+	  function humanizer (passedOptions) {
+	    var result = function humanizer (ms, humanizerOptions) {
+	      var options = extend({}, result, humanizerOptions || {})
+	      return doHumanization(ms, options)
+	    }
+
+	    return extend(result, {
+	      language: 'en',
+	      delimiter: ', ',
+	      spacer: ' ',
+	      units: ['y', 'mo', 'w', 'd', 'h', 'm', 's'],
+	      languages: {},
+	      round: false,
+	      unitMeasures: {
+	        y: 31557600000,
+	        mo: 2629800000,
+	        w: 604800000,
+	        d: 86400000,
+	        h: 3600000,
+	        m: 60000,
+	        s: 1000,
+	        ms: 1
+	      }
+	    }, passedOptions)
+	  }
+
+	  // The main function is just a wrapper around a default humanizer.
+	  var humanizeDuration = humanizer({})
+
+	  // doHumanization does the bulk of the work.
+	  function doHumanization (ms, options) {
+	    // Make sure we have a positive number.
+	    // Has the nice sideffect of turning Number objects into primitives.
+	    ms = Math.abs(ms)
+
+	    var dictionary = options.languages[options.language] || languages[options.language]
+	    if (!dictionary) {
+	      throw new Error('No language ' + dictionary + '.')
+	    }
+
+	    var result = []
+
+	    // Start at the top and keep removing units, bit by bit.
+	    var unitName, unitMS, unitCount
+	    for (var i = 0, len = options.units.length; i < len; i++) {
+	      unitName = options.units[i]
+	      unitMS = options.unitMeasures[unitName]
+
+	      // What's the number of full units we can fit?
+	      if (i + 1 === len) {
+	        unitCount = ms / unitMS
+	        if (options.round) {
+	          unitCount = Math.round(unitCount)
+	        }
+	      } else {
+	        unitCount = Math.floor(ms / unitMS)
+	      }
+
+	      // Add the string.
+	      if (unitCount) {
+	        result.push(render(unitCount, unitName, dictionary, options))
+	      }
+
+	      // Do we have enough units?
+	      if (options.largest && options.largest <= result.length) {
+	        break
+	      }
+
+	      // Remove what we just figured out.
+	      ms -= unitCount * unitMS
+	    }
+
+	    if (result.length) {
+	      return result.join(options.delimiter)
+	    } else {
+	      return render(0, options.units[options.units.length - 1], dictionary, options)
+	    }
+	  }
+
+	  function render (count, type, dictionary, options) {
+	    var decimal
+	    if (options.decimal === void 0) {
+	      decimal = dictionary.decimal
+	    } else {
+	      decimal = options.decimal
+	    }
+
+	    var countStr = count.toString().replace('.', decimal)
+
+	    var dictionaryValue = dictionary[type]
+	    var word
+	    if (typeof dictionaryValue === 'function') {
+	      word = dictionaryValue(count)
+	    } else {
+	      word = dictionaryValue
+	    }
+
+	    return countStr + options.spacer + word
+	  }
+
+	  function extend (destination) {
+	    var source
+	    for (var i = 1; i < arguments.length; i++) {
+	      source = arguments[i]
+	      for (var prop in source) {
+	        if (source.hasOwnProperty(prop)) {
+	          destination[prop] = source[prop]
+	        }
+	      }
+	    }
+	    return destination
+	  }
+
+	  // Internal helper function for Czech language.
+	  function getCzechForm (c) {
+	    if (c === 1) {
+	      return 0
+	    } else if (Math.floor(c) !== c) {
+	      return 1
+	    } else if (c % 10 >= 2 && c % 10 <= 4 && c % 100 < 10) {
+	      return 2
+	    } else {
+	      return 3
+	    }
+	  }
+
+	  // Internal helper function for Polish language.
+	  function getPolishForm (c) {
+	    if (c === 1) {
+	      return 0
+	    } else if (Math.floor(c) !== c) {
+	      return 1
+	    } else if (c % 10 >= 2 && c % 10 <= 4 && !(c % 100 > 10 && c % 100 < 20)) {
+	      return 2
+	    } else {
+	      return 3
+	    }
+	  }
+
+	  // Internal helper function for Russian and Ukranian languages.
+	  function getSlavicForm (c) {
+	    if (Math.floor(c) !== c) {
+	      return 2
+	    } else if ((c >= 5 && c <= 20) || (c % 10 >= 5 && c % 10 <= 9) || c % 10 === 0) {
+	      return 0
+	    } else if (c % 10 === 1) {
+	      return 1
+	    } else if (c > 1) {
+	      return 2
+	    } else {
+	      return 0
+	    }
+	  }
+
+	  // Internal helper function for Lithuanian language.
+	  function getLithuanianForm (c) {
+	    if (c === 1 || (c % 10 === 1 && c % 100 > 20)) {
+	      return 0
+	    } else if (Math.floor(c) !== c || (c % 10 >= 2 && c % 100 > 20) || (c % 10 >= 2 && c % 100 < 10)) {
+	      return 1
+	    } else {
+	      return 2
+	    }
+	  }
+
+	  humanizeDuration.getSupportedLanguages = function getSupportedLanguages () {
+	    var result = []
+	    for (var language in languages) {
+	      if (languages.hasOwnProperty(language)) {
+	        result.push(language)
+	      }
+	    }
+	    return result
+	  }
+
+	  humanizeDuration.humanizer = humanizer
+
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	      return humanizeDuration
+	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+	  } else if (typeof module !== 'undefined' && module.exports) {
+	    module.exports = humanizeDuration
+	  } else {
+	    this.humanizeDuration = humanizeDuration
+	  }
+	})();  // eslint-disable-line semi
+
 
 /***/ }
 /******/ ]);
