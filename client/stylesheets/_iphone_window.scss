@@ -1,132 +1,136 @@
-/* COPIED IPHONE TEXT SCREEN CSS from http://cssdeck.com/labs/iphone-text-message-screen/ */
 
 .iphone-container {
-  height: 500px;
-  background-color: #dbe2ed;
-  width: 100%;
-  display: inline-block;
-  overflow-y: scroll;
-  margin-top: 1%;
   div {
     display: inline-block;
+    max-height: 500px;
+    position: relative;
+    width: 47%;
+    top: 18%;
+    left: 0%;
+  }
+  img {
+    position: absolute;
+    background-color: #fff;
+    left: 6%;
+  }
+  .iphone-background {
+    width: 322px;
+    position: absolute;
+    top: 400%;
+    min-height: 2000%;
+    left: 10.5%;
+    background-color: #FFF;
+    overflow: scroll;
   }
 }
 
 
-.white-shadow {
-    background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
-    background-image: -moz-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
-    background-image: -ms-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
-    background-image: -o-linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
-    background-image: -linear-gradient(top, rgba(255, 255, 255, .8) 4px, rgba(255, 255, 255, .28) 8px);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, .8)) 4px, to(rgba(255, 255, 255, .28)) 8px);
+// /* COPIED IPHONE TEXT SCREEN CSS from http://cssdeck.com/labs/iphone-text-message-screen/ */
+
+  .white-shadow {
     padding: 2px 8px 4px;
     margin: 0;
     border-radius: 24px;
-}
+  }
 
 .text-left {
-    background-color: #d2d2d2;
-    background-image: -webkit-linear-gradient(top, #9da0a6, #d2d2d2 17px, #e5e5e5 92%);
-    border-radius: 15px;
-    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);
-    font: 15px Helvetica, Arial, sans-serif;
-    margin: 1em 51% 1em 0;
-    padding: 0 4px;
-    position: relative;
-    border-width: 1px;
-    border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;
-    border-style: solid;
+  background-color: rgb(222,223,229);
+  border-radius: 15px;
+  font: 15px Helvetica Neue, Arial, sans-serif;
+  margin: 1em 51% 1em 0;
+  padding: 0 4px;
+  position: relative;
+  border-width: 1px;
+  border-color: #fff transparent;
+  border-style: solid;
+  font: sans-serif;
 }
-
 .text-right {
-    background-color: #a9e24c;
-    background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);
+    background-color: rgb(21,107,250);
     border-radius: 15px;
-    box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);
-    font: 15px Helvetica, Arial, sans-serif;
+    font: 15px Helvetica Neue, Arial, sans-serif;
     margin: 1em 0 1em 51%;
     padding: 0 4px;
     position: relative;
     border-width: 1px;
-    border-color: #309b19 transparent #309b19 #309b19;
+    border-color: #fff transparent;
     border-style: solid;
+    color: #FFF;
 }
-
-.text-left:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: -1px;
-    height: 6px;
-    border-right: 14px solid #d5d5d5;
-    background: #dbe2ed;
-    -webkit-border-bottom-right-radius: 36px 18px;
-    -moz-border-radius-bottomright: 36px 18px;
-    border-bottom-right-radius: 36px 18px;
-    box-shadow: 2px 2px 2px #9da0a6;
-    -webkit-transform: translate(0, -2px);
-    -moz-transform: translate(0, -2px);
-    -ms-transform: translate(0, -2px);
-    -o-transform: translate(0, -2px);
-    transform: translate(0, -2px);
-    right: 98%;
-}
-
-.text-left:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 0px;
-    right: 95.5%;
-    width: 28px;
-    height: 12px;
-    background: #dbe2ed;
-    -webkit-border-bottom-right-radius: 18px 12px;
-    -moz-border-radius-bottomright: 18px 12px;
-    border-bottom-right-radius: 20px 20px;
-    -webkit-transform: translate(-12px, -2px);
-    -moz-transform: translate(-12px, -2px);
-    -ms-transform: translate(-12px, -2px);
-    -o-transform: translate(-12px, -2px);
-    transform: translate(-12px, -2px);
-}
-
-.text-right:before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: -1px;
-    height: 6px;
-    border-left: 14px solid #a9e24c;
-    background: #dbe2ed;
-    -webkit-border-bottom-left-radius: 36px 18px;
-    -moz-border-radius-bottomleft: 36px 18px;
-    border-bottom-left-radius: 36px 18px;
-    box-shadow: 2px 2px 2px #9da0a6;
-    -webkit-transform: translate(0, -2px);
-    -moz-transform: translate(0, -2px);
-    -ms-transform: translate(0, -2px);
-    -o-transform: translate(0, -2px);
-    transform: translate(0, -2px);
-    left: 98%;
-}
-
-.text-right:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    bottom: 0px;
-    left: 103.5%;
-    width: 28px;
-    height: 12px;
-    background: #dbe2ed;
-    -webkit-border-bottom-left-radius: 20px 12px;
-    -moz-border-radius-bottomleft: 20px 12px;
-    border-bottom-left-radius: 20px 20px;
-    -webkit-transform: translate(-12px, -2px);
-    -moz-transform: translate(-12px, -2px);
-    -ms-transform: translate(-12px, -2px);
-    -o-transform: translate(-12px, -2px);
-    transform: translate(-12px, -2px);
-}
+// .text-left:before {
+//     content: "";
+//     position: absolute;
+//     z-index: -1;
+//     bottom: -1px;
+//     height: 6px;
+//     border-right: 14px solid #d5d5d5;
+//     background: #dbe2ed;
+//     -webkit-border-bottom-right-radius: 36px 18px;
+//     -moz-border-radius-bottomright: 36px 18px;
+//     border-bottom-right-radius: 36px 18px;
+//     box-shadow: 2px 2px 2px #9da0a6;
+//     -webkit-transform: translate(0, -2px);
+//     -moz-transform: translate(0, -2px);
+//     -ms-transform: translate(0, -2px);
+//     -o-transform: translate(0, -2px);
+//     transform: translate(0, -2px);
+//     right: 98%;
+// }
+// //
+// .text-left:after {
+//     content: "";
+//     position: absolute;
+//     z-index: -1;
+//     bottom: 0px;
+//     right: 95.5%;
+//     width: 28px;
+//     height: 12px;
+//     background: #dbe2ed;
+//     -webkit-border-bottom-right-radius: 18px 12px;
+//     -moz-border-radius-bottomright: 18px 12px;
+//     border-bottom-right-radius: 20px 20px;
+//     -webkit-transform: translate(-12px, -2px);
+//     -moz-transform: translate(-12px, -2px);
+//     -ms-transform: translate(-12px, -2px);
+//     -o-transform: translate(-12px, -2px);
+//     transform: translate(-12px, -2px);
+// }
+// //
+// .text-right:before {
+//     content: "";
+//     position: absolute;
+//     z-index: 1;
+//     bottom: -1px;
+//     height: 6px;
+//     border-left: 14px solid #a9e24c;
+//     background: rgb(21,107,250);;
+//     -webkit-border-bottom-left-radius: 36px 18px;
+//     -moz-border-radius-bottomleft: 36px 18px;
+//     border-bottom-left-radius: 36px 18px;
+//     box-shadow: 2px 2px 2px #9da0a6;
+//     -webkit-transform: translate(0, -2px);
+//     -moz-transform: translate(0, -2px);
+//     -ms-transform: translate(0, -2px);
+//     -o-transform: translate(0, -2px);
+//     transform: translate(0, -2px);
+//     left: 98%;
+// }
+//
+// .text-right:after {
+//     content: "";
+//     position: absolute;
+//     z-index: 1;
+//     bottom: 0px;
+//     left: 103.5%;
+//     width: 28px;
+//     height: 12px;
+//     background: rgb(21,107,250);
+//     -webkit-border-bottom-left-radius: 20px 12px;
+//     -moz-border-radius-bottomleft: 20px 12px;
+//     border-bottom-left-radius: 20px 20px;
+//     -webkit-transform: translate(-12px, -2px);
+//     -moz-transform: translate(-12px, -2px);
+//     -ms-transform: translate(-12px, -2px);
+//     -o-transform: translate(-12px, -2px);
+//     transform: translate(-12px, -2px);
+// }

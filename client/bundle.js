@@ -110,7 +110,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #d37874;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block; }\n  header a {\n    float: left;\n    color: white;\n    margin-top: 30px;\n    padding-left: 13px; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    text-align: center;\n    margin-left: 5%;\n    display: inline-block;\n    width: 10%; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    padding-right: 62%;\n    color: #d37874;\n    position: relative;\n    top: 5px; }\n  .chat-window .arrow-up {\n    background-position-x: 50%;\n    background-position-y: -37%;\n    background-repeat: no-repeat;\n    background-size: 150%;\n    width: 39%;\n    height: 30px;\n    margin-top: 11%; }\n    .chat-window .arrow-up:hover {\n      background-color: gray; }\n  .chat-window .arrow-down {\n    background-repeat: no-repeat;\n    background-size: 154%;\n    background-position-y: 139%;\n    background-position-x: 48%;\n    width: 39%;\n    height: 30px;\n    margin-top: 12%; }\n    .chat-window .arrow-down:hover {\n      background-color: gray; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #7D5D8A;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n/* COPIED IPHONE TEXT SCREEN CSS from http://cssdeck.com/labs/iphone-text-message-screen/ */\n.iphone-container {\n  height: 500px;\n  background-color: #dbe2ed;\n  width: 100%;\n  display: inline-block;\n  overflow-y: scroll;\n  margin-top: 1%; }\n  .iphone-container div {\n    display: inline-block; }\n\n.white-shadow {\n  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.8)) 4px, to(rgba(255, 255, 255, 0.28)) 8px);\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #d2d2d2;\n  background-image: -webkit-linear-gradient(top, #9da0a6, #d2d2d2 17px, #e5e5e5 92%);\n  border-radius: 15px;\n  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);\n  font: 15px Helvetica, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;\n  border-style: solid; }\n\n.text-right {\n  background-color: #a9e24c;\n  background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);\n  border-radius: 15px;\n  box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);\n  font: 15px Helvetica, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #309b19 transparent #309b19 #309b19;\n  border-style: solid; }\n\n.text-left:before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: -1px;\n  height: 6px;\n  border-right: 14px solid #d5d5d5;\n  background: #dbe2ed;\n  -webkit-border-bottom-right-radius: 36px 18px;\n  -moz-border-radius-bottomright: 36px 18px;\n  border-bottom-right-radius: 36px 18px;\n  box-shadow: 2px 2px 2px #9da0a6;\n  -webkit-transform: translate(0, -2px);\n  -moz-transform: translate(0, -2px);\n  -ms-transform: translate(0, -2px);\n  -o-transform: translate(0, -2px);\n  transform: translate(0, -2px);\n  right: 98%; }\n\n.text-left:after {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: 0px;\n  right: 95.5%;\n  width: 28px;\n  height: 12px;\n  background: #dbe2ed;\n  -webkit-border-bottom-right-radius: 18px 12px;\n  -moz-border-radius-bottomright: 18px 12px;\n  border-bottom-right-radius: 20px 20px;\n  -webkit-transform: translate(-12px, -2px);\n  -moz-transform: translate(-12px, -2px);\n  -ms-transform: translate(-12px, -2px);\n  -o-transform: translate(-12px, -2px);\n  transform: translate(-12px, -2px); }\n\n.text-right:before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: -1px;\n  height: 6px;\n  border-left: 14px solid #a9e24c;\n  background: #dbe2ed;\n  -webkit-border-bottom-left-radius: 36px 18px;\n  -moz-border-radius-bottomleft: 36px 18px;\n  border-bottom-left-radius: 36px 18px;\n  box-shadow: 2px 2px 2px #9da0a6;\n  -webkit-transform: translate(0, -2px);\n  -moz-transform: translate(0, -2px);\n  -ms-transform: translate(0, -2px);\n  -o-transform: translate(0, -2px);\n  transform: translate(0, -2px);\n  left: 98%; }\n\n.text-right:after {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: 0px;\n  left: 103.5%;\n  width: 28px;\n  height: 12px;\n  background: #dbe2ed;\n  -webkit-border-bottom-left-radius: 20px 12px;\n  -moz-border-radius-bottomleft: 20px 12px;\n  border-bottom-left-radius: 20px 20px;\n  -webkit-transform: translate(-12px, -2px);\n  -moz-transform: translate(-12px, -2px);\n  -ms-transform: translate(-12px, -2px);\n  -o-transform: translate(-12px, -2px);\n  transform: translate(-12px, -2px); }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #d37874;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\nheader {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #d37874;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block; }\n  header a {\n    float: left;\n    color: white;\n    margin-top: 30px;\n    padding-left: 13px; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    text-align: center;\n    margin-left: 5%;\n    display: inline-block;\n    width: 10%; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    padding-right: 62%;\n    color: #d37874;\n    position: relative;\n    top: 5px; }\n  .chat-window .arrow-up {\n    background-position-x: 50%;\n    background-position-y: -37%;\n    background-repeat: no-repeat;\n    background-size: 150%;\n    width: 39%;\n    height: 30px;\n    margin-top: 11%; }\n    .chat-window .arrow-up:hover {\n      background-color: gray; }\n  .chat-window .arrow-down {\n    background-repeat: no-repeat;\n    background-size: 154%;\n    background-position-y: 139%;\n    background-position-x: 48%;\n    width: 39%;\n    height: 30px;\n    margin-top: 12%; }\n    .chat-window .arrow-down:hover {\n      background-color: gray; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #7D5D8A;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n/* COPIED IPHONE TEXT SCREEN CSS from http://cssdeck.com/labs/iphone-text-message-screen/ */\n.iphone-container {\n  height: 500px;\n  background-color: #dbe2ed;\n  width: 100%;\n  display: inline-block;\n  overflow-y: scroll;\n  margin-top: 1%; }\n  .iphone-container div {\n    display: inline-block; }\n\n.white-shadow {\n  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -linear-gradient(top, rgba(255, 255, 255, 0.8) 4px, rgba(255, 255, 255, 0.28) 8px);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255, 255, 255, 0.8)) 4px, to(rgba(255, 255, 255, 0.28)) 8px);\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #d2d2d2;\n  background-image: -webkit-linear-gradient(top, #9da0a6, #d2d2d2 17px, #e5e5e5 92%);\n  border-radius: 15px;\n  box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.6);\n  font: 15px Helvetica, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #9DA0A6 #9DA0A6 #9DA0A6 transparent;\n  border-style: solid; }\n\n.text-right {\n  background-color: #a9e24c;\n  background-image: -webkit-linear-gradient(top, #309b19, #a9e24c 17px, #9bcc45 92%);\n  border-radius: 15px;\n  box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.6);\n  font: 15px Helvetica, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #309b19 transparent #309b19 #309b19;\n  border-style: solid; }\n\n.text-left:before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: -1px;\n  height: 6px;\n  border-right: 14px solid #d5d5d5;\n  background: #dbe2ed;\n  -webkit-border-bottom-right-radius: 36px 18px;\n  -moz-border-radius-bottomright: 36px 18px;\n  border-bottom-right-radius: 36px 18px;\n  box-shadow: 2px 2px 2px #9da0a6;\n  -webkit-transform: translate(0, -2px);\n  -moz-transform: translate(0, -2px);\n  -ms-transform: translate(0, -2px);\n  -o-transform: translate(0, -2px);\n  transform: translate(0, -2px);\n  right: 98%; }\n\n.text-left:after {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: 0px;\n  right: 95.5%;\n  width: 28px;\n  height: 12px;\n  background: #dbe2ed;\n  -webkit-border-bottom-right-radius: 18px 12px;\n  -moz-border-radius-bottomright: 18px 12px;\n  border-bottom-right-radius: 20px 20px;\n  -webkit-transform: translate(-12px, -2px);\n  -moz-transform: translate(-12px, -2px);\n  -ms-transform: translate(-12px, -2px);\n  -o-transform: translate(-12px, -2px);\n  transform: translate(-12px, -2px); }\n\n.text-right:before {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: -1px;\n  height: 6px;\n  border-left: 14px solid #a9e24c;\n  background: #dbe2ed;\n  -webkit-border-bottom-left-radius: 36px 18px;\n  -moz-border-radius-bottomleft: 36px 18px;\n  border-bottom-left-radius: 36px 18px;\n  box-shadow: 2px 2px 2px #9da0a6;\n  -webkit-transform: translate(0, -2px);\n  -moz-transform: translate(0, -2px);\n  -ms-transform: translate(0, -2px);\n  -o-transform: translate(0, -2px);\n  transform: translate(0, -2px);\n  left: 98%; }\n\n.text-right:after {\n  content: \"\";\n  position: absolute;\n  z-index: -1;\n  bottom: 0px;\n  left: 103.5%;\n  width: 28px;\n  height: 12px;\n  background: #dbe2ed;\n  -webkit-border-bottom-left-radius: 20px 12px;\n  -moz-border-radius-bottomleft: 20px 12px;\n  border-bottom-left-radius: 20px 20px;\n  -webkit-transform: translate(-12px, -2px);\n  -moz-transform: translate(-12px, -2px);\n  -ms-transform: translate(-12px, -2px);\n  -o-transform: translate(-12px, -2px);\n  transform: translate(-12px, -2px); }\n\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n  #clock span {\n    font-size: 9.1rem;\n    padding-left: 25%;\n    color: #d37874; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n  #clock span {\n    font-size: 9.1rem;\n    padding-left: 25%;\n    color: #d37874; }\n", ""]);
+	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #d37874;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    text-align: center;\n    margin-left: 5%;\n    display: inline-block;\n    width: 10%; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    padding-right: 62%;\n    color: #d37874;\n    position: relative;\n    top: 5px; }\n  .chat-window .arrow-up {\n    background-position-x: 50%;\n    background-position-y: -37%;\n    background-repeat: no-repeat;\n    background-size: 150%;\n    width: 39%;\n    height: 30px;\n    margin-top: 11%; }\n    .chat-window .arrow-up:hover {\n      background-color: gray; }\n  .chat-window .arrow-down {\n    background-repeat: no-repeat;\n    background-size: 154%;\n    background-position-y: 139%;\n    background-position-x: 48%;\n    width: 39%;\n    height: 30px;\n    margin-top: 12%; }\n    .chat-window .arrow-down:hover {\n      background-color: gray; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #7D5D8A;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 400%;\n  min-height: 2000%;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #d37874;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\nheader {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #d37874;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    text-align: center;\n    margin-left: 5%;\n    display: inline-block;\n    width: 10%; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    padding-right: 62%;\n    color: #d37874;\n    position: relative;\n    top: 5px; }\n  .chat-window .arrow-up {\n    background-position-x: 50%;\n    background-position-y: -37%;\n    background-repeat: no-repeat;\n    background-size: 150%;\n    width: 39%;\n    height: 30px;\n    margin-top: 11%; }\n    .chat-window .arrow-up:hover {\n      background-color: gray; }\n  .chat-window .arrow-down {\n    background-repeat: no-repeat;\n    background-size: 154%;\n    background-position-y: 139%;\n    background-position-x: 48%;\n    width: 39%;\n    height: 30px;\n    margin-top: 12%; }\n    .chat-window .arrow-down:hover {\n      background-color: gray; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #7D5D8A;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 400%;\n  min-height: 2000%;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n  #clock span {\n    font-size: 9.1rem;\n    padding-left: 25%;\n    color: #d37874; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n  #clock span {\n    font-size: 9.1rem;\n    padding-left: 25%;\n    color: #d37874; }\n", ""]);
 
 	// exports
 
@@ -30548,245 +30548,26 @@
 
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
-	var humanizeDuration = __webpack_require__(23);
+	var humanizeDuration = __webpack_require__(14);
 	// var angularTimer = require('angular-timer');
 
 	angular.module('messages', ['ngRoute']).
 	// 'timer'
 	config(function ($routeProvider) {
 	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
-	    template: __webpack_require__(14),
+	    template: __webpack_require__(15),
 	    controller: 'MessagesController'
 	  });
 	});
 
+	__webpack_require__(16);
+	__webpack_require__(17);
 	__webpack_require__(18);
 	__webpack_require__(19);
-	__webpack_require__(24);
-	__webpack_require__(21);
-	__webpack_require__(15);
+	__webpack_require__(20);
 
 /***/ },
 /* 14 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <section id=\"clock\">\n        <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n            {{mminutes}}:{{sseconds}}\n        </timer>\n    </section>\n\n    <div class=\"iphone-container\" scroll-bottom=\"messages\">\n        <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n            <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n               {{ msg.message }}\n               <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n            </p>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <div class=\"chat-window\" id=\"chat-window\" data-uri=\"<%= @request_host %>:<%= @request_port %>/websocket\">\n      <div class='current-responses' id=\"current_responses\">\n\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <span class='votes'>{{resp.total_votes}}</span>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\" autofocus>\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(16);
-	__webpack_require__(17);
-
-	(function () {
-	  'use strict';
-
-	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
-	    $scope.responses = [];
-
-	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
-	      $scope.messages = messages.data;
-	    });
-
-	    $scope.getResponses = function (conversationID) {
-	      ResponseService.getResponses(conversationID).then(function (data) {
-	        console.log(data.data);
-	        if (data.data.length === 0) {
-	          $scope.responses = [{ response_text: "Be the first to start a conversation",
-	            conversation_id: null,
-	            total_votes: null }];
-	        } else {
-	          $scope.responses = data.data;
-	        }
-	      });
-	    };
-
-	    $scope.submitResponse = function (response) {
-	      if (response) {
-	        var conversation_id = getConversationID();
-	        // What if there is no conversation to begin with?
-	        ResponseService.submitResponse(response, conversation_id).then(function (data) {
-	          var newObj = data.data;
-	          newObj.total_votes = 0;
-	          $scope.responses.push(newObj);
-	        });
-	        angular.element($("input[type='text']").val(""));
-	      }
-	    };
-
-	    $scope.submitUpvote = function (responseId) {
-	      var convoId = getConversationID();
-	      ResponseService.submitVote(responseId, convoId, 'up').then(function (data) {
-	        $scope.responses.forEach(function (el) {
-	          if (el.id === data.data.response_id) {
-	            el.total_votes = data.data.total_votes;
-	          }
-	        });
-	      });
-	    };
-
-	    $scope.submitDownvote = function (responseId) {
-	      var convoId = getConversationID();
-	      ResponseService.submitVote(responseId, convoId, 'down').then(function (data) {
-	        $scope.responses.forEach(function (el) {
-	          if (el.id === data.data.response_id) {
-	            el.total_votes = data.data.total_votes;
-	          }
-	        });
-	      });
-	    };
-
-	    function getConversationID() {
-	      var elm = angular.element($('.iphone-container').children()[$('.iphone-container').children().length - 1]);
-	      return elm.children().data('conversationId');
-	    }
-	  }]);
-	})();
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
-
-	    var getMessages = function getMessages(fakeAccountID, targetID) {
-	      var url = "/api/fake_accounts/" + fakeAccountID + "/targets/" + targetID;
-	      return $http.get(url);
-	    };
-
-	    return {
-	      getMessages: getMessages
-	    };
-	  });
-	})();
-
-/***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
-
-	    function getResponses(conversationID) {
-	      var deferred = $q.defer();
-	      if (!conversationID) {
-	        deferred.resolve([{ response_text: "Be the first to start a conversation",
-	          conversation_id: null,
-	          total_votes: null }]);
-	        return deferred.promise;
-	      }
-	      var url = "/api/fake_accounts/responses/" + conversationID;
-	      return $http.get(url);
-	    }
-
-	    function submitResponse(response, conversation_id) {
-	      var url = '/api/fake_accounts/responses/';
-	      var response = { response: { response_text: response,
-	          conversation_id: conversation_id }
-	      };
-	      return $http.post(url, response);
-	    }
-
-	    function submitVote(response, conversation_id, voteType) {
-	      var url = "/votes/";
-	      var submission;
-	      if (voteType === 'up') {
-	        submission = { vote: { response_id: response,
-	            conversation_id: conversation_id,
-	            up: 1,
-	            down: 0 }
-	        };
-	      } else {
-	        submission = { vote: { response_id: response,
-	            conversation_id: conversation_id,
-	            up: 0,
-	            down: 1 }
-	        };
-	      }
-	      return $http.post(url, submission);
-	    }
-
-	    return {
-	      getResponses: getResponses,
-	      submitResponse: submitResponse,
-	      submitVote: submitVote
-	    };
-	  }]);
-	})();
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').directive('scrollBottom', function () {
-	    return {
-	      scope: {
-	        scrollBottom: "="
-	      },
-	      link: function link(scope, element) {
-	        scope.$watch('$last', function () {
-	          setTimeout(function () {
-	            element[0].scrollTop = element[0].scrollHeight;
-	          }, 50);
-	        });
-	      }
-
-	    };
-	  });
-	})();
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').directive('ngClickOnce', [function () {
-	  return {
-	    restrict: 'A',
-	    link: function link(scope, element, attribute) {
-	      var clickFunction = function clickFunction() {
-	        scope.$eval(attribute.ngClickOnce);
-	        scope.$apply();
-	        element.unbind("click", clickFunction);
-	      };
-
-	      element.bind("click", clickFunction);
-	    }
-	  };
-	}]);
-
-/***/ },
-/* 20 */,
-/* 21 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
-
-/***/ },
-/* 22 */,
-/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;// HumanizeDuration.js - http://git.io/j0HgmQ
@@ -31262,7 +31043,62 @@
 
 
 /***/ },
-/* 24 */
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <section id=\"clock\">\n        <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n            {{mminutes}}:{{sseconds}}\n        </timer>\n    </section>\n\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <div class=\"chat-window\" id=\"chat-window\" data-uri=\"<%= @request_host %>:<%= @request_port %>/websocket\">\n      <div class='current-responses' id=\"current_responses\">\n\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <span class='votes'>{{resp.total_votes}}</span>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\" autofocus>\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').directive('scrollBottom', function () {
+	    return {
+	      scope: {
+	        scrollBottom: "="
+	      },
+	      link: function link(scope, element) {
+	        scope.$watch('$last', function () {
+	          setTimeout(function () {
+	            element[0].scrollTop = element[0].scrollHeight;
+	          }, 40);
+	        });
+	      }
+
+	    };
+	  });
+	})();
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').directive('ngClickOnce', [function () {
+	  return {
+	    restrict: 'A',
+	    link: function link(scope, element, attribute) {
+	      var clickFunction = function clickFunction() {
+	        scope.$eval(attribute.ngClickOnce);
+	        scope.$apply();
+	        element.unbind("click", clickFunction);
+	      };
+
+	      element.bind("click", clickFunction);
+	    }
+	  };
+	}]);
+
+/***/ },
+/* 18 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31271,6 +31107,168 @@
 	  'use strict';
 
 	  angular.module('cassanova').controller('ResponseController', ['$scope', 'ResponseService', function ($scope, ResponseService) {}]);
+	})();
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
+
+/***/ },
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(21);
+	__webpack_require__(22);
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
+	    $scope.responses = [];
+
+	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
+	      $scope.messages = messages.data;
+	    });
+
+	    $scope.getResponses = function (conversationID) {
+	      ResponseService.getResponses(conversationID).then(function (data) {
+	        console.log(data.data);
+	        if (data.data.length === 0) {
+	          $scope.responses = [{ response_text: "Be the first to start a conversation",
+	            conversation_id: null,
+	            total_votes: null }];
+	        } else {
+	          $scope.responses = data.data;
+	        }
+	      });
+	    };
+
+	    $scope.submitResponse = function (response) {
+	      if (response) {
+	        var conversation_id = getConversationID();
+	        // What if there is no conversation to begin with?
+	        ResponseService.submitResponse(response, conversation_id).then(function (data) {
+	          var newObj = data.data;
+	          newObj.total_votes = 0;
+	          $scope.responses.push(newObj);
+	        });
+	        angular.element($("input[type='text']").val(""));
+	      }
+	    };
+
+	    $scope.submitUpvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'up').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    $scope.submitDownvote = function (responseId) {
+	      var convoId = getConversationID();
+	      ResponseService.submitVote(responseId, convoId, 'down').then(function (data) {
+	        $scope.responses.forEach(function (el) {
+	          if (el.id === data.data.response_id) {
+	            el.total_votes = data.data.total_votes;
+	          }
+	        });
+	      });
+	    };
+
+	    function getConversationID() {
+	      var elm = angular.element($('.iphone-container').children()[$('.iphone-container').children().length - 1]);
+	      return elm.children().data('conversationId');
+	    }
+	  }]);
+	})();
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
+
+	    var getMessages = function getMessages(fakeAccountID, targetID) {
+	      var url = "/api/fake_accounts/" + fakeAccountID + "/targets/" + targetID;
+	      return $http.get(url);
+	    };
+
+	    return {
+	      getMessages: getMessages
+	    };
+	  });
+	})();
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
+
+	    function getResponses(conversationID) {
+	      var deferred = $q.defer();
+	      if (!conversationID) {
+	        deferred.resolve([{ response_text: "Be the first to start a conversation",
+	          conversation_id: null,
+	          total_votes: null }]);
+	        return deferred.promise;
+	      }
+	      var url = "/api/fake_accounts/responses/" + conversationID;
+	      return $http.get(url);
+	    }
+
+	    function submitResponse(response, conversation_id) {
+	      var url = '/api/fake_accounts/responses/';
+	      var response = { response: { response_text: response,
+	          conversation_id: conversation_id }
+	      };
+	      return $http.post(url, response);
+	    }
+
+	    function submitVote(response, conversation_id, voteType) {
+	      var url = "/votes/";
+	      var submission;
+	      if (voteType === 'up') {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 1,
+	            down: 0 }
+	        };
+	      } else {
+	        submission = { vote: { response_id: response,
+	            conversation_id: conversation_id,
+	            up: 0,
+	            down: 1 }
+	        };
+	      }
+	      return $http.post(url, submission);
+	    }
+
+	    return {
+	      getResponses: getResponses,
+	      submitResponse: submitResponse,
+	      submitVote: submitVote
+	    };
+	  }]);
 	})();
 
 /***/ }
