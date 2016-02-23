@@ -28,13 +28,14 @@ router.get('/:id/targets', function(req,res,next) {
     return fk[0].id
   })
   .then(function(fkID) {
-    knex('targets').where('fake_account_id', fkID)
-                   .leftOuterJoin('photos','targets.id','photos.target_id')
-                   .orderBy('targets.id')
-                   .limit(54)
-    .then(function(matchObjectsWithPhotos) {
-      res.json(matchObjectsWithPhotos);
-    })
+    knex('targets')
+      .where('fake_account_id', fkID)
+      .leftOuterJoin('photos','targets.id','photos.target_id')
+      .orderBy('targets.id')
+      .limit(54)
+      .then(function(matchObjectsWithPhotos) {
+        res.json(matchObjectsWithPhotos);
+      })
   })
 });
 
@@ -66,12 +67,13 @@ router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
 });
 
 router.get('/responses/:conversation_id', function(req,res,next) {
-  knex.select('*')
-      .from('responses')
-      .where('conversation_id',req.params.conversation_id)
-      .then(function(responses) {
-        res.json(responses)
-      });
+  knex.raw('SELECT msg.response_text, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_ups, SUM(v.down) as total_downs FROM responses as msg LEFT OUTER JOIN votes as v ON msg.id = v.response_id GROUP BY msg.id')
+      .then(function(data) {
+        var obj = data.rows
+        return obj
+      }).then(function(rows) {
+        res.json(rows);
+      })
 });
 
 router.post('/responses/', function(req,res,next) {
@@ -79,8 +81,18 @@ router.post('/responses/', function(req,res,next) {
     .insert(req.body.response)
     .returning('*')
     .then(function(data) {
-      console.log(data);
       res.json(data);
     })
 })
+
+router.post('/responses/:response_id/votes', function(req,res,next) {
+  knex('votes')
+    .insert(req.body.vote)
+    .returning('*')
+    .then(function(data) {
+      res.json("VOTE SUBMITTED", data);
+    })
+})
+
+
 module.exports = router;

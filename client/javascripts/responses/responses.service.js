@@ -25,7 +25,7 @@
       }
 
       function submitVote(response, conversation_id, voteType) {
-        var url = "/votes/";
+        var url = "/api/fake_accounts/responses/:response_id/votes/";
         var submission;
         if(voteType === 'up') {
           submission = { vote: {response_id: response,

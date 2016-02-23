@@ -37,47 +37,45 @@
   }
 
   .arrows {
-    text-align: center;
-    margin-left: 5%;
+    position: relative;
+    top: 11px;
+    margin-left: 3%;
     display: inline-block;
-    width: 10%;
-
+    width: 4%;
   }
   .votes {
     font-family: Arial, sans-serif;
     font-weight: 700;
     font-size: 1.4em;
-    padding-right: 62%;
-    color: rgb(211,120,116);
+    color: #882722;
     position: relative;
-    top: 5px;
+    top: 0%;
+    left: 12%;
   }
 
   .arrow-up {
-    // background-image: url('../images/up-arrow.png');
-    background-position-x: 50%;
-    background-position-y: -37%;
-    background-repeat: no-repeat;
-    background-size: 150%;
-    width: 39%;
-    height: 30px;
-    margin-top: 11%;
+    width: 0;
+  	height: 0;
+  	border-left: 10px solid transparent;
+  	border-right: 10px solid transparent;
+  	border-bottom: 10px solid rgb(211,120,116);
     &:hover {
-      background-color: gray
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #882722;
     }
   }
 
   .arrow-down {
-    // background-image: url('../images/down-arrow.png');
-    background-repeat: no-repeat;
-    background-size: 154%;
-    background-position-y: 139%;
-    background-position-x: 48%;
-    width: 39%;
-    height: 30px;
-    margin-top: 12%;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgb(211,120,116);
     &:hover {
-      background-color: gray
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid  #882722;
     }
   }
   .response {
@@ -93,11 +91,12 @@
     p {
       font-family: Arial, sans-serif;
       word-wrap: break-word;
-      color: #7D5D8A;
+      color: #882722;
       font-size: 1.4em;
       line-height: 1.33;
       position: relative;
       top: 10%;
+      left: 7%;
     }
     height: 60px;
   }
@@ -141,4 +140,3 @@
   -webkit-box-shadow: 0 2px 2px 0 rgba(90,90,90,0.2) inset;
   box-shadow: 0 2px 2px 0 rgba(90,90,90,0.2) inset;
 }
-
