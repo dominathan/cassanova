@@ -27,3 +27,4 @@ angular.module('cassanova',[
 
 require('./home/home.module');
 require('./messages/messages.module');
+require('./utilities/socket.service');

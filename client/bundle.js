@@ -70,6 +70,7 @@
 
 	__webpack_require__(9);
 	__webpack_require__(13);
+	__webpack_require__(23);
 
 /***/ },
 /* 1 */
@@ -31129,7 +31130,7 @@
 	(function () {
 	  'use strict';
 
-	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'SocketService', function ($scope, $routeParams, $location, ResponseService, MessageServices) {
 	    $scope.responses = [];
 
 	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
@@ -31283,6 +31284,45 @@
 	      submitVote: submitVote
 	    };
 	  }]);
+	})();
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('SocketService', function ($rootScope) {
+	    var socket = io();
+
+	    function on(eventName, callback) {
+	      socket.on(eventName, function () {
+	        var args = arguments;
+	        $rootScope.$apply(function () {
+	          callback.apply(socket, args);
+	        });
+	      });
+	    };
+
+	    function emit(eventName, data, callback) {
+	      socket.emit(eventName, data, function () {
+	        var args = arguments;
+	        $rootScope.$apply(socket, function () {
+	          if (callback) {
+	            callback.apply(socket, args);
+	          };
+	        });
+	      });
+	    };
+
+	    return {
+	      on: on,
+	      emit: emit
+	    };
+	  });
 	})();
 
 /***/ }

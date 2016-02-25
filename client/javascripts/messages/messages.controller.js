@@ -12,6 +12,7 @@ require('../responses/responses.service');
       '$location',
       'ResponseService',
       'MessageServices',
+      'SocketService',
       function($scope,$routeParams,$location,ResponseService,MessageServices) {
         $scope.responses = [];
 
