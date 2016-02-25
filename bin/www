@@ -7,6 +7,10 @@ var app = require('../app');
 var debug = require('debug')('cassanova:server');
 var http = require('http');
 
+var env = process.env.NODE_ENV || 'development';
+var config = require("../knexfile");
+var knex = require('knex')(config[env]);
+
 /**
  * Get port from environment and store in Express.
  */
@@ -24,9 +28,6 @@ server.listen(port, function() {
 });
 server.on('error', onError);
 server.on('listening', onListening);
-/**
- * Normalize a port into a number, string, or false.
- */
 
 /**
  * Connect to socket.io
@@ -34,7 +35,24 @@ server.on('listening', onListening);
  var io = require('socket.io').listen(server);
  io.on('connection', function(socket) {
    console.log("CONNECTED TO SOCKET");
+   socket.on('new:response',function(response) {
+     console.log("TEST SOCKET", response);
+     knex('responses')
+       .insert(response)
+       .returning('*')
+       .then(function(data) {
+         console.log("EMITTING DATA: ",data)
+         io.emit('new:response',data)
+       })
+   });
+
  })
+
+
+
+ /**
+  * Normalize a port into a number, string, or false.
+  */
 
 function normalizePort(val) {
         var port = parseInt(val, 10);

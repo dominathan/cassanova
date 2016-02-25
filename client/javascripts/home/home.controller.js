@@ -11,12 +11,7 @@ require('./home.service');
       function ($scope,HomeServices) {
         $scope.targets = []
         HomeServices.getTargets().then(function(data) {
-          data.data.forEach(function(elem,idx) {
-            if(idx % 6 === 0) {
-              elem.age = calculateAge(new Date(elem.birth_date));
-              $scope.targets.push(elem);
-            }
-          });
+          $scope.targets = data.data;
           window.glob = data.data;
         });
 
