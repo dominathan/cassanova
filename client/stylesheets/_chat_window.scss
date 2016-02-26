@@ -47,7 +47,7 @@
     font-family: Arial, sans-serif;
     font-weight: 700;
     font-size: 1.4em;
-    color: #882722;
+    color: $primaryColor;
   }
 
   .arrow-up {
@@ -56,11 +56,11 @@
     margin-left: 26%;
   	border-left: 10px solid transparent;
   	border-right: 10px solid transparent;
-  	border-bottom: 10px solid rgb(211,120,116);
+  	border-bottom: 10px solid $primaryColor;
     &:hover {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-bottom: 10px solid #882722;
+      border-bottom: 10px solid $secondaryColor;
     }
   }
 
@@ -70,11 +70,11 @@
     margin-left: 26%;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid rgb(211,120,116);
+    border-top: 10px solid $primaryColor;
     &:hover {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
-      border-top: 10px solid  #882722;
+      border-top: 10px solid  $secondaryColor;
     }
   }
 
@@ -92,7 +92,7 @@
     p {
       font-family: Arial, sans-serif;
       word-wrap: break-word;
-      color: #882722;
+      color: $primaryColor;
       font-size: 1.4em;
       line-height: 1.33;
       position: relative;

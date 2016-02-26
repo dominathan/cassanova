@@ -9,7 +9,7 @@
 }
 
 div .match-panel {
-  border-color: rgb(211,120,116);
+  border-color: $primaryColor;
   border-width: 3px;
   background-color: #FFF;
   border-radius: 2px;
@@ -42,9 +42,4 @@ div .match-panel {
     font-size: 1.3em;
   }
 }
-
-@import 'navbar';
-@import 'chat_window';
-@import 'iphone_window';
-@import 'clock';
 /* END COPIED IPHONE TEXT SCREEN */

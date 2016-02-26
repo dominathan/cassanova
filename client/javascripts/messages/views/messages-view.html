@@ -27,7 +27,7 @@
           <div ng-repeat="resp in responses | orderBy: '-total_votes'" class="response">
               <div class="arrows">
                   <div class="arrow-up" ng-click-once="submitUpvote(resp.id)"></div>
-                      <span class='votes'>{{resp.total_votes}}</span>
+                      <div class='votes'>{{resp.total_votes}}</div>
                   <div class="arrow-down" ng-click-once="submitDownvote(resp.id)"></div>
               </div>
               <div class="response-text" data-conversation-id="{{resp.id}}">
