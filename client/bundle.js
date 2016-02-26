@@ -31165,29 +31165,49 @@
 
 	    $scope.submitUpvote = function (responseId) {
 	      var convoId = getConversationID();
-	      ResponseService.submitVote(responseId, convoId, 'up').then(function (data) {
-	        var additionalVotes = data.data[0].up - data.data[0].down;
-	        $scope.responses.forEach(function (el) {
-	          if (el.id === data.data[0].response_id) {
-	            el.total_votes = parseInt(el.total_votes);
-	            el.total_votes += additionalVotes;
-	          }
-	        });
-	      });
+	      var voteObj = {
+	        response_id: responseId,
+	        conversation_id: convoId,
+	        up: 1,
+	        down: 0
+	      };
+	      SocketService.emit('new:vote', voteObj);
+	      // ResponseService.submitVote(responseId,convoId,'up')
+	      // .then(function(data) {
+	      //   var additionalVotes = data.data[0].up - data.data[0].down;
+	      //   $scope.responses.forEach(function(el) {
+	      //     if(el.id === data.data[0].response_id) {
+	      //       el.total_votes = parseInt(el.total_votes);
+	      //       el.total_votes += additionalVotes;
+	      //     }
+	      //   });
+	      // })
 	    };
 
 	    $scope.submitDownvote = function (responseId) {
 	      var convoId = getConversationID();
-	      ResponseService.submitVote(responseId, convoId, 'down').then(function (data) {
-	        var additionalVotes = data.data[0].up - data.data[0].down;
-	        $scope.responses.forEach(function (el) {
-	          if (el.id === data.data[0].response_id) {
-	            el.total_votes = parseInt(el.total_votes);
-	            el.total_votes += additionalVotes;
-	          }
-	        });
-	      });
+
+	      var convoId = getConversationID();
+	      var voteObj = {
+	        response_id: responseId,
+	        conversation_id: convoId,
+	        up: 0,
+	        down: 1
+	      };
+
+	      SocketService.emit('new:vote', voteObj);
 	    };
+
+	    SocketService.on('new:vote', function (resp) {
+	      console.log("NEW VOTE RECIEVED", resp);
+	      var additionalVotes = resp[0].up - resp[0].down;
+	      $scope.responses.forEach(function (el) {
+	        if (el.id === resp[0].response_id) {
+	          el.total_votes = parseInt(el.total_votes);
+	          el.total_votes += additionalVotes;
+	        }
+	      });
+	    });
 
 	    /*
 	     * UTILITY FUNCTIONS

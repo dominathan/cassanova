@@ -34,17 +34,23 @@ server.on('listening', onListening);
  */
  var io = require('socket.io').listen(server);
  io.on('connection', function(socket) {
-   console.log("CONNECTED TO SOCKET");
    socket.on('new:response',function(response) {
-     console.log("TEST SOCKET", response);
      knex('responses')
        .insert(response)
        .returning('*')
        .then(function(data) {
-         console.log("EMITTING DATA: ",data)
          io.emit('new:response',data)
        })
    });
+
+   socket.on('new:vote', function(data) {
+     knex('votes')
+      .insert(data)
+      .returning('*')
+      .then(function(knexVote) {
+        io.emit('new:vote',knexVote)
+      })
+   })
 
  })
 
