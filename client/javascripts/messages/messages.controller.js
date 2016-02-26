@@ -22,10 +22,8 @@ require('../responses/responses.service');
         });
 
         $scope.getResponses = function(conversationID) {
-          console.log("CONVO ID", conversationID);
           ResponseService.getResponses(conversationID)
           .then(function(data) {
-            console.log("RESPONSESE", data);
             if (data.data.length === 0) {
               $scope.responses = [{ response_text: "Be the first to start a conversation",
                                     conversation_id: null,
@@ -33,7 +31,6 @@ require('../responses/responses.service');
             } else {
               var responsesWithTotalVotes = totalVotes(data.data);
               $scope.responses = responsesWithTotalVotes;
-              window.glob = responsesWithTotalVotes;
             }
           });
         };
@@ -42,7 +39,10 @@ require('../responses/responses.service');
           if(response) {
             var conversation_id = getConversationID();
             // What if there is no conversation to begin with?
-            SocketService.emit('new:response', {response_text: response, conversation_id: conversation_id})
+            SocketService.emit('new:response', {
+                                                  response_text: response,
+                                                  conversation_id: conversation_id
+                                                })
             $scope.newResponse = "";
           }
         };
@@ -62,21 +62,9 @@ require('../responses/responses.service');
                           down: 0
                         }
           SocketService.emit('new:vote', voteObj);
-          // ResponseService.submitVote(responseId,convoId,'up')
-          // .then(function(data) {
-          //   var additionalVotes = data.data[0].up - data.data[0].down;
-          //   $scope.responses.forEach(function(el) {
-          //     if(el.id === data.data[0].response_id) {
-          //       el.total_votes = parseInt(el.total_votes);
-          //       el.total_votes += additionalVotes;
-          //     }
-          //   });
-          // })
         }
 
         $scope.submitDownvote = function(responseId) {
-          var convoId = getConversationID();
-
           var convoId = getConversationID();
           var voteObj = {
                           response_id: responseId,
@@ -89,7 +77,6 @@ require('../responses/responses.service');
         }
 
         SocketService.on('new:vote',function(resp) {
-          console.log("NEW VOTE RECIEVED", resp);
           var additionalVotes = resp[0].up - resp[0].down;
             $scope.responses.forEach(function(el) {
               if(el.id === resp[0].response_id) {

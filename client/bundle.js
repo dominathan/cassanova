@@ -31133,9 +31133,7 @@
 	    });
 
 	    $scope.getResponses = function (conversationID) {
-	      console.log("CONVO ID", conversationID);
 	      ResponseService.getResponses(conversationID).then(function (data) {
-	        console.log("RESPONSESE", data);
 	        if (data.data.length === 0) {
 	          $scope.responses = [{ response_text: "Be the first to start a conversation",
 	            conversation_id: null,
@@ -31143,7 +31141,6 @@
 	        } else {
 	          var responsesWithTotalVotes = totalVotes(data.data);
 	          $scope.responses = responsesWithTotalVotes;
-	          window.glob = responsesWithTotalVotes;
 	        }
 	      });
 	    };
@@ -31152,7 +31149,10 @@
 	      if (response) {
 	        var conversation_id = getConversationID();
 	        // What if there is no conversation to begin with?
-	        SocketService.emit('new:response', { response_text: response, conversation_id: conversation_id });
+	        SocketService.emit('new:response', {
+	          response_text: response,
+	          conversation_id: conversation_id
+	        });
 	        $scope.newResponse = "";
 	      }
 	    };
@@ -31172,21 +31172,9 @@
 	        down: 0
 	      };
 	      SocketService.emit('new:vote', voteObj);
-	      // ResponseService.submitVote(responseId,convoId,'up')
-	      // .then(function(data) {
-	      //   var additionalVotes = data.data[0].up - data.data[0].down;
-	      //   $scope.responses.forEach(function(el) {
-	      //     if(el.id === data.data[0].response_id) {
-	      //       el.total_votes = parseInt(el.total_votes);
-	      //       el.total_votes += additionalVotes;
-	      //     }
-	      //   });
-	      // })
 	    };
 
 	    $scope.submitDownvote = function (responseId) {
-	      var convoId = getConversationID();
-
 	      var convoId = getConversationID();
 	      var voteObj = {
 	        response_id: responseId,
@@ -31199,7 +31187,6 @@
 	    };
 
 	    SocketService.on('new:vote', function (resp) {
-	      console.log("NEW VOTE RECIEVED", resp);
 	      var additionalVotes = resp[0].up - resp[0].down;
 	      $scope.responses.forEach(function (el) {
 	        if (el.id === resp[0].response_id) {
@@ -31281,37 +31268,8 @@
 	      return $http.get(url);
 	    }
 
-	    function submitResponse(response, conversation_id) {
-	      var url = '/api/fake_accounts/responses/';
-	      var response = { response: { response_text: response,
-	          conversation_id: conversation_id }
-	      };
-	      return $http.post(url, response);
-	    }
-
-	    function submitVote(response, conversation_id, voteType) {
-	      var url = "/api/fake_accounts/responses/:response_id/votes/";
-	      var submission;
-	      if (voteType === 'up') {
-	        submission = { vote: { response_id: response,
-	            conversation_id: conversation_id,
-	            up: 1,
-	            down: 0 }
-	        };
-	      } else {
-	        submission = { vote: { response_id: response,
-	            conversation_id: conversation_id,
-	            up: 0,
-	            down: 1 }
-	        };
-	      }
-	      return $http.post(url, submission);
-	    }
-
 	    return {
-	      getResponses: getResponses,
-	      submitResponse: submitResponse,
-	      submitVote: submitVote
+	      getResponses: getResponses
 	    };
 	  }]);
 	})();

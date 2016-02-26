@@ -16,37 +16,8 @@
         return $http.get(url);
       }
 
-      function submitResponse(response, conversation_id) {
-        var url = '/api/fake_accounts/responses/';
-        var response = { response: { response_text: response,
-                                     conversation_id: conversation_id }
-                        }
-        return $http.post(url, response);
-      }
-
-      function submitVote(response, conversation_id, voteType) {
-        var url = "/api/fake_accounts/responses/:response_id/votes/";
-        var submission;
-        if(voteType === 'up') {
-          submission = { vote: {response_id: response,
-                                conversation_id: conversation_id,
-                                up: 1,
-                                down: 0}
-                        }
-        } else {
-          submission = { vote: {response_id: response,
-                                conversation_id: conversation_id,
-                                up: 0,
-                                down: 1}
-                        }
-        }
-        return $http.post(url, submission);
-      }
-
       return {
         getResponses: getResponses,
-        submitResponse: submitResponse,
-        submitVote: submitVote
       };
 
     }])
