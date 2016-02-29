@@ -52,16 +52,7 @@
 	var angularRoute = __webpack_require__(7);
 
 	angular.module('cassanova', ['ngRoute', 'messages', 'home']).config(function ($routeProvider) {
-	  $routeProvider
-	  // .when('/', {
-	  //   templateUrl: './home/views/home-view.html',
-	  //   controller: 'HomeController'
-	  // })
-	  // .when('/account/:account_id/match/:match_id/messages', {
-	  //   templateUrl: '../templates/messages-view.html',
-	  //   controller: 'MessagesController'
-	  // })
-	  .when('/404', {
+	  $routeProvider.when('/404', {
 	    template: '<h1>Sorry, page not found</h1>'
 	  }).otherwise({
 	    redirectTo: '/404'
@@ -111,7 +102,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 400%;\n  min-height: 599px;\n  max-height: 599px;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n  #clock span {\n    font-size: 9.1rem;\n    padding-left: 25%;\n    color: #d37874; }\n", ""]);
+	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 400%;\n  min-height: 599px;\n  max-height: 599px;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n", ""]);
 
 	// exports
 
@@ -30544,18 +30535,15 @@
 
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
-	var humanizeDuration = __webpack_require__(14);
-	// var angularTimer = require('angular-timer');
 
-	angular.module('messages', ['ngRoute']).
-	// 'timer'
-	config(function ($routeProvider) {
+	angular.module('messages', ['ngRoute']).config(function ($routeProvider) {
 	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
-	    template: __webpack_require__(15),
+	    template: __webpack_require__(14),
 	    controller: 'MessagesController'
 	  });
 	});
 
+	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(17);
 	__webpack_require__(18);
@@ -30564,490 +30552,14 @@
 
 /***/ },
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;// HumanizeDuration.js - http://git.io/j0HgmQ
-
-	;(function () {
-	  var languages = {
-	    ar: {
-	      y: function (c) { return c === 1 ? 'سنة' : 'سنوات' },
-	      mo: function (c) { return c === 1 ? 'شهر' : 'أشهر' },
-	      w: function (c) { return c === 1 ? 'أسبوع' : 'أسابيع' },
-	      d: function (c) { return c === 1 ? 'يوم' : 'أيام' },
-	      h: function (c) { return c === 1 ? 'ساعة' : 'ساعات' },
-	      m: function (c) { return c === 1 ? 'دقيقة' : 'دقائق' },
-	      s: function (c) { return c === 1 ? 'ثانية' : 'ثواني' },
-	      ms: function (c) { return c === 1 ? 'جزء من الثانية' : 'أجزاء من الثانية' },
-	      decimal: ','
-	    },
-	    ca: {
-	      y: function (c) { return 'any' + (c !== 1 ? 's' : '') },
-	      mo: function (c) { return 'mes' + (c !== 1 ? 'os' : '') },
-	      w: function (c) { return 'setman' + (c !== 1 ? 'es' : 'a') },
-	      d: function (c) { return 'di' + (c !== 1 ? 'es' : 'a') },
-	      h: function (c) { return 'hor' + (c !== 1 ? 'es' : 'a') },
-	      m: function (c) { return 'minut' + (c !== 1 ? 's' : '') },
-	      s: function (c) { return 'segon' + (c !== 1 ? 's' : '') },
-	      ms: function (c) { return 'milisegon' + (c !== 1 ? 's' : '') },
-	      decimal: ','
-	    },
-	    cs: {
-	      y: function (c) { return ['rok', 'roku', 'roky', 'let'][getCzechForm(c)] },
-	      mo: function (c) { return ['měsíc', 'měsíce', 'měsíce', 'měsíců'][getCzechForm(c)] },
-	      w: function (c) { return ['týden', 'týdne', 'týdny', 'týdnů'][getCzechForm(c)] },
-	      d: function (c) { return ['den', 'dne', 'dny', 'dní'][getCzechForm(c)] },
-	      h: function (c) { return ['hodina', 'hodiny', 'hodiny', 'hodin'][getCzechForm(c)] },
-	      m: function (c) { return ['minuta', 'minuty', 'minuty', 'minut'][getCzechForm(c)] },
-	      s: function (c) { return ['sekunda', 'sekundy', 'sekundy', 'sekund'][getCzechForm(c)] },
-	      ms: function (c) { return ['milisekunda', 'milisekundy', 'milisekundy', 'milisekund'][getCzechForm(c)] },
-	      decimal: ','
-	    },
-	    da: {
-	      y: 'år',
-	      mo: function (c) { return 'måned' + (c !== 1 ? 'er' : '') },
-	      w: function (c) { return 'uge' + (c !== 1 ? 'r' : '') },
-	      d: function (c) { return 'dag' + (c !== 1 ? 'e' : '') },
-	      h: function (c) { return 'time' + (c !== 1 ? 'r' : '') },
-	      m: function (c) { return 'minut' + (c !== 1 ? 'ter' : '') },
-	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
-	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
-	      decimal: ','
-	    },
-	    de: {
-	      y: function (c) { return 'Jahr' + (c !== 1 ? 'e' : '') },
-	      mo: function (c) { return 'Monat' + (c !== 1 ? 'e' : '') },
-	      w: function (c) { return 'Woche' + (c !== 1 ? 'n' : '') },
-	      d: function (c) { return 'Tag' + (c !== 1 ? 'e' : '') },
-	      h: function (c) { return 'Stunde' + (c !== 1 ? 'n' : '') },
-	      m: function (c) { return 'Minute' + (c !== 1 ? 'n' : '') },
-	      s: function (c) { return 'Sekunde' + (c !== 1 ? 'n' : '') },
-	      ms: function (c) { return 'Millisekunde' + (c !== 1 ? 'n' : '') },
-	      decimal: ','
-	    },
-	    en: {
-	      y: function (c) { return 'year' + (c !== 1 ? 's' : '') },
-	      mo: function (c) { return 'month' + (c !== 1 ? 's' : '') },
-	      w: function (c) { return 'week' + (c !== 1 ? 's' : '') },
-	      d: function (c) { return 'day' + (c !== 1 ? 's' : '') },
-	      h: function (c) { return 'hour' + (c !== 1 ? 's' : '') },
-	      m: function (c) { return 'minute' + (c !== 1 ? 's' : '') },
-	      s: function (c) { return 'second' + (c !== 1 ? 's' : '') },
-	      ms: function (c) { return 'millisecond' + (c !== 1 ? 's' : '') },
-	      decimal: '.'
-	    },
-	    es: {
-	      y: function (c) { return 'año' + (c !== 1 ? 's' : '') },
-	      mo: function (c) { return 'mes' + (c !== 1 ? 'es' : '') },
-	      w: function (c) { return 'semana' + (c !== 1 ? 's' : '') },
-	      d: function (c) { return 'día' + (c !== 1 ? 's' : '') },
-	      h: function (c) { return 'hora' + (c !== 1 ? 's' : '') },
-	      m: function (c) { return 'minuto' + (c !== 1 ? 's' : '') },
-	      s: function (c) { return 'segundo' + (c !== 1 ? 's' : '') },
-	      ms: function (c) { return 'milisegundo' + (c !== 1 ? 's' : '') },
-	      decimal: ','
-	    },
-	    fi: {
-	      y: function (c) { return c === 1 ? 'vuosi' : 'vuotta' },
-	      mo: function (c) { return c === 1 ? 'kuukausi' : 'kuukautta' },
-	      w: function (c) { return 'viikko' + (c !== 1 ? 'a' : '') },
-	      d: function (c) { return 'päivä' + (c !== 1 ? 'ä' : '') },
-	      h: function (c) { return 'tunti' + (c !== 1 ? 'a' : '') },
-	      m: function (c) { return 'minuutti' + (c !== 1 ? 'a' : '') },
-	      s: function (c) { return 'sekunti' + (c !== 1 ? 'a' : '') },
-	      ms: function (c) { return 'millisekunti' + (c !== 1 ? 'a' : '') },
-	      decimal: ','
-	    },
-	    fr: {
-	      y: function (c) { return 'an' + (c !== 1 ? 's' : '') },
-	      mo: 'mois',
-	      w: function (c) { return 'semaine' + (c !== 1 ? 's' : '') },
-	      d: function (c) { return 'jour' + (c !== 1 ? 's' : '') },
-	      h: function (c) { return 'heure' + (c !== 1 ? 's' : '') },
-	      m: function (c) { return 'minute' + (c !== 1 ? 's' : '') },
-	      s: function (c) { return 'seconde' + (c !== 1 ? 's' : '') },
-	      ms: function (c) { return 'milliseconde' + (c !== 1 ? 's' : '') },
-	      decimal: ','
-	    },
-	    gr: {
-	      y: function (c) { return c === 1 ? 'χρόνος' : 'χρόνια' },
-	      mo: function (c) { return c === 1 ? 'μήνας' : 'μήνες' },
-	      w: function (c) { return c === 1 ? 'εβδομάδα' : 'εβδομάδες' },
-	      d: function (c) { return c === 1 ? 'μέρα' : 'μέρες' },
-	      h: function (c) { return c === 1 ? 'ώρα' : 'ώρες' },
-	      m: function (c) { return c === 1 ? 'λεπτό' : 'λεπτά' },
-	      s: function (c) { return c === 1 ? 'δευτερόλεπτο' : 'δευτερόλεπτα' },
-	      ms: function (c) { return c === 1 ? 'χιλιοστό του δευτερολέπτου' : 'χιλιοστά του δευτερολέπτου' },
-	      decimal: ','
-	    },
-	    hu: {
-	      y: 'év',
-	      mo: 'hónap',
-	      w: 'hét',
-	      d: 'nap',
-	      h: 'óra',
-	      m: 'perc',
-	      s: 'másodperc',
-	      ms: 'ezredmásodperc',
-	      decimal: ','
-	    },
-	    it: {
-	      y: function (c) { return 'ann' + (c !== 1 ? 'i' : 'o') },
-	      mo: function (c) { return 'mes' + (c !== 1 ? 'i' : 'e') },
-	      w: function (c) { return 'settiman' + (c !== 1 ? 'e' : 'a') },
-	      d: function (c) { return 'giorn' + (c !== 1 ? 'i' : 'o') },
-	      h: function (c) { return 'or' + (c !== 1 ? 'e' : 'a') },
-	      m: function (c) { return 'minut' + (c !== 1 ? 'i' : 'o') },
-	      s: function (c) { return 'second' + (c !== 1 ? 'i' : 'o') },
-	      ms: function (c) { return 'millisecond' + (c !== 1 ? 'i' : 'o') },
-	      decimal: ','
-	    },
-	    ja: {
-	      y: '年',
-	      mo: '月',
-	      w: '週',
-	      d: '日',
-	      h: '時間',
-	      m: '分',
-	      s: '秒',
-	      ms: 'ミリ秒',
-	      decimal: '.'
-	    },
-	    ko: {
-	      y: '년',
-	      mo: '개월',
-	      w: '주일',
-	      d: '일',
-	      h: '시간',
-	      m: '분',
-	      s: '초',
-	      ms: '밀리 초',
-	      decimal: '.'
-	    },
-	    lt: {
-	      y: function (c) { return ((c % 10 === 0) || (c % 100 >= 10 && c % 100 <= 20)) ? 'metų' : 'metai' },
-	      mo: function (c) { return ['mėnuo', 'mėnesiai', 'mėnesių'][getLithuanianForm(c)] },
-	      w: function (c) { return ['savaitė', 'savaitės', 'savaičių'][getLithuanianForm(c)] },
-	      d: function (c) { return ['diena', 'dienos', 'dienų'][getLithuanianForm(c)] },
-	      h: function (c) { return ['valanda', 'valandos', 'valandų'][getLithuanianForm(c)] },
-	      m: function (c) { return ['minutė', 'minutės', 'minučių'][getLithuanianForm(c)] },
-	      s: function (c) { return ['sekundė', 'sekundės', 'sekundžių'][getLithuanianForm(c)] },
-	      ms: function (c) { return ['milisekundė', 'milisekundės', 'milisekundžių'][getLithuanianForm(c)] },
-	      decimal: ','
-	    },
-	    nl: {
-	      y: 'jaar',
-	      mo: function (c) { return c === 1 ? 'maand' : 'maanden' },
-	      w: function (c) { return c === 1 ? 'week' : 'weken' },
-	      d: function (c) { return c === 1 ? 'dag' : 'dagen' },
-	      h: 'uur',
-	      m: function (c) { return c === 1 ? 'minuut' : 'minuten' },
-	      s: function (c) { return c === 1 ? 'seconde' : 'seconden' },
-	      ms: function (c) { return c === 1 ? 'milliseconde' : 'milliseconden' },
-	      decimal: ','
-	    },
-	    no: {
-	      y: 'år',
-	      mo: function (c) { return 'måned' + (c !== 1 ? 'er' : '') },
-	      w: function (c) { return 'uke' + (c !== 1 ? 'r' : '') },
-	      d: function (c) { return 'dag' + (c !== 1 ? 'er' : '') },
-	      h: function (c) { return 'time' + (c !== 1 ? 'r' : '') },
-	      m: function (c) { return 'minutt' + (c !== 1 ? 'er' : '') },
-	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
-	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
-	      decimal: ','
-	    },
-	    pl: {
-	      y: function (c) { return ['rok', 'roku', 'lata', 'lat'][getPolishForm(c)] },
-	      mo: function (c) { return ['miesiąc', 'miesiąca', 'miesiące', 'miesięcy'][getPolishForm(c)] },
-	      w: function (c) { return ['tydzień', 'tygodnia', 'tygodnie', 'tygodni'][getPolishForm(c)] },
-	      d: function (c) { return ['dzień', 'dnia', 'dni', 'dni'][getPolishForm(c)] },
-	      h: function (c) { return ['godzina', 'godziny', 'godziny', 'godzin'][getPolishForm(c)] },
-	      m: function (c) { return ['minuta', 'minuty', 'minuty', 'minut'][getPolishForm(c)] },
-	      s: function (c) { return ['sekunda', 'sekundy', 'sekundy', 'sekund'][getPolishForm(c)] },
-	      ms: function (c) { return ['milisekunda', 'milisekundy', 'milisekundy', 'milisekund'][getPolishForm(c)] },
-	      decimal: ','
-	    },
-	    pt: {
-	      y: function (c) { return 'ano' + (c !== 1 ? 's' : '') },
-	      mo: function (c) { return c !== 1 ? 'meses' : 'mês' },
-	      w: function (c) { return 'semana' + (c !== 1 ? 's' : '') },
-	      d: function (c) { return 'dia' + (c !== 1 ? 's' : '') },
-	      h: function (c) { return 'hora' + (c !== 1 ? 's' : '') },
-	      m: function (c) { return 'minuto' + (c !== 1 ? 's' : '') },
-	      s: function (c) { return 'segundo' + (c !== 1 ? 's' : '') },
-	      ms: function (c) { return 'milissegundo' + (c !== 1 ? 's' : '') },
-	      decimal: ','
-	    },
-	    ru: {
-	      y: function (c) { return ['лет', 'год', 'года'][getSlavicForm(c)] },
-	      mo: function (c) { return ['месяцев', 'месяц', 'месяца'][getSlavicForm(c)] },
-	      w: function (c) { return ['недель', 'неделя', 'недели'][getSlavicForm(c)] },
-	      d: function (c) { return ['дней', 'день', 'дня'][getSlavicForm(c)] },
-	      h: function (c) { return ['часов', 'час', 'часа'][getSlavicForm(c)] },
-	      m: function (c) { return ['минут', 'минута', 'минуты'][getSlavicForm(c)] },
-	      s: function (c) { return ['секунд', 'секунда', 'секунды'][getSlavicForm(c)] },
-	      ms: function (c) { return ['миллисекунд', 'миллисекунда', 'миллисекунды'][getSlavicForm(c)] },
-	      decimal: ','
-	    },
-	    uk: {
-	      y: function (c) { return ['років', 'рік', 'роки'][getSlavicForm(c)] },
-	      mo: function (c) { return ['місяців', 'місяць', 'місяці'][getSlavicForm(c)] },
-	      w: function (c) { return ['неділь', 'неділя', 'неділі'][getSlavicForm(c)] },
-	      d: function (c) { return ['днів', 'день', 'дні'][getSlavicForm(c)] },
-	      h: function (c) { return ['годин', 'година', 'години'][getSlavicForm(c)] },
-	      m: function (c) { return ['хвилин', 'хвилина', 'хвилини'][getSlavicForm(c)] },
-	      s: function (c) { return ['секунд', 'секунда', 'секунди'][getSlavicForm(c)] },
-	      ms: function (c) { return ['мілісекунд', 'мілісекунда', 'мілісекунди'][getSlavicForm(c)] },
-	      decimal: ','
-	    },
-	    sv: {
-	      y: 'år',
-	      mo: function (c) { return 'månad' + (c !== 1 ? 'er' : '') },
-	      w: function (c) { return 'veck' + (c !== 1 ? 'or' : 'a') },
-	      d: function (c) { return 'dag' + (c !== 1 ? 'ar' : '') },
-	      h: function (c) { return 'timm' + (c !== 1 ? 'ar' : 'e') },
-	      m: function (c) { return 'minut' + (c !== 1 ? 'er' : '') },
-	      s: function (c) { return 'sekund' + (c !== 1 ? 'er' : '') },
-	      ms: function (c) { return 'millisekund' + (c !== 1 ? 'er' : '') },
-	      decimal: ','
-	    },
-	    tr: {
-	      y: 'yıl',
-	      mo: 'ay',
-	      w: 'hafta',
-	      d: 'gün',
-	      h: 'saat',
-	      m: 'dakika',
-	      s: 'saniye',
-	      ms: 'milisaniye',
-	      decimal: ','
-	    },
-	    zh_CN: {
-	      y: '年',
-	      mo: '个月',
-	      w: '周',
-	      d: '天',
-	      h: '小时',
-	      m: '分钟',
-	      s: '秒',
-	      ms: '毫秒',
-	      decimal: '.'
-	    },
-	    zh_TW: {
-	      y: '年',
-	      mo: '個月',
-	      w: '周',
-	      d: '天',
-	      h: '小時',
-	      m: '分鐘',
-	      s: '秒',
-	      ms: '毫秒',
-	      decimal: '.'
-	    }
-	  }
-
-	  // You can create a humanizer, which returns a function with defaults
-	  // parameters.
-	  function humanizer (passedOptions) {
-	    var result = function humanizer (ms, humanizerOptions) {
-	      var options = extend({}, result, humanizerOptions || {})
-	      return doHumanization(ms, options)
-	    }
-
-	    return extend(result, {
-	      language: 'en',
-	      delimiter: ', ',
-	      spacer: ' ',
-	      units: ['y', 'mo', 'w', 'd', 'h', 'm', 's'],
-	      languages: {},
-	      round: false,
-	      unitMeasures: {
-	        y: 31557600000,
-	        mo: 2629800000,
-	        w: 604800000,
-	        d: 86400000,
-	        h: 3600000,
-	        m: 60000,
-	        s: 1000,
-	        ms: 1
-	      }
-	    }, passedOptions)
-	  }
-
-	  // The main function is just a wrapper around a default humanizer.
-	  var humanizeDuration = humanizer({})
-
-	  // doHumanization does the bulk of the work.
-	  function doHumanization (ms, options) {
-	    // Make sure we have a positive number.
-	    // Has the nice sideffect of turning Number objects into primitives.
-	    ms = Math.abs(ms)
-
-	    var dictionary = options.languages[options.language] || languages[options.language]
-	    if (!dictionary) {
-	      throw new Error('No language ' + dictionary + '.')
-	    }
-
-	    var result = []
-
-	    // Start at the top and keep removing units, bit by bit.
-	    var unitName, unitMS, unitCount
-	    for (var i = 0, len = options.units.length; i < len; i++) {
-	      unitName = options.units[i]
-	      unitMS = options.unitMeasures[unitName]
-
-	      // What's the number of full units we can fit?
-	      if (i + 1 === len) {
-	        unitCount = ms / unitMS
-	        if (options.round) {
-	          unitCount = Math.round(unitCount)
-	        }
-	      } else {
-	        unitCount = Math.floor(ms / unitMS)
-	      }
-
-	      // Add the string.
-	      if (unitCount) {
-	        result.push(render(unitCount, unitName, dictionary, options))
-	      }
-
-	      // Do we have enough units?
-	      if (options.largest && options.largest <= result.length) {
-	        break
-	      }
-
-	      // Remove what we just figured out.
-	      ms -= unitCount * unitMS
-	    }
-
-	    if (result.length) {
-	      return result.join(options.delimiter)
-	    } else {
-	      return render(0, options.units[options.units.length - 1], dictionary, options)
-	    }
-	  }
-
-	  function render (count, type, dictionary, options) {
-	    var decimal
-	    if (options.decimal === void 0) {
-	      decimal = dictionary.decimal
-	    } else {
-	      decimal = options.decimal
-	    }
-
-	    var countStr = count.toString().replace('.', decimal)
-
-	    var dictionaryValue = dictionary[type]
-	    var word
-	    if (typeof dictionaryValue === 'function') {
-	      word = dictionaryValue(count)
-	    } else {
-	      word = dictionaryValue
-	    }
-
-	    return countStr + options.spacer + word
-	  }
-
-	  function extend (destination) {
-	    var source
-	    for (var i = 1; i < arguments.length; i++) {
-	      source = arguments[i]
-	      for (var prop in source) {
-	        if (source.hasOwnProperty(prop)) {
-	          destination[prop] = source[prop]
-	        }
-	      }
-	    }
-	    return destination
-	  }
-
-	  // Internal helper function for Czech language.
-	  function getCzechForm (c) {
-	    if (c === 1) {
-	      return 0
-	    } else if (Math.floor(c) !== c) {
-	      return 1
-	    } else if (c % 10 >= 2 && c % 10 <= 4 && c % 100 < 10) {
-	      return 2
-	    } else {
-	      return 3
-	    }
-	  }
-
-	  // Internal helper function for Polish language.
-	  function getPolishForm (c) {
-	    if (c === 1) {
-	      return 0
-	    } else if (Math.floor(c) !== c) {
-	      return 1
-	    } else if (c % 10 >= 2 && c % 10 <= 4 && !(c % 100 > 10 && c % 100 < 20)) {
-	      return 2
-	    } else {
-	      return 3
-	    }
-	  }
-
-	  // Internal helper function for Russian and Ukranian languages.
-	  function getSlavicForm (c) {
-	    if (Math.floor(c) !== c) {
-	      return 2
-	    } else if ((c >= 5 && c <= 20) || (c % 10 >= 5 && c % 10 <= 9) || c % 10 === 0) {
-	      return 0
-	    } else if (c % 10 === 1) {
-	      return 1
-	    } else if (c > 1) {
-	      return 2
-	    } else {
-	      return 0
-	    }
-	  }
-
-	  // Internal helper function for Lithuanian language.
-	  function getLithuanianForm (c) {
-	    if (c === 1 || (c % 10 === 1 && c % 100 > 20)) {
-	      return 0
-	    } else if (Math.floor(c) !== c || (c % 10 >= 2 && c % 100 > 20) || (c % 10 >= 2 && c % 100 < 10)) {
-	      return 1
-	    } else {
-	      return 2
-	    }
-	  }
-
-	  humanizeDuration.getSupportedLanguages = function getSupportedLanguages () {
-	    var result = []
-	    for (var language in languages) {
-	      if (languages.hasOwnProperty(language)) {
-	        result.push(language)
-	      }
-	    }
-	    return result
-	  }
-
-	  humanizeDuration.humanizer = humanizer
-
-	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
-	      return humanizeDuration
-	    }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-	  } else if (typeof module !== 'undefined' && module.exports) {
-	    module.exports = humanizeDuration
-	  } else {
-	    this.humanizeDuration = humanizeDuration
-	  }
-	})();  // eslint-disable-line semi
-
-
-/***/ },
-/* 15 */
 /***/ function(module, exports) {
 
 	"use strict";
 
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <section id=\"clock\">\n        <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n            {{mminutes}}:{{sseconds}}\n        </timer>\n    </section>\n\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n\n    <section id=\"clock\" timer='' minutes='20'>\n\n    </section>\n\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31073,7 +30585,7 @@
 	})();
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -31092,6 +30604,33 @@
 	    }
 	  };
 	}]);
+
+/***/ },
+/* 17 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(24);
+
+	angular.module('cassanova').directive('timer', function (TimerService, $interval) {
+	  return {
+	    restrict: 'A',
+	    scope: {
+	      minutes: '@',
+	      countdown: '@'
+	    },
+	    link: function link(scope, element) {
+	      var timeNow = new Date();
+	      var futureTime = new Date(timeNow.getTime() + parseInt(scope.minutes) * 60000);
+	      var timeDifference = futureTime.getTime() - timeNow.getTime();
+	      $interval(function () {
+	        timeDifference -= 1000;
+	        return element.text(TimerService.convertTime(timeDifference));
+	      }, 1000);
+	    }
+	  };
+	});
 
 /***/ },
 /* 18 */
@@ -31312,6 +30851,25 @@
 	    };
 	  });
 	})();
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').service('TimerService', function () {
+	  function convertTime(time) {
+	    var minutes, time, seconds;
+	    minutes = Math.floor(time / 1000 / 60);
+	    time -= minutes * 60 * 1000;
+	    seconds = Math.floor(time / 1000);
+	    return [minutes + 'm', seconds + 's'].join(' ');
+	  }
+	  return {
+	    convertTime: convertTime
+	  };
+	});
 
 /***/ }
 /******/ ]);

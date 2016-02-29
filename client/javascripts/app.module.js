@@ -9,14 +9,6 @@ angular.module('cassanova',[
   'home'
 ]).config(function($routeProvider) {
   $routeProvider
-      // .when('/', {
-      //   templateUrl: './home/views/home-view.html',
-      //   controller: 'HomeController'
-      // })
-      // .when('/account/:account_id/match/:match_id/messages', {
-      //   templateUrl: '../templates/messages-view.html',
-      //   controller: 'MessagesController'
-      // })
       .when('/404', {
         template: '<h1>Sorry, page not found</h1>'
       })

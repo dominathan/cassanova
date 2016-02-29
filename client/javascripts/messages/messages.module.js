@@ -1,11 +1,8 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
-var humanizeDuration = require('humanize-duration');
-// var angularTimer = require('angular-timer');
 
 angular.module('messages',[
-  'ngRoute',
-  // 'timer'
+  'ngRoute'
 ])
 .config(function($routeProvider) {
   $routeProvider
@@ -17,6 +14,7 @@ angular.module('messages',[
 
 require('../directives/scrollbottom');
 require('../directives/click-once');
+require('../directives/timer');
 require('../responses/responses.controller')
 require('./views/clock.html');
 require('./messages.controller');
