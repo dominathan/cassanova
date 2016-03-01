@@ -17,6 +17,8 @@ angular
           timeDifference -= 1000;
           return element.text(TimerService.convertTime(timeDifference));
         },1000);
+        return element.text(TimerService.convertTime(timeDifference));
+        
       }
     };
   });

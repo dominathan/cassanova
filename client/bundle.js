@@ -61,7 +61,7 @@
 
 	__webpack_require__(9);
 	__webpack_require__(13);
-	__webpack_require__(23);
+	__webpack_require__(24);
 
 /***/ },
 /* 1 */
@@ -102,7 +102,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  height: 20%;\n  width: 100%;\n  padding-left: 3%;\n  position: relative;\n  top: -12px; }\n  .chat-window form {\n    position: absolute;\n    top: 650px;\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    position: absolute;\n    bottom: 0;\n    height: 650px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll;\n    top: 0;\n    bottom: 0; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 400%;\n  min-height: 599px;\n  max-height: 599px;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: black;\n  margin-top: 2%; }\n", ""]);
+	exports.push([module.id, "header {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-style: \"League Gothic\";\n    display: inline-block;\n    margin: 5px 0; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n\n.chat-window {\n  display: inline-block;\n  width: 100%; }\n  .chat-window form {\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px; }\n  .chat-window .current-responses {\n    width: 100%;\n    margin-top: 1%;\n    bottom: 0;\n    height: 575px;\n    background-color: gainsboro;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    width: 0;\n    height: 0;\n    margin-left: 26%;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Arial, sans-serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  top: 18%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 6%; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 90px;\n  min-height: 599px;\n  max-height: 599px;\n  left: 10.5%;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 15px Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: 'Didact Gothic', 'sans-serif'; }\n\n#container {\n  background-color: #e4e7ec;\n  height: 100%; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.2); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel img {\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: gainsboro;\n  margin-top: 4px;\n  font-size: 6.1rem;\n  text-align: center;\n  color: #e66161;\n  width: 33%;\n  margin: 0 auto;\n  box-shadow: 1px 1px black;\n  border-radius: 10px; }\n", ""]);
 
 	// exports
 
@@ -30546,9 +30546,9 @@
 	__webpack_require__(15);
 	__webpack_require__(16);
 	__webpack_require__(17);
-	__webpack_require__(18);
 	__webpack_require__(19);
 	__webpack_require__(20);
+	__webpack_require__(21);
 
 /***/ },
 /* 14 */
@@ -30556,7 +30556,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n\n    <section id=\"clock\" timer='' minutes='20'>\n\n    </section>\n\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <section id=\"clock\" timer='' minutes='10'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 15 */
@@ -30611,7 +30611,7 @@
 
 	'use strict';
 
-	__webpack_require__(24);
+	__webpack_require__(18);
 
 	angular.module('cassanova').directive('timer', function (TimerService, $interval) {
 	  return {
@@ -30628,12 +30628,35 @@
 	        timeDifference -= 1000;
 	        return element.text(TimerService.convertTime(timeDifference));
 	      }, 1000);
+	      return element.text(TimerService.convertTime(timeDifference));
 	    }
 	  };
 	});
 
 /***/ },
 /* 18 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').service('TimerService', function () {
+	  function convertTime(time) {
+	    var minutes, time, seconds;
+	    minutes = Math.floor(time / 1000 / 60);
+	    time -= minutes * 60 * 1000;
+	    seconds = Math.floor(time / 1000);
+	    if (seconds.toString().length !== 2) {
+	      seconds = "0".concat(seconds);
+	    }
+	    return minutes + ':' + seconds;
+	  }
+	  return {
+	    convertTime: convertTime
+	  };
+	});
+
+/***/ },
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30645,7 +30668,7 @@
 	})();
 
 /***/ },
-/* 19 */
+/* 20 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -30653,13 +30676,13 @@
 	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
 
 /***/ },
-/* 20 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(21);
 	__webpack_require__(22);
+	__webpack_require__(23);
 
 	(function () {
 	  'use strict';
@@ -30762,7 +30785,7 @@
 	})();
 
 /***/ },
-/* 21 */
+/* 22 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30785,7 +30808,7 @@
 	})();
 
 /***/ },
-/* 22 */
+/* 23 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30814,7 +30837,7 @@
 	})();
 
 /***/ },
-/* 23 */
+/* 24 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30851,25 +30874,6 @@
 	    };
 	  });
 	})();
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').service('TimerService', function () {
-	  function convertTime(time) {
-	    var minutes, time, seconds;
-	    minutes = Math.floor(time / 1000 / 60);
-	    time -= minutes * 60 * 1000;
-	    seconds = Math.floor(time / 1000);
-	    return [minutes + 'm', seconds + 's'].join(' ');
-	  }
-	  return {
-	    convertTime: convertTime
-	  };
-	});
 
 /***/ }
 /******/ ]);

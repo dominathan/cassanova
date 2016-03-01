@@ -29,7 +29,6 @@ router.get('/:id/targets', function(req,res,next) {
       res.json(rows);
     })
   })
-    // .then(function())
 });
 
 /*

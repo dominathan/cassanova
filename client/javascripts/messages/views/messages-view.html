@@ -1,10 +1,5 @@
 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
     <!-- <ng-include src="'clock.html'"></ng-include> -->
-
-    <section id="clock" timer='' minutes='20'>
-
-    </section>
-
     <div class="iphone-container">
         <img src="images/phone-case.png" alt="iphone-case" />
         <div class="iphone-background" scroll-bottom="messages">
@@ -21,6 +16,7 @@
 
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
   <!-- <ng-include src="'chat-window.html'"></ng-include> -->
+  <section id="clock" timer='' minutes='10'></section>
   <div class="chat-window" id="chat-window">
       <div class='current-responses' id="current_responses">
           <div ng-repeat="resp in responses | orderBy: '-total_votes'" class="response">
