@@ -6,19 +6,15 @@ angular
     return {
       restrict: 'A',
       scope: {
-        minutes: '@',
-        countdown: '@'
+        seconds: '@'
       },
       link: function(scope, element) {
-        var timeNow = new Date()
-        var futureTime = new Date(timeNow.getTime() + parseInt(scope.minutes) * 60000);
-        var timeDifference = futureTime.getTime() - timeNow.getTime();
+        var timeLeft = parseInt(scope.seconds,10);
         $interval(function() {
-          timeDifference -= 1000;
-          return element.text(TimerService.convertTime(timeDifference));
+          timeLeft -= 1;
+          return element.text(TimerService.convertTime(timeLeft));
         },1000);
-        return element.text(TimerService.convertTime(timeDifference));
-        
+        return element.text(TimerService.convertTime(timeLeft));
       }
     };
   });

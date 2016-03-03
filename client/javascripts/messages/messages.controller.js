@@ -18,7 +18,8 @@ require('../responses/responses.service');
 
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
-          $scope.messages = messages.data;
+          $scope.messages = messages.data.conversations;
+          $scope.secondsLeftToSend = secondsLeft(messages.data.time);
         });
 
         $scope.getResponses = function(conversationID) {
@@ -109,6 +110,18 @@ require('../responses/responses.service');
             resp.total_votes = parseInt(resp.total_votes,10);
           });
           return arrayOfResponses;
+        };
+
+        function secondsLeft(time) {
+          var time = new Date(time);
+          if(time.getSeconds() !== 0) {
+            var min = (10 - time.getMinutes() % 10 - 1) * 60;
+            var seconds = 60 - time.getSeconds();
+            var secondsUntil = min + seconds;
+          } else {
+            var secondsUntil = (10 - time.getMinutes() % 10) * 60;
+          }
+          return secondsUntil;
         };
 
       }

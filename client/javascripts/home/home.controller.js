@@ -11,12 +11,15 @@ require('./home.service');
       function ($scope,HomeServices) {
         $scope.targets = []
         HomeServices.getTargets().then(function(data) {
+          data.data.forEach(function(el) {
+            el.age = calculateAge(el.birth_date);
+          })
           $scope.targets = data.data;
-          window.glob = data.data;
         });
 
         function calculateAge(birthday) {
-          var ageDifMs = Date.now() - birthday.getTime();
+          var jsBirthday = new Date(birthday);
+          var ageDifMs = Date.now() - jsBirthday.getTime();
           var ageDate = new Date(ageDifMs);
           return Math.abs(ageDate.getUTCFullYear() - 1970);
         }

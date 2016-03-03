@@ -41,7 +41,7 @@ router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
       .where('target_id',req.params.target_id)
       .orderBy('sent_date')
       .then(function(convos) {
-        res.json(convos)
+        res.json({conversations: convos, time: new Date()})
       });
 });
 
@@ -51,6 +51,14 @@ router.get('/responses/:conversation_id', function(req,res,next) {
         res.json('RETURN DATA',rows.rows);
       })
 });
+
+router.get('/responses/:conversation_id/sum', function(req,res,next) {
+  knex.raw(`SELECT msg.response_text, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_ups, SUM(v.down) as total_downs FROM responses as msg LEFT JOIN votes AS v ON msg.id = v.response_id WHERE msg.conversation_id = ${req.params.conversation_id} GROUP BY msg.id ORDER BY total_ups`)
+      .then(function(rows) {
+        rows.rows.forEach(function(resp) {
+        })
+      })
+})
 
 router.post('/responses/', function(req,res,next) {
   knex('responses')

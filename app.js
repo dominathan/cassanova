@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var CronJob = require('cron').CronJob;
+
 var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
 
@@ -61,5 +63,12 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
+/*
+ * CRON JOB for sending messages
+ */
+new CronJob('0 0,10,20,30,40,50 * * * *', function() {
+  console.log('HOW EVEN YOU RUNNING' + " " + new Date(Date.now()) + " " + new Date(Date.now()).getMinutes());
+},null, true, 'America/New_York');
 
 module.exports = app;

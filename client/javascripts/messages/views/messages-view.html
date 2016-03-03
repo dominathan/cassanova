@@ -16,7 +16,8 @@
 
 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
   <!-- <ng-include src="'chat-window.html'"></ng-include> -->
-  <section id="clock" timer='' minutes='10'></section>
+
+  <section ng-if='secondsLeftToSend' id="clock" timer='' seconds='{{secondsLeftToSend}}'></section>
   <div class="chat-window" id="chat-window">
       <div class='current-responses' id="current_responses">
           <div ng-repeat="resp in responses | orderBy: '-total_votes'" class="response">

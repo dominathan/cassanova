@@ -30484,12 +30484,15 @@
 	  angular.module('cassanova').controller('HomeController', ['$scope', 'HomeServices', function ($scope, HomeServices) {
 	    $scope.targets = [];
 	    HomeServices.getTargets().then(function (data) {
+	      data.data.forEach(function (el) {
+	        el.age = calculateAge(el.birth_date);
+	      });
 	      $scope.targets = data.data;
-	      window.glob = data.data;
 	    });
 
 	    function calculateAge(birthday) {
-	      var ageDifMs = Date.now() - birthday.getTime();
+	      var jsBirthday = new Date(birthday);
+	      var ageDifMs = Date.now() - jsBirthday.getTime();
 	      var ageDate = new Date(ageDifMs);
 	      return Math.abs(ageDate.getUTCFullYear() - 1970);
 	    }
@@ -30556,7 +30559,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n  <section id=\"clock\" timer='' minutes='10'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n\n  <section ng-if='secondsLeftToSend' id=\"clock\" timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 15 */
@@ -30617,18 +30620,15 @@
 	  return {
 	    restrict: 'A',
 	    scope: {
-	      minutes: '@',
-	      countdown: '@'
+	      seconds: '@'
 	    },
 	    link: function link(scope, element) {
-	      var timeNow = new Date();
-	      var futureTime = new Date(timeNow.getTime() + parseInt(scope.minutes) * 60000);
-	      var timeDifference = futureTime.getTime() - timeNow.getTime();
+	      var timeLeft = parseInt(scope.seconds, 10);
 	      $interval(function () {
-	        timeDifference -= 1000;
-	        return element.text(TimerService.convertTime(timeDifference));
+	        timeLeft -= 1;
+	        return element.text(TimerService.convertTime(timeLeft));
 	      }, 1000);
-	      return element.text(TimerService.convertTime(timeDifference));
+	      return element.text(TimerService.convertTime(timeLeft));
 	    }
 	  };
 	});
@@ -30641,13 +30641,9 @@
 
 	angular.module('cassanova').service('TimerService', function () {
 	  function convertTime(time) {
-	    var minutes, time, seconds;
-	    minutes = Math.floor(time / 1000 / 60);
-	    time -= minutes * 60 * 1000;
-	    seconds = Math.floor(time / 1000);
-	    if (seconds.toString().length !== 2) {
-	      seconds = "0".concat(seconds);
-	    }
+	    var minutes, seconds;
+	    minutes = Math.floor(time / 60);
+	    seconds = time - minutes * 60;
 	    return minutes + ':' + seconds;
 	  }
 	  return {
@@ -30691,7 +30687,8 @@
 	    $scope.responses = [];
 
 	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
-	      $scope.messages = messages.data;
+	      $scope.messages = messages.data.conversations;
+	      $scope.secondsLeftToSend = secondsLeft(messages.data.time);
 	    });
 
 	    $scope.getResponses = function (conversationID) {
@@ -30780,6 +30777,18 @@
 	        resp.total_votes = parseInt(resp.total_votes, 10);
 	      });
 	      return arrayOfResponses;
+	    };
+
+	    function secondsLeft(time) {
+	      var time = new Date(time);
+	      if (time.getSeconds() !== 0) {
+	        var min = (10 - time.getMinutes() % 10 - 1) * 60;
+	        var seconds = 60 - time.getSeconds();
+	        var secondsUntil = min + seconds;
+	      } else {
+	        var secondsUntil = (10 - time.getMinutes() % 10) * 60;
+	      }
+	      return secondsUntil;
 	    };
 	  }]);
 	})();
