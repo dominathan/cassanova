@@ -26,9 +26,11 @@ require('../responses/responses.service');
           ResponseService.getResponses(conversationID)
           .then(function(data) {
             if (data.data.length === 0) {
-              $scope.responses = [{ response_text: "Be the first to start a conversation",
+              $scope.responses = [{
+                                    response_text: "Be the first to start a conversation",
                                     conversation_id: null,
-                                    total_votes: null }];
+                                    total_votes: null
+                                  }];
             } else {
               var responsesWithTotalVotes = totalVotes(data.data);
               $scope.responses = responsesWithTotalVotes;
@@ -43,13 +45,14 @@ require('../responses/responses.service');
             SocketService.emit('new:response', {
                                                   response_text: response,
                                                   conversation_id: conversation_id
-                                                })
+                                                }
+                               )
             $scope.newResponse = "";
           }
         };
 
         SocketService.on('new:response',function(response) {
-          var newObj = response.pop();
+          var newObj = response;
           newObj.total_votes = 0;
           $scope.responses.push(newObj)
         })
@@ -70,8 +73,8 @@ require('../responses/responses.service');
           var voteObj = {
                           response_id: responseId,
                           conversation_id: convoId,
-                          up: 0,
-                          down: 1
+                          up: -1,
+                          down: 0
                         }
 
           SocketService.emit('new:vote', voteObj);
@@ -86,8 +89,6 @@ require('../responses/responses.service');
               }
             });
         })
-
-
         /*
          * UTILITY FUNCTIONS
          */
@@ -99,15 +100,7 @@ require('../responses/responses.service');
 
         function totalVotes(arrayOfResponses) {
           arrayOfResponses.forEach(function(resp) {
-            if(resp.total_ups) {
-              if(resp.total_downs) {
-                resp.total_votes = resp.total_ups - resp.total_downs;
-              }
-              resp.total_votes = resp.total_ups;
-            } else {
-              resp.total_votes = 0;
-            }
-            resp.total_votes = parseInt(resp.total_votes,10);
+            resp.total_votes = parseInt(resp.total_votes,10) || 0;
           });
           return arrayOfResponses;
         };

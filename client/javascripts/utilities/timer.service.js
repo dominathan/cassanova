@@ -5,7 +5,11 @@ angular
         var minutes, seconds;
         minutes = Math.floor(time / 60);
         seconds = time - minutes * 60;
-        return minutes + ':' + seconds;
+        if (seconds.toString().length < 2) {
+          return minutes + ':0' + seconds;
+        } else {
+          return minutes + ":" + seconds;
+        }
       }
     return {
       convertTime: convertTime
