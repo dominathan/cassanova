@@ -3,12 +3,6 @@
 module.exports = function() {
   return {
     getConversationInfo: function(convoObj,fakeAccount,target) {
-      // knex('fake_accounts')
-      //  .select('id')
-      //  .whereExists(knex.select('*')
-        //  .from('targets')
-        //  .whereRaw('targets.fake_account_id = fake_accounts.id')
-        //  .andWhere('id',target.id))
       return {
         fake_account_id: fakeAccount.id,
         target_id: target.id,

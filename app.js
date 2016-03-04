@@ -11,7 +11,6 @@ var tinderInfo = require('./services/tinder-client');
 
 var db = require('./db/db.js');
 var routes = require('./controllers/index');
-var targets = require('./controllers/targets');
 
 var app = express();
 
@@ -29,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('/', express.static(path.join(__dirname, 'app')));
 
 app.use('/api/fake_accounts',routes);
-app.use('/api/targets', targets);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
 

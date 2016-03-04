@@ -23,7 +23,7 @@ require('../responses/responses.service');
         });
 
         $scope.getResponses = function(conversationID) {
-          ResponseService.getResponses(conversationID)
+          ResponseService.getResponses(conversationID,targetId)
           .then(function(data) {
             if (data.data.length === 0) {
               $scope.responses = [{
@@ -95,8 +95,12 @@ require('../responses/responses.service');
          */
 
         function getConversationID() {
-          var elm = angular.element($('.iphone-background').children()[$('.iphone-background').children().length - 1]);
-          return elm.children().data('conversationId');
+          var convoId, iphone
+          iphone = document.getElementsByClassName('iphone-background')[0];
+          if(iphone.children.length > 0) {
+            convoId = iphone.children[iphone.children.length -1].children[0].dataset.conversationId;
+          }
+          return convoId;
         }
 
         function totalVotes(arrayOfResponses) {

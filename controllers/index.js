@@ -23,7 +23,7 @@ router.get('/:id/targets', function(req,res,next) {
     return fk[0].id
   })
   .then(function(fkID) {
-    knex.raw('SELECT tg.id, tg.fake_account_id, tg.name, tg.tinder_id, tg.bio, tg.gender, tg.birth_date, tg.match_id, pho.photo_url FROM targets as tg LEFT OUTER JOIN photos as pho ON tg.id = pho.target_id LIMIT 9')
+    knex.raw('SELECT tg.id, tg.fake_account_id, tg.name, tg.tinder_id, tg.bio, tg.gender, tg.birth_date, tg.match_id, pho.photo_url FROM targets as tg LEFT OUTER JOIN photos as pho ON tg.id = pho.target_id LIMIT 9 OFFSET 100')
     .then(function(data) {
       var obj = data.rows
       return obj
@@ -47,9 +47,9 @@ router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
       });
 });
 
-router.get('/responses/:conversation_id', function(req,res,next) {
+router.get('/targets/:target_id/responses/:conversation_id', function(req,res,next) {
   var timeBefore = timeUntil();
-  knex.raw(`SELECT msg.response_text, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_votes FROM responses as msg LEFT JOIN votes AS v ON msg.id = v.response_id WHERE msg.conversation_id = ${req.params.conversation_id} AND msg.created_at > '${timeBefore}' GROUP BY msg.id`)
+  knex.raw(`SELECT msg.response_text, msg.target_id, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_votes FROM responses as msg LEFT JOIN votes AS v ON msg.id = v.response_id WHERE msg.conversation_id = ${req.params.conversation_id} OR msg.target_id = ${req.params.target_id} AND msg.created_at > '${timeBefore}' GROUP BY msg.id`)
       .then(function(rows) {
         res.json(rows.rows).status(302);
       })

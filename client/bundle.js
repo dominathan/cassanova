@@ -30550,7 +30550,6 @@
 	__webpack_require__(16);
 	__webpack_require__(17);
 	__webpack_require__(19);
-	__webpack_require__(20);
 	__webpack_require__(21);
 
 /***/ },
@@ -30559,7 +30558,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n\n  <section ng-if='secondsLeftToSend' id=\"clock\" timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
+	module.exports = "<div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\">\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n    <div class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </div>\n</div>\n\n\n<div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\">\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n\n  <section ng-if='secondsLeftToSend' id=\"clock\" timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.conversation_id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-primary' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 15 */
@@ -30625,7 +30624,11 @@
 	    link: function link(scope, element) {
 	      var timeLeft = parseInt(scope.seconds, 10);
 	      $interval(function () {
-	        timeLeft -= 1;
+	        if (timeLeft < 1) {
+	          timeLeft = 0;
+	        } else {
+	          timeLeft -= 1;
+	        }
 	        return element.text(TimerService.convertTime(timeLeft));
 	      }, 1000);
 	      return element.text(TimerService.convertTime(timeLeft));
@@ -30668,14 +30671,7 @@
 	})();
 
 /***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<section id=\"clock\">\n    <timer countdown=\"600\" max-time-unit=\"'minute'\" interval='1000' finish-callback=\" \">\n        {{mminutes}}:{{sseconds}}\n    </timer>\n</section>\n";
-
-/***/ },
+/* 20 */,
 /* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -30696,7 +30692,7 @@
 	    });
 
 	    $scope.getResponses = function (conversationID) {
-	      ResponseService.getResponses(conversationID).then(function (data) {
+	      ResponseService.getResponses(conversationID, targetId).then(function (data) {
 	        if (data.data.length === 0) {
 	          $scope.responses = [{
 	            response_text: "Be the first to start a conversation",
@@ -30766,8 +30762,12 @@
 	     */
 
 	    function getConversationID() {
-	      var elm = angular.element($('.iphone-background').children()[$('.iphone-background').children().length - 1]);
-	      return elm.children().data('conversationId');
+	      var convoId, iphone;
+	      iphone = document.getElementsByClassName('iphone-background')[0];
+	      if (iphone.children.length > 0) {
+	        convoId = iphone.children[iphone.children.length - 1].children[0].dataset.conversationId;
+	      }
+	      return convoId;
 	    }
 
 	    function totalVotes(arrayOfResponses) {
@@ -30825,7 +30825,7 @@
 
 	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
 
-	    function getResponses(conversationID) {
+	    function getResponses(conversationID, targetId) {
 	      var deferred = $q.defer();
 	      if (!conversationID) {
 	        deferred.resolve([{ response_text: "Be the first to start a conversation",
@@ -30833,7 +30833,7 @@
 	          total_votes: null }]);
 	        return deferred.promise;
 	      }
-	      var url = "/api/fake_accounts/responses/" + conversationID;
+	      var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
 	      return $http.get(url);
 	    }
 

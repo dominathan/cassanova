@@ -4,7 +4,7 @@
     .module("cassanova")
     .factory('ResponseService', ["$http","$q",function ($http,$q) {
 
-      function getResponses(conversationID) {
+      function getResponses(conversationID,targetId) {
         var deferred = $q.defer();
         if(!conversationID) {
           deferred.resolve([{ response_text: "Be the first to start a conversation",
@@ -12,7 +12,7 @@
                               total_votes: null }])
           return deferred.promise;
         }
-        var url = "/api/fake_accounts/responses/" + conversationID;
+        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
         return $http.get(url);
       }
 

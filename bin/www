@@ -46,7 +46,6 @@ server.on('listening', onListening);
        .insert(response)
        .returning('*')
        .then(function(knexResponse) {
-         console.log(knexResponse);
          io.emit('new:response', knexResponse[0]);
        })
    });
