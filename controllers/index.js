@@ -60,7 +60,7 @@ router.post('/responses/', function(req,res,next) {
     .insert(req.body.response)
     .returning('*')
     .then(function(data) {
-      res.json(data);
+      res.json(data).status(302);
     })
 })
 
@@ -69,7 +69,7 @@ router.post('/responses/:response_id/votes', function(req,res,next) {
     .insert(req.body.vote)
     .returning('*')
     .then(function(data) {
-      res.json("VOTE SUBMITTED", data);
+      res.json(data).status(302);
     })
 })
 
