@@ -4,6 +4,7 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile");
 var knex = require('knex')(config[env]);
 var moment = require("moment");
+var timeUntil = require('../services/timeUntil');
 
 // Get all fake accounts
 router.get('/fake_accounts', function(req,res,next) {
@@ -27,7 +28,7 @@ router.get('/:id/targets', function(req,res,next) {
       var obj = data.rows
       return obj
     }).then(function(rows) {
-      res.json(rows);
+      res.json(rows).status(302);
     })
   })
 });
@@ -42,20 +43,15 @@ router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
       .where('target_id',req.params.target_id)
       .orderBy('sent_date')
       .then(function(convos) {
-        res.json({conversations: convos, time: new Date()})
+        res.json({conversations: convos, time: new Date()}).status(302);
       });
 });
 
 router.get('/responses/:conversation_id', function(req,res,next) {
-  var time, minutes, seconds, timeTest, timeBefore;
-  time = new Date();
-  minutes = time.getMinutes() % 10;
-  seconds = time.getSeconds();
-  timeBefore = new Date(time.valueOf() - (minutes * 60000 + seconds * 1000));
-  timeBefore = moment(timeBefore).format('YYYY-MM-DD HH:mm:ss');
+  var timeBefore = timeUntil();
   knex.raw(`SELECT msg.response_text, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_votes FROM responses as msg LEFT JOIN votes AS v ON msg.id = v.response_id WHERE msg.conversation_id = ${req.params.conversation_id} AND msg.created_at > '${timeBefore}' GROUP BY msg.id`)
       .then(function(rows) {
-        res.json('RETURN DATA',rows.rows);
+        res.json(rows.rows).status(302);
       })
 });
 

@@ -15,7 +15,7 @@ require('../responses/responses.service');
       'SocketService',
       function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService) {
         $scope.responses = [];
-
+        var targetId = $routeParams.match_id;
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           $scope.messages = messages.data.conversations;
@@ -44,7 +44,8 @@ require('../responses/responses.service');
             // What if there is no conversation to begin with?
             SocketService.emit('new:response', {
                                                   response_text: response,
-                                                  conversation_id: conversation_id
+                                                  conversation_id: conversation_id,
+                                                  target_id: targetId
                                                 }
                                )
             $scope.newResponse = "";
