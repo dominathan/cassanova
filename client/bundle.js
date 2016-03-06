@@ -30756,17 +30756,13 @@
 	    });
 
 	    $scope.showIphone = function () {
-	      var firstCol = document.getElementsByClassName('first-column')[0];
-	      var secondCol = document.getElementsByClassName('second-column')[0];
-	      secondCol.style.display = 'none';
-	      firstCol.style.display = 'block';
+	      document.getElementsByClassName('first-column')[0].style.display = 'block';
+	      document.getElementsByClassName('second-column')[0].style.display = 'none';;
 	    };
 
 	    $scope.showChats = function () {
-	      var firstCol = document.getElementsByClassName('first-column')[0];
-	      var secondCol = document.getElementsByClassName('second-column')[0];
-	      secondCol.style.display = 'block';
-	      firstCol.style.display = 'none';
+	      document.getElementsByClassName('first-column')[0].style.display = 'none';;
+	      document.getElementsByClassName('second-column')[0].style.display = 'block';
 	    };
 	    /*
 	     * UTILITY FUNCTIONS
@@ -30782,10 +30778,9 @@
 	    }
 
 	    function totalVotes(arrayOfResponses) {
-	      arrayOfResponses.forEach(function (resp) {
+	      return arrayOfResponses.forEach(function (resp) {
 	        resp.total_votes = parseInt(resp.total_votes, 10) || 0;
 	      });
-	      return arrayOfResponses;
 	    };
 
 	    function secondsLeft(time) {
