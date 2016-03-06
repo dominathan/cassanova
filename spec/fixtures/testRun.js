@@ -28,6 +28,10 @@ function newMatchObjectsToSave(oldMatches,newMatches,fakeAccountId) {
   });
 };
 
+/*
+ * Probably want to feed this through matches above instead of trying to
+ * filtet matches twice
+ */
 function newMatchPhotosToSave(oldMatches,newMatches) {
   var newMatches = newMatchList(oldMatches,newMatches);
   var photoObjectsToSave = [];
@@ -39,17 +43,17 @@ function newMatchPhotosToSave(oldMatches,newMatches) {
   return photoObjectsToSave
 }
 
+/*
+ * Filter matches where created_at on tinder is normalized and greater than
+ * time since my last update.  Maybe feed through newMessages
+ */
 function newMsgs(matches,dateSinceLastCheck /*Or time since last check*/) {
-  /*
-   * Filter matches where created_at on tinder is normalized and greater than
-   * time since my last update
-   */
    var newMessages = _.chain(matches)
-               .pluck('messages')
-               .flattenDeep()
-               .filter(function(msg) {
-                 return new Date(el.created_date) > /* DATE SINCE LAST CHECK */new Date();
-               })
-               .value();
-
+     .pluck('messages')
+     .flattenDeep()
+     .filter(function(msg) {
+       return new Date(el.created_date) > /* DATE SINCE LAST CHECK */new Date();
+     })
+     .value();
+   return newMessages;
 };
