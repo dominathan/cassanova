@@ -1,6 +1,13 @@
-<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+<!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
     <!-- <ng-include src="'clock.html'"></ng-include> -->
-    <div class="iphone-container">
+  <navbar class="tool-bar no-show">
+    <ul>
+      <li><a href="" ng-click="showIphone()">Actual</a></li>
+      <li><a href="" ng-click="showChats()">Suggested</a></li>
+    </ul>
+  </navbar>
+  <div class="first-column">
+    <section class="iphone-container">
         <img src="images/phone-case.png" alt="iphone-case" />
         <div class="iphone-background" scroll-bottom="messages">
           <div ng-repeat="msg in messages" class="{{msg.received === true ? 'text-left' : 'text-right' }}">
@@ -10,14 +17,19 @@
               </p>
           </div>
         </div>
-    </div>
-</div>
+    </section>
+    <footer class='back-to-home no-show'>
+      <button type="button" class='btn btn-lg' name="button"><a href="/#/">Back to Matches</a></button>
+    </footer>
+  </div>
+
+<!-- </div> -->
 
 
-<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+<!-- <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12"> -->
   <!-- <ng-include src="'chat-window.html'"></ng-include> -->
-
-  <section ng-if='secondsLeftToSend' id="clock" timer='' seconds='{{secondsLeftToSend}}'></section>
+<div class="second-column">
+  <section id="clock" ng-if='secondsLeftToSend' timer='' seconds='{{secondsLeftToSend}}'></section>
   <div class="chat-window" id="chat-window">
       <div class='current-responses' id="current_responses">
           <div ng-repeat="resp in responses | orderBy: '-total_votes'" class="response">
@@ -37,5 +49,6 @@
           <input type="submit" class='btn btn-primary' name="submit" value="Submit" id="submit" ng-click="submitResponse(newResponse)">
       </form>
   </div>
-
 </div>
+
+<!-- </div> -->

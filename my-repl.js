@@ -40,7 +40,7 @@ replServer.context.oldUpdates = oldUpdates;
 replServer.context.fakeAccount = FakeAccount;
 replServer.context.target = Target;
 replServer.context.photo = Photo;
-replServer.context.conversation = Conversation;
+replServer.context.Conversation = Conversation;
 replServer.context.myQueryFunction = myQueryFunction;
 replServer.context.lodash = lodash;
 

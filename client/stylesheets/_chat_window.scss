@@ -1,6 +1,8 @@
 .chat-window {
   display: inline-block;
   width: 100%;
+  border: 1px solid $primaryColor;
+  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5);
   form {
     width: 100%;
   }
@@ -18,9 +20,7 @@
   }
   .current-responses {
     width: 100%;
-    margin-top: 1%;
-    bottom: 0;
-    height: 575px;
+    height: 640px;
     background-color: gainsboro;
     border-top: 2px solid #f2f2f2;
     border-left: 2px solid #f2f2f2;
@@ -44,10 +44,10 @@
   .arrow-up {
     width: 0;
   	height: 0;
-    margin-left: 26%;
   	border-left: 10px solid transparent;
   	border-right: 10px solid transparent;
   	border-bottom: 10px solid $primaryColor;
+    margin: 0 auto;
     &:hover {
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
@@ -56,9 +56,9 @@
   }
 
   .arrow-down {
+    margin: 0 auto;
     width: 0;
     height: 0;
-    margin-left: 26%;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid $primaryColor;

@@ -6,10 +6,10 @@ var timeUntilSqlTime = require('./timeUntil');
 var _ = require('lodash');
 
 function CronExecutables() {
-  new CronJob('*/0,10,20,30,40,50 * * * *', function() {
-    console.log("TIME STAMP", new Date(Date.now()));
-    sumTopResponses();
-  },null,true,'America/New_York');
+  // new CronJob('*/0,10,20,30,40,50 * * * *', function() {
+  //   console.log("TIME STAMP", new Date(Date.now()));
+  //   sumTopResponses();
+  // },null,true,'America/New_York');
 
   function sumTopResponses() {
     var timeBefore = timeUntilSqlTime();

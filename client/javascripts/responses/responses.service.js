@@ -5,14 +5,11 @@
     .factory('ResponseService', ["$http","$q",function ($http,$q) {
 
       function getResponses(conversationID,targetId) {
-        var deferred = $q.defer();
         if(!conversationID) {
-          deferred.resolve([{ response_text: "Be the first to start a conversation",
-                              conversation_id: null,
-                              total_votes: null }])
-          return deferred.promise;
+          var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + '1';
+        } else {
+          var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
         }
-        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
         return $http.get(url);
       }
 

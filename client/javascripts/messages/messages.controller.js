@@ -22,8 +22,7 @@ require('../responses/responses.service');
           $scope.secondsLeftToSend = secondsLeft(messages.data.time);
         });
 
-        $scope.getResponses = function(conversationID) {
-          ResponseService.getResponses(conversationID,targetId)
+          ResponseService.getResponses(null,targetId)
           .then(function(data) {
             if (data.data.length === 0) {
               $scope.responses = [{
@@ -36,12 +35,10 @@ require('../responses/responses.service');
               $scope.responses = responsesWithTotalVotes;
             }
           });
-        };
 
         $scope.submitResponse = function(response) {
           if(response) {
             var conversation_id = getConversationID();
-            // What if there is no conversation to begin with?
             SocketService.emit('new:response', {
                                                   response_text: response,
                                                   conversation_id: conversation_id,
@@ -90,6 +87,20 @@ require('../responses/responses.service');
               }
             });
         })
+
+        $scope.showIphone = function() {
+          var firstCol = document.getElementsByClassName('first-column')[0];
+          var secondCol = document.getElementsByClassName('second-column')[0];
+          secondCol.style.display = 'none';
+          firstCol.style.display = 'block';
+        };
+
+        $scope.showChats = function() {
+          var firstCol = document.getElementsByClassName('first-column')[0];
+          var secondCol = document.getElementsByClassName('second-column')[0];
+          secondCol.style.display = 'block';
+          firstCol.style.display = 'none';
+        }
         /*
          * UTILITY FUNCTIONS
          */

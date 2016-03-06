@@ -1,25 +1,24 @@
-
 .iphone-container {
   div {
     display: inline-block;
     max-height: 500px;
     position: relative;
     width: 47%;
-    top: 18%;
     left: 0%;
   }
   img {
     position: absolute;
     background-color: #fff;
-    left: 6%;
+    left: 10px;
+    top: 70px;
   }
   .iphone-background {
     width: 322px;
     position: absolute;
-    top: 90px;
+    top: 160px;
     min-height: 599px;
     max-height: 599px;
-    left: 10.5%;
+    left: 31px;
     background-color: #FFF;
     overflow: scroll;
   }
