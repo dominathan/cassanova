@@ -1,5 +1,5 @@
 * {
-  font-family: 'Didact Gothic', 'sans-serif';
+  font-family: Helvetica Neue, Futura,georgia,sans-serif;
 }
 
 #container {
@@ -19,19 +19,19 @@ div .match-panel {
   margin-top: 6%;
   min-height: 540px;
   text-align: center;
-  // vertical-align: bottom;
+  h3 {
+    font-family: Helvetica Neue;
+  }
   img {
     width: 50%;
     border-radius: 100px;
     margin-top: 3%;
   }
-  button {
-    // vertical-align: bottom;
-  }
 }
 .match-info {
   h4 {
     font-size: 1.5em;
+    font-family: Helvetica;
   }
 }
 .match-bio {
@@ -39,6 +39,8 @@ div .match-panel {
     padding: 0 5%;
     height: 175px;
     font-size: 1.3em;
+    font-family: Helvetica;
+
   }
 }
 /* END COPIED IPHONE TEXT SCREEN */

@@ -33,10 +33,14 @@
     border-radius: 24px;
   }
 
+.text-left, .text-right p {
+  font-family: Helvetica Neue, Futura, Georgia, Serif;
+}
+
 .text-left {
   background-color: rgb(222,223,229);
   border-radius: 15px;
-  font: 1.15em Helvetica Neue, Arial, sans-serif;
+  font: 1.05em Helvetica Neue, Arial, sans-serif;
   margin: 1em 51% 1em 0;
   padding: 0 4px;
   position: relative;
@@ -48,7 +52,7 @@
 .text-right {
     background-color: rgb(21,107,250);
     border-radius: 15px;
-    font: 1.15em Helvetica Neue, Arial, sans-serif;
+    font: 1.05em Helvetica Neue, Arial, sans-serif;
     margin: 1em 0 1em 51%;
     padding: 0 4px;
     position: relative;

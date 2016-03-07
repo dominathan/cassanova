@@ -9,14 +9,22 @@ header {
     color: white;
     font-weight: 800;
     letter-spacing: 1px;
-    font-style: "League Gothic";
+    font-family: 'futura','georgia','san serif';
     display: inline-block;
     margin: 5px 0;
+    font-weight: 100;
+    span {
+      font-weight: 800;
+    }
   }
   a {
     float: left;
     color: white;
     padding-left: 1%;
     margin-top: 1%;
+    &:hover {
+      color: white;
+    }
   }
+
 }

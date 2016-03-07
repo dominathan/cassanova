@@ -17,11 +17,12 @@
     margin-top: -4px;
     margin-left: 6px;
     height: 50px;
+    font-size: 1.7em;
   }
   .current-responses {
     width: 100%;
     height: 640px;
-    background-color: gainsboro;
+    background-color: $triadColor;
     border-top: 2px solid #f2f2f2;
     border-left: 2px solid #f2f2f2;
     overflow-y: scroll;
@@ -81,7 +82,7 @@
     vertical-align: text-top;
     min-height: 60px;
     p {
-      font-family: Arial, sans-serif;
+      font-family: Helvetica Neue, Futura, Georgia, Serif;
       word-wrap: break-word;
       color: $primaryColor;
       font-size: 1.4em;

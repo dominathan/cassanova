@@ -22,8 +22,9 @@ require('../responses/responses.service');
           $scope.secondsLeftToSend = secondsLeft(messages.data.time);
         });
 
-          ResponseService.getResponses(null,targetId)
+        ResponseService.getResponses(null,targetId)
           .then(function(data) {
+            console.log(data);
             if (data.data.length === 0) {
               $scope.responses = [{
                                     response_text: "Be the first to start a conversation",
@@ -32,7 +33,7 @@ require('../responses/responses.service');
                                   }];
             } else {
               var responsesWithTotalVotes = totalVotes(data.data);
-              $scope.responses = responsesWithTotalVotes;
+              $scope.responses = data.data;
             }
           });
 
