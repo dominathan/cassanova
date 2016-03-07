@@ -30692,7 +30692,6 @@
 	    });
 
 	    ResponseService.getResponses(null, targetId).then(function (data) {
-	      console.log(data);
 	      if (data.data.length === 0) {
 	        $scope.responses = [{
 	          response_text: "Be the first to start a conversation",
