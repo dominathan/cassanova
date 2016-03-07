@@ -2,9 +2,14 @@
   font-family: Helvetica Neue, Futura,georgia,sans-serif;
 }
 
-#container {
-  background-color: #e4e7ec;
-  height: 100%;
+.container {
+  ul.pagination {
+    height: 34px;
+    margin: 0 auto;
+    margin-top: 14px;
+    padding-left: 32%;
+    display: block;
+  }
 }
 
 div .match-panel {
@@ -23,6 +28,7 @@ div .match-panel {
     font-family: Helvetica Neue;
   }
   img {
+    max-height: 166px;
     width: 50%;
     border-radius: 100px;
     margin-top: 3%;

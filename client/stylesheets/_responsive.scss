@@ -49,6 +49,9 @@
     display: none;
     width: 98%;
     margin-left: 1%;
+    .current-responses {
+      height: 450px;
+    }
   }
 
 }
@@ -90,7 +93,7 @@
       font-size: 2em;
     }
     .current-responses{
-      height: 475px;
+      height: 400px;
     }
     .chat-window {
       margin-top: 1%;
@@ -128,5 +131,9 @@
     a {
       color: white;
     }
+  }
+
+  .container ul.pagination {
+    padding-left: 0;
   }
 }
