@@ -60,7 +60,7 @@
 	});
 
 	__webpack_require__(9);
-	__webpack_require__(13);
+	__webpack_require__(14);
 	__webpack_require__(24);
 
 /***/ },
@@ -102,7 +102,7 @@
 
 
 	// module
-	exports.push([module.id, ".first-column {\n  display: inline-block;\n  width: 24%;\n  margin-right: 3%; }\n\n.second-column {\n  display: inline-block;\n  width: 70%;\n  float: right;\n  margin-right: 1%; }\n\n.no-show {\n  display: none; }\n\nheader {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-family: 'futura','georgia','san serif';\n    display: inline-block;\n    margin: 5px 0;\n    font-weight: 100; }\n    header h1 span {\n      font-weight: 800; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n    header a:hover {\n      color: white; }\n\n.chat-window {\n  display: inline-block;\n  width: 100%;\n  border: 1px solid #e66161;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5); }\n  .chat-window form {\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px;\n    font-size: 1.7em; }\n  .chat-window .current-responses {\n    width: 100%;\n    height: 640px;\n    background-color: #A9E6A9;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161;\n    margin: 0 auto; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    margin: 0 auto;\n    width: 0;\n    height: 0;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Helvetica Neue, Futura, Georgia, Serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 10px;\n  top: 70px; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 160px;\n  min-height: 599px;\n  max-height: 599px;\n  left: 31px;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left, .text-right p {\n  font-family: Helvetica Neue, Futura, Georgia, Serif; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 1.05em Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 1.05em Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: Helvetica Neue, Futura,georgia,sans-serif; }\n\n.container ul.pagination {\n  height: 34px;\n  margin: 0 auto;\n  margin-top: 14px;\n  padding-left: 32%;\n  display: block; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel h3 {\n    font-family: Helvetica Neue; }\n  .panel img {\n    max-height: 166px;\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em;\n  font-family: Helvetica; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em;\n  font-family: Helvetica; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: gainsboro;\n  margin-top: 2%;\n  margin-top: 4px;\n  font-size: 6.1rem;\n  text-align: center;\n  color: #e66161;\n  width: 33%;\n  margin: 0 auto;\n  box-shadow: 1px 1px black;\n  border-radius: 10px; }\n\n@media (min-width: 1151px) and (max-width: 1300px) {\n  .second-column {\n    width: 66%; } }\n\n@media (min-width: 1025px) and (max-width: 1150px) {\n  .second-column {\n    width: 62%; } }\n\n@media (min-width: 761px) and (max-width: 1024px) {\n  navbar.tool-bar {\n    display: block;\n    width: 100%;\n    height: 50px;\n    background-color: #e66161; }\n    navbar.tool-bar ul {\n      margin: 0; }\n    navbar.tool-bar li {\n      display: inline-block;\n      width: 49.5%;\n      height: 50px;\n      text-decoration: none;\n      text-align: center;\n      margin: 0; }\n    navbar.tool-bar li:first-child {\n      border-right: 2px solid #fff; }\n    navbar.tool-bar a {\n      color: #fff;\n      font-size: 2em; }\n  .iphone-container img {\n    top: 120px;\n    left: 28%; }\n  .iphone-container .iphone-background {\n    top: 210px;\n    left: 31%; }\n  .second-column {\n    display: none;\n    width: 98%;\n    margin-left: 1%; }\n    .second-column .current-responses {\n      height: 450px; } }\n\n@media (min-width: 200px) and (max-width: 760px) {\n  header {\n    display: none; }\n  navbar.tool-bar {\n    display: block;\n    width: 100%;\n    height: 40px;\n    background-color: #e66161; }\n    navbar.tool-bar ul {\n      margin: 0; }\n    navbar.tool-bar li {\n      display: inline-block;\n      width: 45.5%;\n      height: 40px;\n      text-decoration: none;\n      text-align: center;\n      margin: 0; }\n    navbar.tool-bar li:first-child {\n      border-right: 2px solid #fff; }\n    navbar.tool-bar a {\n      color: #fff;\n      font-size: 1.5em; }\n  .second-column {\n    display: none;\n    width: 98%;\n    margin-left: 1%; }\n    .second-column #clock {\n      width: 100%;\n      font-size: 2em; }\n    .second-column .current-responses {\n      height: 400px; }\n    .second-column .chat-window {\n      margin-top: 1%; }\n    .second-column input[type=\"text\"] {\n      width: 50%; }\n  .iphone-container img {\n    display: none; }\n  .iphone-container .iphone-background {\n    background-color: gainsboro;\n    top: 55px;\n    width: 86%;\n    min-height: 475px;\n    max-height: 475px; }\n  footer.back-to-home {\n    display: block;\n    position: fixed;\n    display: block;\n    top: 534px;\n    margin-left: 31%; }\n    footer.back-to-home button {\n      width: 100%;\n      background-color: #e66161; }\n    footer.back-to-home button:hover {\n      background-color: #A21D1D; }\n    footer.back-to-home a {\n      color: white; }\n  .container ul.pagination {\n    padding-left: 0; } }\n", ""]);
+	exports.push([module.id, ".first-column {\n  display: inline-block;\n  width: 24%;\n  margin-right: 3%; }\n\n.second-column {\n  display: inline-block;\n  width: 70%;\n  float: right;\n  margin-right: 1%; }\n\n.no-show {\n  display: none; }\n\nheader {\n  width: 100%;\n  margin: 0 auto;\n  text-align: center;\n  background-color: #e66161;\n  padding: 0.4% 0;\n  display: block; }\n  header h1 {\n    color: white;\n    font-weight: 800;\n    letter-spacing: 1px;\n    font-family: 'futura','georgia','san serif';\n    display: inline-block;\n    margin: 5px 0;\n    font-weight: 100; }\n    header h1 span {\n      font-weight: 800; }\n  header a {\n    float: left;\n    color: white;\n    padding-left: 1%;\n    margin-top: 1%; }\n    header a:hover {\n      color: white; }\n\n.chat-window {\n  display: inline-block;\n  width: 100%;\n  border: 1px solid #e66161;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5); }\n  .chat-window form {\n    width: 100%; }\n  .chat-window input[type=\"text\"] {\n    width: 62%;\n    height: 40px;\n    margin-top: 2px;\n    font-size: 16px; }\n  .chat-window input[type='submit'] {\n    width: 30%;\n    margin-top: -4px;\n    margin-left: 6px;\n    height: 50px;\n    font-size: 1.7em; }\n  .chat-window .current-responses {\n    width: 100%;\n    height: 515px;\n    background-color: #A9E6A9;\n    border-top: 2px solid #f2f2f2;\n    border-left: 2px solid #f2f2f2;\n    overflow-y: scroll; }\n  .chat-window .arrows {\n    position: relative;\n    top: 11px;\n    display: inline-block;\n    width: 4%;\n    text-align: center; }\n  .chat-window .votes {\n    font-family: Arial, sans-serif;\n    font-weight: 700;\n    font-size: 1.4em;\n    color: #e66161; }\n  .chat-window .arrow-up {\n    width: 0;\n    height: 0;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-bottom: 10px solid #e66161;\n    margin: 0 auto; }\n    .chat-window .arrow-up:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-bottom: 10px solid #A21D1D; }\n  .chat-window .arrow-down {\n    margin: 0 auto;\n    width: 0;\n    height: 0;\n    border-left: 10px solid transparent;\n    border-right: 10px solid transparent;\n    border-top: 10px solid #e66161; }\n    .chat-window .arrow-down:hover {\n      border-left: 10px solid transparent;\n      border-right: 10px solid transparent;\n      border-top: 10px solid #A21D1D; }\n  .chat-window .response {\n    border-bottom: 2px solid #f2f2f2;\n    background-color: #fff;\n    margin-bottom: 3px; }\n  .chat-window .response-text {\n    display: inline-block;\n    width: 80%;\n    vertical-align: text-top;\n    min-height: 60px; }\n    .chat-window .response-text p {\n      font-family: Helvetica Neue, Futura, Georgia, Serif;\n      word-wrap: break-word;\n      color: #e66161;\n      font-size: 1.4em;\n      line-height: 1.33;\n      position: relative;\n      top: 10%;\n      left: 7%; }\n  .chat-window .score-box {\n    background-color: orange;\n    border: 1px solid black;\n    border-radius: 20px;\n    vertical-align: center;\n    display: inline-block;\n    width: 10%;\n    height: 20px;\n    text-align: center;\n    float: right; }\n\n.enjoy-css {\n  display: inline-block;\n  -webkit-box-sizing: content-box;\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  padding: 6px 20px;\n  border: none;\n  -webkit-border-radius: 32px / 54px;\n  border-radius: 32px / 54px;\n  font: normal 18px/normal \"Coda\", Helvetica, sans-serif;\n  -o-text-overflow: ellipsis;\n  text-overflow: ellipsis;\n  background: #fcfcfc;\n  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2) inset;\n  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);\n  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1); }\n\n.enjoy-css:hover {\n  -webkit-box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset;\n  box-shadow: 0 2px 2px 0 rgba(90, 90, 90, 0.2) inset; }\n\n.iphone-container div {\n  display: inline-block;\n  max-height: 500px;\n  position: relative;\n  width: 47%;\n  left: 0%; }\n\n.iphone-container img {\n  position: absolute;\n  background-color: #fff;\n  left: 10px;\n  top: 70px; }\n\n.iphone-container .iphone-background {\n  width: 322px;\n  position: absolute;\n  top: 160px;\n  min-height: 599px;\n  max-height: 599px;\n  left: 31px;\n  background-color: #FFF;\n  overflow: scroll; }\n\n.white-shadow {\n  padding: 2px 8px 4px;\n  margin: 0;\n  border-radius: 24px; }\n\n.text-left, .text-right p {\n  font-family: Helvetica Neue, Futura, Georgia, Serif; }\n\n.text-left {\n  background-color: #dedfe5;\n  border-radius: 15px;\n  font: 1.05em Helvetica Neue, Arial, sans-serif;\n  margin: 1em 51% 1em 0;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  font: sans-serif; }\n\n.text-right {\n  background-color: #156bfa;\n  border-radius: 15px;\n  font: 1.05em Helvetica Neue, Arial, sans-serif;\n  margin: 1em 0 1em 51%;\n  padding: 0 4px;\n  position: relative;\n  border-width: 1px;\n  border-color: #fff transparent;\n  border-style: solid;\n  color: #FFF; }\n\n* {\n  font-family: Helvetica Neue, Futura,georgia,sans-serif; }\n\n.container ul.pagination {\n  height: 34px;\n  margin: 0 auto;\n  margin-top: 14px;\n  padding-left: 32%;\n  display: block; }\n\ndiv .match-panel {\n  border-color: #e66161;\n  border-width: 3px;\n  background-color: #FFF;\n  border-radius: 2px;\n  box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5); }\n\n.panel {\n  margin-top: 6%;\n  min-height: 540px;\n  text-align: center; }\n  .panel h3 {\n    font-family: Helvetica Neue; }\n  .panel img {\n    max-height: 166px;\n    width: 50%;\n    border-radius: 100px;\n    margin-top: 3%; }\n\n.match-info h4 {\n  font-size: 1.5em;\n  font-family: Helvetica; }\n\n.match-bio h5 {\n  padding: 0 5%;\n  height: 175px;\n  font-size: 1.3em;\n  font-family: Helvetica; }\n\n/* END COPIED IPHONE TEXT SCREEN */\n#clock {\n  background-color: gainsboro;\n  margin-top: 2%;\n  margin-top: 4px;\n  font-size: 6.1rem;\n  text-align: center;\n  color: #e66161;\n  width: 33%;\n  margin: 0 auto;\n  box-shadow: 1px 1px black;\n  border-radius: 10px; }\n\n@media (min-width: 1151px) and (max-width: 1300px) {\n  .second-column {\n    width: 66%; } }\n\n@media (min-width: 1025px) and (max-width: 1150px) {\n  .second-column {\n    width: 62%; } }\n\n@media (min-width: 761px) and (max-width: 1024px) {\n  navbar.tool-bar {\n    display: block;\n    width: 100%;\n    height: 50px;\n    background-color: #e66161; }\n    navbar.tool-bar ul {\n      margin: 0; }\n    navbar.tool-bar li {\n      display: inline-block;\n      width: 49.5%;\n      height: 50px;\n      text-decoration: none;\n      text-align: center;\n      margin: 0; }\n    navbar.tool-bar li:first-child {\n      border-right: 2px solid #fff; }\n    navbar.tool-bar a {\n      color: #fff;\n      font-size: 2em; }\n  .iphone-container img {\n    top: 120px;\n    left: 28%; }\n  .iphone-container .iphone-background {\n    top: 210px;\n    left: 31%; }\n  .second-column {\n    display: none;\n    width: 98%;\n    margin-left: 1%; }\n    .second-column .current-responses {\n      height: 450px; } }\n\n@media (min-width: 200px) and (max-width: 760px) {\n  header {\n    display: none; }\n  navbar.tool-bar {\n    display: block;\n    width: 100%;\n    height: 40px;\n    background-color: #e66161; }\n    navbar.tool-bar ul {\n      margin: 0; }\n    navbar.tool-bar li {\n      display: inline-block;\n      width: 45.5%;\n      height: 40px;\n      text-decoration: none;\n      text-align: center;\n      margin: 0; }\n    navbar.tool-bar li:first-child {\n      border-right: 2px solid #fff; }\n    navbar.tool-bar a {\n      color: #fff;\n      font-size: 1.5em; }\n  .second-column {\n    display: none;\n    width: 98%;\n    margin-left: 1%; }\n    .second-column #clock {\n      width: 100%;\n      font-size: 2em; }\n    .second-column .current-responses {\n      height: 400px; }\n    .second-column .chat-window {\n      margin-top: 1%; }\n    .second-column input[type=\"text\"] {\n      width: 50%; }\n  .iphone-container img {\n    display: none; }\n  .iphone-container .iphone-background {\n    background-color: gainsboro;\n    top: 55px;\n    width: 86%;\n    min-height: 475px;\n    max-height: 475px; }\n  footer.back-to-home {\n    display: block;\n    position: fixed;\n    display: block;\n    top: 534px;\n    margin-left: 31%; }\n    footer.back-to-home button {\n      width: 100%;\n      background-color: #e66161; }\n    footer.back-to-home button:hover {\n      background-color: #A21D1D; }\n    footer.back-to-home a {\n      color: white; }\n  .container ul.pagination {\n    padding-left: 0; } }\n", ""]);
 
 	// exports
 
@@ -30462,11 +30462,11 @@
 	var angular = __webpack_require__(5);
 	var angularRoute = __webpack_require__(7);
 	__webpack_require__(10);
-	__webpack_require__(25);
+	__webpack_require__(12);
 
 	angular.module('home', ['ngRoute', 'ui.bootstrap']).config(function ($routeProvider) {
 	  $routeProvider.when('/', {
-	    template: __webpack_require__(12),
+	    template: __webpack_require__(13),
 	    controller: 'HomeController'
 	  });
 	});
@@ -30534,369 +30534,6 @@
 
 /***/ },
 /* 12 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\" >\n\n    <pagination\n      ng-model=\"currentPage\"\n      total-items=\"targets.length\"\n      max-size=\"maxSize\"\n      boundary-links=\"true\">\n    </pagination>\n\n    <div ng-repeat=\"target in filteredTargets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.target_id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n\n\n</div>\n";
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var angular = __webpack_require__(5);
-	var angularRoute = __webpack_require__(7);
-
-	angular.module('messages', ['ngRoute']).config(function ($routeProvider) {
-	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
-	    template: __webpack_require__(14),
-	    controller: 'MessagesController'
-	  });
-	});
-
-	__webpack_require__(15);
-	__webpack_require__(16);
-	__webpack_require__(17);
-	__webpack_require__(19);
-	__webpack_require__(21);
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<!-- <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\"> -->\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n  <navbar class=\"tool-bar no-show\">\n    <ul>\n      <li><a href=\"\" ng-click=\"showIphone()\">Actual</a></li>\n      <li><a href=\"\" ng-click=\"showChats()\">Suggested</a></li>\n    </ul>\n  </navbar>\n  <div class=\"first-column\">\n    <section class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </section>\n    <footer class='back-to-home no-show'>\n      <button type=\"button\" class='btn btn-lg' name=\"button\"><a href=\"/#/\">Back to Matches</a></button>\n    </footer>\n  </div>\n\n<!-- </div> -->\n\n\n<!-- <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\"> -->\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n<div class=\"second-column\">\n  <section id=\"clock\" ng-if='secondsLeftToSend' timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.conversation_id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-success' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n</div>\n\n<!-- </div> -->\n";
-
-/***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').directive('scrollBottom', function () {
-	    return {
-	      scope: {
-	        scrollBottom: "="
-	      },
-	      link: function link(scope, element) {
-	        scope.$watch('$last', function () {
-	          setTimeout(function () {
-	            element[0].scrollTop = element[0].scrollHeight;
-	          }, 40);
-	        });
-	      }
-
-	    };
-	  });
-	})();
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').directive('ngClickOnce', [function () {
-	  return {
-	    restrict: 'A',
-	    link: function link(scope, element, attribute) {
-	      var clickFunction = function clickFunction() {
-	        scope.$eval(attribute.ngClickOnce);
-	        scope.$apply();
-	        element.unbind("click", clickFunction);
-	      };
-
-	      element.bind("click", clickFunction);
-	    }
-	  };
-	}]);
-
-/***/ },
-/* 17 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(18);
-
-	angular.module('cassanova').directive('timer', function (TimerService, $interval) {
-	  return {
-	    restrict: 'A',
-	    scope: {
-	      seconds: '@'
-	    },
-	    link: function link(scope, element) {
-	      var timeLeft = parseInt(scope.seconds, 10);
-	      $interval(function () {
-	        if (timeLeft < 1) {
-	          timeLeft = 0;
-	        } else {
-	          timeLeft -= 1;
-	        }
-	        return element.text(TimerService.convertTime(timeLeft));
-	      }, 1000);
-	      return element.text(TimerService.convertTime(timeLeft));
-	    }
-	  };
-	});
-
-/***/ },
-/* 18 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').service('TimerService', function () {
-	  function convertTime(time) {
-	    var minutes, seconds;
-	    minutes = Math.floor(time / 60);
-	    seconds = time - minutes * 60;
-	    if (seconds.toString().length < 2) {
-	      return minutes + ':0' + seconds;
-	    } else {
-	      return minutes + ":" + seconds;
-	    }
-	  }
-	  return {
-	    convertTime: convertTime
-	  };
-	});
-
-/***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').controller('ResponseController', ['$scope', 'ResponseService', function ($scope, ResponseService) {}]);
-	})();
-
-/***/ },
-/* 20 */,
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	__webpack_require__(22);
-	__webpack_require__(23);
-
-	(function () {
-	  'use strict';
-
-	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'SocketService', function ($scope, $routeParams, $location, ResponseService, MessageServices, SocketService) {
-	    $scope.responses = [];
-	    var targetId = $routeParams.match_id;
-	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
-	      $scope.messages = messages.data.conversations;
-	      $scope.secondsLeftToSend = secondsLeft(messages.data.time);
-	    });
-
-	    ResponseService.getResponses(null, targetId).then(function (data) {
-	      if (data.data.length === 0) {
-	        $scope.responses = [{
-	          response_text: "Be the first to start a conversation",
-	          conversation_id: null,
-	          total_votes: null
-	        }];
-	      } else {
-	        var responsesWithTotalVotes = totalVotes(data.data);
-	        $scope.responses = data.data;
-	      }
-	    });
-
-	    $scope.submitResponse = function (response) {
-	      if (response) {
-	        var conversation_id = getConversationID();
-	        SocketService.emit('new:response', {
-	          response_text: response,
-	          conversation_id: conversation_id,
-	          target_id: targetId
-	        });
-	        $scope.newResponse = "";
-	      }
-	    };
-
-	    SocketService.on('new:response', function (response) {
-	      var newObj = response;
-	      newObj.total_votes = 0;
-	      $scope.responses.push(newObj);
-	    });
-
-	    $scope.submitUpvote = function (responseId) {
-	      var convoId = getConversationID();
-	      var voteObj = {
-	        response_id: responseId,
-	        conversation_id: convoId,
-	        up: 1,
-	        down: 0
-	      };
-	      SocketService.emit('new:vote', voteObj);
-	    };
-
-	    $scope.submitDownvote = function (responseId) {
-	      var convoId = getConversationID();
-	      var voteObj = {
-	        response_id: responseId,
-	        conversation_id: convoId,
-	        up: -1,
-	        down: 0
-	      };
-
-	      SocketService.emit('new:vote', voteObj);
-	    };
-
-	    SocketService.on('new:vote', function (resp) {
-	      var additionalVotes = resp[0].up - resp[0].down;
-	      $scope.responses.forEach(function (el) {
-	        if (el.id === resp[0].response_id) {
-	          el.total_votes = parseInt(el.total_votes);
-	          el.total_votes += additionalVotes;
-	        }
-	      });
-	    });
-
-	    $scope.showIphone = function () {
-	      document.getElementsByClassName('first-column')[0].style.display = 'block';
-	      document.getElementsByClassName('second-column')[0].style.display = 'none';;
-	    };
-
-	    $scope.showChats = function () {
-	      document.getElementsByClassName('first-column')[0].style.display = 'none';;
-	      document.getElementsByClassName('second-column')[0].style.display = 'block';
-	    };
-	    /*
-	     * UTILITY FUNCTIONS
-	     */
-
-	    function getConversationID() {
-	      var convoId, iphone;
-	      iphone = document.getElementsByClassName('iphone-background')[0];
-	      if (iphone.children.length > 0) {
-	        convoId = iphone.children[iphone.children.length - 1].children[0].dataset.conversationId;
-	      }
-	      return convoId;
-	    }
-
-	    function totalVotes(arrayOfResponses) {
-	      return arrayOfResponses.forEach(function (resp) {
-	        resp.total_votes = parseInt(resp.total_votes, 10) || 0;
-	      });
-	    };
-
-	    function secondsLeft(time) {
-	      var time = new Date(time);
-	      if (time.getSeconds() !== 0) {
-	        var min = (10 - time.getMinutes() % 10 - 1) * 60;
-	        var seconds = 60 - time.getSeconds();
-	        var secondsUntil = min + seconds;
-	      } else {
-	        var secondsUntil = (10 - time.getMinutes() % 10) * 60;
-	      }
-	      return secondsUntil;
-	    };
-	  }]);
-	})();
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
-
-	    var getMessages = function getMessages(fakeAccountID, targetID) {
-	      console.log();
-	      var url = "/api/fake_accounts/" + "dont_matter" + "/targets/" + targetID;
-	      return $http.get(url);
-	    };
-
-	    return {
-	      getMessages: getMessages
-	    };
-	  });
-	})();
-
-/***/ },
-/* 23 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
-
-	    function getResponses(conversationID, targetId) {
-	      if (!conversationID) {
-	        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + '1';
-	      } else {
-	        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
-	      }
-	      return $http.get(url);
-	    }
-
-	    return {
-	      getResponses: getResponses
-	    };
-	  }]);
-	})();
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('cassanova').factory('SocketService', function ($rootScope) {
-	    var socket = io();
-
-	    function on(eventName, callback) {
-	      socket.on(eventName, function () {
-	        var args = arguments;
-	        $rootScope.$apply(function () {
-	          callback.apply(socket, args);
-	        });
-	      });
-	    };
-
-	    function emit(eventName, data, callback) {
-	      socket.emit(eventName, data, function () {
-	        var args = arguments;
-	        $rootScope.$apply(socket, function () {
-	          if (callback) {
-	            callback.apply(socket, args);
-	          };
-	        });
-	      });
-	    };
-
-	    return {
-	      on: on,
-	      emit: emit
-	    };
-	  });
-	})();
-
-/***/ },
-/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -39402,6 +39039,368 @@
 	    "");
 	}]);
 	!angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');if(true)module.exports='ui.bootstrap';
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"container\" >\n\n    <pagination\n      ng-model=\"currentPage\"\n      total-items=\"targets.length\"\n      max-size=\"maxSize\"\n      boundary-links=\"true\">\n    </pagination>\n\n    <div ng-repeat=\"target in filteredTargets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n        <div class=\"panel panel-primary match-panel\" data-id='{{ target.target_id }}' data-fake-account-id='{{target.fake_account_id}}'>\n            <h3 class=\"\">\n                {{ target.name }}\n            </h3>\n            <div class=\"match-photo\">\n                <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\">\n            </div>\n            <div class=\"match-info\">\n              <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n              <div class=\"match-bio\">\n                  <h5>{{ target.bio.slice(0,255) }}</h5>\n              </div>\n            </div>\n\n            <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Take Me By the Tongue</button></a>\n        </div>\n    </div>\n\n\n\n</div>\n";
+
+/***/ },
+/* 14 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var angular = __webpack_require__(5);
+	var angularRoute = __webpack_require__(7);
+
+	angular.module('messages', ['ngRoute']).config(function ($routeProvider) {
+	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
+	    template: __webpack_require__(15),
+	    controller: 'MessagesController'
+	  });
+	});
+
+	__webpack_require__(16);
+	__webpack_require__(17);
+	__webpack_require__(18);
+	__webpack_require__(20);
+	__webpack_require__(21);
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<!-- <div class=\"col-lg-4 col-md-4 col-sm-12 col-xs-12\"> -->\n    <!-- <ng-include src=\"'clock.html'\"></ng-include> -->\n  <navbar class=\"tool-bar no-show\">\n    <ul>\n      <li><a href=\"\" ng-click=\"showIphone()\">Actual</a></li>\n      <li><a href=\"\" ng-click=\"showChats()\">Suggested</a></li>\n    </ul>\n  </navbar>\n  <div class=\"first-column\">\n    <section class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </section>\n    <footer class='back-to-home no-show'>\n      <button type=\"button\" class='btn btn-lg' name=\"button\"><a href=\"/#/\">Back to Matches</a></button>\n    </footer>\n  </div>\n\n<!-- </div> -->\n\n\n<!-- <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\"> -->\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n<div class=\"second-column\">\n  <section id=\"clock\" ng-if='secondsLeftToSend' timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.conversation_id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-success' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n</div>\n\n<!-- </div> -->\n";
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').directive('scrollBottom', function () {
+	    return {
+	      scope: {
+	        scrollBottom: "="
+	      },
+	      link: function link(scope, element) {
+	        scope.$watch('$last', function () {
+	          setTimeout(function () {
+	            element[0].scrollTop = element[0].scrollHeight;
+	          }, 40);
+	        });
+	      }
+
+	    };
+	  });
+	})();
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').directive('ngClickOnce', [function () {
+	  return {
+	    restrict: 'A',
+	    link: function link(scope, element, attribute) {
+	      var clickFunction = function clickFunction() {
+	        scope.$eval(attribute.ngClickOnce);
+	        scope.$apply();
+	        element.unbind("click", clickFunction);
+	      };
+
+	      element.bind("click", clickFunction);
+	    }
+	  };
+	}]);
+
+/***/ },
+/* 18 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(19);
+
+	angular.module('cassanova').directive('timer', function (TimerService, $interval) {
+	  return {
+	    restrict: 'A',
+	    scope: {
+	      seconds: '@'
+	    },
+	    link: function link(scope, element) {
+	      var timeLeft = parseInt(scope.seconds, 10);
+	      $interval(function () {
+	        if (timeLeft < 1) {
+	          timeLeft = 0;
+	        } else {
+	          timeLeft -= 1;
+	        }
+	        return element.text(TimerService.convertTime(timeLeft));
+	      }, 1000);
+	      return element.text(TimerService.convertTime(timeLeft));
+	    }
+	  };
+	});
+
+/***/ },
+/* 19 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').service('TimerService', function () {
+	  function convertTime(time) {
+	    var minutes, seconds;
+	    minutes = Math.floor(time / 60);
+	    seconds = time - minutes * 60;
+	    if (seconds.toString().length < 2) {
+	      return minutes + ':0' + seconds;
+	    } else {
+	      return minutes + ":" + seconds;
+	    }
+	  }
+	  return {
+	    convertTime: convertTime
+	  };
+	});
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').controller('ResponseController', ['$scope', 'ResponseService', function ($scope, ResponseService) {}]);
+	})();
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(22);
+	__webpack_require__(23);
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'SocketService', function ($scope, $routeParams, $location, ResponseService, MessageServices, SocketService) {
+	    $scope.responses = [];
+	    var targetId = $routeParams.match_id;
+	    MessageServices.getMessages($routeParams.account_id, $routeParams.match_id).then(function (messages) {
+	      $scope.messages = messages.data.conversations;
+	      $scope.secondsLeftToSend = secondsLeft(messages.data.time);
+	    });
+
+	    ResponseService.getResponses(null, targetId).then(function (data) {
+	      if (data.data.length === 0) {
+	        $scope.responses = [{
+	          response_text: "Be the first to start a conversation",
+	          conversation_id: null,
+	          total_votes: null
+	        }];
+	      } else {
+	        var responsesWithTotalVotes = totalVotes(data.data);
+	        $scope.responses = data.data;
+	      }
+	    });
+
+	    $scope.submitResponse = function (response) {
+	      if (response) {
+	        var conversation_id = getConversationID();
+	        SocketService.emit('new:response', {
+	          response_text: response,
+	          conversation_id: conversation_id,
+	          target_id: targetId
+	        });
+	        $scope.newResponse = "";
+	      }
+	    };
+
+	    SocketService.on('new:response', function (response) {
+	      var newObj = response;
+	      newObj.total_votes = 0;
+	      $scope.responses.push(newObj);
+	    });
+
+	    $scope.submitUpvote = function (responseId) {
+	      var convoId = getConversationID();
+	      var voteObj = {
+	        response_id: responseId,
+	        conversation_id: convoId,
+	        up: 1,
+	        down: 0
+	      };
+	      SocketService.emit('new:vote', voteObj);
+	    };
+
+	    $scope.submitDownvote = function (responseId) {
+	      var convoId = getConversationID();
+	      var voteObj = {
+	        response_id: responseId,
+	        conversation_id: convoId,
+	        up: -1,
+	        down: 0
+	      };
+
+	      SocketService.emit('new:vote', voteObj);
+	    };
+
+	    SocketService.on('new:vote', function (resp) {
+	      var additionalVotes = resp[0].up - resp[0].down;
+	      $scope.responses.forEach(function (el) {
+	        if (el.id === resp[0].response_id) {
+	          el.total_votes = parseInt(el.total_votes);
+	          el.total_votes += additionalVotes;
+	        }
+	      });
+	    });
+
+	    $scope.showIphone = function () {
+	      document.getElementsByClassName('first-column')[0].style.display = 'block';
+	      document.getElementsByClassName('second-column')[0].style.display = 'none';;
+	    };
+
+	    $scope.showChats = function () {
+	      document.getElementsByClassName('first-column')[0].style.display = 'none';;
+	      document.getElementsByClassName('second-column')[0].style.display = 'block';
+	    };
+	    /*
+	     * UTILITY FUNCTIONS
+	     */
+
+	    function getConversationID() {
+	      var convoId, iphone;
+	      iphone = document.getElementsByClassName('iphone-background')[0];
+	      if (iphone.children.length > 0) {
+	        convoId = iphone.children[iphone.children.length - 1].children[0].dataset.conversationId;
+	      }
+	      return convoId;
+	    }
+
+	    function totalVotes(arrayOfResponses) {
+	      return arrayOfResponses.forEach(function (resp) {
+	        resp.total_votes = parseInt(resp.total_votes, 10) || 0;
+	      });
+	    };
+
+	    function secondsLeft(time) {
+	      var time = new Date(time);
+	      if (time.getSeconds() !== 0) {
+	        var min = (10 - time.getMinutes() % 10 - 1) * 60;
+	        var seconds = 60 - time.getSeconds();
+	        var secondsUntil = min + seconds;
+	      } else {
+	        var secondsUntil = (10 - time.getMinutes() % 10) * 60;
+	      }
+	      return secondsUntil;
+	    };
+	  }]);
+	})();
+
+/***/ },
+/* 22 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('MessageServices', function ($q, $http, $cacheFactory) {
+
+	    var getMessages = function getMessages(fakeAccountID, targetID) {
+	      console.log();
+	      var url = "/api/fake_accounts/" + "dont_matter" + "/targets/" + targetID;
+	      return $http.get(url);
+	    };
+
+	    return {
+	      getMessages: getMessages
+	    };
+	  });
+	})();
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module("cassanova").factory('ResponseService', ["$http", "$q", function ($http, $q) {
+
+	    function getResponses(conversationID, targetId) {
+	      if (!conversationID) {
+	        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + '1';
+	      } else {
+	        var url = "/api/fake_accounts/targets/" + targetId + "/responses/" + conversationID;
+	      }
+	      return $http.get(url);
+	    }
+
+	    return {
+	      getResponses: getResponses
+	    };
+	  }]);
+	})();
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('cassanova').factory('SocketService', function ($rootScope) {
+	    var socket = io();
+
+	    function on(eventName, callback) {
+	      socket.on(eventName, function () {
+	        var args = arguments;
+	        $rootScope.$apply(function () {
+	          callback.apply(socket, args);
+	        });
+	      });
+	    };
+
+	    function emit(eventName, data, callback) {
+	      socket.emit(eventName, data, function () {
+	        var args = arguments;
+	        $rootScope.$apply(socket, function () {
+	          if (callback) {
+	            callback.apply(socket, args);
+	          };
+	        });
+	      });
+	    };
+
+	    return {
+	      on: on,
+	      emit: emit
+	    };
+	  });
+	})();
 
 /***/ }
 /******/ ]);

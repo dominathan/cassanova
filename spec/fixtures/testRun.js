@@ -47,6 +47,8 @@ function newMatchPhotosToSave(oldMatches,newMatches,target) {
 /*
  * Filter matches where created_at on tinder is normalized and greater than
  * time since my last update.  Maybe feed through newMessages
+ * UPDATE:,
+ * If we hit the updates/limit on TinderClient  instead of history, it shows updates since last time you checked?
  */
 function newConversations(matches,fakeAccont,target,dateSinceLastCheck /*Or time since last check*/) {
    var newMessages = _.chain(matches)
@@ -61,3 +63,14 @@ function newConversations(matches,fakeAccont,target,dateSinceLastCheck /*Or time
      .value();
    return newMessages;
 };
+
+function sendMessages(messagesToSend) {
+  var tc = new TinderClient();
+  if(tc.isAuthorized) {
+    messagesToSend.forEach(function(match) {
+      tc.sendMessage(match.match_id,match.response_text);
+
+      //IO.emit({response_text: match.repsonse_text, target_id: match.target_id})
+    })
+  }
+}

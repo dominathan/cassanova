@@ -7,9 +7,7 @@ var port = process.env.PORT || 3000;
 var config = require("../knexfile");
 var knex = require('knex')(config[env]);
 
-var FBClientId = '1000802036654246';
-var FBClientSecret = "73242fe8d6645100560b97d1e0fa10b7";
-
+var FBClientId = '464891386855067';
 
 router.get('/fbtoken', function(req, res){
   res.render('facebook-access-token', { data: req });
@@ -31,7 +29,7 @@ router.post('/fbtoken', function(req, res){
 
   // Once we have the Facebook access token, we need the user ID associated with the token.
   request({
-    url: 'https://graph.facebook.com/debug_token?input_token=' + access_token + '&access_token=' + FBClientId + '|' + FBClientSecret,
+    url: 'https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token',
     method: 'GET'
   }, function(err, response, body){
 
@@ -67,7 +65,7 @@ router.post('/fbtoken', function(req, res){
 });
 //https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=http://localhost:3000/api/facebook/fbtoken'
 router.get('/login', function(req, res){
-  res.redirect('https://www.facebook.com/dialog/oauth?client_id=' + FBClientId + '&response_type=token&redirect_uri=http://localhost:' + port + '/api/facebook/fbtoken');
+  res.redirect('https://www.facebook.com/dialog/oauth?client_id=464891386855067&redirect_uri=https://www.facebook.com/connect/login_success.html&scope=basic_info,email,public_profile,user_about_me,user_activities,user_birthday,user_education_history,user_friends,user_interests,user_likes,user_location,user_photos,user_relationship_details&response_type=token');
 });
 
 module.exports = router;

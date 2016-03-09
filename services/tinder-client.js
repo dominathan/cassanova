@@ -9,27 +9,6 @@ var knex = require('knex')(config[env]);
 var TINDER_HOST = "https://api.gotinder.com";
 
 
-var tinderClient = new TinderClient();
-
-
-router.get('/updates', function(req,res,next) {
-  var fb_id = '83486237662128';
-  var fb_auth_token = 'CAAGm0PX4ZCpsBAIpFqeD26WbpEJlpvzSANNazKwiHGG4zf2PX2FpKiRXueZCcMLvp60qWfY4maMpu7saZBnHrkZC0CQnhTV0EjLmW4Ev0ZCpsLSZB1shKQAZB7ZB7vMKycZAcKpGQmmiKOZAOZCiGPhnaW2XPfgZAtoUz5ZCNUG37jU5gh0XZAJ85kZCtZC7dioZCBzOFcKgDIwnzHZAzhkQZDZD';
-
-
-  knex('fake_accounts')
-  .select("*")
-  .limit(1)
-  .then(function(data) {
-    var user = data.pop();
-    tinderClient.authorize(fb_auth_token, fb_id, function(err,resp,callback) {
-      if (err) next(err)
-      res.json(resp);
-    })
-  })
-});
-
-
 /**
  * Constructs a new instance of the TinderClient class
  *
@@ -38,14 +17,16 @@ router.get('/updates', function(req,res,next) {
  */
 function TinderClient() {
   var xAuthToken = null;
-  var lastActivity = new Date();
+  // this.token = 'cca47ae2-46de-4f75-af4f-71a04b486904'
+  var lastActivity = new Date(Date.now() - 1000 * 10000000);
   var _this = this;
 
   /**
    * The current profile's user id
    */
   this.userId = null;
-
+  this.nayFBId = '83486237662128';
+  this.nayFBKey = 'CAAGm0PX4ZCpsBAN4Yxa0zmYtRPFAaL19lTqoNOboyVvYxuZCEJFqkeZC3GoMjZBeCm3KQGR4ZAFckOSUSn8ooNdlB49oBTfAxeKz5r7tiVZACBOKWdHKicCAEWTHhNBOLXnwc7cU57q0ZAEtN0FpxEkyqK5imJFW4gEB9sylVUSRSWPpQBiwhf8S9IqLVsoQ9VJ6G9ZBQ8008QZDZD';
   /**
    * Helper for getting the request object
    * @param path {String} path the relative URI path
@@ -283,4 +264,4 @@ function TinderClient() {
 
 }
 
-module.exports = router;
+module.exports = TinderClient;
