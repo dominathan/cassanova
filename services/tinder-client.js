@@ -1,6 +1,4 @@
 var request = require('request');
-var express = require('express');
-var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var config = require("../knexfile");
@@ -8,25 +6,46 @@ var knex = require('knex')(config[env]);
 
 var TINDER_HOST = "https://api.gotinder.com";
 
-
 /**
  * Constructs a new instance of the TinderClient class
  *
  * @constructor
  * @this {TinderClient}
  */
-function TinderClient() {
+function TinderClient(fbId) {
+
   var xAuthToken = null;
-  // this.token = 'cca47ae2-46de-4f75-af4f-71a04b486904'
   var lastActivity = new Date(Date.now() - 1000 * 10000000);
   var _this = this;
+  _this.token = null;
+  _this.userId = null;
+  _this.fbId = '83486237662128';
+  _this.fbKey = 'CAAGm0PX4ZCpsBAN4Yxa0zmYtRPFAaL19lTqoNOboyVvYxuZCEJFqkeZC3GoMjZBeCm3KQGR4ZAFckOSUSn8ooNdlB49oBTfAxeKz5r7tiVZACBOKWdHKicCAEWTHhNBOLXnwc7cU57q0ZAEtN0FpxEkyqK5imJFW4gEB9sylVUSRSWPpQBiwhf8S9IqLVsoQ9VJ6G9ZBQ8008QZDZD';
+
+
+ /* Set current tokens and keys based off database entries */
+  knex
+    .select('*')
+    .from('fake_accounts')
+    // .where(`fake_accounts.facebook_user_id = ${fbId}`)
+    .limit(1)
+    .then(function(fake_account) {
+      fake_account = fake_account[0];
+       if(fake_account.tinder_id) { _this.userId = fake_account.tinder_id };
+       if(fake_account.tinder_authentication_token) {
+         _this.token = fake_account.tinder_authentication_token
+         xAuthToken = _this.token;
+       };
+       if(fake_account.facebook_authentication_token) {_this.fbKey = fake_account.facebook_authentication_token};
+       if(fake_account.facebook_user_id) { _this.fbId = fake_account.facebook_user_id };
+    })
+
+
 
   /**
    * The current profile's user id
    */
-  this.userId = null;
-  this.nayFBId = '83486237662128';
-  this.nayFBKey = 'CAAGm0PX4ZCpsBAN4Yxa0zmYtRPFAaL19lTqoNOboyVvYxuZCEJFqkeZC3GoMjZBeCm3KQGR4ZAFckOSUSn8ooNdlB49oBTfAxeKz5r7tiVZACBOKWdHKicCAEWTHhNBOLXnwc7cU57q0ZAEtN0FpxEkyqK5imJFW4gEB9sylVUSRSWPpQBiwhf8S9IqLVsoQ9VJ6G9ZBQ8008QZDZD';
+
   /**
    * Helper for getting the request object
    * @param path {String} path the relative URI path
@@ -168,9 +187,16 @@ function TinderClient() {
       function(error, res, body) {
         if (!error && body.token) {
           xAuthToken = body.token;
+          _this.token = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
-          callback(error, res, body);
+          knex('fake_accounts')
+            .where('tinder_id',body.user._id)
+            .update({tinder_authentication_token: xAuthToken})
+            .returning('*')
+            if(callback) {
+              callback(error, res, body);
+            }
         } else if (body.error){
           throw "Failed to authenticate: " + body.error
         }
@@ -182,7 +208,7 @@ function TinderClient() {
    * @return whether or not this client is authorized
    */
   this.isAuthorized = function() {
-    return xAuthToken != null;
+    return !!xAuthToken;
   }
 
   /**
