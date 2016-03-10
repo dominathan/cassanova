@@ -30,9 +30,11 @@ function TinderClient(fbId) {
     // .where(`fake_accounts.facebook_user_id = ${fbId}`)
     .limit(1)
     .then(function(fake_account) {
+      // console.log("GETTING FAKE ACCOUNT", fake_account);
       fake_account = fake_account[0];
        if(fake_account.tinder_id) { _this.userId = fake_account.tinder_id };
        if(fake_account.tinder_authentication_token) {
+        //  console.log("yay?", fake_account.tinder_authentication_token);
          _this.token = fake_account.tinder_authentication_token
          xAuthToken = _this.token;
        };
@@ -143,6 +145,7 @@ function TinderClient(fbId) {
    * @param {Function} callback the callback to invoke when the request completes
    */
   this.sendMessage = function(userId, message, callback) {
+    console.log("SENDING MESSAGE: ", message);
     tinderPost('user/matches/' + userId,
       {
         message: message

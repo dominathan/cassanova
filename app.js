@@ -65,6 +65,6 @@ app.use(function(err, req, res, next) {
 /*
  * CRON JOB for sending messages.  See services/CronTasks.js
  */
-CronExecutables();
+// CronExecutables();
 
 module.exports = app;

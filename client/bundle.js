@@ -39272,6 +39272,15 @@
 	      });
 	    });
 
+	    SocketService.on('new:conversation', function (data) {
+	      console.log(data);
+	      if (data.convos.target_id === $routeParams.targetId) {
+	        $scope.messages.push(data.convos);
+	      }
+
+	      $scope.secondsLeftToSend = secondsLeft(data.time);
+	    });
+
 	    $scope.showIphone = function () {
 	      document.getElementsByClassName('first-column')[0].style.display = 'block';
 	      document.getElementsByClassName('second-column')[0].style.display = 'none';;
