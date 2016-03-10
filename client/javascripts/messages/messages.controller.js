@@ -60,8 +60,7 @@ require('../responses/responses.service');
           var voteObj = {
                           response_id: responseId,
                           conversation_id: convoId,
-                          up: 1,
-                          down: 0
+                          up: 1
                         }
           SocketService.emit('new:vote', voteObj);
         }
@@ -71,15 +70,14 @@ require('../responses/responses.service');
           var voteObj = {
                           response_id: responseId,
                           conversation_id: convoId,
-                          up: -1,
-                          down: 0
+                          up: -1
                         }
 
           SocketService.emit('new:vote', voteObj);
         }
 
         SocketService.on('new:vote',function(resp) {
-          var additionalVotes = resp[0].up - resp[0].down;
+          var additionalVotes = resp[0].up;
             $scope.responses.forEach(function(el) {
               if(el.id === resp[0].response_id) {
                 el.total_votes = parseInt(el.total_votes);
@@ -90,10 +88,10 @@ require('../responses/responses.service');
 
         SocketService.on('new:conversation', function(data) {
           console.log(data)
-          if(data.convos.target_id === $routeParams.targetId) {
+          if(data.convos.target_id === parseInt(targetId)) {
+            console.log('show up');
             $scope.messages.push(data.convos);
           }
-
           $scope.secondsLeftToSend = secondsLeft(data.time);
         })
 

@@ -15,38 +15,43 @@ function CronExecutables(io) {
   new CronJob('48 0-59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
-    var tc = new TinderClient();
-
-    responsesToSend.then(function(data) {
-      console.log("THIS WORKS?: ", data);
-    //   console.log("AUTHORIZED?:", tc.isAuthorized())
-    //   if(/*tc.isAuthorized() && */ data.length > 0) {
-       data.forEach(function(msg) {
-    //      tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
-    //         if(err) return err;
-    //         console.log("WHAT THE WHAT?", data)
-    //         //save to database as conversation, emit to proper channel;
-
-            knex('targets').select("id").where('match_id',msg.match_id)
-              .then(function(id) {
-                console.log('THIS IS THE MATCH', id);
-                var insertThing = {
-                  target_id: id[0].id,
-                  message: msg.response_text,
-                  received: false,
-                  sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
-                }
-                console.log("INSERT ME",insertThing);
-                knex('conversations')
-                  .insert(insertThing)
-                  .then(function(rows) {
-                    io.emit('new:conversation', {convos: insertThing, time: new Date()});
-                  })
-              // })
-            });
+    knex('fake_accounts')
+      .select('*')
+      .then(function(data) {
+        return data[0];
       })
-    //  }
-
+     .then(function(tcOptions) {
+       console.log('TC OPTIONS',tcOptions)
+       var tc = new TinderClient(tcOptions)
+       responsesToSend.then(function(data) {
+         console.log("THIS WORKS?: ", data);
+         if(tc.isAuthorized() && data.length > 0) {
+           data.forEach(function(msg) {
+            tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
+              if(err) {
+                throw err
+              } else {
+                knex('targets').select("id").where('match_id',msg.match_id)
+                  .then(function(id) {
+                    console.log('THIS IS THE MATCH', id);
+                    var insertThing = {
+                      target_id: id[0].id,
+                      message: msg.response_text,
+                      received: false,
+                      sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
+                    }
+                    console.log("INSERT ME",insertThing);
+                    knex('conversations')
+                      .insert(insertThing)
+                      .then(function(rows) {
+                        io.emit('new:conversation', {convos: insertThing, time: new Date()});
+                      })
+                });
+              };
+            })
+          })
+        }
+     })
     })
 
   },null,true,'America/New_York');

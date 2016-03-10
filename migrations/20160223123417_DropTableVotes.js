@@ -12,7 +12,6 @@ exports.down = function(knex, Promise) {
       table.integer('response_id').references('id').inTable('responses');
       table.integer('conversation_id').references('id').inTable('conversations');
       table.integer('up');
-      table.integer('down');
       table.timestamps();
     })
   ])

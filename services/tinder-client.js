@@ -12,36 +12,14 @@ var TINDER_HOST = "https://api.gotinder.com";
  * @constructor
  * @this {TinderClient}
  */
-function TinderClient(fbId) {
-
-  var xAuthToken = null;
+function TinderClient(options) {
+  var tcOpts = options || {};
+  var xAuthToken = tcOpts.tinder_authentication_token || null;
   var lastActivity = new Date(Date.now() - 1000 * 10000000);
   var _this = this;
-  _this.token = null;
-  _this.userId = null;
-  _this.fbId = '83486237662128';
-  _this.fbKey = 'CAAGm0PX4ZCpsBAN4Yxa0zmYtRPFAaL19lTqoNOboyVvYxuZCEJFqkeZC3GoMjZBeCm3KQGR4ZAFckOSUSn8ooNdlB49oBTfAxeKz5r7tiVZACBOKWdHKicCAEWTHhNBOLXnwc7cU57q0ZAEtN0FpxEkyqK5imJFW4gEB9sylVUSRSWPpQBiwhf8S9IqLVsoQ9VJ6G9ZBQ8008QZDZD';
-
-
- /* Set current tokens and keys based off database entries */
-  knex
-    .select('*')
-    .from('fake_accounts')
-    // .where(`fake_accounts.facebook_user_id = ${fbId}`)
-    .limit(1)
-    .then(function(fake_account) {
-      // console.log("GETTING FAKE ACCOUNT", fake_account);
-      fake_account = fake_account[0];
-       if(fake_account.tinder_id) { _this.userId = fake_account.tinder_id };
-       if(fake_account.tinder_authentication_token) {
-        //  console.log("yay?", fake_account.tinder_authentication_token);
-         _this.token = fake_account.tinder_authentication_token
-         xAuthToken = _this.token;
-       };
-       if(fake_account.facebook_authentication_token) {_this.fbKey = fake_account.facebook_authentication_token};
-       if(fake_account.facebook_user_id) { _this.fbId = fake_account.facebook_user_id };
-    })
-
+  _this.userId = tcOpts.tinder_id || null;
+  _this.fbId = tcOpts.facebook_user_id || '';
+  _this.fbKey = tcOpts.facebook_authentication_token || '';
 
 
   /**
@@ -123,6 +101,16 @@ function TinderClient(fbId) {
         callback(error, data);
       }
     };
+  };
+
+
+
+  /**
+   * GET profile
+   *
+   */
+  this.getProfile = function(callback) {
+    tinderGet('profile',null,makeTinderCallback(callback))
   };
 
   /**

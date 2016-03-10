@@ -6,7 +6,7 @@ module.exports = {
     client: 'postgresql',
     debug: true,
     connection: {
-      database: 'cassanova_dev'
+      database: 'tindergarten_dev'
     },
     pool: {
       min: 2,
@@ -17,7 +17,7 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'cassanova_staging',
+      database: 'tindergarten_staging',
       user:     'username',
       password: 'password'
     },
