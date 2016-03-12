@@ -7,7 +7,7 @@ module.exports = function() {
         name: profileObject['name'],
         tinder_id: profileObject['_id'],
         bio: profileObject['bio'],
-        birth_date: profileObject['birth_date'],
+        birth_date: profileObject['birth_date'].toString(),
         gender: profileObject['gender'],
         latitude: profileObject['pos']['lat'],
         longitude: profileObject['pos']['lon']
