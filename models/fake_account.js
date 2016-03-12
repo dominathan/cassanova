@@ -10,9 +10,7 @@ module.exports = function() {
         birth_date: profileObject['birth_date'],
         gender: profileObject['gender'],
         latitude: profileObject['pos']['lat'],
-        longitude: profileObject['pos']['lon'],
-        created_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
-        updated_at: new Date().toISOString().slice(0, 19).replace('T', ' ')
+        longitude: profileObject['pos']['lon']
       }
     }
   }

@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
       table.text('bio');
       table.string('gender');
       table.date('birth_date');
+      table.boolean('blocked').defaultTo(false);
       table.integer('fake_account_id').references('id').inTable('fake_accounts').notNullable();
       table.timestamp('created_at').defaultTo(knex.fn.now());
       table.timestamp('updated_at').defaultTo(knex.fn.now());

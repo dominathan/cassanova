@@ -13,12 +13,6 @@
               element[0].scrollTop = element[0].scrollHeight;
             },40)
           })
-
-          scope.$watchCollection('messages', function() {
-            setTimeout(function() {
-              element[0].scrollTop = element[0].scrollHeight;
-            },40)
-          })
         }
 
       }

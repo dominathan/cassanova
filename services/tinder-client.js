@@ -176,15 +176,18 @@ function TinderClient(options) {
         facebook_id: fbId
       },
       function(error, res, body) {
-        if (!error && body.token) {
+        if (!error && body) {
           xAuthToken = body.token;
           _this.token = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
           knex('fake_accounts')
-            .where('tinder_id',body.user._id)
+            .where('facebook_user_id',_this.fbId)
             .update({tinder_authentication_token: xAuthToken})
             .returning('*')
+            .then(function(test) {
+              console.log(test);
+            })
             if(callback) {
               callback(error, res, body);
             }
@@ -266,6 +269,10 @@ function TinderClient(options) {
         lat: lat
       },
       makeTinderCallback(callback));
+  };
+
+  this.getPosition = function(callback) {
+    tinderGet('user/ping',null,makeTinderCallback(callback));
   };
 
   /**

@@ -24,9 +24,9 @@ router.get('/:id/targets', function(req,res,next) {
     return fk[0].id
   })
   .then(function(fkID) {
-    knex.raw('SELECT tg.id, tg.fake_account_id, tg.name, tg.tinder_id, tg.bio, tg.gender, tg.birth_date, tg.match_id, pho.photo_url FROM targets as tg LEFT JOIN photos as pho ON tg.id = pho.target_id GROUP BY tg.id, pho.photo_url')
+    knex.raw('SELECT tg.id, tg.fake_account_id, tg.name, tg.tinder_id, tg.bio, tg.gender, tg.birth_date, tg.match_id, pho.photo_url FROM targets as tg LEFT JOIN photos as pho ON tg.id = pho.target_id WHERE tg.blocked = false GROUP BY tg.id, pho.photo_url')
     .then(function(data) {
-      return _.uniq(data.rows,'match_id');
+      return _.uniq(data.rows,'tinder_id');
     })
     .then(function(rows) {
       res.json(rows).status(302);

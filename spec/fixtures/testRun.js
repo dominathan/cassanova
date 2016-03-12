@@ -74,3 +74,40 @@ function sendMessages(messagesToSend) {
     })
   }
 }
+
+
+function saveNewMatches(myNewMatches,fakeAccount) {
+  myNewMatches.matches.forEach(function(match) {
+    knex('targets').returning(['id','tinder_id']).insert(Target.getTargetInfo(match,fakeAccount))
+     .then(function(targetId) {
+        var targetId = {id: targetId[0].id, tinder_id: targetId[0].tinder_id};
+        if(match.person.photos.length > 0) {
+          match.person.photos.forEach(function(photo) {
+            knex('photos').insert(Photo.getPhotoInfo(photo,targetId))
+              .then(function(data) {
+                //safety
+              },function(data) {
+                console.log("FAIL INSERTION TO PHOTOS", data);
+                throw new Error('Failed insertion to photos dbtable:', data);
+                return
+              });
+          });
+        }
+        if(match.messages.length > 0) {
+          match.messages.forEach(function(convo) {
+            knex('conversations').insert(Conversation.getConversationInfo(convo,fakeAccount,targetId))
+              .then(function(convoSave) {
+                //convo saved;
+              },
+              function(convoErr) {
+                throw new Error('failed insertion to conversation: ', convoErr);
+              })
+          })
+        }
+     },
+     function(dat) {
+      console.log('FAILED INSERT TO TARGETS',dat);
+      throw new Error('Failed insertion to targets dbtable: ', dat);
+     });
+  });
+}
