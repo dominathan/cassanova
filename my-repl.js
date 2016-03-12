@@ -2,7 +2,6 @@ var repl = require('repl');
 var env = process.env.NODE_ENV || 'development';
 var config = require("./knexfile");
 var knex = require('knex')(config[env]);
-var Q = require('./node_modules/q/q.js');
 var TinderClient = require('./services/tinder-client');
 var myProfile = require('./spec/fixtures/my_profile.json');
 var myUpdates = require('./spec/fixtures/new_updates.json');
@@ -13,18 +12,6 @@ var Photo = require('./models/photos');
 var Conversation = require('./models/conversations');
 var lodash = require('lodash');
 
-var myQueryFunction = function(tableName,selection) {
-  var defer = Q.defer()
-  return function() {
-    knex(tableName).select(selection).then(function(data) {
-      defer.resolve(data);
-    }).catch(function(err) {
-      defer.reject(err);
-    })
-    return defer.promise;
-  }
-}
-
 var replServer = repl.start({
   prompt: 'cassanova :> '
 });
@@ -32,7 +19,6 @@ var replServer = repl.start({
 
 replServer.context.repl = repl;
 replServer.context.knex = knex;
-replServer.context.Q = Q;
 replServer.context.env = env;
 
 replServer.context.myProfile = myProfile;
