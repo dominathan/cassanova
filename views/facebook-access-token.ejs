@@ -1,20 +1,35 @@
-<h1>Redirecting</h1>
-<h3><%= data.data %></h3>
+<h1>Enter Stuff</h1>
+
+<form class="" action="index.html" method="post">
+  <input type="text" name="tinderId" placeholder="Tinder" value="">
+  <input type="text" name="facebookId" placeholder="Facebook" value="">
+  <input type="text" name="token" placeholder="Token" value="">
+  <input type="submit" name="name" value="">
+</form>
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript">
-  $(function() {
+$(function() {
+  $('form').on('click',function(event) {
+    event.preventDefault();
+    submitData();
+  })
+})
+  function submitData() {
     $.ajax({
       method: "POST",
-      url: '/api/facebook/fbtoken',
+      url: '/api/facebook/update/the/token/please',
       data: {
-        hash: window.location.hash.substring(1)
+        fbKey: $('input[name="token"]').val(),
+        fbId: $('input[name="facebookId"]').val(),
+        tinderId: $('input[name="tinderId"]').val()
       },
       success: function(res) {
-        window.glob = res;
+        console.log('ay',res)
       },
       error: function(err) {
         throw new Error("Failed Post: ", err);
       }
     })
-  });
+  }
+
 </script>

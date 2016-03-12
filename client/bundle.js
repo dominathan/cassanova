@@ -39271,9 +39271,7 @@
 	    });
 
 	    SocketService.on('new:conversation', function (data) {
-	      console.log(data);
 	      if (data.convos.target_id === parseInt(targetId)) {
-	        console.log('show up');
 	        $scope.messages.push(data.convos);
 	      }
 	      $scope.secondsLeftToSend = secondsLeft(data.time);

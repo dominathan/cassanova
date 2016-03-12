@@ -33,7 +33,7 @@ function CronExecutables(io) {
                 throw err
               } else {
                 var messageToEmit = {
-                  target_id: msg.target_id,
+                  target_id: msg.id,
                   message: msg.response_text,
                   received: false,
                   sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
@@ -158,18 +158,27 @@ function CronExecutables(io) {
           match.messages.forEach(function(msg) {
             knex('targets').select('*').where('match_id',msg.match_id)
             .then(function(data) {
-              var fakeAcc = {
-                id: data[0].fake_account_id
-              }
-              var convoSave = Conversation(msg,fakeAcc,data[0])
+              knex('conversations').select('tinder_id').where('target_id',data[0].id)
+                .then(function(idOfConversations) {
+                  var ids = idOfConversations.map(function(el) {
+                    return el.tinder_id
+                  })
+                  if(ids.indexOf(msg._id) === -1) {
+                    var fakeAcc = {
+                      id: data[0].fake_account_id
+                    }
+                    var convoSave = Conversation(msg,fakeAcc,data[0])
 
-              try {
-                knex('conversations').insert(convoSave).then(function(data) {
-                  console.log('saving convo', data);
+                    io.emit('new:conversation', {convos: convoSave, time: new Date()});
+                    try {
+                      knex('conversations').insert(convoSave).then(function(data) {
+                        console.log('saving convo', data);
+                      })
+                    } catch(err) {
+                      console.error("Probably unique key constraint", err);
+                    }
+                  }
                 })
-              } catch(err) {
-                console.error("Probably unique key constraint", err);
-              }
             })
           })
       }
