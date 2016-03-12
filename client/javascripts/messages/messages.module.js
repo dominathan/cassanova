@@ -1,8 +1,10 @@
 var angular = require('angular');
 var angularRoute = require('angular-route');
+require('angular-flash-alert');
 
 angular.module('messages',[
-  'ngRoute'
+  'ngRoute',
+  'ngFlash'
 ])
 .config(function($routeProvider) {
   $routeProvider

@@ -40,7 +40,7 @@ server.on('listening', onListening);
  * Connect to socket.io
  */
  var io = require('socket.io').listen(server);
- var cronTasks = CronExecutables(io); 
+ var cronTasks = CronExecutables(io);
  io.on('connection', function(socket) {
    socket.on('new:response',function(response) {
      knex('responses')

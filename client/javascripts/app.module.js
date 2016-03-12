@@ -2,11 +2,13 @@ import '../stylesheets/main.scss';
 
 var angular = require('angular');
 var angularRoute = require('angular-route');
+var angularFlashAlert = require('angular-flash-alert');
 
 angular.module('cassanova',[
   'ngRoute',
   'messages',
-  'home'
+  'home',
+  'ngFlash'
 ]).config(function($routeProvider) {
   $routeProvider
       .when('/404', {

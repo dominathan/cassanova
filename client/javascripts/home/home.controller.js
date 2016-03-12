@@ -8,13 +8,24 @@ require('./home.service');
     .controller('HomeController', [
       '$scope',
       'HomeServices',
-      function ($scope,HomeServices) {
+      'Flash',
+      'SocketService',
+      function ($scope,HomeServices,Flash,SocketService) {
         $scope.currentPage = 1;
         $scope.numPerPage = 9;
         $scope.targets = [];
         $scope.maxSize = 3;
+
+        SocketService.on('new:conversation',function(convo) {
+          if(convo.convos.received) {
+            var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
+            var id = Flash.create('success',message,0,{},true);
+          }
+        })
+
         HomeServices.getTargets()
         .then(function(data) {
+
           data.data.forEach(function(el) {
             el.age = calculateAge(el.birth_date);
           })

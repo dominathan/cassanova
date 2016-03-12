@@ -11,6 +11,8 @@
   "dependencies": {
     "angular": "^1.4.8",
     "angular-bootstrap-npm": "^0.14.3",
+    "angular-flash": "^1.2.0",
+    "angular-flash-alert": "^2.2.4",
     "angular-route": "^1.4.8",
     "body-parser": "~1.13.2",
     "bookshelf": "^0.9.1",

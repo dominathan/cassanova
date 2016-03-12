@@ -13,14 +13,23 @@ require('../responses/responses.service');
       'ResponseService',
       'MessageServices',
       'SocketService',
-      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService) {
+      'Flash',
+      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash) {
         $scope.responses = [];
         var targetId = $routeParams.match_id;
+
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           $scope.messages = messages.data.conversations;
           $scope.secondsLeftToSend = secondsLeft(messages.data.time);
         });
+
+        SocketService.on('new:conversation',function(convo) {
+          if(convo.convos.received) {
+            var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
+            var id = Flash.create('success',message,0,{},true);
+          }
+        })
 
         ResponseService.getResponses(null,targetId)
           .then(function(data) {
