@@ -1,8 +1,13 @@
-module.exports = {
+var webpack = require('webpack');
+
+var config =  {
   entry: "./client/javascripts/app.module.js",
   output: {
     filename: "./client/bundle.js"
   },
+  plugins: [new webpack.DefinePlugin({
+    ON_TEST: process.env.NODE_ENV === 'test'
+  })],
   module: {
     loaders: [
       {
@@ -22,3 +27,9 @@ module.exports = {
     ]
   }
 }
+
+if(process.env.NODE_ENV === 'production') {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
+module.exports = config

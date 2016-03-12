@@ -14,7 +14,7 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
-  new CronJob('48 9,19,29,39,49,59 * * * *', function() {
+  new CronJob('58 9,19,29,39,49,59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
     knex('fake_accounts')
@@ -38,7 +38,7 @@ function CronExecutables(io) {
                   received: false,
                   sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
                 }
-                io.emit('new:conversation', {convos: messageToEmit, time: new Date()});
+                // io.emit('new:conversation', {convos: messageToEmit, time: new Date()});
               };
             })
           })
