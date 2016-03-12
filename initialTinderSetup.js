@@ -3,9 +3,9 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("./knexfile");
 var knex = require('knex')(config[env]);
 var FakeAccount = require('./models/fake_account')();
-var Target = require('../models/target');
-var Conversation = require('../models/conversations');
-var Photo = require('../models/photos');
+var Target = require('./models/target');
+var Conversation = require('./models/conversations');
+var Photo = require('./models/photos');
 
 (function() {
   var naynay = { id: 1,
