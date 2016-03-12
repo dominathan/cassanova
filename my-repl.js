@@ -29,7 +29,6 @@ replServer.context.TinderClient = TinderClient;
 replServer.context.Target = Target;
 replServer.context.Photo = Photo;
 replServer.context.Conversation = Conversation;
-replServer.context.myQueryFunction = myQueryFunction;
 replServer.context.lodash = lodash;
 
 
