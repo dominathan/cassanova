@@ -8,36 +8,15 @@ var Conversation = require('./models/conversations');
 var Photo = require('./models/photos');
 
 (function() {
-  var naynay = { id: 1,
-    bio: 'University of Virginia grad, but an Auburn fan at heart. \n\nMake me laugh and there\'s a 50% chance I\'ll let you meet Woodrow, the best damn dog in the world. Except when he pees on people. \n\nIt\'s tough being a single dad. Or so I\'m told. I wouldn\'t know. I don\'t have kids. \n\nSupport gay marriage. Fear gay divorce. \n\nI will bring you coffee.',
-    birth_date: 'Wed Sep 16 1987 20:00:00 GMT-0400 (EDT)',
-    gender: '0',
-    latitude: '32.81310847891687',
-    longitude: '-79.95211340861005',
-    name: 'Nathan',
-    tinder_id: '55f0ab2151a84db35e78dfe8',
-    facebook_user_id: '83486237662128',
-    facebook_authentication_token: 'CAAGm0PX4ZCpsBAIzhZC7xtPZAI7CRjqtwFcWnvF7LIHlOYDGDu2wRbVkhj4RgvCd6rA8mOPqTiObIp2Hck2gUw1XNbWfizLdP7SJzKdpiyTBrIE3SOj0OkjOnwxmEpxlwoTqLe6RRerw7SX8kddbQkVW0pZAGoZAY6iYBGrwDvh8IyijiZB2xuZAsJbNyzv4nRm86LFTh9hPwZDZD',
-    tinder_authentication_token: 'd82e2975-e063-42fc-b0f3-1cfe0393b53f',
-    created_at: 'Thu Mar 10 2016 18:52:05 GMT-0500 (EST)',
-    updated_at: 'Thu Mar 10 2016 18:52:05 GMT-0500 (EST)',
-    facebook_expiration_time: null,
-    tinder_expiration_time: null
-  }
-  var tc = new TinderClient(naynay);
-  var profile
-  tc.getProfile(function(err,data) {
-    profile = data;
-    var acct = FakeAccount.getProfileInfo(profile);
-    knex('fake_accounts').insert(acct).then(function(data) {
-      console.log(data);
-    })
-  })
+  knex('fake_accounts').select('*').then(function(data) {
+    var tc = new TinderClient(data[0]);
+    var fk = data[0]
 
-  tc.getHistory(function(err,data) {
-    if(err) return err;
-    saveNewMaches(data,{id: 1});
-    saveNewMessages(data);
+    tc.getHistory(function(err,data) {
+      if(err) return err;
+      saveNewMaches(data,fk);
+      saveNewMessages(data);
+    })
   })
 })()
 
@@ -111,7 +90,7 @@ function saveNewMessages(updates) {
                   }
                   var convoSave = Conversation(msg,fakeAcc,data[0])
 
-                  io.emit('new:conversation', {convos: convoSave, time: new Date()});
+                  // io.emit('new:conversation', {convos: convoSave, time: new Date()});
                   try {
                     knex('conversations').insert(convoSave).then(function(data) {
                       console.log('saving convo', data);
