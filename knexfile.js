@@ -10,8 +10,8 @@ module.exports = {
       database: 'tindergarten_dev'
     },
     pool: {
-      min: 2,
-      max: 10
+      min: 0,
+      max: 16
     },
   },
 
@@ -35,8 +35,8 @@ module.exports = {
     client: 'postgresql',
     connection: process.env.DATABASE_URL,
     pool: {
-      min: 2,
-      max: 10
+      min: 0,
+      max: 16
     },
     migrations: {
       tableName: 'knex_migrations'
