@@ -228,7 +228,7 @@ function TinderClient(options) {
   this.getUpdates = function(callback) {
     tinderPost('updates',
       {
-        last_activity_date: lastActivity.toISOString()
+        last_activity_date: lastActivity.toISOString() || new Date(Date.now() - 400000000)
       },
       makeTinderCallback(function(err, data){
         lastActivity = new Date(data.last_activity_date);
