@@ -48,6 +48,39 @@ function CronExecutables(io) {
 
   },null,true,'America/New_York');
 
+  new CronJob('0 0 */1 * * *', function() {
+    console.log("Checking for new matches: ",new Date(Date.now()));
+    knex('fake_accounts').select('*').then(function(data) {
+      return data[0];
+    })
+    .then(function(fk_account) {
+      var tc = new TinderClient(fkAccount);
+      try {
+        tc.getRecommendations(10,function(err,data) {
+          if(parseInt(data.status,10) > 399) {
+            switch(parseInt(data.status)) {
+              case 401:
+                console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
+                break;
+
+              default:
+                console.error('Something went wrong, check the status code', data);
+            }
+          } else {
+            console.log("LIKING MORE PEOPLE", data);
+            data.results.forEach(function(el) {
+              tc.like(el._id, function(err, data) {
+                if(err) console.log(err);
+              })
+            })
+          }
+        })
+      } catch(err) {
+        console.log("Authorization failed: ",err);
+      }
+
+    })
+  }, null, true, 'America/New_York');
 
   new CronJob('5 */2 * * * *', function() {
     console.log("LOGGING new cron to check updates: ", new Date(Date.now()))
@@ -70,7 +103,7 @@ function CronExecutables(io) {
         } else {
           console.log("GETTING UPDATES", data);
 
-          saveNewMaches(data,fk_account);
+          saveNewMaches(data.matches,fk_account);
           saveNewMessages(data);
           checkBlocks(data);
         }
@@ -100,7 +133,7 @@ function CronExecutables(io) {
   }
 
   function saveNewMaches(myNewMatches,fakeAccount) {
-    myNewMatches.matches.forEach(function(match) {
+    myNewMatches.forEach(function(match) {
       try {
         var insertionTarget = Target(match,fakeAccount)
         knex('targets').returning(['id','tinder_id']).insert(insertionTarget)
