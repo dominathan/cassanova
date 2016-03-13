@@ -54,7 +54,7 @@ function CronExecutables(io) {
       return data[0];
     })
     .then(function(fk_account) {
-      var tc = new TinderClient(fkAccount);
+      var tc = new TinderClient(fk_account);
       try {
         tc.getRecommendations(10,function(err,data) {
           if(parseInt(data.status,10) > 399) {
