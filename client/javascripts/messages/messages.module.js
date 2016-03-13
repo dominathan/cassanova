@@ -1,5 +1,5 @@
 var angular = require('angular');
-var angularRoute = require('angular-route');
+require('angular-route');
 require('angular-flash-alert');
 
 angular.module('messages',[

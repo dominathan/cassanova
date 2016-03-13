@@ -12,11 +12,9 @@ var config =  {
     loaders: [
       {
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015']
-        }
+        loader: 'ng-annotate!babel?presets=es2015'
       }, {
+        exclude: /(node_modules|bower_components)/,
         test: /\.css$|\.scss$/, // Only .css files
         loader: 'style!css!sass' // Run both loaders
       }, {

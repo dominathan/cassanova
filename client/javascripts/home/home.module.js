@@ -1,5 +1,5 @@
 var angular = require('angular');
-var angularRoute = require('angular-route');
+require('angular-route');
 require('./home.controller');
 require('angular-bootstrap-npm');
 require('angular-flash-alert');

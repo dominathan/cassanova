@@ -27,7 +27,7 @@ require('../responses/responses.service');
         SocketService.on('new:conversation',function(convo) {
           if(convo.convos.received) {
             var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
-            var id = Flash.create('success',message,0,{},true);
+            Flash.create('success',message,0,{},true);
           }
         })
 
@@ -40,7 +40,7 @@ require('../responses/responses.service');
                                     total_votes: null
                                   }];
             } else {
-              var responsesWithTotalVotes = totalVotes(data.data);
+              totalVotes(data.data);
               $scope.responses = data.data;
             }
           });
