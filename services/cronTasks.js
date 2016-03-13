@@ -91,7 +91,7 @@ function CronExecutables(io) {
       try {
         var tc = new TinderClient(fk_account);
         tc.getUpdates(function(err,data) {
-          if(err) console.error(Error("unable to reach tinder", err));
+          if(err) console.error("unable to reach tinder", err);
           if(parseInt(data.status,10) > 399) {
             switch(parseInt(data.status)) {
               case 401:
