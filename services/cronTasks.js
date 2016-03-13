@@ -93,21 +93,23 @@ function CronExecutables(io) {
         tc.getUpdates(function(err,data) {
           if(err) console.error("unable to reach tinder", err);
           console.log('return from updates', data);
-          if(parseInt(data.status,10) > 399) {
-            switch(parseInt(data.status)) {
-              case 401:
-                console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
-                break;
+          if(data) {
+            if(parseInt(data.status,10) > 399) {
+              switch(parseInt(data.status)) {
+                case 401:
+                  console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
+                  break;
 
-              default:
-                console.error('Something went wrong, check the status code', data);
+                default:
+                  console.error('Something went wrong, check the status code', data);
+              }
+            } else {
+              console.log("GETTING UPDATES", data);
+
+              saveNewMaches(data.matches,fk_account);
+              saveNewMessages(data);
+              checkBlocks(data);
             }
-          } else {
-            console.log("GETTING UPDATES", data);
-
-            saveNewMaches(data.matches,fk_account);
-            saveNewMessages(data);
-            checkBlocks(data);
           }
         })
 
