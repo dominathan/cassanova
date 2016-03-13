@@ -26,9 +26,14 @@
         });
       };
 
+      function removeListenerSocket() {
+        socket.removeListener();
+      }
+
       return {
         on: on,
-        emit: emit
+        emit: emit,
+        removeListenerSocket
       };
     });
 

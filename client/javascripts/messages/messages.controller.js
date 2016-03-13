@@ -85,14 +85,17 @@ require('../responses/responses.service');
           SocketService.emit('new:vote', voteObj);
         }
 
+        $scope.$on('$destroy', function() {
+          SocketService.removeListenerSocket();
+        });
+
         SocketService.on('new:vote',function(resp) {
-          var additionalVotes = resp[0].up;
-            $scope.responses.forEach(function(el) {
-              if(el.id === resp[0].response_id) {
-                el.total_votes = parseInt(el.total_votes);
-                el.total_votes += additionalVotes;
-              }
-            });
+          var filteredVotes = [...new Set(resp)]
+          var additionalVotes = filteredVotes[0].up;
+          var responseToIncrement = $scope.responses.find(function(el) {
+            return el.id === filteredVotes[0].response_id
+          });
+          responseToIncrement.total_votes += additionalVotes;
         })
 
         SocketService.on('new:conversation', function(data) {
