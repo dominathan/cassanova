@@ -88,26 +88,32 @@ function CronExecutables(io) {
       return data[0];
     })
     .then(function(fk_account) {
-      var tc = new TinderClient(fk_account);
-      tc.getUpdates(function(err,data) {
-        if(err) throw new Error("unable to reach tinder", err);
-        if(parseInt(data.status,10) > 399) {
-          switch(parseInt(data.status)) {
-            case 401:
-              console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
-              break;
+      try {
+        var tc = new TinderClient(fk_account);
+        tc.getUpdates(function(err,data) {
+          if(err) throw new Error("unable to reach tinder", err);
+          if(parseInt(data.status,10) > 399) {
+            switch(parseInt(data.status)) {
+              case 401:
+                console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
+                break;
 
-            default:
-              console.error('Something went wrong, check the status code', data);
+              default:
+                console.error('Something went wrong, check the status code', data);
+            }
+          } else {
+            console.log("GETTING UPDATES", data);
+
+            saveNewMaches(data.matches,fk_account);
+            saveNewMessages(data);
+            checkBlocks(data);
           }
-        } else {
-          console.log("GETTING UPDATES", data);
+        })
 
-          saveNewMaches(data.matches,fk_account);
-          saveNewMessages(data);
-          checkBlocks(data);
-        }
-      })
+      } catch(err) {
+        console.error('Catch error on update check', err);
+      }
+
     })
   },null,true,'America/New_York')
 
