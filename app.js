@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var newRelic = require('newrelic');
 
 var CronExecutables = require('./services/cronTasks');
 var facebookInfo = require('./services/facebook-login');
