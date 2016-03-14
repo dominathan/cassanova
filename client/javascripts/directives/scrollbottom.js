@@ -11,7 +11,7 @@
           scope.$watch('$last', function() {
             setTimeout(function() {
               element[0].scrollTop = element[0].scrollHeight;
-            },250)
+            },1000)
           })
         }
 
