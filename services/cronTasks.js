@@ -25,7 +25,6 @@ function CronExecutables(io) {
      .then(function(tcOptions) {
        var tc = new TinderClient(tcOptions)
        responsesToSend.then(function(data) {
-         console.log("THIS WORKS?: ", data);
          if(tc.isAuthorized() && data.length > 0) {
            data.forEach(function(msg) {
             tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
@@ -38,7 +37,6 @@ function CronExecutables(io) {
                   received: false,
                   sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
                 }
-                // io.emit('new:conversation', {convos: messageToEmit, time: new Date()});
               };
             })
           })
@@ -92,7 +90,6 @@ function CronExecutables(io) {
         var tc = new TinderClient(fk_account);
         tc.getUpdates(function(err,data) {
           if(err) console.error("unable to reach tinder", err);
-          console.log('return from updates', data);
           if(data) {
             if(parseInt(data.status,10) > 399) {
               switch(parseInt(data.status)) {

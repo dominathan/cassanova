@@ -186,7 +186,6 @@ function TinderClient(options) {
             .update({tinder_authentication_token: xAuthToken})
             .returning('*')
             .then(function(test) {
-              console.log(test);
             })
             if(callback) {
               callback(error, res, body);
