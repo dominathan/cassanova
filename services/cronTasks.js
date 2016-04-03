@@ -14,6 +14,27 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
+
+  function mostRecentFirst() {
+    return new Promise(function(resolve,reject) {
+      knex('conversations')
+        .select('*')
+        .where('received',true)
+        .orderBy('sent_date','desc')
+        .then(function(sortedByMsgSentDate) {
+          return _.uniq(sortedByMsgSentDate,function(chat) {
+            return chat.target_id;
+          })
+        })
+        .then(function(uniqAndSorted) {
+          resolve(uniqAndSorted);
+        })
+        .catch(err) {
+          reject(err);
+        }
+    })
+  }
+
   new CronJob('58 9,19,29,39,49,59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
@@ -102,18 +123,15 @@ function CronExecutables(io) {
               }
             } else {
               console.log("GETTING UPDATES", data);
-
               saveNewMaches(data.matches,fk_account);
               saveNewMessages(data);
               checkBlocks(data);
             }
           }
         })
-
       } catch(err) {
         console.error('Catch error on update check', err);
       }
-
     })
   },null,true,'America/New_York')
 
