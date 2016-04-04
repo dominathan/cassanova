@@ -22,7 +22,7 @@
     </section>
 
     <section class="matches">
-      
+
     </section>
     <footer class='back-to-home no-show'>
       <button type="button" class='btn btn-lg' name="button"><a href="/#/">Back to Matches</a></button>
@@ -56,6 +56,18 @@
           <input type="submit" class='btn btn-success' name="submit" value="Submit" id="submit" ng-click="submitResponse(newResponse)">
       </form>
   </div>
+</div>
+
+<div class="third-column">
+  <h2 class="text-center">Most Recent</h2>
+  <ul class='list-group' ng-show="mostRecentConvos">
+    <li class='list-group-item' ng-repeat="recent in mostRecentConvos">
+      <img ng-src="{{recent.photo_url}}" alt="" />
+      <a href="/#/account/{{recent.fake_account_id}}/match/{{recent.target_id}}/messages">{{recent.name}}</a>
+      <br>
+      <span> New Message: <span am-time-ago="recent.sent_date"></span></span>
+    </li>
+  </ul>
 </div>
 
 <!-- </div> -->

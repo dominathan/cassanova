@@ -11,8 +11,14 @@
         return $http.get(url);
       }
 
+      var getMostRecent = function() {
+        var url = '/api/fake_accounts/getMostRecentConvos'
+        return $http.get(url);
+      }
+
       return {
-        getMessages: getMessages
+        getMessages: getMessages,
+        getMostRecent: getMostRecent
       }
     })
 })();

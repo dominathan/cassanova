@@ -3,11 +3,13 @@ require('angular-route');
 require('./home.controller');
 require('angular-bootstrap-npm');
 require('angular-flash-alert');
+require('angular-moment');
 
 angular.module('home',[
   'ngRoute',
   'ui.bootstrap',
-  'ngFlash'
+  'ngFlash',
+  'angularMoment'
 ])
 .config(function($routeProvider) {
   $routeProvider
@@ -15,4 +17,4 @@ angular.module('home',[
         template: require('./views/home-view.html'),
         controller: 'HomeController'
       })
-  });
+});

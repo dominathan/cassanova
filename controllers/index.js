@@ -34,6 +34,24 @@ router.get('/:id/targets', function(req,res,next) {
   })
 });
 
+router.get('/getMostRecentConvos', function(req,res,next) {
+  knex('conversations')
+    .select('*')
+    .where('received',true)
+    .orderBy('sent_date','desc')
+    .join('photos','conversations.target_id','photos.target_id')
+    .join('targets','targets.id','conversations.target_id')
+    .then(function(sortedByMsgSentDate) {
+      return _.uniq(sortedByMsgSentDate,function(chat) {
+        return chat.target_id;
+      })
+    })
+    .then(function(uniqAndSorted) {
+      console.log("the fuck", uniqAndSorted);
+      res.json(uniqAndSorted).status(302);
+    })
+})
+
 /*
  * Get all converstions of targets
  */

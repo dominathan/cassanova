@@ -12,6 +12,7 @@
     "angular": "^1.4.8",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-flash-alert": "^2.2.4",
+    "angular-moment": "^0.10.3",
     "angular-route": "^1.4.8",
     "body-parser": "~1.13.2",
     "bookshelf": "^0.9.1",

@@ -14,13 +14,14 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
-
   function mostRecentFirst() {
     return new Promise(function(resolve,reject) {
       knex('conversations')
         .select('*')
         .where('received',true)
         .orderBy('sent_date','desc')
+        .join('photos','conversations.target_id','photos.target_id')
+        .join('targets','targets.id','conversations.target_id')
         .then(function(sortedByMsgSentDate) {
           return _.uniq(sortedByMsgSentDate,function(chat) {
             return chat.target_id;
@@ -29,9 +30,6 @@ function CronExecutables(io) {
         .then(function(uniqAndSorted) {
           resolve(uniqAndSorted);
         })
-        .catch(err) {
-          reject(err);
-        }
     })
   }
 
@@ -133,6 +131,11 @@ function CronExecutables(io) {
         console.error('Catch error on update check', err);
       }
     })
+
+    mostRecentFirst()
+    .then(function(data) {
+      io.emit('new:most-recent', data);
+    });
   },null,true,'America/New_York')
 
   function sumTopResponses() {

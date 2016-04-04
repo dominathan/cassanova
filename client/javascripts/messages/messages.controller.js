@@ -18,6 +18,11 @@ require('../responses/responses.service');
         $scope.responses = [];
         var targetId = $routeParams.match_id;
 
+        MessageServices.getMostRecent()
+        .then(function(mostRecent) {
+          $scope.mostRecentConvos = mostRecent.data;
+        });
+
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           $scope.messages = messages.data.conversations;
@@ -29,6 +34,10 @@ require('../responses/responses.service');
             var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
             Flash.create('success',message,0,{},true);
           }
+        })
+
+        SocketService.on('new:most-recent', function(mostRecent) {
+          $scope.mostRecentConvos = mostRecent;
         })
 
         ResponseService.getResponses(null,targetId)
