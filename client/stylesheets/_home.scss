@@ -32,6 +32,9 @@ div .match-panel {
     width: 50%;
     border-radius: 100px;
     margin-top: 3%;
+    &:hover {
+      box-shadow: 0 8px 17px rgba(0, 0, 0, 0.5);
+    }
   }
 }
 .match-info {
