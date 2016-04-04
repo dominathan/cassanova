@@ -44,7 +44,7 @@ require('../responses/responses.service');
           .then(function(data) {
             if (data.data.length === 0) {
               $scope.responses = [{
-                                    response_text: "Be the first to start a conversation",
+                                    response_text: "Help me get a date!",
                                     conversation_id: null,
                                     total_votes: null
                                   }];
