@@ -115,13 +115,21 @@ require('../responses/responses.service');
         })
 
         $scope.showIphone = function() {
-          document.getElementsByClassName('first-column')[0].style.display = 'block';
-          document.getElementsByClassName('second-column')[0].style.display = 'none';;
+          document.getElementsByClassName('first-column')[0].style.display = 'inline-block';
+          document.getElementsByClassName('second-column')[0].style.display = 'none';
+          document.getElementsByClassName('third-column')[0].style.display = 'none';
         };
 
         $scope.showChats = function() {
-          document.getElementsByClassName('first-column')[0].style.display = 'none';;
-          document.getElementsByClassName('second-column')[0].style.display = 'block';
+          document.getElementsByClassName('first-column')[0].style.display = 'none';
+          document.getElementsByClassName('second-column')[0].style.display = 'inline-block';
+          document.getElementsByClassName('third-column')[0].style.display = 'none';
+        }
+
+        $scope.showRecent = function() {
+          document.getElementsByClassName('first-column')[0].style.display = 'none';
+          document.getElementsByClassName('second-column')[0].style.display = 'none';
+          document.getElementsByClassName('third-column')[0].style.display = 'inline-block';
         }
         /*
          * UTILITY FUNCTIONS

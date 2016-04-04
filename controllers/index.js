@@ -47,7 +47,6 @@ router.get('/getMostRecentConvos', function(req,res,next) {
       })
     })
     .then(function(uniqAndSorted) {
-      console.log("the fuck", uniqAndSorted);
       res.json(uniqAndSorted).status(302);
     })
 })

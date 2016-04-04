@@ -4,6 +4,7 @@
     <ul>
       <li><a href="" ng-click="showIphone()">Actual</a></li>
       <li><a href="" ng-click="showChats()">Suggested</a></li>
+      <li class="no-show"><a href="" ng-click="showRecent()">Recent</a></li>
     </ul>
   </navbar>
 
@@ -62,12 +63,15 @@
   <h2 class="text-center">Most Recent</h2>
   <ul class='list-group' ng-show="mostRecentConvos">
     <li class='list-group-item' ng-repeat="recent in mostRecentConvos">
-      <img ng-src="{{recent.photo_url}}" alt="" />
-      <a href="/#/account/{{recent.fake_account_id}}/match/{{recent.target_id}}/messages">{{recent.name}}</a>
-      <br>
-      <span> New Message: <span am-time-ago="recent.sent_date"></span></span>
+      <div class="">
+        <img ng-src="{{recent.photo_url}}" alt="" />
+      </div>
+      <div class="">
+        <a href="/#/account/{{recent.fake_account_id}}/match/{{recent.target_id}}/messages">{{recent.name}}</a>
+        <br>
+        <span> {{recent.sent_date | amTimeAgo}} </span>
+      </div>
     </li>
   </ul>
 </div>
-
 <!-- </div> -->

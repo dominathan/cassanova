@@ -19,5 +19,3 @@ require('../directives/click-once');
 require('../directives/timer');
 require('../responses/responses.controller')
 require('./messages.controller');
-require('../mostRecentMessages/mostRecent.controller');
-require('../mostRecentMessages/mostRecent.service');

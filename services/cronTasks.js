@@ -14,25 +14,6 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
-  function mostRecentFirst() {
-    return new Promise(function(resolve,reject) {
-      knex('conversations')
-        .select('*')
-        .where('received',true)
-        .orderBy('sent_date','desc')
-        .join('photos','conversations.target_id','photos.target_id')
-        .join('targets','targets.id','conversations.target_id')
-        .then(function(sortedByMsgSentDate) {
-          return _.uniq(sortedByMsgSentDate,function(chat) {
-            return chat.target_id;
-          })
-        })
-        .then(function(uniqAndSorted) {
-          resolve(uniqAndSorted);
-        })
-    })
-  }
-
   new CronJob('58 9,19,29,39,49,59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
@@ -120,7 +101,6 @@ function CronExecutables(io) {
                   console.error('Something went wrong, check the status code', data);
               }
             } else {
-              console.log("GETTING UPDATES", data);
               saveNewMaches(data.matches,fk_account);
               saveNewMessages(data);
               checkBlocks(data);
@@ -137,6 +117,25 @@ function CronExecutables(io) {
       io.emit('new:most-recent', data);
     });
   },null,true,'America/New_York')
+
+  function mostRecentFirst() {
+    return new Promise(function(resolve,reject) {
+      knex('conversations')
+        .select('*')
+        .where('received',true)
+        .orderBy('sent_date','desc')
+        .join('photos','conversations.target_id','photos.target_id')
+        .join('targets','targets.id','conversations.target_id')
+        .then(function(sortedByMsgSentDate) {
+          return _.uniq(sortedByMsgSentDate,function(chat) {
+            return chat.target_id;
+          })
+        })
+        .then(function(uniqAndSorted) {
+          resolve(uniqAndSorted);
+        })
+    })
+  }
 
   function sumTopResponses() {
     return new Promise(function(resolve, reject) {
@@ -232,7 +231,6 @@ function CronExecutables(io) {
                     io.emit('new:conversation', {convos: convoSave, time: new Date()});
                     try {
                       knex('conversations').insert(convoSave).then(function(data) {
-                        console.log('saving convo', data);
                       })
                     } catch(err) {
                       console.error("Probably unique key constraint", err);
