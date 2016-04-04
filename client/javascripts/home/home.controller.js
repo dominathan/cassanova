@@ -1,20 +1,17 @@
 require('./home.service');
-
+require('./modalInstance.controller');
 (function() {
   'use strict'
-
   angular
     .module('cassanova')
-    .controller('HomeController', [
-      '$scope',
-      'HomeServices',
-      'Flash',
-      'SocketService',
-      function ($scope,HomeServices,Flash,SocketService) {
+    .controller('HomeController',
+      function ($scope,HomeServices,Flash,SocketService,$uibModal, $q) {
         $scope.currentPage = 1;
         $scope.numPerPage = 9;
         $scope.targets = [];
         $scope.maxSize = 3;
+        $scope.animationsEnabled = true;
+
 
         SocketService.on('new:conversation',function(convo) {
           if(convo.convos.received) {
@@ -25,7 +22,6 @@ require('./home.service');
 
         HomeServices.getTargets()
         .then(function(data) {
-
           data.data.forEach(function(el) {
             el.age = calculateAge(el.birth_date);
           })
@@ -45,5 +41,39 @@ require('./home.service');
           return Math.abs(ageDate.getUTCFullYear() - 1970);
         }
 
-    }])
+        $scope.open = function (size,target_id,name) {
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            template: `<div class="modal-header">
+                           <h3 class="modal-title">Photos for ${name}</h3>
+                       </div>
+                       <div class="modal-body">
+                           <ul>
+                             <li ng-repeat="photo in photos">
+                               <img ng-src="{{photo.photo_url}}" alt="" />
+                             </li>
+                           </ul>
+
+                       </div>
+                       <div class="modal-footer">
+                           <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                           </div>`,
+            size: size,
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+              photos: function () {
+                var $defer = $q.defer();
+                HomeServices.getPhotos(target_id)
+                  .then(function(data) {
+                    $scope.photos = data.data;
+                    $defer.resolve(data.data);
+                });
+                return $defer.promise;
+              }
+            }
+          });
+        };
+
+
+    })
 })();

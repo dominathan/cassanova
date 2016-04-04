@@ -1,0 +1,22 @@
+.modal-header {
+  text-align: center;
+  font: Arial;
+  background-color: $primaryColor;
+  color: #FFF;
+}
+
+.modal-body {
+  li {
+    width: 30%;
+    display: inline-block;
+    text-decoration: none;
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+}
+
+.modal-footer {
+  background-color: $primaryColor;
+}

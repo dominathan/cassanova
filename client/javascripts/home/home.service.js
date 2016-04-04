@@ -1,3 +1,4 @@
+
 (function() {
   'use strict';
 
@@ -10,8 +11,14 @@
         return $http.get(url);
       }
 
+      var getPhotos = function(tinder_id) {
+        var url = "/api/fake_accounts/photos/target_id/" + tinder_id;
+        return $http.get(url);
+      }
+
       return {
-        getTargets: getTargets
+        getTargets: getTargets,
+        getPhotos: getPhotos
       }
 
     })

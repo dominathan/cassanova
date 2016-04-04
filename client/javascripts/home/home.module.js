@@ -4,12 +4,13 @@ require('./home.controller');
 require('angular-bootstrap-npm');
 require('angular-flash-alert');
 require('angular-moment');
+require('angular-ui-bootstrap');
 
 angular.module('home',[
   'ngRoute',
-  'ui.bootstrap',
   'ngFlash',
-  'angularMoment'
+  'angularMoment',
+  'ui.bootstrap'
 ])
 .config(function($routeProvider) {
   $routeProvider

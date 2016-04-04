@@ -14,6 +14,8 @@ router.get('/fake_accounts', function(req,res,next) {
   })
 });
 
+
+
 /*
  * Get targets of specific fake_account
  * Currently, the first (and only) Fake Account is returned
@@ -86,6 +88,13 @@ router.post('/responses/:response_id/votes', function(req,res,next) {
   knex('votes')
     .insert(req.body.vote)
     .returning('*')
+    .then(function(data) {
+      res.json(data).status(302);
+    })
+})
+
+router.get('/photos/target_id/:tinder_id',function(req,res,next) {
+  knex('photos').where('target_id',req.params.tinder_id)
     .then(function(data) {
       res.json(data).status(302);
     })

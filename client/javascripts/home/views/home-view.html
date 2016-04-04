@@ -1,19 +1,27 @@
 <div class="container" >
    <flash-message duration="5000" show-close="true"></flash-message>
-    <pagination
+
+    <!-- <pagination
       ng-model="currentPage"
       total-items="targets.length"
       max-size="maxSize"
       boundary-links="true">
-    </pagination>
+    </pagination> -->
+      <uib-pagination
+        total-items="targets.length"
+        ng-model="currentPage"
+        max-size="maxSize"
+        class="pagination-sm"
+        boundary-link-numbers="true">
+      </uib-pagination>
 
     <div ng-repeat="target in filteredTargets" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
-        <div class="panel panel-primary match-panel" data-id='{{ target.target_id }}' data-fake-account-id='{{target.fake_account_id}}'>
+        <div class="panel panel-primary match-panel" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>
             <h3 class="">
                 {{ target.name }}
             </h3>
             <div class="match-photo">
-                <img ng-src="{{ target.photo_url }}" alt="{{ target.name}}">
+                <img ng-src="{{ target.photo_url }}" alt="{{ target.name}}" ng-click="open('lg',target.id, target.name)">
             </div>
             <div class="match-info">
               <h4>{{ target.gender == 1 ? "Female" : "Male" }} | {{ target.age }}</h4>
