@@ -1,21 +1,20 @@
-header {
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  background-color: $primaryColor;
-  padding: 0.4% 0;
-  display: block;
-  h1 {
-    color: white;
-    font-weight: 100;
+nav {
+  .container-fluid {
+    background-color: $primaryColor;
+  }
+  .navbar-brand {
+    font-size: 2em;
+    font-weight: 800;
     letter-spacing: 1px;
     font-family: 'Arial','georgia','san serif';
     display: inline-block;
     margin: 5px 0;
-    font-weight: 100;
     span {
       font-weight: 100;
     }
+  }
+  #title {
+    color: #fff;
   }
   a {
     float: left;
@@ -26,5 +25,8 @@ header {
       color: white;
     }
   }
+}
 
+.navbar-default .navbar-nav>li>a {
+  color: #FFF;
 }

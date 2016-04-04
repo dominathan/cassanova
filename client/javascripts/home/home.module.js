@@ -17,4 +17,7 @@ angular.module('home',[
         template: require('./views/home-view.html'),
         controller: 'HomeController'
       })
+      .when('/faq', {
+        template: require('./views/faq.html')
+      })
 });
