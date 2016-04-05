@@ -4,15 +4,15 @@ angular
   .module('cassanova')
   .directive('timer', function(TimerService,$interval) {
     return {
-      restrict: 'A',
+      restrict: 'AE',
       scope: {
         seconds: '@'
       },
-      link: function(scope, element) {
-        var timeLeft = parseInt(scope.seconds,10);
+      link: function($scope, element) {
+        var timeLeft = parseInt($scope.seconds,10);
         $interval(function() {
           if(timeLeft < 1) {
-            timeLeft = 0;
+            timeLeft = 600;
           } else {
             timeLeft -= 1;
           }

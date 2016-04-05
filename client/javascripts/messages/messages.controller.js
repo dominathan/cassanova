@@ -37,11 +37,15 @@ require('../responses/responses.service');
             var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
             Flash.create('success',message,0,{},true);
           }
-        })
+        });
+
+        SocketService.on('responses:clear-old', function(timestamp) {
+          $scope.responses = [];
+        });
 
         SocketService.on('new:most-recent', function(mostRecent) {
           $scope.mostRecentConvos = mostRecent;
-        })
+        });
 
         ResponseService.getResponses(null,targetId)
           .then(function(data) {

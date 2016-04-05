@@ -14,6 +14,10 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
+  new CronJob('0 0,10,20,30,40,50 * * * *', function() {
+    io.emit('responses:clear-old', {});
+  },null,true,'America/New_York');
+
   new CronJob('58 9,19,29,39,49,59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
@@ -30,14 +34,7 @@ function CronExecutables(io) {
             tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
               if(err) {
                 throw err
-              } else {
-                var messageToEmit = {
-                  target_id: msg.id,
-                  message: msg.response_text,
-                  received: false,
-                  sent_date: new Date().toISOString().slice(0, 19).replace('T', ' ')
-                }
-              };
+              }
             })
           })
         }
@@ -80,8 +77,9 @@ function CronExecutables(io) {
     })
   }, null, true, 'America/New_York');
 
-  new CronJob('5 */2 * * * *', function() {
+  new CronJob('2 */2 * * * *', function() {
     console.log("LOGGING new cron to check updates: ", new Date(Date.now()))
+    io.emit('time:update', {time: new Date()});
     knex('fake_accounts').select('*').then(function(data) {
       return data[0];
     })
