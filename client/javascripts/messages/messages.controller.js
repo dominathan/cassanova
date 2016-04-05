@@ -26,7 +26,7 @@ require('../responses/responses.service');
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           messages.data.conversations.forEach(function(el){
-             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"THIS IS A PHONE NUMBER")
+             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"NOJE JOSE")
           })
           $scope.messages = messages.data.conversations;
           $scope.secondsLeftToSend = secondsLeft(messages.data.time);
