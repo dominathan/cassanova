@@ -22,6 +22,19 @@
     background-color: #FFF;
     overflow: scroll;
   }
+  .match-name {
+    text-align: center;
+    background-color: #fff;
+    font-weight: 400;
+    font-size: 1.5em;
+    width: 322px;
+    height: 37px;
+    border-bottom: 1px solid grey;
+    position: absolute;
+    top: 160px;
+    left: 31px;
+    z-index: 1;
+  }
 }
 
 

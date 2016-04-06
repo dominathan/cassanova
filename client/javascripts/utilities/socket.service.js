@@ -33,7 +33,7 @@
       return {
         on: on,
         emit: emit,
-        removeListenerSocket
+        removeListenerSocket: removeListenerSocket
       };
     });
 

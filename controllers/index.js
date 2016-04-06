@@ -59,13 +59,10 @@ router.get('/getMostRecentConvos', function(req,res,next) {
  */
 
 router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
-  knex.select('*')
-      .from('conversations')
-      .where('target_id',req.params.target_id)
-      .orderBy('sent_date')
-      .then(function(convos) {
-        res.json({conversations: convos, time: new Date()}).status(302);
-      });
+  knex.raw(`SELECT tg.name, convo.target_id, convo.id, convo.sent_date, convo.received, convo.tinder_id, convo.fake_account_id, convo.message FROM targets AS tg LEFT JOIN conversations as convo ON tg.id = convo.target_id WHERE convo.target_id = ${req.params.target_id} AND tg.id = ${req.params.target_id} ORDER BY convo.sent_date`)
+    .then(function(convos) {
+      res.json({conversations: convos.rows, time: new Date()}).status(302);
+    });
 });
 
 router.get('/targets/:target_id/responses/:conversation_id', function(req,res,next) {

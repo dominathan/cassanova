@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev-start": "node ./bin/www & node_modules/.bin/webpack -w",
+    "dev-start": "nodemon ./bin/www & node_modules/.bin/webpack -w",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "build": "NODE_ENV=production node node_modules/.bin/webpack"

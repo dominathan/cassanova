@@ -43,6 +43,10 @@
 }
 
 @media (min-width: 761px) and (max-width: 1024px) {
+  .navbar {
+    margin-bottom: 0;
+  }
+
   navbar.tool-bar {
     display: block;
     width: 100%;
@@ -69,8 +73,12 @@
   }
   .iphone-container {
     img {
-      top: 120px;
+      top: 160px;
       left: 10%;
+    }
+    .match-name {
+      top: 210px;
+      left: 13%;
     }
     .iphone-background {
       top: 210px;
@@ -159,6 +167,9 @@
     img {
       display: none;
     }
+    .match-name {
+      display: none;
+    }
     .iphone-background {
       background-color: gainsboro;
       top: 55px;
@@ -189,4 +200,5 @@
   .container ul.pagination {
     padding-left: 0;
   }
+
 }
