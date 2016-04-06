@@ -14,11 +14,11 @@ var _ = require('lodash');
 
 
 function CronExecutables(io) {
-  new CronJob('0 0,10,20,30,40,50 * * * *', function() {
+  new CronJob('0 0,5,10,15,20,25,30,35,40,45,50,55 * * * *', function() {
     io.emit('responses:clear-old', {});
   },null,true,'America/New_York');
 
-  new CronJob('58 9,19,29,39,49,59 * * * *', function() {
+  new CronJob('58 4,9,14,19,24,29,34,39,44,49,54,59 * * * *', function() {
     console.log("TIME STAMP", new Date(Date.now()));
     var responsesToSend = sumTopResponses();
     knex('fake_accounts')

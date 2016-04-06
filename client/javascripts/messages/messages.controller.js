@@ -32,7 +32,7 @@ require('../responses/responses.service');
             $scope.match = messages.data.conversations[0].name
           }
           $scope.messages = messages.data.conversations;
-          $scope.secondsLeftToSend = secondsLeft(messages.data.time);
+          $scope.secondsLeftToSend = secondsLeft(messages.data.time,5);
         });
 
         SocketService.on('new:conversation',function(convo) {
@@ -122,7 +122,7 @@ require('../responses/responses.service');
           if(data.convos.target_id === parseInt(targetId)) {
             $scope.messages.push(data.convos);
           }
-          $scope.secondsLeftToSend = secondsLeft(data.time);
+          $scope.secondsLeftToSend = secondsLeft(data.time,5);
         })
 
         $scope.showIphone = function() {
@@ -161,14 +161,14 @@ require('../responses/responses.service');
           });
         };
 
-        function secondsLeft(time) {
+        function secondsLeft(time,offset) {
           var time = new Date(time);
           if(time.getSeconds() !== 0) {
-            var min = (10 - time.getMinutes() % 10 - 1) * 60;
+            var min = (offset - time.getMinutes() % offset - 1) * 60;
             var seconds = 60 - time.getSeconds();
             var secondsUntil = min + seconds;
           } else {
-            var secondsUntil = (10 - time.getMinutes() % 10) * 60;
+            var secondsUntil = (offset - time.getMinutes() % offset) * 60;
           }
           return secondsUntil;
         };

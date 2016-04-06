@@ -12,7 +12,7 @@ angular
         var timeLeft = parseInt($scope.seconds,10);
         $interval(function() {
           if(timeLeft < 1) {
-            timeLeft = 600;
+            timeLeft = 300;
           } else {
             timeLeft -= 1;
           }
