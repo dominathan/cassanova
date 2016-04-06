@@ -12,7 +12,6 @@ require('./modalInstance.controller');
         $scope.maxSize = 3;
         $scope.animationsEnabled = true;
 
-
         SocketService.on('new:conversation',function(convo) {
           if(convo.convos.received) {
             var message = "<strong> New Message! </strong><a href='/#/account/" + convo.convos.fake_account_id + "/match/" + convo.convos.target_id + "/messages" + "'>Click to view and respond!</a>"
@@ -25,7 +24,10 @@ require('./modalInstance.controller');
           data.data.forEach(function(el) {
             el.age = calculateAge(el.birth_date);
           })
-          $scope.targets = data.data;
+          var females = data.data.filter(function(el) {
+            return el.gender === '1';
+          });
+          $scope.targets = females;
           $scope.$watch('currentPage + numPerPage', function() {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
             var end = begin + $scope.numPerPage;

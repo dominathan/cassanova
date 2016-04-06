@@ -14,8 +14,6 @@ router.get('/fake_accounts', function(req,res,next) {
   })
 });
 
-
-
 /*
  * Get targets of specific fake_account
  * Currently, the first (and only) Fake Account is returned
