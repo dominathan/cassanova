@@ -77,7 +77,7 @@ function CronExecutables(io) {
     })
   }, null, true, 'America/New_York');
 
-  new CronJob('2 */2 * * * *', function() {
+  new CronJob('2 */1 * * * *', function() {
     console.log("LOGGING new cron to check updates: ", new Date(Date.now()))
     io.emit('time:update', {time: new Date()});
     knex('fake_accounts').select('*').then(function(data) {
