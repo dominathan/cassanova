@@ -8,22 +8,39 @@ var Conversation = require('./models/conversations');
 var Photo = require('./models/photos');
 
 (function() {
-  knex('fake_accounts').select('*').then(function(data) {
-    var tc = new TinderClient(data[0]);
-    var fk = data[0]
-
-    tc.getHistory(function(err,data) {
-      if(err) return err;
-      saveNewMaches(data,fk);
-      saveNewMessages(data);
-    })
+  var args = process.argv.slice(2)
+  var options = {facebook_authentication_token: args[0], facebook_user_id: args[1]};
+  var tc = new TinderClient(options);
+  var fk = {id: null}
+  tc.authorize(tc.fbKey,tc.fbId, function(err,data,body) {
+    if(err) return err;
+    tc.getProfile(function(err,newData) {
+      console.log('WORK?', newData._id)
+      knex('fake_accounts')
+      .insert({
+        facebook_authentication_token: tc.fbKey,
+        facebook_user_id: tc.fbId,
+        name: newData.name,
+        bio: newData.bio,
+        tinder_id: newData._id
+      }).returning('*').then(function(data) {
+        fk.id = data[0].id
+        tc.getHistory(function(err,histData) {
+          console.log('THIS NO WORKY?', histData);
+          if(err) return err;
+          saveNewMatches(histData,fk);
+          saveNewMessages(histData);
+        });
+      })
+    });
   })
-})()
+})();
 
-function saveNewMaches(myNewMatches,fakeAccount) {
+function saveNewMatches(myNewMatches,fakeAccount) {
   myNewMatches.matches.forEach(function(match) {
     try {
       var insertionTarget = Target(match,fakeAccount)
+      console.log('damn', insertionTarget);
       knex('targets').returning(['id','tinder_id']).insert(insertionTarget)
        .then(function(targetId) {
           var targetId = {id: targetId[0].id, tinder_id: targetId[0].tinder_id};
@@ -44,24 +61,6 @@ function saveNewMaches(myNewMatches,fakeAccount) {
       console.error('Could not save, probably unique key constraint', err)
     }
   });
-}
-
-function newMatches(newMatches) {
-  return new Promise(function(resolve,reject) {
-    knex('targets')
-    .select('*')
-    .then(function(targets) {
-      return targets
-    })
-    .then(function(targets) {
-      var oldIds = targets.map(function(target) { return target.match_id });
-      var newMatches = newMatches.matches.filter(function(newMatch) {
-        return oldIds.indexOf(newMatch._id) === -1
-      })
-      resolve(newMatches);
-    })
-
-  })
 }
 
 function checkBlocks(update) {
@@ -89,8 +88,6 @@ function saveNewMessages(updates) {
                     id: data[0].fake_account_id
                   }
                   var convoSave = Conversation(msg,fakeAcc,data[0])
-
-                  // io.emit('new:conversation', {convos: convoSave, time: new Date()});
                   try {
                     knex('conversations').insert(convoSave).then(function(data) {
                       console.log('saving convo', data);

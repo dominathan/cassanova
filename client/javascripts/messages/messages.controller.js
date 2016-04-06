@@ -26,7 +26,7 @@ require('../responses/responses.service');
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           messages.data.conversations.forEach(function(el){
-             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}");
+             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED");
           })
           if(messages.data.conversations[0] && messages.data.conversations[0].name) {
             $scope.match = messages.data.conversations[0].name

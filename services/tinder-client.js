@@ -176,7 +176,7 @@ function TinderClient(options) {
         facebook_id: fbId
       },
       function(error, res, body) {
-        if (!error && body) {
+        if (!error && body && body.user) {
           xAuthToken = body.token;
           _this.token = body.token;
           _this.userId = body.user._id;
@@ -185,13 +185,15 @@ function TinderClient(options) {
             .where('facebook_user_id',_this.fbId)
             .update({tinder_authentication_token: xAuthToken})
             .returning('*')
-            .then(function(test) {
-            })
-            if(callback) {
-              callback(error, res, body);
-            }
+          .then(function(test) {
+          })
+          if(callback) {
+            callback(error, res, body);
+          }
         } else if (body.error){
           throw "Failed to authenticate: " + body.error
+        } else {
+          throw "Failure: " + error
         }
       });
   };

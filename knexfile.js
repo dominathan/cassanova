@@ -7,7 +7,7 @@ module.exports = {
     client: 'postgresql',
     debug: true,
     connection: {
-      database: 'tindergarten_dev'
+      database: 'tindergarten2_dev'
     },
     pool: {
       min: 0,
@@ -18,7 +18,7 @@ module.exports = {
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'tindergarten_staging',
+      database: 'tindergarten2_staging',
       user:     'username',
       password: 'password'
     },
