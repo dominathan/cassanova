@@ -104,7 +104,7 @@
     margin-left: 1%;
     .current-responses {
       height: 450px;
-      //  -webkit-overflow-scrolling: touch;
+       -webkit-overflow-scrolling: touch;
     }
   }
 
@@ -170,8 +170,7 @@
     }
     .current-responses{
       height: 300px;
-      // -webkit-overflow-scrolling: touch;
-
+      -webkit-overflow-scrolling: touch;
       .response-text {
         min-height: 44px;
       }
@@ -194,7 +193,7 @@
     margin-left: 4%;
     ul.list-group {
       height: 400px;
-      //  -webkit-overflow-scrolling: touch;
+       -webkit-overflow-scrolling: touch;
     }
   }
   .iphone-container {
@@ -208,10 +207,11 @@
       min-height:325px;
       max-height:325px;
       position: static;
+      z-index: -1;
       background-color: gainsboro;
       top: 55px;
       width: 100%;
-      //  -webkit-overflow-scrolling: touch;
+       -webkit-overflow-scrolling: touch;
     }
   }
 
