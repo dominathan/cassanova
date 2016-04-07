@@ -66,8 +66,7 @@ require('../responses/responses.service');
 
         $scope.submitResponse = function(response) {
           if(response) {
-            response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/garten|tinder|gotin|/gi,"gigleAndCats");
-            var conversation_id = getConversationID();
+            response = response.replace(/gotindergarten/gi,"gigglesandcats");
             SocketService.emit('new:response', {
                                                   response_text: response,
                                                   conversation_id: conversation_id,
