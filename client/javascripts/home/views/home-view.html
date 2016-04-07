@@ -1,12 +1,6 @@
 <div class="container" >
    <flash-message duration="5000" show-close="true"></flash-message>
 
-    <!-- <pagination
-      ng-model="currentPage"
-      total-items="targets.length"
-      max-size="maxSize"
-      boundary-links="true">
-    </pagination> -->
       <uib-pagination
         total-items="targets.length"
         ng-model="currentPage"
@@ -15,34 +9,34 @@
         boundary-link-numbers="true">
       </uib-pagination>
 
-    <div ng-repeat="target in filteredTargets" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
-        <div class="panel panel-primary match-panel" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>
-            <h3 class="">
-                {{ target.name }}
-            </h3>
-            <div class="match-photo">
-                <img ng-src="{{ target.photo_url }}" alt="{{ target.name}}" ng-click="open('lg',target.id, target.name)">
-            </div>
-            <div class="match-info">
-              <h4>{{ target.gender == 1 ? "Female" : "Male" }} | {{ target.age }}</h4>
-              <div class="match-bio">
-                  <h5>{{ target.bio.slice(0,255) }}</h5>
+      <div ng-repeat="target in filteredTargets" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+          <div class="panel panel-primary match-panel" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>
+              <h3 class="">
+                  {{ target.name }}
+              </h3>
+              <div class="match-photo">
+                  <img ng-src="{{ target.photo_url }}" alt="{{ target.name}}" ng-click="open('lg',target.id, target.name)">
               </div>
-            </div>
+              <div class="match-info">
+                <h4>{{ target.gender == 1 ? "Female" : "Male" }} | {{ target.age }}</h4>
+                <div class="match-bio">
+                    <h5>{{ target.bio.slice(0,255) }}</h5>
+                </div>
+              </div>
 
-            <a href="#/account/{{target.fake_account_id}}/match/{{target.id}}/messages"><button class="btn btn-success btn-lg">Let's Chat</button></a>
-        </div>
-    </div>
+              <a href="#/account/{{target.fake_account_id}}/match/{{target.id}}/messages"><button class="btn btn-success btn-lg">Let's Chat</button></a>
+          </div>
+      </div>
 
 
 
 
 
 </div>
-<footer>
+<!-- <footer>
   <ul>
     <li>
       Copyright &copy; 2016 Residual Stratosphere, LLC. All rights reserved
     </li>
   </ul>
-</footer>
+</footer> -->
