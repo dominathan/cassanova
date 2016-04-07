@@ -1,0 +1,21 @@
+<div class="container">
+  <div ng-repeat="block in blocks" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+      <div class="panel panel-primary match-panel" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>
+          <h3 class="">
+              {{ block.name }}
+          </h3>
+          <div class="match-photo">
+              <img ng-src="{{ block.photo_url }}" alt="{{ block.name}}" ng-click="open('lg',block.id, block.name)">
+          </div>
+          <div class="match-info">
+            <h4>{{ block.gender == 1 ? "Female" : "Male" }} | {{ block.age }}</h4>
+            <div class="match-bio">
+                <h5>{{ block.bio.slice(0,255) }}</h5>
+            </div>
+          </div>
+
+          <a href="#/blocked-matches/{{block.id}}/"><button class="btn btn-success btn-lg">Why She Blocked Me</button></a>
+      </div>
+  </div>
+
+</div>

@@ -1,11 +1,12 @@
 'use strict';
-
-function getPhotoInfo(photoObj,target) {
+module.exports = function () {
   return {
-    photo_url: photoObj['url'],
-    target_id: target.id,
-    tinder_id: photoObj['id']
-  };
-};
-
-module.exports = getPhotoInfo;
+    getPhotoInfo: function(photoObj,target) {
+      return {
+        photo_url: photoObj['url'],
+        target_id: target.id,
+        tinder_id: photoObj['id']
+      };
+    }
+  }
+}

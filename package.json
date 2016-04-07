@@ -30,6 +30,7 @@
     "moment": "^2.11.2",
     "morgan": "~1.6.1",
     "newrelic": "^1.25.5",
+    "ngstorage": "^0.3.10",
     "node-cron": "^1.1.1",
     "pg": "^4.5.1",
     "request": "^2.67.0",

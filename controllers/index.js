@@ -96,6 +96,16 @@ router.get('/photos/target_id/:tinder_id',function(req,res,next) {
     })
 })
 
+router.get('/:id/allTargs/blocked', function(req,res,next) {
+  knex.raw('SELECT tg.id, tg.blocked,tg.fake_account_id, tg.name, tg.tinder_id, tg.bio, tg.gender, tg.birth_date, tg.match_id, pho.photo_url FROM targets as tg LEFT JOIN photos as pho ON tg.id = pho.target_id WHERE tg.blocked = true GROUP BY tg.id, pho.photo_url')
+  .then(function(data) {
+    return _.uniq(data.rows,'tinder_id');
+  })
+  .then(function(data) {
+    res.json(data).status(302);
+  });
+});
+
 
 
 module.exports = router;

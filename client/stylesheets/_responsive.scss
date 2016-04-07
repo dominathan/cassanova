@@ -85,6 +85,18 @@
       left: 13%;
     }
   }
+  .iphone-container.blocked {
+    left: 31%;
+    img {
+      top: 100px;
+    }
+    .match-name {
+      left: 22px;
+    }
+    .iphone-background {
+      left: 22px;
+    }
+  }
   .second-column {
     display: none;
     width: 65%;
@@ -105,13 +117,13 @@
 }
 
 @media (min-width: 200px) and (max-width: 760px) {
-  nav {
-    display: none;
-  }
+  // nav {
+  //   display: none;
+  // }
   footer {
     display: none;
   }
-  
+
   navbar.tool-bar {
     display: block;
     width: 100%;
