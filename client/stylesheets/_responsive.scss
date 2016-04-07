@@ -47,7 +47,7 @@
     margin-bottom: 0;
   }
 
-  navbar.tool-bar {
+  footer.tool-bar {
     display: block;
     width: 100%;
     height: 50px;
@@ -117,18 +117,18 @@
 }
 
 @media (min-width: 200px) and (max-width: 760px) {
-  // nav {
-  //   display: none;
-  // }
+  .iphone-container.blocked {
+    position: static;
+  }
+  .navbar {
+    margin-bottom: 1px;
+  }
   footer {
     display: none;
   }
 
-  navbar.tool-bar {
+  footer.tool-bar {
     display: block;
-    width: 100%;
-    height: 40px;
-    background-color: $primaryColor;
     ul {
       margin: 0;
       padding: 0;
@@ -136,7 +136,7 @@
     li {
       display: inline-block;
       width: 32.5%;
-      height: 40px;
+      height: 35px;
       text-decoration: none;
       text-align: center;
       margin: 0;
@@ -152,6 +152,12 @@
     li:last-child {
       display: inline-block;
     }
+    li.active {
+      background-color: $secondaryColor;
+    }
+  }
+  .first-column {
+    width: 100%;
   }
   .second-column {
     display: none;
@@ -162,13 +168,21 @@
       font-size: 2em;
     }
     .current-responses{
-      height: 400px;
+      height: 300px;
+      .response-text {
+        min-height: 44px;
+      }
     }
     .chat-window {
       margin-top: 1%;
     }
     input[type="text"] {
-      width: 50%
+      width: 50%;
+      height: 35px;
+    }
+    input[type='submit'] {
+      height: 35px;
+      font-size: 1.2em;
     }
   }
   .third-column {
@@ -187,29 +201,12 @@
       display: none;
     }
     .iphone-background {
+      min-height:325px;
+      max-height:325px;
+      position: static;
       background-color: gainsboro;
       top: 55px;
-      width: 86%;
-      min-height: 475px;
-      max-height: 475px;
-    }
-  }
-
-  footer.back-to-home {
-    display: block;
-    position: fixed;
-    display: block;
-    top: 534px;
-    margin-left: 31%;
-    button {
       width: 100%;
-      background-color: $primaryColor;
-    }
-    button:hover {
-      background-color: $secondaryColor;
-    }
-    a {
-      color: white;
     }
   }
 

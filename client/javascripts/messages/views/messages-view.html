@@ -1,12 +1,5 @@
 <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
     <!-- <ng-include src="'clock.html'"></ng-include> -->
-  <navbar class="tool-bar no-show">
-    <ul>
-      <li><a href="" ng-click="showIphone()">Actual</a></li>
-      <li><a href="" ng-click="showChats()">Suggested</a></li>
-      <li class="no-show"><a href="" ng-click="showRecent()">Recent</a></li>
-    </ul>
-  </navbar>
 
   <div class="first-column">
 
@@ -77,4 +70,13 @@
     </li>
   </ul>
 </div>
+
+<footer class="tool-bar no-show">
+  <ul>
+    <li ng-class="{active: iphoneShow}"><a href="" ng-click="showIphone()">Actual</a></li>
+    <li ng-class="{active: chatShow}"><a href="" ng-click="showChats()">Suggested</a></li>
+    <li ng-class="{active: recentShow}"class="no-show"><a href="" ng-click="showRecent()">Recent</a></li>
+  </ul>
+</footer>
+
 <!-- </div> -->

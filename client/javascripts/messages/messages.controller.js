@@ -125,19 +125,29 @@ require('../responses/responses.service');
           $scope.secondsLeftToSend = secondsLeft(data.time,5);
         })
 
+        $scope.iphoneShow = true;
         $scope.showIphone = function() {
+          $scope.iphoneShow = true;
+          $scope.chatShow = false;
+          $scope.recentShow = false;
           document.getElementsByClassName('first-column')[0].style.display = 'inline-block';
           document.getElementsByClassName('second-column')[0].style.display = 'none';
           document.getElementsByClassName('third-column')[0].style.display = 'none';
         };
 
         $scope.showChats = function() {
+          $scope.iphoneShow = false;
+          $scope.chatShow = true;
+          $scope.recentShow = false;
           document.getElementsByClassName('first-column')[0].style.display = 'none';
           document.getElementsByClassName('second-column')[0].style.display = 'inline-block';
           document.getElementsByClassName('third-column')[0].style.display = 'none';
         }
 
         $scope.showRecent = function() {
+          $scope.iphoneShow = false;
+          $scope.chatShow = false;
+          $scope.recentShow = true;
           document.getElementsByClassName('first-column')[0].style.display = 'none';
           document.getElementsByClassName('second-column')[0].style.display = 'none';
           document.getElementsByClassName('third-column')[0].style.display = 'inline-block';
