@@ -43,7 +43,7 @@ function CronExecutables(io) {
 
   },null,true,'America/New_York');
 
-  new CronJob('0 0 */1 * * *', function() {
+  new CronJob('0 */30 * * * *', function() {
     console.log("Checking for new matches: ",new Date(Date.now()));
     knex('fake_accounts').select('*').then(function(data) {
       return data[0];
