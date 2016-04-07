@@ -65,6 +65,7 @@ require('../responses/responses.service');
           });
 
         $scope.submitResponse = function(response) {
+          console.log("THIS IS A RESPONSE", response);
           if(response) {
             response = response.replace(/gotindergarten/gi,"gigglesandcats");
             var conversation_id = getConversationID();
