@@ -34,8 +34,10 @@ function CronExecutables(io) {
            data.forEach(function(msg) {
             tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
               if(err) {
+                console.log('cannot send', err)
                 throw err
               }
+              console.log("SENT MESSAGE", data);
             })
           })
         }
