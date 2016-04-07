@@ -29,6 +29,7 @@ function CronExecutables(io) {
      .then(function(tcOptions) {
        var tc = new TinderClient(tcOptions)
        responsesToSend.then(function(data) {
+         console.log("EACH RESPONSE:", data);
          if(tc.isAuthorized() && data.length > 0) {
            data.forEach(function(msg) {
             tc.sendMessage(msg.match_id,msg.response_text,function(err,data) {
