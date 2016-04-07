@@ -164,13 +164,13 @@ function CronExecutables(io) {
   function saveNewMaches(myNewMatches,fakeAccount) {
     myNewMatches.forEach(function(match) {
       try {
-        var insertionTarget = Target(match,fakeAccount)
+        var insertionTarget = Target.getTargetInfo(match,fakeAccount)
         knex('targets').returning(['id','tinder_id']).insert(insertionTarget)
          .then(function(targetId) {
             var targetId = {id: targetId[0].id, tinder_id: targetId[0].tinder_id};
             if(match.person.photos.length > 0) {
               match.person.photos.forEach(function(photo) {
-                knex('photos').insert(Photo(photo,targetId))
+                knex('photos').insert(Photo.getPhotoInfo(photo,targetId))
                   .then(function(data) {
                     //safety
                   },function(data) {
@@ -229,7 +229,7 @@ function CronExecutables(io) {
                     var fakeAcc = {
                       id: data[0].fake_account_id
                     }
-                    var convoSave = Conversation(msg,fakeAcc,data[0])
+                    var convoSave = Conversation.getConversationInfo(msg,fakeAcc,data[0])
 
                     io.emit('new:conversation', {convos: convoSave, time: new Date()});
                     try {

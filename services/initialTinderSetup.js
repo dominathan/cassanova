@@ -1,11 +1,14 @@
-var TinderClient = require('./services/tinder-client');
+var TinderClient = require('./tinder-client');
 var env = process.env.NODE_ENV || 'development';
-var config = require("./knexfile");
+var config = require("../knexfile");
 var knex = require('knex')(config[env]);
-var FakeAccount = require('./models/fake_account')();
-var Target = require('./models/target');
-var Conversation = require('./models/conversations');
-var Photo = require('./models/photos');
+var FakeAccount = require('../models/fake_account')();
+var Target = require('../models/target')();
+var Conversation = require('../models/conversations')();
+var Photo = require('../models/photos')();
+
+console.log("DAMNIT", Target)
+console.log("DAMNIT", typeof Target);
 
 (function() {
   var args = process.argv.slice(2)
@@ -38,15 +41,14 @@ var Photo = require('./models/photos');
 
 function saveNewMatches(myNewMatches,fakeAccount) {
   myNewMatches.matches.forEach(function(match) {
-    try {
-      var insertionTarget = Target(match,fakeAccount)
-      console.log('damn', insertionTarget);
+      var insertionTarget = Target.getTargetInfo(match,fakeAccount)
+      console.log("OH SHIT", insertionTarget);
       knex('targets').returning(['id','tinder_id']).insert(insertionTarget)
        .then(function(targetId) {
           var targetId = {id: targetId[0].id, tinder_id: targetId[0].tinder_id};
           if(match.person.photos.length > 0) {
             match.person.photos.forEach(function(photo) {
-              knex('photos').insert(Photo(photo,targetId))
+              knex('photos').insert(Photo.getPhotoInfo(photo,targetId))
                 .then(function(data) {
                   //safety
                 },function(data) {
@@ -57,9 +59,6 @@ function saveNewMatches(myNewMatches,fakeAccount) {
        },
        function(dat) {
        });
-    } catch(err) {
-      console.error('Could not save, probably unique key constraint', err)
-    }
   });
 }
 
@@ -76,6 +75,7 @@ function saveNewMessages(updates) {
   updates.matches.forEach(function(match) {
     if(match.messages.length > 0) {
         match.messages.forEach(function(msg) {
+          console.log("MESSAGE FIRST ,", msg);
           knex('targets').select('*').where('match_id',msg.match_id)
           .then(function(data) {
             knex('conversations').select('tinder_id').where('target_id',data[0].id)
@@ -87,7 +87,7 @@ function saveNewMessages(updates) {
                   var fakeAcc = {
                     id: data[0].fake_account_id
                   }
-                  var convoSave = Conversation(msg,fakeAcc,data[0])
+                  var convoSave = Conversation.getConversationInfo(msg,fakeAcc,data[0])
                   try {
                     knex('conversations').insert(convoSave).then(function(data) {
                       console.log('saving convo', data);
