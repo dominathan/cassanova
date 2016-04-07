@@ -1,0 +1,15 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: $primaryColor;
+  color: #fff;
+  height: 35px;
+  ul {
+    padding-top: 0.6%;
+    margin-bottom: 0;
+    li {
+      list-style: none;
+    }
+  }
+}
