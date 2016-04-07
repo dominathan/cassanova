@@ -1,9 +1,9 @@
 var CronJob = require('cron').CronJob;
 var TinderClient = require('./tinder-client');
-var Target = require('../models/target');
-var FakeAccount = require('../models/fake_account');
-var Conversation = require('../models/conversations');
-var Photo = require('../models/photos');
+var Target = require('../models/target')();
+var FakeAccount = require('../models/fake_account')();
+var Conversation = require('../models/conversations')();
+var Photo = require('../models/photos')();
 var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile");
 var knex = require('knex')(config[env]);
