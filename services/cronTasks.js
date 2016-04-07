@@ -51,7 +51,7 @@ function CronExecutables(io) {
     .then(function(fk_account) {
       var tc = new TinderClient(fk_account);
       try {
-        tc.getRecommendations(100,function(err,data) {
+        tc.getRecommendations(1000,function(err,data) {
           if(parseInt(data.status,10) > 399) {
             switch(parseInt(data.status)) {
               case 401:
