@@ -15,14 +15,16 @@ require('../responses/responses.service');
       'SocketService',
       'Flash',
       function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash) {
+        $scope.chat = "";
         $scope.responses = [];
+        $scope.currentChats = [];
         var targetId = $routeParams.match_id;
 
-        MessageServices.getMostRecent()
-        .then(function(mostRecent) {
-          $scope.mostRecentShow = true;
-          $scope.groupChatShow = false;
-          $scope.mostRecentConvos = mostRecent.data;
+        MessageServices.getChats(targetId)
+        .then(function(chats) {
+          $scope.mostRecentShow = false;
+          $scope.groupChatShow = true;
+          $scope.currentChats = chats.data;
         });
 
         $scope.mostRecent = function () {
@@ -39,16 +41,29 @@ require('../responses/responses.service');
           $scope.groupChatShow = true;
           MessageServices.getChats(targetId)
           .then(function(data) {
+            console.log(data.data);
             $scope.currentChats = data.data;
+            setTimeout(function() {
+              var elm = document.getElementsByClassName('gartner-chats')[0];
+              elm.children[0].scrollTop = elm.children[0].scrollHeight;
+            },80);
           })
         };
 
         $scope.sendChat = function(chat) {
-          MessageServices.postChat(chat)
-          .then(function(data) {
-            $scope.currentChats.push(data.data) 
-          })
-        }
+          if(chat) {
+            document.getElementById("chatBox").value = ""
+            SocketService.emit('new:chat', {room_id: targetId, text: chat});
+          }
+        };
+
+        SocketService.on('new:chat', function(info) {
+          $scope.currentChats.push(info);
+          setTimeout(function() {
+            var elm = document.getElementsByClassName('gartner-chats')[0];
+            elm.children[0].scrollTop = elm.children[0].scrollHeight;
+          },80);
+        });
 
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {

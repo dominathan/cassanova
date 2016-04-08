@@ -53,9 +53,9 @@
 </div>
 
 <div class="third-column">
-  <ul class="nav nav-pills nav-justified">
-    <li role="presentation" ng-class="{active: mostRecentShow}"><a ng-click="mostRecent()">Most Recent</a></li>
-    <li role="presentation" ng-class="{active: groupChatShow}"><a ng-click="showGroupChat()">Chat with Gartners</a></li>
+  <ul class="nav nav-tabs nav-justified">
+    <li role="presentation" ng-class="{active: mostRecentShow}"><a ng-click="mostRecent()">Most Recent Matches</a></li>
+    <li role="presentation" ng-class="{active: groupChatShow}"><a ng-click="showGroupChat()">Chat with <br> Gartners</a></li>
   </ul>
   <ul ng-if="mostRecentShow" class='list-group' ng-show="mostRecentConvos">
     <li class='list-group-item' ng-repeat="recent in mostRecentConvos">
@@ -69,15 +69,19 @@
       </div>
     </li>
   </ul>
-  <ul ng-if="groupChatShow">
-    <li ng-repeat="chat in chats">
-      {{chat}}
-    </li>
-    <form ng-submit="sendChat(newMainChat)">
-      <input type="text" name="name" ng-model="newMainChat" value="">
-      <input type="submit" name="name" value="">
+  <div class="gartner-chats" ng-if="groupChatShow">
+    <ul>
+      <li ng-repeat="chat in currentChats | orderBy: 'created_at'">
+        {{chat.text}}
+      </li>
+    </ul>
+    <form ng-submit="sendChat(chat); clearText();">
+      <input id="chatBox" class="form-control" type="text" name="name" ng-model="chat" placeholder="Send To Fellow Gartners">
+      <button type="submit" name="name" class="chat-btn btn btn-lg btn-info"  value="submitResponse">Submit</button>
     </form>
-  </ul>
+  </div>
+
+
 </div>
 
 <footer class="tool-bar no-show">

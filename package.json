@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon ./bin/www & node_modules/.bin/webpack -w",
     "start": "node ./bin/www",
-    "build": "NODE_ENV=production node node_modules/.bin/webpack"
+    "build": "NODE_ENV=production node node_modules/.bin/webpack",
+    "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup" 
   },
   "dependencies": {
     "angular": "^1.4.8",

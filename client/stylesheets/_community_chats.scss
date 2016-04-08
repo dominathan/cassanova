@@ -1,0 +1,39 @@
+.nav.nav-tabs.nav-justified>li.active {
+  background-color: $primaryColor !important;
+  a {
+    color: #fff;
+    background-color: $primaryColor;
+  }
+}
+
+.gartner-chats {
+  border-left: 1px solid lightgrey;
+  border-top: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  ul {
+    height: 600px;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    width: 100%;
+    width: 100%;
+    border-bottom: 1px solid lightgrey;
+    min-height: 35px;
+    overflow-x: overlay;
+    padding: 5px;
+  }
+}
+form {
+  text-align: center;
+  #chatBox {
+    display: block;
+    width: 100%;
+  }
+  .chat-btn {
+    width: 100%;
+    padding: 0 0;
+    line-height: 1;
+  }
+}

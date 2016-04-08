@@ -58,6 +58,16 @@ server.on('listening', onListening);
         io.emit('new:vote',knexVote)
       })
    })
+
+   socket.on('new:chat', function(data) {
+     var objToSave = {room_id: parseInt(data.room_id), text: data.text};
+     knex('chats')
+     .insert(objToSave)
+     .returning('*')
+     .then(function(data) {
+       io.emit('new:chat',data[0])
+     })
+   })
  })
 
 
