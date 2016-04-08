@@ -7,8 +7,6 @@ var Target = require('../models/target')();
 var Conversation = require('../models/conversations')();
 var Photo = require('../models/photos')();
 
-console.log("DAMNIT", Target)
-console.log("DAMNIT", typeof Target);
 
 (function() {
   var args = process.argv.slice(2)
@@ -18,7 +16,6 @@ console.log("DAMNIT", typeof Target);
   tc.authorize(tc.fbKey,tc.fbId, function(err,data,body) {
     if(err) return err;
     tc.getProfile(function(err,newData) {
-      console.log('WORK?', newData._id)
       knex('fake_accounts')
       .insert({
         facebook_authentication_token: tc.fbKey,
@@ -29,7 +26,6 @@ console.log("DAMNIT", typeof Target);
       }).returning('*').then(function(data) {
         fk.id = data[0].id
         tc.getHistory(function(err,histData) {
-          console.log('THIS NO WORKY?', histData);
           if(err) return err;
           saveNewMatches(histData,fk);
           saveNewMessages(histData);

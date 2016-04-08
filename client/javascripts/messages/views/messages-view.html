@@ -53,8 +53,11 @@
 </div>
 
 <div class="third-column">
-  <h2 class="text-center">Most Recent</h2>
-  <ul class='list-group' ng-show="mostRecentConvos">
+  <ul class="nav nav-pills nav-justified">
+    <li role="presentation" ng-class="{active: mostRecentShow}"><a ng-click="mostRecent()">Most Recent</a></li>
+    <li role="presentation" ng-class="{active: groupChatShow}"><a ng-click="showGroupChat()">Chat with Gartners</a></li>
+  </ul>
+  <ul ng-if="mostRecentShow" class='list-group' ng-show="mostRecentConvos">
     <li class='list-group-item' ng-repeat="recent in mostRecentConvos">
       <div class="">
         <img ng-src="{{recent.photo_url}}" alt="" />
@@ -65,6 +68,15 @@
         <span> {{recent.sent_date | amTimeAgo}} </span>
       </div>
     </li>
+  </ul>
+  <ul ng-if="groupChatShow">
+    <li ng-repeat="chat in chats">
+      {{chat}}
+    </li>
+    <form ng-submit="sendChat(newMainChat)">
+      <input type="text" name="name" ng-model="newMainChat" value="">
+      <input type="submit" name="name" value="">
+    </form>
   </ul>
 </div>
 

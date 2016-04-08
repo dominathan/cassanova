@@ -16,9 +16,21 @@
         return $http.get(url);
       }
 
+      var getChats = function(roomNumber) {
+        var url = "/api/fake_accounts/chats/" + roomNumber;
+        return $http.get(url);
+      }
+
+      var postChat = function(roomNumber, chat) {
+        var url = "/api/fake_accounts/chats/" + roomNumber;
+        return http.post(url,chat);
+      }
+
       return {
         getMessages: getMessages,
-        getMostRecent: getMostRecent
+        getMostRecent: getMostRecent,
+        getChats: getChats,
+        postChat: postChat
       }
     })
 })();

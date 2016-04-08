@@ -20,14 +20,41 @@ require('../responses/responses.service');
 
         MessageServices.getMostRecent()
         .then(function(mostRecent) {
+          $scope.mostRecentShow = true;
+          $scope.groupChatShow = false;
           $scope.mostRecentConvos = mostRecent.data;
         });
+
+        $scope.mostRecent = function () {
+          MessageServices.getMostRecent()
+          .then(function(mostRecent) {
+            $scope.mostRecentShow = true;
+            $scope.groupChatShow = false;
+            $scope.mostRecentConvos = mostRecent.data;
+          });
+        };
+
+        $scope.showGroupChat = function() {
+          $scope.mostRecentShow = false;
+          $scope.groupChatShow = true;
+          MessageServices.getChats(targetId)
+          .then(function(data) {
+            $scope.currentChats = data.data;
+          })
+        };
+
+        $scope.sendChat = function(chat) {
+          MessageServices.postChat(chat)
+          .then(function(data) {
+            $scope.currentChats.push(data.data) 
+          })
+        }
 
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           messages.data.conversations.forEach(function(el){
              el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED");
-          })
+          });
           if(messages.data.conversations[0] && messages.data.conversations[0].name) {
             $scope.match = messages.data.conversations[0].name
           }
@@ -82,7 +109,7 @@ require('../responses/responses.service');
           var newObj = response;
           newObj.total_votes = 0;
           $scope.responses.push(newObj)
-        })
+        });
 
         $scope.submitUpvote = function(responseId) {
           var convoId = getConversationID();
@@ -92,7 +119,7 @@ require('../responses/responses.service');
                           up: 1
                         }
           SocketService.emit('new:vote', voteObj);
-        }
+        };
 
         $scope.submitDownvote = function(responseId) {
           var convoId = getConversationID();
@@ -103,7 +130,7 @@ require('../responses/responses.service');
                         }
 
           SocketService.emit('new:vote', voteObj);
-        }
+        };
 
         $scope.$on('$destroy', function() {
           SocketService.removeListenerSocket();
@@ -116,14 +143,14 @@ require('../responses/responses.service');
             return el.id === filteredVotes[0].response_id
           });
           responseToIncrement.total_votes += additionalVotes;
-        })
+        });
 
         SocketService.on('new:conversation', function(data) {
           if(data.convos.target_id === parseInt(targetId)) {
             $scope.messages.push(data.convos);
           }
           $scope.secondsLeftToSend = secondsLeft(data.time,5);
-        })
+        });
 
         $scope.iphoneShow = true;
         $scope.showIphone = function() {
