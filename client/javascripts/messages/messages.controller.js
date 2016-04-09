@@ -24,7 +24,13 @@ require('../responses/responses.service');
         .then(function(chats) {
           $scope.mostRecentShow = false;
           $scope.groupChatShow = true;
-          $scope.currentChats = chats.data;
+          var stuff = chats.data.map(function(el) {
+            return {
+              text: el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/\d{3}-\d{3}-\d{4}/gi,"PHONE NUMBER REMOVED"),
+              created_at: el.created_at
+            };
+          })
+          $scope.currentChats = stuff;
         });
 
         $scope.mostRecent = function () {
@@ -41,7 +47,10 @@ require('../responses/responses.service');
           $scope.groupChatShow = true;
           MessageServices.getChats(targetId)
           .then(function(data) {
-            console.log(data.data);
+            data.data.forEach(function(el) {
+              console.log(el);
+              el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED");
+            })
             $scope.currentChats = data.data;
             setTimeout(function() {
               var elm = document.getElementsByClassName('gartner-chats')[0];
@@ -53,7 +62,7 @@ require('../responses/responses.service');
         $scope.sendChat = function(chat) {
           if(chat) {
             document.getElementById("chatBox").value = ""
-            SocketService.emit('new:chat', {room_id: targetId, text: chat});
+            SocketService.emit('new:chat', {room_id: targetId, text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")});
           }
         };
 
