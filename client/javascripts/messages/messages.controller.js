@@ -26,7 +26,11 @@ require('../responses/responses.service');
           $scope.groupChatShow = true;
           var stuff = chats.data.map(function(el) {
             return {
-              text: el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/\d{3}-\d{3}-\d{4}/gi,"PHONE NUMBER REMOVED").replace(/nigga|cunt|nigger/gi,"angel"),
+              text: el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                            .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
+                            .replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/\d{3}-\d{3}-\d{4}/gi,"PHONE NUMBER REMOVED")
+                            .replace(/nigga|cunt|nigger/gi,"angel")
+                            .replace(/(\d\s){9}/gi, "NUMBER REMOVED"),
               created_at: el.created_at
             };
           })
@@ -52,7 +56,11 @@ require('../responses/responses.service');
           MessageServices.getChats(targetId)
           .then(function(data) {
             data.data.forEach(function(el) {
-              el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/nigga|cunt|nigger/gi,"angel");
+              el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                      .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
+                      .replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
+                      .replace(/nigga|cunt|nigger/gi,"angel")
+                      .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
             });
             $scope.currentChats = data.data;
             setTimeout(function() {
@@ -67,7 +75,10 @@ require('../responses/responses.service');
             document.getElementById("chatBox").value = ""
             SocketService.emit('new:chat', {
               room_id: targetId,
-              text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/nigga|cunt|nigger/gi,"angel")
+              text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                        .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
+                        .replace(/nigga|cunt|nigger/gi,"angel")
+                        .replace(/(\d\s){9}/gi, "NUMBER REMOVED")
             });
           }
         };
@@ -83,7 +94,11 @@ require('../responses/responses.service');
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           messages.data.conversations.forEach(function(el){
-             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/nigga|cunt|nigger/gi,"angel");
+             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                                    .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
+                                    .replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
+                                    .replace(/nigga|cunt|nigger/gi,"angel")
+                                    .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
           });
           if(messages.data.conversations[0] && messages.data.conversations[0].name) {
             $scope.match = messages.data.conversations[0].name

@@ -111,7 +111,6 @@ router.get('/chats/:targetId', function(req,res,next) {
   .select('text','created_at')
   .where('room_id',req.params.targetId)
   .then(function(data) {
-    console.log("GET DATA");
     res.json(data).status(302);
   });
 });
