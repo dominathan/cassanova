@@ -5,7 +5,6 @@
     .module('users')
     .factory('AuthenticationService', function() {
 
-
       var auth = {
         isLogged: false
       };

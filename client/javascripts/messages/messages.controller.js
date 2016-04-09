@@ -12,9 +12,11 @@ require('../responses/responses.service');
       '$location',
       'ResponseService',
       'MessageServices',
+      'AuthenticationService',
       'SocketService',
       'Flash',
-      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash) {
+      '$uibModal',
+      function($scope,$routeParams,$location,ResponseService,MessageServices,AuthenticationService,SocketService,Flash,$uibModal) {
         $scope.chat = "";
         $scope.responses = [];
         $scope.currentChats = [];
@@ -137,16 +139,20 @@ require('../responses/responses.service');
           });
 
         $scope.submitResponse = function(response) {
-          if(response) {
-            response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
-            var conversation_id = getConversationID();
-            SocketService.emit('new:response', {
-                                                  response_text: response,
-                                                  conversation_id: conversation_id,
-                                                  target_id: targetId
-                                                }
-                               )
-            $scope.newResponse = "";
+          if(AuthenticationService.isAuthenticated) {
+            if(response) {
+              response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
+              var conversation_id = getConversationID();
+              SocketService.emit('new:response', {
+                                                    response_text: response,
+                                                    conversation_id: conversation_id,
+                                                    target_id: targetId
+                                                  }
+                                 )
+              $scope.newResponse = "";
+            }
+          } else {
+            mustBeLoggedIn()
           }
         };
 
@@ -157,24 +163,32 @@ require('../responses/responses.service');
         });
 
         $scope.submitUpvote = function(responseId) {
-          var convoId = getConversationID();
-          var voteObj = {
-                          response_id: responseId,
-                          conversation_id: convoId,
-                          up: 1
-                        }
-          SocketService.emit('new:vote', voteObj);
+          if(AuthenticationService.isAuthenticated) {
+            var convoId = getConversationID();
+            var voteObj = {
+                            response_id: responseId,
+                            conversation_id: convoId,
+                            up: 1
+                          }
+            SocketService.emit('new:vote', voteObj);
+          } else {
+            mustBeLoggedIn()
+          }
         };
 
         $scope.submitDownvote = function(responseId) {
-          var convoId = getConversationID();
-          var voteObj = {
-                          response_id: responseId,
-                          conversation_id: convoId,
-                          up: -1
-                        }
+          if(AuthenticationService.isAuthenticated) {
+            var convoId = getConversationID();
+            var voteObj = {
+                            response_id: responseId,
+                            conversation_id: convoId,
+                            up: -1
+                          }
 
-          SocketService.emit('new:vote', voteObj);
+            SocketService.emit('new:vote', voteObj);
+          } else {
+            mustBeLoggedIn();
+          }
         };
 
         $scope.$on('$destroy', function() {
@@ -255,6 +269,27 @@ require('../responses/responses.service');
           return secondsUntil;
         };
 
-      }
-    ]);
+
+        function mustBeLoggedIn() {
+            var modalInstance = $uibModal.open({
+              animation: $scope.animationsEnabled,
+              template: `<div class="modal-header">
+                             <h3 class="modal-title">You must be logged in to make suggestions</h3>
+                         </div>
+                         <div class="modal-body">
+                             <p> You must be logged to submit responses, upvote responses, and downvote repsonses.</p>
+
+                         </div>
+                         <div class="modal-footer">
+                             <button class="btn btn-primary" type="button" ng-click="login()">Login</button></a>
+                             <button class="btn btn-success" type="button" ng-click="signup()">Signup</button>
+                             <button class="btn btn-danger" type="button" ng-click='ok()'>Delete</button>
+                         </div>`,
+              size: 'lg',
+              controller: 'ModalLoginCtrl'
+            })
+
+        }
+
+    }]);
 })()

@@ -51,8 +51,8 @@
 	var angular = __webpack_require__(5);
 	__webpack_require__(7);
 	__webpack_require__(9);
-	__webpack_require__(136);
 	__webpack_require__(11);
+	__webpack_require__(13);
 
 	angular.module('cassanova', ['ngRoute', 'messages', 'home', 'blocked', 'ngFlash', 'ngStorage', 'users', 'ngMessages']).config(["$routeProvider", function ($routeProvider) {
 	  $routeProvider.when('/404', {
@@ -66,22 +66,23 @@
 	}]).config(["$httpProvider", function ($httpProvider) {
 	  $httpProvider.interceptors.push('TokenInterceptor');
 	}]);
+
 	// .run(function($rootScope, $location, AuthenticationService) {
 	//     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
 	//       console.log(nextRoute);
-	//         if (nextRoute.access.requiredLogin && !AuthenticationService.isLogged) {
+	//         if (!AuthenticationService.isLogged) {
 	//             $location.path("/login");
 	//         }
 	//     });
 	// });
 
-	__webpack_require__(12);
-	__webpack_require__(110);
-	__webpack_require__(120);
-	__webpack_require__(121);
-	__webpack_require__(128);
+	__webpack_require__(14);
+	__webpack_require__(112);
 	__webpack_require__(122);
 	__webpack_require__(123);
+	__webpack_require__(124);
+	__webpack_require__(132);
+	__webpack_require__(133);
 
 /***/ },
 /* 1 */
@@ -30623,6 +30624,742 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(12);
+	module.exports = 'ngMessages';
+
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	/**
+	 * @license AngularJS v1.5.3
+	 * (c) 2010-2016 Google, Inc. http://angularjs.org
+	 * License: MIT
+	 */
+	(function(window, angular, undefined) {'use strict';
+
+	/* jshint ignore:start */
+	// this code is in the core, but not in angular-messages.js
+	var isArray = angular.isArray;
+	var forEach = angular.forEach;
+	var isString = angular.isString;
+	var jqLite = angular.element;
+	/* jshint ignore:end */
+
+	/**
+	 * @ngdoc module
+	 * @name ngMessages
+	 * @description
+	 *
+	 * The `ngMessages` module provides enhanced support for displaying messages within templates
+	 * (typically within forms or when rendering message objects that return key/value data).
+	 * Instead of relying on JavaScript code and/or complex ng-if statements within your form template to
+	 * show and hide error messages specific to the state of an input field, the `ngMessages` and
+	 * `ngMessage` directives are designed to handle the complexity, inheritance and priority
+	 * sequencing based on the order of how the messages are defined in the template.
+	 *
+	 * Currently, the ngMessages module only contains the code for the `ngMessages`, `ngMessagesInclude`
+	 * `ngMessage` and `ngMessageExp` directives.
+	 *
+	 * # Usage
+	 * The `ngMessages` directive allows keys in a key/value collection to be associated with a child element
+	 * (or 'message') that will show or hide based on the truthiness of that key's value in the collection. A common use
+	 * case for `ngMessages` is to display error messages for inputs using the `$error` object exposed by the
+	 * {@link ngModel ngModel} directive.
+	 *
+	 * The child elements of the `ngMessages` directive are matched to the collection keys by a `ngMessage` or
+	 * `ngMessageExp` directive. The value of these attributes must match a key in the collection that is provided by
+	 * the `ngMessages` directive.
+	 *
+	 * Consider the following example, which illustrates a typical use case of `ngMessages`. Within the form `myForm` we
+	 * have a text input named `myField` which is bound to the scope variable `field` using the {@link ngModel ngModel}
+	 * directive.
+	 *
+	 * The `myField` field is a required input of type `email` with a maximum length of 15 characters.
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Enter text:
+	 *     <input type="email" ng-model="field" name="myField" required maxlength="15" />
+	 *   </label>
+	 *   <div ng-messages="myForm.myField.$error" role="alert">
+	 *     <div ng-message="required">Please enter a value for this field.</div>
+	 *     <div ng-message="email">This field must be a valid email address.</div>
+	 *     <div ng-message="maxlength">This field can be at most 15 characters long.</div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In order to show error messages corresponding to `myField` we first create an element with an `ngMessages` attribute
+	 * set to the `$error` object owned by the `myField` input in our `myForm` form.
+	 *
+	 * Within this element we then create separate elements for each of the possible errors that `myField` could have.
+	 * The `ngMessage` attribute is used to declare which element(s) will appear for which error - for example,
+	 * setting `ng-message="required"` specifies that this particular element should be displayed when there
+	 * is no value present for the required field `myField` (because the key `required` will be `true` in the object
+	 * `myForm.myField.$error`).
+	 *
+	 * ### Message order
+	 *
+	 * By default, `ngMessages` will only display one message for a particular key/value collection at any time. If more
+	 * than one message (or error) key is currently true, then which message is shown is determined by the order of messages
+	 * in the HTML template code (messages declared first are prioritised). This mechanism means the developer does not have
+	 * to prioritise messages using custom JavaScript code.
+	 *
+	 * Given the following error object for our example (which informs us that the field `myField` currently has both the
+	 * `required` and `email` errors):
+	 *
+	 * ```javascript
+	 * <!-- keep in mind that ngModel automatically sets these error flags -->
+	 * myField.$error = { required : true, email: true, maxlength: false };
+	 * ```
+	 * The `required` message will be displayed to the user since it appears before the `email` message in the DOM.
+	 * Once the user types a single character, the `required` message will disappear (since the field now has a value)
+	 * but the `email` message will be visible because it is still applicable.
+	 *
+	 * ### Displaying multiple messages at the same time
+	 *
+	 * While `ngMessages` will by default only display one error element at a time, the `ng-messages-multiple` attribute can
+	 * be applied to the `ngMessages` container element to cause it to display all applicable error messages at once:
+	 *
+	 * ```html
+	 * <!-- attribute-style usage -->
+	 * <div ng-messages="myForm.myField.$error" ng-messages-multiple>...</div>
+	 *
+	 * <!-- element-style usage -->
+	 * <ng-messages for="myForm.myField.$error" multiple>...</ng-messages>
+	 * ```
+	 *
+	 * ## Reusing and Overriding Messages
+	 * In addition to prioritization, ngMessages also allows for including messages from a remote or an inline
+	 * template. This allows for generic collection of messages to be reused across multiple parts of an
+	 * application.
+	 *
+	 * ```html
+	 * <script type="text/ng-template" id="error-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <div ng-messages="myForm.myField.$error" role="alert">
+	 *   <div ng-messages-include="error-messages"></div>
+	 * </div>
+	 * ```
+	 *
+	 * However, including generic messages may not be useful enough to match all input fields, therefore,
+	 * `ngMessages` provides the ability to override messages defined in the remote template by redefining
+	 * them within the directive container.
+	 *
+	 * ```html
+	 * <!-- a generic template of error messages known as "my-custom-messages" -->
+	 * <script type="text/ng-template" id="my-custom-messages">
+	 *   <div ng-message="required">This field is required</div>
+	 *   <div ng-message="minlength">This field is too short</div>
+	 * </script>
+	 *
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            id="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <!-- any ng-message elements that appear BEFORE the ng-messages-include will
+	 *        override the messages present in the ng-messages-include template -->
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <!-- this required message has overridden the template message -->
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *
+	 *     <!-- this is a brand new message and will appear last in the prioritization -->
+	 *     <div ng-message="email">Your email address is invalid</div>
+	 *
+	 *     <!-- and here are the generic error messages -->
+	 *     <div ng-messages-include="my-custom-messages"></div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * In the example HTML code above the message that is set on required will override the corresponding
+	 * required message defined within the remote template. Therefore, with particular input fields (such
+	 * email addresses, date fields, autocomplete inputs, etc...), specialized error messages can be applied
+	 * while more generic messages can be used to handle other, more general input errors.
+	 *
+	 * ## Dynamic Messaging
+	 * ngMessages also supports using expressions to dynamically change key values. Using arrays and
+	 * repeaters to list messages is also supported. This means that the code below will be able to
+	 * fully adapt itself and display the appropriate message when any of the expression data changes:
+	 *
+	 * ```html
+	 * <form name="myForm">
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            name="myEmail"
+	 *            ng-model="email"
+	 *            minlength="5"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message="required">You did not enter your email address</div>
+	 *     <div ng-repeat="errorMessage in errorMessages">
+	 *       <!-- use ng-message-exp for a message whose key is given by an expression -->
+	 *       <div ng-message-exp="errorMessage.type">{{ errorMessage.text }}</div>
+	 *     </div>
+	 *   </div>
+	 * </form>
+	 * ```
+	 *
+	 * The `errorMessage.type` expression can be a string value or it can be an array so
+	 * that multiple errors can be associated with a single error message:
+	 *
+	 * ```html
+	 *   <label>
+	 *     Email address
+	 *     <input type="email"
+	 *            ng-model="data.email"
+	 *            name="myEmail"
+	 *            ng-minlength="5"
+	 *            ng-maxlength="100"
+	 *            required />
+	 *   </label>
+	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *     <div ng-message-exp="'required'">You did not enter your email address</div>
+	 *     <div ng-message-exp="['minlength', 'maxlength']">
+	 *       Your email must be between 5 and 100 characters long
+	 *     </div>
+	 *   </div>
+	 * ```
+	 *
+	 * Feel free to use other structural directives such as ng-if and ng-switch to further control
+	 * what messages are active and when. Be careful, if you place ng-message on the same element
+	 * as these structural directives, Angular may not be able to determine if a message is active
+	 * or not. Therefore it is best to place the ng-message on a child element of the structural
+	 * directive.
+	 *
+	 * ```html
+	 * <div ng-messages="myForm.myEmail.$error" role="alert">
+	 *   <div ng-if="showRequiredError">
+	 *     <div ng-message="required">Please enter something</div>
+	 *   </div>
+	 * </div>
+	 * ```
+	 *
+	 * ## Animations
+	 * If the `ngAnimate` module is active within the application then the `ngMessages`, `ngMessage` and
+	 * `ngMessageExp` directives will trigger animations whenever any messages are added and removed from
+	 * the DOM by the `ngMessages` directive.
+	 *
+	 * Whenever the `ngMessages` directive contains one or more visible messages then the `.ng-active` CSS
+	 * class will be added to the element. The `.ng-inactive` CSS class will be applied when there are no
+	 * messages present. Therefore, CSS transitions and keyframes as well as JavaScript animations can
+	 * hook into the animations whenever these classes are added/removed.
+	 *
+	 * Let's say that our HTML code for our messages container looks like so:
+	 *
+	 * ```html
+	 * <div ng-messages="myMessages" class="my-messages" role="alert">
+	 *   <div ng-message="alert" class="some-message">...</div>
+	 *   <div ng-message="fail" class="some-message">...</div>
+	 * </div>
+	 * ```
+	 *
+	 * Then the CSS animation code for the message container looks like so:
+	 *
+	 * ```css
+	 * .my-messages {
+	 *   transition:1s linear all;
+	 * }
+	 * .my-messages.ng-active {
+	 *   // messages are visible
+	 * }
+	 * .my-messages.ng-inactive {
+	 *   // messages are hidden
+	 * }
+	 * ```
+	 *
+	 * Whenever an inner message is attached (becomes visible) or removed (becomes hidden) then the enter
+	 * and leave animation is triggered for each particular element bound to the `ngMessage` directive.
+	 *
+	 * Therefore, the CSS code for the inner messages looks like so:
+	 *
+	 * ```css
+	 * .some-message {
+	 *   transition:1s linear all;
+	 * }
+	 *
+	 * .some-message.ng-enter {}
+	 * .some-message.ng-enter.ng-enter-active {}
+	 *
+	 * .some-message.ng-leave {}
+	 * .some-message.ng-leave.ng-leave-active {}
+	 * ```
+	 *
+	 * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
+	 */
+	angular.module('ngMessages', [])
+
+	   /**
+	    * @ngdoc directive
+	    * @module ngMessages
+	    * @name ngMessages
+	    * @restrict AE
+	    *
+	    * @description
+	    * `ngMessages` is a directive that is designed to show and hide messages based on the state
+	    * of a key/value object that it listens on. The directive itself complements error message
+	    * reporting with the `ngModel` $error object (which stores a key/value state of validation errors).
+	    *
+	    * `ngMessages` manages the state of internal messages within its container element. The internal
+	    * messages use the `ngMessage` directive and will be inserted/removed from the page depending
+	    * on if they're present within the key/value object. By default, only one message will be displayed
+	    * at a time and this depends on the prioritization of the messages within the template. (This can
+	    * be changed by using the `ng-messages-multiple` or `multiple` attribute on the directive container.)
+	    *
+	    * A remote template can also be used to promote message reusability and messages can also be
+	    * overridden.
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-message="stringValue">...</ANY>
+	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	    *   <ANY ng-message-exp="expressionValue">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-message when="stringValue">...</ng-message>
+	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	    *   <ng-message when-exp="expressionValue">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * @param {string} ngMessages an angular expression evaluating to a key/value object
+	    *                 (this is typically the $error object on an ngModel instance).
+	    * @param {string=} ngMessagesMultiple|multiple when set, all messages will be displayed with true
+	    *
+	    * @example
+	    * <example name="ngMessages-directive" module="ngMessagesExample"
+	    *          deps="angular-messages.js"
+	    *          animations="true" fixBase="true">
+	    *   <file name="index.html">
+	    *     <form name="myForm">
+	    *       <label>
+	    *         Enter your name:
+	    *         <input type="text"
+	    *                name="myName"
+	    *                ng-model="name"
+	    *                ng-minlength="5"
+	    *                ng-maxlength="20"
+	    *                required />
+	    *       </label>
+	    *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
+	    *
+	    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
+	    *         <div ng-message="required">You did not enter a field</div>
+	    *         <div ng-message="minlength">Your field is too short</div>
+	    *         <div ng-message="maxlength">Your field is too long</div>
+	    *       </div>
+	    *     </form>
+	    *   </file>
+	    *   <file name="script.js">
+	    *     angular.module('ngMessagesExample', ['ngMessages']);
+	    *   </file>
+	    * </example>
+	    */
+	   .directive('ngMessages', ['$animate', function($animate) {
+	     var ACTIVE_CLASS = 'ng-active';
+	     var INACTIVE_CLASS = 'ng-inactive';
+
+	     return {
+	       require: 'ngMessages',
+	       restrict: 'AE',
+	       controller: ['$element', '$scope', '$attrs', function($element, $scope, $attrs) {
+	         var ctrl = this;
+	         var latestKey = 0;
+	         var nextAttachId = 0;
+
+	         this.getAttachId = function getAttachId() { return nextAttachId++; };
+
+	         var messages = this.messages = {};
+	         var renderLater, cachedCollection;
+
+	         this.render = function(collection) {
+	           collection = collection || {};
+
+	           renderLater = false;
+	           cachedCollection = collection;
+
+	           // this is true if the attribute is empty or if the attribute value is truthy
+	           var multiple = isAttrTruthy($scope, $attrs.ngMessagesMultiple) ||
+	                          isAttrTruthy($scope, $attrs.multiple);
+
+	           var unmatchedMessages = [];
+	           var matchedKeys = {};
+	           var messageItem = ctrl.head;
+	           var messageFound = false;
+	           var totalMessages = 0;
+
+	           // we use != instead of !== to allow for both undefined and null values
+	           while (messageItem != null) {
+	             totalMessages++;
+	             var messageCtrl = messageItem.message;
+
+	             var messageUsed = false;
+	             if (!messageFound) {
+	               forEach(collection, function(value, key) {
+	                 if (!messageUsed && truthy(value) && messageCtrl.test(key)) {
+	                   // this is to prevent the same error name from showing up twice
+	                   if (matchedKeys[key]) return;
+	                   matchedKeys[key] = true;
+
+	                   messageUsed = true;
+	                   messageCtrl.attach();
+	                 }
+	               });
+	             }
+
+	             if (messageUsed) {
+	               // unless we want to display multiple messages then we should
+	               // set a flag here to avoid displaying the next message in the list
+	               messageFound = !multiple;
+	             } else {
+	               unmatchedMessages.push(messageCtrl);
+	             }
+
+	             messageItem = messageItem.next;
+	           }
+
+	           forEach(unmatchedMessages, function(messageCtrl) {
+	             messageCtrl.detach();
+	           });
+
+	           unmatchedMessages.length !== totalMessages
+	              ? $animate.setClass($element, ACTIVE_CLASS, INACTIVE_CLASS)
+	              : $animate.setClass($element, INACTIVE_CLASS, ACTIVE_CLASS);
+	         };
+
+	         $scope.$watchCollection($attrs.ngMessages || $attrs['for'], ctrl.render);
+
+	         // If the element is destroyed, proactively destroy all the currently visible messages
+	         $element.on('$destroy', function() {
+	           forEach(messages, function(item) {
+	             item.message.detach();
+	           });
+	         });
+
+	         this.reRender = function() {
+	           if (!renderLater) {
+	             renderLater = true;
+	             $scope.$evalAsync(function() {
+	               if (renderLater) {
+	                 cachedCollection && ctrl.render(cachedCollection);
+	               }
+	             });
+	           }
+	         };
+
+	         this.register = function(comment, messageCtrl) {
+	           var nextKey = latestKey.toString();
+	           messages[nextKey] = {
+	             message: messageCtrl
+	           };
+	           insertMessageNode($element[0], comment, nextKey);
+	           comment.$$ngMessageNode = nextKey;
+	           latestKey++;
+
+	           ctrl.reRender();
+	         };
+
+	         this.deregister = function(comment) {
+	           var key = comment.$$ngMessageNode;
+	           delete comment.$$ngMessageNode;
+	           removeMessageNode($element[0], comment, key);
+	           delete messages[key];
+	           ctrl.reRender();
+	         };
+
+	         function findPreviousMessage(parent, comment) {
+	           var prevNode = comment;
+	           var parentLookup = [];
+
+	           while (prevNode && prevNode !== parent) {
+	             var prevKey = prevNode.$$ngMessageNode;
+	             if (prevKey && prevKey.length) {
+	               return messages[prevKey];
+	             }
+
+	             // dive deeper into the DOM and examine its children for any ngMessage
+	             // comments that may be in an element that appears deeper in the list
+	             if (prevNode.childNodes.length && parentLookup.indexOf(prevNode) == -1) {
+	               parentLookup.push(prevNode);
+	               prevNode = prevNode.childNodes[prevNode.childNodes.length - 1];
+	             } else if (prevNode.previousSibling) {
+	               prevNode = prevNode.previousSibling;
+	             } else {
+	               prevNode = prevNode.parentNode;
+	               parentLookup.push(prevNode);
+	             }
+	           }
+	         }
+
+	         function insertMessageNode(parent, comment, key) {
+	           var messageNode = messages[key];
+	           if (!ctrl.head) {
+	             ctrl.head = messageNode;
+	           } else {
+	             var match = findPreviousMessage(parent, comment);
+	             if (match) {
+	               messageNode.next = match.next;
+	               match.next = messageNode;
+	             } else {
+	               messageNode.next = ctrl.head;
+	               ctrl.head = messageNode;
+	             }
+	           }
+	         }
+
+	         function removeMessageNode(parent, comment, key) {
+	           var messageNode = messages[key];
+
+	           var match = findPreviousMessage(parent, comment);
+	           if (match) {
+	             match.next = messageNode.next;
+	           } else {
+	             ctrl.head = messageNode.next;
+	           }
+	         }
+	       }]
+	     };
+
+	     function isAttrTruthy(scope, attr) {
+	      return (isString(attr) && attr.length === 0) || //empty attribute
+	             truthy(scope.$eval(attr));
+	     }
+
+	     function truthy(val) {
+	       return isString(val) ? val.length : !!val;
+	     }
+	   }])
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessagesInclude
+	    * @restrict AE
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessagesInclude` is a directive with the purpose to import existing ngMessage template
+	    * code from a remote template and place the downloaded template code into the exact spot
+	    * that the ngMessagesInclude directive is placed within the ngMessages container. This allows
+	    * for a series of pre-defined messages to be reused and also allows for the developer to
+	    * determine what messages are overridden due to the placement of the ngMessagesInclude directive.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-messages-include="remoteTplString">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-messages-include src="expressionValue1">...</ng-messages-include>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @param {string} ngMessagesInclude|src a string value corresponding to the remote template.
+	    */
+	   .directive('ngMessagesInclude',
+	     ['$templateRequest', '$document', '$compile', function($templateRequest, $document, $compile) {
+
+	     return {
+	       restrict: 'AE',
+	       require: '^^ngMessages', // we only require this for validation sake
+	       link: function($scope, element, attrs) {
+	         var src = attrs.ngMessagesInclude || attrs.src;
+	         $templateRequest(src).then(function(html) {
+	           $compile(html)($scope, function(contents) {
+	             element.after(contents);
+
+	             // the anchor is placed for debugging purposes
+	             var comment = $compile.$$createComment ?
+	                 $compile.$$createComment('ngMessagesInclude', src) :
+	                 $document[0].createComment(' ngMessagesInclude: ' + src + ' ');
+	             var anchor = jqLite(comment);
+	             element.after(anchor);
+
+	             // we don't want to pollute the DOM anymore by keeping an empty directive element
+	             element.remove();
+	           });
+	         });
+	       }
+	     };
+	   }])
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessage
+	    * @restrict AE
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessage` is a directive with the purpose to show and hide a particular message.
+	    * For `ngMessage` to operate, a parent `ngMessages` directive on a parent DOM element
+	    * must be situated since it determines which messages are visible based on the state
+	    * of the provided key/value map that `ngMessages` listens on.
+	    *
+	    * More information about using `ngMessage` can be found in the
+	    * {@link module:ngMessages `ngMessages` module documentation}.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression" role="alert">
+	    *   <ANY ng-message="stringValue">...</ANY>
+	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression" role="alert">
+	    *   <ng-message when="stringValue">...</ng-message>
+	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * @param {expression} ngMessage|when a string value corresponding to the message key.
+	    */
+	  .directive('ngMessage', ngMessageDirectiveFactory())
+
+
+	   /**
+	    * @ngdoc directive
+	    * @name ngMessageExp
+	    * @restrict AE
+	    * @priority 1
+	    * @scope
+	    *
+	    * @description
+	    * `ngMessageExp` is a directive with the purpose to show and hide a particular message.
+	    * For `ngMessageExp` to operate, a parent `ngMessages` directive on a parent DOM element
+	    * must be situated since it determines which messages are visible based on the state
+	    * of the provided key/value map that `ngMessages` listens on.
+	    *
+	    * @usage
+	    * ```html
+	    * <!-- using attribute directives -->
+	    * <ANY ng-messages="expression">
+	    *   <ANY ng-message-exp="expressionValue">...</ANY>
+	    * </ANY>
+	    *
+	    * <!-- or by using element directives -->
+	    * <ng-messages for="expression">
+	    *   <ng-message when-exp="expressionValue">...</ng-message>
+	    * </ng-messages>
+	    * ```
+	    *
+	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
+	    *
+	    * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
+	    */
+	  .directive('ngMessageExp', ngMessageDirectiveFactory());
+
+	function ngMessageDirectiveFactory() {
+	  return ['$animate', function($animate) {
+	    return {
+	      restrict: 'AE',
+	      transclude: 'element',
+	      priority: 1, // must run before ngBind, otherwise the text is set on the comment
+	      terminal: true,
+	      require: '^^ngMessages',
+	      link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {
+	        var commentNode = element[0];
+
+	        var records;
+	        var staticExp = attrs.ngMessage || attrs.when;
+	        var dynamicExp = attrs.ngMessageExp || attrs.whenExp;
+	        var assignRecords = function(items) {
+	          records = items
+	              ? (isArray(items)
+	                    ? items
+	                    : items.split(/[\s,]+/))
+	              : null;
+	          ngMessagesCtrl.reRender();
+	        };
+
+	        if (dynamicExp) {
+	          assignRecords(scope.$eval(dynamicExp));
+	          scope.$watchCollection(dynamicExp, assignRecords);
+	        } else {
+	          assignRecords(staticExp);
+	        }
+
+	        var currentElement, messageCtrl;
+	        ngMessagesCtrl.register(commentNode, messageCtrl = {
+	          test: function(name) {
+	            return contains(records, name);
+	          },
+	          attach: function() {
+	            if (!currentElement) {
+	              $transclude(scope, function(elm) {
+	                $animate.enter(elm, null, element);
+	                currentElement = elm;
+
+	                // Each time we attach this node to a message we get a new id that we can match
+	                // when we are destroying the node later.
+	                var $$attachId = currentElement.$$attachId = ngMessagesCtrl.getAttachId();
+
+	                // in the event that the element or a parent element is destroyed
+	                // by another structural directive then it's time
+	                // to deregister the message from the controller
+	                currentElement.on('$destroy', function() {
+	                  if (currentElement && currentElement.$$attachId === $$attachId) {
+	                    ngMessagesCtrl.deregister(commentNode);
+	                    messageCtrl.detach();
+	                  }
+	                });
+	              });
+	            }
+	          },
+	          detach: function() {
+	            if (currentElement) {
+	              var elm = currentElement;
+	              currentElement = null;
+	              $animate.leave(elm);
+	            }
+	          }
+	        });
+	      }
+	    };
+	  }];
+
+	  function contains(collection, key) {
+	    if (collection) {
+	      return isArray(collection)
+	          ? collection.indexOf(key) >= 0
+	          : collection.hasOwnProperty(key);
+	    }
+	  }
+	}
+
+
+	})(window, window.angular);
+
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
 	  'use strict';
 
@@ -30847,36 +31584,36 @@
 
 
 /***/ },
-/* 12 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var angular = __webpack_require__(5);
 	__webpack_require__(7);
-	__webpack_require__(13);
-	__webpack_require__(16);
+	__webpack_require__(15);
+	__webpack_require__(18);
 	__webpack_require__(9);
-	__webpack_require__(17);
-	__webpack_require__(106);
+	__webpack_require__(19);
+	__webpack_require__(108);
 
 	angular.module('home', ['ngRoute', 'ngFlash', 'angularMoment', 'ui.bootstrap']).config(["$routeProvider", function ($routeProvider) {
 	  $routeProvider.when('/', {
-	    template: __webpack_require__(108),
+	    template: __webpack_require__(110),
 	    controller: 'HomeController'
 	  }).when('/faq', {
-	    template: __webpack_require__(109)
+	    template: __webpack_require__(111)
 	  });
 	}]);
 
 /***/ },
-/* 13 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(14);
-	__webpack_require__(15);
+	__webpack_require__(16);
+	__webpack_require__(17);
 	(function () {
 	  'use strict';
 
@@ -30939,7 +31676,7 @@
 	})();
 
 /***/ },
-/* 14 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30967,7 +31704,7 @@
 	})();
 
 /***/ },
-/* 15 */
+/* 17 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -30985,7 +31722,7 @@
 	}]);
 
 /***/ },
-/* 16 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -39493,7 +40230,7 @@
 	!angular.$$csp() && angular.element(document).find('head').prepend('<style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style>');if(true)module.exports='ui.bootstrap';
 
 /***/ },
-/* 17 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* angular-moment.js / v0.10.3 / (c) 2013, 2014, 2015 Uri Shaked / MIT Licence */
@@ -40120,7 +40857,7 @@
 		}
 
 		if (true) {
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5), __webpack_require__(18)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5), __webpack_require__(20)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else if (typeof module !== 'undefined' && module && module.exports) {
 			angularMoment(angular, require('moment'));
 			module.exports = 'angularMoment';
@@ -40131,7 +40868,7 @@
 
 
 /***/ },
-/* 18 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -40402,7 +41139,7 @@
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(20)("./" + name);
+	                __webpack_require__(22)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -43329,10 +44066,10 @@
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(21)(module)))
 
 /***/ },
-/* 19 */
+/* 21 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -43348,180 +44085,180 @@
 
 
 /***/ },
-/* 20 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 21,
-		"./af.js": 21,
-		"./ar": 22,
-		"./ar-ma": 23,
-		"./ar-ma.js": 23,
-		"./ar-sa": 24,
-		"./ar-sa.js": 24,
-		"./ar-tn": 25,
-		"./ar-tn.js": 25,
-		"./ar.js": 22,
-		"./az": 26,
-		"./az.js": 26,
-		"./be": 27,
-		"./be.js": 27,
-		"./bg": 28,
-		"./bg.js": 28,
-		"./bn": 29,
-		"./bn.js": 29,
-		"./bo": 30,
-		"./bo.js": 30,
-		"./br": 31,
-		"./br.js": 31,
-		"./bs": 32,
-		"./bs.js": 32,
-		"./ca": 33,
-		"./ca.js": 33,
-		"./cs": 34,
-		"./cs.js": 34,
-		"./cv": 35,
-		"./cv.js": 35,
-		"./cy": 36,
-		"./cy.js": 36,
-		"./da": 37,
-		"./da.js": 37,
-		"./de": 38,
-		"./de-at": 39,
-		"./de-at.js": 39,
-		"./de.js": 38,
-		"./el": 40,
-		"./el.js": 40,
-		"./en-au": 41,
-		"./en-au.js": 41,
-		"./en-ca": 42,
-		"./en-ca.js": 42,
-		"./en-gb": 43,
-		"./en-gb.js": 43,
-		"./eo": 44,
-		"./eo.js": 44,
-		"./es": 45,
-		"./es.js": 45,
-		"./et": 46,
-		"./et.js": 46,
-		"./eu": 47,
-		"./eu.js": 47,
-		"./fa": 48,
-		"./fa.js": 48,
-		"./fi": 49,
-		"./fi.js": 49,
-		"./fo": 50,
-		"./fo.js": 50,
-		"./fr": 51,
-		"./fr-ca": 52,
-		"./fr-ca.js": 52,
-		"./fr.js": 51,
-		"./fy": 53,
-		"./fy.js": 53,
-		"./gl": 54,
-		"./gl.js": 54,
-		"./he": 55,
-		"./he.js": 55,
-		"./hi": 56,
-		"./hi.js": 56,
-		"./hr": 57,
-		"./hr.js": 57,
-		"./hu": 58,
-		"./hu.js": 58,
-		"./hy-am": 59,
-		"./hy-am.js": 59,
-		"./id": 60,
-		"./id.js": 60,
-		"./is": 61,
-		"./is.js": 61,
-		"./it": 62,
-		"./it.js": 62,
-		"./ja": 63,
-		"./ja.js": 63,
-		"./jv": 64,
-		"./jv.js": 64,
-		"./ka": 65,
-		"./ka.js": 65,
-		"./km": 66,
-		"./km.js": 66,
-		"./ko": 67,
-		"./ko.js": 67,
-		"./lb": 68,
-		"./lb.js": 68,
-		"./lt": 69,
-		"./lt.js": 69,
-		"./lv": 70,
-		"./lv.js": 70,
-		"./me": 71,
-		"./me.js": 71,
-		"./mk": 72,
-		"./mk.js": 72,
-		"./ml": 73,
-		"./ml.js": 73,
-		"./mr": 74,
-		"./mr.js": 74,
-		"./ms": 75,
-		"./ms-my": 76,
-		"./ms-my.js": 76,
-		"./ms.js": 75,
-		"./my": 77,
-		"./my.js": 77,
-		"./nb": 78,
-		"./nb.js": 78,
-		"./ne": 79,
-		"./ne.js": 79,
-		"./nl": 80,
-		"./nl.js": 80,
-		"./nn": 81,
-		"./nn.js": 81,
-		"./pl": 82,
-		"./pl.js": 82,
-		"./pt": 83,
-		"./pt-br": 84,
-		"./pt-br.js": 84,
-		"./pt.js": 83,
-		"./ro": 85,
-		"./ro.js": 85,
-		"./ru": 86,
-		"./ru.js": 86,
-		"./si": 87,
-		"./si.js": 87,
-		"./sk": 88,
-		"./sk.js": 88,
-		"./sl": 89,
-		"./sl.js": 89,
-		"./sq": 90,
-		"./sq.js": 90,
-		"./sr": 91,
-		"./sr-cyrl": 92,
-		"./sr-cyrl.js": 92,
-		"./sr.js": 91,
-		"./sv": 93,
-		"./sv.js": 93,
-		"./ta": 94,
-		"./ta.js": 94,
-		"./th": 95,
-		"./th.js": 95,
-		"./tl-ph": 96,
-		"./tl-ph.js": 96,
-		"./tr": 97,
-		"./tr.js": 97,
-		"./tzl": 98,
-		"./tzl.js": 98,
-		"./tzm": 99,
-		"./tzm-latn": 100,
-		"./tzm-latn.js": 100,
-		"./tzm.js": 99,
-		"./uk": 101,
-		"./uk.js": 101,
-		"./uz": 102,
-		"./uz.js": 102,
-		"./vi": 103,
-		"./vi.js": 103,
-		"./zh-cn": 104,
-		"./zh-cn.js": 104,
-		"./zh-tw": 105,
-		"./zh-tw.js": 105
+		"./af": 23,
+		"./af.js": 23,
+		"./ar": 24,
+		"./ar-ma": 25,
+		"./ar-ma.js": 25,
+		"./ar-sa": 26,
+		"./ar-sa.js": 26,
+		"./ar-tn": 27,
+		"./ar-tn.js": 27,
+		"./ar.js": 24,
+		"./az": 28,
+		"./az.js": 28,
+		"./be": 29,
+		"./be.js": 29,
+		"./bg": 30,
+		"./bg.js": 30,
+		"./bn": 31,
+		"./bn.js": 31,
+		"./bo": 32,
+		"./bo.js": 32,
+		"./br": 33,
+		"./br.js": 33,
+		"./bs": 34,
+		"./bs.js": 34,
+		"./ca": 35,
+		"./ca.js": 35,
+		"./cs": 36,
+		"./cs.js": 36,
+		"./cv": 37,
+		"./cv.js": 37,
+		"./cy": 38,
+		"./cy.js": 38,
+		"./da": 39,
+		"./da.js": 39,
+		"./de": 40,
+		"./de-at": 41,
+		"./de-at.js": 41,
+		"./de.js": 40,
+		"./el": 42,
+		"./el.js": 42,
+		"./en-au": 43,
+		"./en-au.js": 43,
+		"./en-ca": 44,
+		"./en-ca.js": 44,
+		"./en-gb": 45,
+		"./en-gb.js": 45,
+		"./eo": 46,
+		"./eo.js": 46,
+		"./es": 47,
+		"./es.js": 47,
+		"./et": 48,
+		"./et.js": 48,
+		"./eu": 49,
+		"./eu.js": 49,
+		"./fa": 50,
+		"./fa.js": 50,
+		"./fi": 51,
+		"./fi.js": 51,
+		"./fo": 52,
+		"./fo.js": 52,
+		"./fr": 53,
+		"./fr-ca": 54,
+		"./fr-ca.js": 54,
+		"./fr.js": 53,
+		"./fy": 55,
+		"./fy.js": 55,
+		"./gl": 56,
+		"./gl.js": 56,
+		"./he": 57,
+		"./he.js": 57,
+		"./hi": 58,
+		"./hi.js": 58,
+		"./hr": 59,
+		"./hr.js": 59,
+		"./hu": 60,
+		"./hu.js": 60,
+		"./hy-am": 61,
+		"./hy-am.js": 61,
+		"./id": 62,
+		"./id.js": 62,
+		"./is": 63,
+		"./is.js": 63,
+		"./it": 64,
+		"./it.js": 64,
+		"./ja": 65,
+		"./ja.js": 65,
+		"./jv": 66,
+		"./jv.js": 66,
+		"./ka": 67,
+		"./ka.js": 67,
+		"./km": 68,
+		"./km.js": 68,
+		"./ko": 69,
+		"./ko.js": 69,
+		"./lb": 70,
+		"./lb.js": 70,
+		"./lt": 71,
+		"./lt.js": 71,
+		"./lv": 72,
+		"./lv.js": 72,
+		"./me": 73,
+		"./me.js": 73,
+		"./mk": 74,
+		"./mk.js": 74,
+		"./ml": 75,
+		"./ml.js": 75,
+		"./mr": 76,
+		"./mr.js": 76,
+		"./ms": 77,
+		"./ms-my": 78,
+		"./ms-my.js": 78,
+		"./ms.js": 77,
+		"./my": 79,
+		"./my.js": 79,
+		"./nb": 80,
+		"./nb.js": 80,
+		"./ne": 81,
+		"./ne.js": 81,
+		"./nl": 82,
+		"./nl.js": 82,
+		"./nn": 83,
+		"./nn.js": 83,
+		"./pl": 84,
+		"./pl.js": 84,
+		"./pt": 85,
+		"./pt-br": 86,
+		"./pt-br.js": 86,
+		"./pt.js": 85,
+		"./ro": 87,
+		"./ro.js": 87,
+		"./ru": 88,
+		"./ru.js": 88,
+		"./si": 89,
+		"./si.js": 89,
+		"./sk": 90,
+		"./sk.js": 90,
+		"./sl": 91,
+		"./sl.js": 91,
+		"./sq": 92,
+		"./sq.js": 92,
+		"./sr": 93,
+		"./sr-cyrl": 94,
+		"./sr-cyrl.js": 94,
+		"./sr.js": 93,
+		"./sv": 95,
+		"./sv.js": 95,
+		"./ta": 96,
+		"./ta.js": 96,
+		"./th": 97,
+		"./th.js": 97,
+		"./tl-ph": 98,
+		"./tl-ph.js": 98,
+		"./tr": 99,
+		"./tr.js": 99,
+		"./tzl": 100,
+		"./tzl.js": 100,
+		"./tzm": 101,
+		"./tzm-latn": 102,
+		"./tzm-latn.js": 102,
+		"./tzm.js": 101,
+		"./uk": 103,
+		"./uk.js": 103,
+		"./uz": 104,
+		"./uz.js": 104,
+		"./vi": 105,
+		"./vi.js": 105,
+		"./zh-cn": 106,
+		"./zh-cn.js": 106,
+		"./zh-tw": 107,
+		"./zh-tw.js": 107
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -43534,11 +44271,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 20;
+	webpackContext.id = 22;
 
 
 /***/ },
-/* 21 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43546,7 +44283,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43615,7 +44352,7 @@
 	}));
 
 /***/ },
-/* 22 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43625,7 +44362,7 @@
 	//! Native plural forms: forabi https://github.com/forabi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43755,7 +44492,7 @@
 	}));
 
 /***/ },
-/* 23 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43764,7 +44501,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43818,7 +44555,7 @@
 	}));
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43826,7 +44563,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43925,14 +44662,14 @@
 	}));
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43986,7 +44723,7 @@
 	}));
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43994,7 +44731,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44094,7 +44831,7 @@
 	}));
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44104,7 +44841,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44245,7 +44982,7 @@
 	}));
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44253,7 +44990,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44339,7 +45076,7 @@
 	}));
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44347,7 +45084,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44456,7 +45193,7 @@
 	}));
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44464,7 +45201,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44570,7 +45307,7 @@
 	}));
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44578,7 +45315,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44681,7 +45418,7 @@
 	}));
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44690,7 +45427,7 @@
 	//! based on (hr) translation by Bojan Marković
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44826,7 +45563,7 @@
 	}));
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44834,7 +45571,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44909,7 +45646,7 @@
 	}));
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44917,7 +45654,7 @@
 	//! author : petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45070,7 +45807,7 @@
 	}));
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45078,7 +45815,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45137,7 +45874,7 @@
 	}));
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45145,7 +45882,7 @@
 	//! author : Robert Allen
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45220,7 +45957,7 @@
 	}));
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45228,7 +45965,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45284,7 +46021,7 @@
 	}));
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45293,7 +46030,7 @@
 	//! author: Menelion Elensúle: https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45363,7 +46100,7 @@
 	}));
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45373,7 +46110,7 @@
 	//! author : Martin Groller : https://github.com/MadMG
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45443,7 +46180,7 @@
 	}));
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45451,7 +46188,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45541,14 +46278,14 @@
 	}));
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45611,7 +46348,7 @@
 	}));
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45619,7 +46356,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45678,7 +46415,7 @@
 	}));
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45686,7 +46423,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45749,7 +46486,7 @@
 	}));
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45759,7 +46496,7 @@
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45826,7 +46563,7 @@
 	}));
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45834,7 +46571,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45909,7 +46646,7 @@
 	}));
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45918,7 +46655,7 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45993,7 +46730,7 @@
 	}));
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46001,7 +46738,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46061,7 +46798,7 @@
 	}));
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46069,7 +46806,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46170,7 +46907,7 @@
 	}));
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46178,7 +46915,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46281,7 +47018,7 @@
 	}));
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46289,7 +47026,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46345,7 +47082,7 @@
 	}));
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46353,7 +47090,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46411,7 +47148,7 @@
 	}));
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46419,7 +47156,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46473,7 +47210,7 @@
 	}));
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46481,7 +47218,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46548,7 +47285,7 @@
 	}));
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46556,7 +47293,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46627,7 +47364,7 @@
 	}));
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46637,7 +47374,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46713,7 +47450,7 @@
 	}));
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46721,7 +47458,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46840,7 +47577,7 @@
 	}));
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46848,7 +47585,7 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46984,7 +47721,7 @@
 	}));
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46992,7 +47729,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47097,7 +47834,7 @@
 	}));
 
 /***/ },
-/* 59 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47105,7 +47842,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47212,7 +47949,7 @@
 	}));
 
 /***/ },
-/* 60 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47221,7 +47958,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47299,7 +48036,7 @@
 	}));
 
 /***/ },
-/* 61 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47307,7 +48044,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47430,7 +48167,7 @@
 	}));
 
 /***/ },
-/* 62 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47439,7 +48176,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47504,7 +48241,7 @@
 	}));
 
 /***/ },
-/* 63 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47512,7 +48249,7 @@
 	//! author : LI Long : https://github.com/baryon
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47573,7 +48310,7 @@
 	}));
 
 /***/ },
-/* 64 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47582,7 +48319,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47660,7 +48397,7 @@
 	}));
 
 /***/ },
-/* 65 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47668,7 +48405,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47767,7 +48504,7 @@
 	}));
 
 /***/ },
-/* 66 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47775,7 +48512,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47829,7 +48566,7 @@
 	}));
 
 /***/ },
-/* 67 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47841,7 +48578,7 @@
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47901,7 +48638,7 @@
 	}));
 
 /***/ },
-/* 68 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47909,7 +48646,7 @@
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48039,7 +48776,7 @@
 	}));
 
 /***/ },
-/* 69 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48047,7 +48784,7 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48168,7 +48905,7 @@
 	}));
 
 /***/ },
-/* 70 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48177,7 +48914,7 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48268,7 +49005,7 @@
 	}));
 
 /***/ },
-/* 71 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48276,7 +49013,7 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48381,7 +49118,7 @@
 	}));
 
 /***/ },
-/* 72 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48389,7 +49126,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48475,7 +49212,7 @@
 	}));
 
 /***/ },
-/* 73 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48483,7 +49220,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48550,7 +49287,7 @@
 	}));
 
 /***/ },
-/* 74 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48558,7 +49295,7 @@
 	//! author : Harshad Kale : https://github.com/kalehv
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48675,7 +49412,7 @@
 	}));
 
 /***/ },
-/* 75 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48683,7 +49420,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48761,7 +49498,7 @@
 	}));
 
 /***/ },
-/* 76 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48769,7 +49506,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48847,7 +49584,7 @@
 	}));
 
 /***/ },
-/* 77 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48855,7 +49592,7 @@
 	//! author : Squar team, mysquar.com
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48944,7 +49681,7 @@
 	}));
 
 /***/ },
-/* 78 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48953,7 +49690,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49009,7 +49746,7 @@
 	}));
 
 /***/ },
-/* 79 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49017,7 +49754,7 @@
 	//! author : suvash : https://github.com/suvash
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49136,7 +49873,7 @@
 	}));
 
 /***/ },
-/* 80 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49144,7 +49881,7 @@
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49211,7 +49948,7 @@
 	}));
 
 /***/ },
-/* 81 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49219,7 +49956,7 @@
 	//! author : https://github.com/mechuwind
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49275,7 +50012,7 @@
 	}));
 
 /***/ },
-/* 82 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49283,7 +50020,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49384,7 +50121,7 @@
 	}));
 
 /***/ },
-/* 83 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49392,7 +50129,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49452,7 +50189,7 @@
 	}));
 
 /***/ },
-/* 84 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49460,7 +50197,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49516,7 +50253,7 @@
 	}));
 
 /***/ },
-/* 85 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49525,7 +50262,7 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49594,7 +50331,7 @@
 	}));
 
 /***/ },
-/* 86 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49603,7 +50340,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49762,7 +50499,7 @@
 	}));
 
 /***/ },
-/* 87 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49770,7 +50507,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49831,7 +50568,7 @@
 	}));
 
 /***/ },
-/* 88 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -49840,7 +50577,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49993,7 +50730,7 @@
 	}));
 
 /***/ },
-/* 89 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50001,7 +50738,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50157,7 +50894,7 @@
 	}));
 
 /***/ },
-/* 90 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50167,7 +50904,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50230,7 +50967,7 @@
 	}));
 
 /***/ },
-/* 91 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50238,7 +50975,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50342,7 +51079,7 @@
 	}));
 
 /***/ },
-/* 92 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50350,7 +51087,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50454,7 +51191,7 @@
 	}));
 
 /***/ },
-/* 93 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50462,7 +51199,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50525,7 +51262,7 @@
 	}));
 
 /***/ },
-/* 94 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50533,7 +51270,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50624,7 +51361,7 @@
 	}));
 
 /***/ },
-/* 95 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50632,7 +51369,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50693,7 +51430,7 @@
 	}));
 
 /***/ },
-/* 96 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50701,7 +51438,7 @@
 	//! author : Dan Hagman
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50759,7 +51496,7 @@
 	}));
 
 /***/ },
-/* 97 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50768,7 +51505,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50853,7 +51590,7 @@
 	}));
 
 /***/ },
-/* 98 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50861,7 +51598,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -50942,7 +51679,7 @@
 	}));
 
 /***/ },
-/* 99 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -50950,7 +51687,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51004,7 +51741,7 @@
 	}));
 
 /***/ },
-/* 100 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51012,7 +51749,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51066,7 +51803,7 @@
 	}));
 
 /***/ },
-/* 101 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51075,7 +51812,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51223,7 +51960,7 @@
 	}));
 
 /***/ },
-/* 102 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51231,7 +51968,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51285,7 +52022,7 @@
 	}));
 
 /***/ },
-/* 103 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51293,7 +52030,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51355,7 +52092,7 @@
 	}));
 
 /***/ },
-/* 104 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51364,7 +52101,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51486,7 +52223,7 @@
 	}));
 
 /***/ },
-/* 105 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -51494,7 +52231,7 @@
 	//! author : Ben : https://github.com/ben-lin
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(18)) :
+	    true ? factory(__webpack_require__(20)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -51591,16 +52328,16 @@
 	}));
 
 /***/ },
-/* 106 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(107);
+	__webpack_require__(109);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 107 */
+/* 109 */
 /***/ function(module, exports) {
 
 	/*
@@ -59001,7 +59738,7 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 108 */
+/* 110 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -59009,7 +59746,7 @@
 	module.exports = "<div class=\"container\" >\n   <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n\n      <uib-pagination\n        total-items=\"targets.length\"\n        ng-model=\"currentPage\"\n        max-size=\"maxSize\"\n        class=\"pagination-sm\"\n        boundary-link-numbers=\"true\">\n      </uib-pagination>\n\n      <div ng-repeat=\"target in filteredTargets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n          <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n              <h3 class=\"\">\n                  {{ target.name }}\n              </h3>\n              <div class=\"match-photo\">\n                  <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\" ng-click=\"open('lg',target.id, target.name)\">\n              </div>\n              <div class=\"match-info\">\n                <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n                <div class=\"match-bio\">\n                    <h5>{{ target.bio.slice(0,255) }}</h5>\n                </div>\n              </div>\n\n              <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Let's Chat</button></a>\n          </div>\n      </div>\n\n</div>\n<footer>\n  <ul>\n    <li>\n      Copyright &copy; 2016 Residual Stratosphere, LLC. All rights reserved\n    </li>\n    <li class=\"social-buttons\">\n      <div class=\"fb-share-button\" data-href=\"http://www.gotindergarten.com\" data-layout=\"button\"></div>\n      <a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://www.gotindergarten.com\" data-text=\"Help this guy get a date on Tinder!\" data-hashtags=\"gotindergarten\">Tweet</a>\n    </li>\n  </ul>\n</footer>\n";
 
 /***/ },
-/* 109 */
+/* 111 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -59017,7 +59754,7 @@
 	module.exports = "<div class=\"jumbotron container\">\n  <h1>Help me get a date!!</h1>\n  <p>I'm a simple programmer that is having the hardest time on TINDER! Help me land one for the team. <br>All of the <a href=\"/#/\">Matches</a>  are my actual matches through Tinder.  When you click on one, you see three things: <br> 1). Actual conversations (iphone) <br> 2). Suggestion window (middle) <br>3). Most Recent Chats with Tinderettes (right) </p>\n  <p>\n    What to do:\n    Suggest a message in the middle window.  The timer at the top is the amount of time before a new message is sent.  The highest upvoted message is sent on every ten minute mark.\n  </p>\n  <p><a class=\"btn btn-primary btn-lg btn-success\" href=\"/#/\" role=\"button\">HELP ME DATE</a></p>\n\n  <p>\n    DISCLAIMER: DO NOT DO ANYTHING ILLEGAL.  I am not responsible for the actions of others.\n  </p>\n</div>\n";
 
 /***/ },
-/* 110 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59028,19 +59765,20 @@
 
 	angular.module('messages', ['ngRoute', 'ngFlash']).config(["$routeProvider", function ($routeProvider) {
 	  $routeProvider.when('/account/:account_id/match/:match_id/messages', {
-	    template: __webpack_require__(111),
+	    template: __webpack_require__(113),
 	    controller: 'MessagesController'
 	  });
 	}]);
 
-	__webpack_require__(112);
-	__webpack_require__(113);
 	__webpack_require__(114);
+	__webpack_require__(115);
 	__webpack_require__(116);
-	__webpack_require__(117);
+	__webpack_require__(118);
+	__webpack_require__(119);
+	__webpack_require__(139);
 
 /***/ },
-/* 111 */
+/* 113 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -59048,7 +59786,7 @@
 	module.exports = "  <div class=\"first-column\">\n\n    <section class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"match-name\">\n          <span ng-cloak>{{match}}</span>\n        </div>\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </section>\n\n    <section class=\"matches\">\n\n    </section>\n    <footer class='back-to-home no-show'>\n      <button type=\"button\" class='btn btn-lg' name=\"button\"><a href=\"/#/\">Back to Matches</a></button>\n    </footer>\n  </div>\n\n<!-- </div> -->\n\n\n<!-- <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\"> -->\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n<div class=\"second-column\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <section id=\"clock\" ng-if='secondsLeftToSend' timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.conversation_id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input type=\"text\" name=\"suggested-response\" ng-model=\"newResponse\" class='enjoy-css' placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-success' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n</div>\n\n<div class=\"third-column\">\n  <ul class=\"nav nav-tabs nav-justified\">\n    <li role=\"presentation\" ng-class=\"{active: mostRecentShow}\"><a ng-click=\"mostRecent()\">Most Recent Matches</a></li>\n    <li role=\"presentation\" ng-class=\"{active: groupChatShow}\"><a ng-click=\"showGroupChat()\">Chat with <br> Gartners</a></li>\n  </ul>\n  <ul ng-if=\"mostRecentShow\" class='list-group' ng-show=\"mostRecentConvos\">\n    <li class='list-group-item' ng-repeat=\"recent in mostRecentConvos\">\n      <div class=\"\">\n        <img ng-src=\"{{recent.photo_url}}\" alt=\"\" />\n      </div>\n      <div class=\"\">\n        <a href=\"/#/account/{{recent.fake_account_id}}/match/{{recent.target_id}}/messages\">{{recent.name}}</a>\n        <br>\n        <span> {{recent.sent_date | amTimeAgo}} </span>\n      </div>\n    </li>\n  </ul>\n  <div class=\"gartner-chats\" ng-if=\"groupChatShow\">\n    <ul>\n      <li ng-repeat=\"chat in currentChats | orderBy: 'created_at'\">\n        {{chat.text}}\n      </li>\n    </ul>\n    <form ng-submit=\"sendChat(chat); clearText();\">\n      <input id=\"chatBox\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"chat\" placeholder=\"Send To Fellow Gartners\">\n      <button type=\"submit\" name=\"name\" class=\"chat-btn btn btn-lg btn-info\"  value=\"submitResponse\">Submit</button>\n    </form>\n  </div>\n\n\n</div>\n\n<footer class=\"tool-bar no-show\">\n  <ul>\n    <li ng-class=\"{active: iphoneShow}\"><a href=\"\" ng-click=\"showIphone()\">Actual</a></li>\n    <li ng-class=\"{active: chatShow}\"><a href=\"\" ng-click=\"showChats()\">Suggested</a></li>\n    <li ng-class=\"{active: recentShow}\"class=\"no-show\"><a href=\"\" ng-click=\"showRecent()\">Recent</a></li>\n  </ul>\n</footer>\n\n<!-- </div> -->\n";
 
 /***/ },
-/* 112 */
+/* 114 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59074,7 +59812,7 @@
 	})();
 
 /***/ },
-/* 113 */
+/* 115 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59095,12 +59833,12 @@
 	}]);
 
 /***/ },
-/* 114 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(115);
+	__webpack_require__(117);
 
 	angular.module('cassanova').directive('timer', ["TimerService", "$interval", function (TimerService, $interval) {
 	  return {
@@ -59124,7 +59862,7 @@
 	}]);
 
 /***/ },
-/* 115 */
+/* 117 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59146,7 +59884,7 @@
 	});
 
 /***/ },
-/* 116 */
+/* 118 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59158,20 +59896,20 @@
 	})();
 
 /***/ },
-/* 117 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	__webpack_require__(118);
-	__webpack_require__(119);
+	__webpack_require__(120);
+	__webpack_require__(121);
 
 	(function () {
 	  'use strict';
 
-	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'SocketService', 'Flash', function ($scope, $routeParams, $location, ResponseService, MessageServices, SocketService, Flash) {
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'AuthenticationService', 'SocketService', 'Flash', '$uibModal', function ($scope, $routeParams, $location, ResponseService, MessageServices, AuthenticationService, SocketService, Flash, $uibModal) {
 	    $scope.chat = "";
 	    $scope.responses = [];
 	    $scope.currentChats = [];
@@ -59274,15 +60012,19 @@
 	    });
 
 	    $scope.submitResponse = function (response) {
-	      if (response) {
-	        response = response.replace(/gotindergarten/gi, "gigglesandcats").replace(/nigga|cunt|nigger/gi, "angel");
-	        var conversation_id = getConversationID();
-	        SocketService.emit('new:response', {
-	          response_text: response,
-	          conversation_id: conversation_id,
-	          target_id: targetId
-	        });
-	        $scope.newResponse = "";
+	      if (AuthenticationService.isAuthenticated) {
+	        if (response) {
+	          response = response.replace(/gotindergarten/gi, "gigglesandcats").replace(/nigga|cunt|nigger/gi, "angel");
+	          var conversation_id = getConversationID();
+	          SocketService.emit('new:response', {
+	            response_text: response,
+	            conversation_id: conversation_id,
+	            target_id: targetId
+	          });
+	          $scope.newResponse = "";
+	        }
+	      } else {
+	        mustBeLoggedIn();
 	      }
 	    };
 
@@ -59293,24 +60035,32 @@
 	    });
 
 	    $scope.submitUpvote = function (responseId) {
-	      var convoId = getConversationID();
-	      var voteObj = {
-	        response_id: responseId,
-	        conversation_id: convoId,
-	        up: 1
-	      };
-	      SocketService.emit('new:vote', voteObj);
+	      if (AuthenticationService.isAuthenticated) {
+	        var convoId = getConversationID();
+	        var voteObj = {
+	          response_id: responseId,
+	          conversation_id: convoId,
+	          up: 1
+	        };
+	        SocketService.emit('new:vote', voteObj);
+	      } else {
+	        mustBeLoggedIn();
+	      }
 	    };
 
 	    $scope.submitDownvote = function (responseId) {
-	      var convoId = getConversationID();
-	      var voteObj = {
-	        response_id: responseId,
-	        conversation_id: convoId,
-	        up: -1
-	      };
+	      if (AuthenticationService.isAuthenticated) {
+	        var convoId = getConversationID();
+	        var voteObj = {
+	          response_id: responseId,
+	          conversation_id: convoId,
+	          up: -1
+	        };
 
-	      SocketService.emit('new:vote', voteObj);
+	        SocketService.emit('new:vote', voteObj);
+	      } else {
+	        mustBeLoggedIn();
+	      }
 	    };
 
 	    $scope.$on('$destroy', function () {
@@ -59390,11 +60140,20 @@
 	      }
 	      return secondsUntil;
 	    };
+
+	    function mustBeLoggedIn() {
+	      var modalInstance = $uibModal.open({
+	        animation: $scope.animationsEnabled,
+	        template: '<div class="modal-header">\n                             <h3 class="modal-title">You must be logged in to make suggestions</h3>\n                         </div>\n                         <div class="modal-body">\n                             <p> You must be logged to submit responses, upvote responses, and downvote repsonses.</p>\n\n                         </div>\n                         <div class="modal-footer">\n                             <button class="btn btn-primary" type="button" ng-click="login()">Login</button></a>\n                             <button class="btn btn-success" type="button" ng-click="signup()">Signup</button>\n                             <button class="btn btn-danger" type="button" ng-click=\'ok()\'>Delete</button>\n                         </div>',
+	        size: 'lg',
+	        controller: 'ModalLoginCtrl'
+	      });
+	    }
 	  }]);
 	})();
 
 /***/ },
-/* 118 */
+/* 120 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59435,7 +60194,7 @@
 	})();
 
 /***/ },
-/* 119 */
+/* 121 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59461,7 +60220,7 @@
 	})();
 
 /***/ },
-/* 120 */
+/* 122 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59505,7 +60264,7 @@
 	})();
 
 /***/ },
-/* 121 */
+/* 123 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59527,48 +60286,7 @@
 	})();
 
 /***/ },
-/* 122 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').factory('TokenInterceptor', ["$q", "$window", "$location", "AuthenticationService", function ($q, $window, $location, AuthenticationService) {
-	    return {
-	        request: function request(config) {
-	            config.headers = config.headers || {};
-	            if ($window.sessionStorage.token) {
-	                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
-	            }
-	            return config;
-	        },
-
-	        requestError: function requestError(rejection) {
-	            return $q.reject(rejection);
-	        },
-
-	        /* Set Authentication.isAuthenticated to true if 200 received */
-	        response: function response(_response) {
-	            if (_response != null && _response.status == 200 && $window.sessionStorage.token && !AuthenticationService.isAuthenticated) {
-	                AuthenticationService.isAuthenticated = true;
-	            }
-	            return _response || $q.when(_response);
-	        },
-
-	        /* Revoke client authentication if 401 is received */
-	        responseError: function responseError(rejection) {
-	            if (rejection != null && rejection.status === 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
-	                delete $window.sessionStorage.token;
-	                AuthenticationService.isAuthenticated = false;
-	                $location.path("/login");
-	            }
-
-	            return $q.reject(rejection);
-	        }
-	    };
-	}]);
-
-/***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59576,27 +60294,22 @@
 	(function () {
 	  'use strict';
 
-	  angular.module('blocked', []).config(["$routeProvider", function ($routeProvider) {
-	    $routeProvider.when('/blocked-matches', {
-	      template: __webpack_require__(124),
-	      controller: 'BlockedController'
-	    }).when('/blocked-matches/:id', {
+	  angular.module('users', ['ngMessages']).config(["$routeProvider", function ($routeProvider) {
+	    $routeProvider.when('/login', {
 	      template: __webpack_require__(125),
-	      controller: 'BlockedController'
+	      controller: 'UsersController'
+	    }).when('/register', {
+	      template: __webpack_require__(126),
+	      controller: 'UsersController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(126);
 	__webpack_require__(127);
-
-/***/ },
-/* 124 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
+	__webpack_require__(128);
+	__webpack_require__(129);
+	__webpack_require__(130);
+	__webpack_require__(131);
 
 /***/ },
 /* 125 */
@@ -59604,57 +60317,15 @@
 
 	"use strict";
 
-	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <span ng-cloak>{{match}}</span>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/register\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 126 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 
-	(function () {
-	  'use strict';
-
-	  angular.module('blocked').controller('BlockedController', ["$scope", "BlockedService", "HomeServices", "MessageServices", "$uibModal", "$q", "$routeParams", function ($scope, BlockedService, HomeServices, MessageServices, $uibModal, $q, $routeParams) {
-
-	    $scope.blocks = [];
-
-	    BlockedService.getBlocks().then(function (data) {
-	      $scope.blocks = data.data;
-	    });
-
-	    if ($routeParams.id) {
-	      MessageServices.getMessages(1, $routeParams.id).then(function (data) {
-	        data.data.conversations.forEach(function (el) {
-	          el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi, "{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi, "{PHONE NUMBER REMOVED}").replace(/\d{9}/gi, "PHONE NUMBER REMOVED");
-	        });
-	        if (data.data.conversations[0] && data.data.conversations[0].name) {
-	          $scope.match = data.data.conversations[0].name;
-	        }
-	        $scope.messages = data.data.conversations;
-	      });
-	    }
-
-	    $scope.open = function (size, target_id, name) {
-	      var modalInstance = $uibModal.open({
-	        animation: $scope.animationsEnabled,
-	        template: '<div class="modal-header">\n                           <h3 class="modal-title">Photos for ' + name + '</h3>\n                       </div>\n                       <div class="modal-body">\n                           <ul>\n                             <li ng-repeat="photo in photos">\n                               <img ng-src="{{photo.photo_url}}" alt="" />\n                             </li>\n                           </ul>\n\n                       </div>\n                       <div class="modal-footer">\n                           <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>\n                           </div>',
-	        size: size,
-	        controller: 'ModalInstanceCtrl',
-	        resolve: {
-	          photos: function photos() {
-	            var $defer = $q.defer();
-	            HomeServices.getPhotos(target_id).then(function (data) {
-	              $scope.photos = data.data;
-	              $defer.resolve(data.data);
-	            });
-	            return $defer.promise;
-	          }
-	        }
-	      });
-	    };
-	  }]);
-	})();
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 127 */
@@ -59665,84 +60336,11 @@
 	(function () {
 	  'use strict';
 
-	  angular.module('blocked').factory('BlockedService', ["$http", function ($http) {
-
-	    var getBlocks = function getBlocks(fakeAcccountID) {
-	      var url = "api/fake_accounts/1/allTargs/blocked";
-	      return $http.get(url);
-	    };
-
-	    var getPhotos = function getPhotos(tinder_id) {
-	      var url = "/api/fake_accounts/photos/target_id/" + tinder_id;
-	      return $http.get(url);
-	    };
-
-	    return {
-	      getBlocks: getBlocks,
-	      getPhotos: getPhotos
-	    };
-	  }]);
-	})();
-
-/***/ },
-/* 128 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
-	  angular.module('users', ['ngMessages']).config(["$routeProvider", function ($routeProvider) {
-	    $routeProvider.when('/login', {
-	      template: __webpack_require__(129),
-	      controller: 'UsersController'
-	    }).when('/register', {
-	      template: __webpack_require__(130),
-	      controller: 'UsersController'
-	    });
-	  }]);
-	})();
-
-	__webpack_require__(131);
-	__webpack_require__(132);
-	__webpack_require__(133);
-	__webpack_require__(134);
-	__webpack_require__(135);
-
-/***/ },
-/* 129 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/register\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
-
-/***/ },
-/* 130 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
-
-/***/ },
-/* 131 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	(function () {
-	  'use strict';
-
 	  angular.module('users').controller('UsersController', ["$scope", "UserService", "$location", "$window", "AuthenticationService", function ($scope, UserService, $location, $window, AuthenticationService) {
 
 	    $scope.login = function login(user) {
-	      console.log("SHIT", user);
 	      if (user.email && user.password) {
-	        console.log("LOGGING IN ");
 	        UserService.login(user).success(function (data) {
-	          console.log(data);
 	          AuthenticationService.isLogged = true;
 	          $window.sessionStorage.token = data.token;
 	          $location.path("/");
@@ -59779,7 +60377,7 @@
 	})();
 
 /***/ },
-/* 132 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59790,7 +60388,6 @@
 	  angular.module('users').factory('UserService', ["$http", function ($http) {
 
 	    function login(user) {
-	      console.log('test', user);
 	      return $http.post('/api/auth/login', user);
 	    };
 
@@ -59809,7 +60406,7 @@
 	})();
 
 /***/ },
-/* 133 */
+/* 129 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59832,7 +60429,7 @@
 	});
 
 /***/ },
-/* 134 */
+/* 130 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59954,7 +60551,7 @@
 	});
 
 /***/ },
-/* 135 */
+/* 131 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -59975,740 +60572,186 @@
 	})();
 
 /***/ },
-/* 136 */
+/* 132 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	angular.module('cassanova').factory('TokenInterceptor', ["$q", "$window", "$location", "AuthenticationService", function ($q, $window, $location, AuthenticationService) {
+	    return {
+	        request: function request(config) {
+	            config.headers = config.headers || {};
+	            if ($window.sessionStorage.token) {
+	                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+	            }
+	            return config;
+	        },
+
+	        requestError: function requestError(rejection) {
+	            return $q.reject(rejection);
+	        },
+
+	        /* Set Authentication.isAuthenticated to true if 200 received */
+	        response: function response(_response) {
+	            if (_response !== null && _response.status == 200 && $window.sessionStorage.token && !AuthenticationService.isAuthenticated) {
+	                AuthenticationService.isAuthenticated = true;
+	            }
+	            return _response || $q.when(_response);
+	        },
+
+	        /* Revoke client authentication if 401 is received */
+	        responseError: function responseError(rejection) {
+	            if (rejection !== null && rejection.status == 401 && ($window.sessionStorage.token || AuthenticationService.isAuthenticated)) {
+	                delete $window.sessionStorage.token;
+	                AuthenticationService.isAuthenticated = false;
+	                $location.path("/login");
+	            }
+
+	            return $q.reject(rejection);
+	        }
+	    };
+	}]);
+
+/***/ },
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(137);
-	module.exports = 'ngMessages';
+	'use strict';
 
+	(function () {
+	  'use strict';
+
+	  angular.module('blocked', []).config(["$routeProvider", function ($routeProvider) {
+	    $routeProvider.when('/blocked-matches', {
+	      template: __webpack_require__(134),
+	      controller: 'BlockedController'
+	    }).when('/blocked-matches/:id', {
+	      template: __webpack_require__(135),
+	      controller: 'BlockedController'
+	    });
+	  }]);
+	})();
+
+	__webpack_require__(136);
+	__webpack_require__(137);
+
+/***/ },
+/* 134 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
+
+/***/ },
+/* 135 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <span ng-cloak>{{match}}</span>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+
+/***/ },
+/* 136 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	(function () {
+	  'use strict';
+
+	  angular.module('blocked').controller('BlockedController', ["$scope", "BlockedService", "HomeServices", "MessageServices", "$uibModal", "$q", "$routeParams", function ($scope, BlockedService, HomeServices, MessageServices, $uibModal, $q, $routeParams) {
+
+	    $scope.blocks = [];
+
+	    BlockedService.getBlocks().then(function (data) {
+	      $scope.blocks = data.data;
+	    });
+
+	    if ($routeParams.id) {
+	      MessageServices.getMessages(1, $routeParams.id).then(function (data) {
+	        data.data.conversations.forEach(function (el) {
+	          el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi, "{PHONE NUMBER REMOVED}").replace(/864-641-5380/gi, "{PHONE NUMBER REMOVED}").replace(/\d{9}/gi, "PHONE NUMBER REMOVED");
+	        });
+	        if (data.data.conversations[0] && data.data.conversations[0].name) {
+	          $scope.match = data.data.conversations[0].name;
+	        }
+	        $scope.messages = data.data.conversations;
+	      });
+	    }
+
+	    $scope.open = function (size, target_id, name) {
+	      var modalInstance = $uibModal.open({
+	        animation: $scope.animationsEnabled,
+	        template: '<div class="modal-header">\n                           <h3 class="modal-title">Photos for ' + name + '</h3>\n                       </div>\n                       <div class="modal-body">\n                           <ul>\n                             <li ng-repeat="photo in photos">\n                               <img ng-src="{{photo.photo_url}}" alt="" />\n                             </li>\n                           </ul>\n\n                       </div>\n                       <div class="modal-footer">\n                           <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>\n                           </div>',
+	        size: size,
+	        controller: 'ModalInstanceCtrl',
+	        resolve: {
+	          photos: function photos() {
+	            var $defer = $q.defer();
+	            HomeServices.getPhotos(target_id).then(function (data) {
+	              $scope.photos = data.data;
+	              $defer.resolve(data.data);
+	            });
+	            return $defer.promise;
+	          }
+	        }
+	      });
+	    };
+	  }]);
+	})();
 
 /***/ },
 /* 137 */
 /***/ function(module, exports) {
 
-	/**
-	 * @license AngularJS v1.5.3
-	 * (c) 2010-2016 Google, Inc. http://angularjs.org
-	 * License: MIT
-	 */
-	(function(window, angular, undefined) {'use strict';
+	'use strict';
 
-	/* jshint ignore:start */
-	// this code is in the core, but not in angular-messages.js
-	var isArray = angular.isArray;
-	var forEach = angular.forEach;
-	var isString = angular.isString;
-	var jqLite = angular.element;
-	/* jshint ignore:end */
+	(function () {
+	  'use strict';
 
-	/**
-	 * @ngdoc module
-	 * @name ngMessages
-	 * @description
-	 *
-	 * The `ngMessages` module provides enhanced support for displaying messages within templates
-	 * (typically within forms or when rendering message objects that return key/value data).
-	 * Instead of relying on JavaScript code and/or complex ng-if statements within your form template to
-	 * show and hide error messages specific to the state of an input field, the `ngMessages` and
-	 * `ngMessage` directives are designed to handle the complexity, inheritance and priority
-	 * sequencing based on the order of how the messages are defined in the template.
-	 *
-	 * Currently, the ngMessages module only contains the code for the `ngMessages`, `ngMessagesInclude`
-	 * `ngMessage` and `ngMessageExp` directives.
-	 *
-	 * # Usage
-	 * The `ngMessages` directive allows keys in a key/value collection to be associated with a child element
-	 * (or 'message') that will show or hide based on the truthiness of that key's value in the collection. A common use
-	 * case for `ngMessages` is to display error messages for inputs using the `$error` object exposed by the
-	 * {@link ngModel ngModel} directive.
-	 *
-	 * The child elements of the `ngMessages` directive are matched to the collection keys by a `ngMessage` or
-	 * `ngMessageExp` directive. The value of these attributes must match a key in the collection that is provided by
-	 * the `ngMessages` directive.
-	 *
-	 * Consider the following example, which illustrates a typical use case of `ngMessages`. Within the form `myForm` we
-	 * have a text input named `myField` which is bound to the scope variable `field` using the {@link ngModel ngModel}
-	 * directive.
-	 *
-	 * The `myField` field is a required input of type `email` with a maximum length of 15 characters.
-	 *
-	 * ```html
-	 * <form name="myForm">
-	 *   <label>
-	 *     Enter text:
-	 *     <input type="email" ng-model="field" name="myField" required maxlength="15" />
-	 *   </label>
-	 *   <div ng-messages="myForm.myField.$error" role="alert">
-	 *     <div ng-message="required">Please enter a value for this field.</div>
-	 *     <div ng-message="email">This field must be a valid email address.</div>
-	 *     <div ng-message="maxlength">This field can be at most 15 characters long.</div>
-	 *   </div>
-	 * </form>
-	 * ```
-	 *
-	 * In order to show error messages corresponding to `myField` we first create an element with an `ngMessages` attribute
-	 * set to the `$error` object owned by the `myField` input in our `myForm` form.
-	 *
-	 * Within this element we then create separate elements for each of the possible errors that `myField` could have.
-	 * The `ngMessage` attribute is used to declare which element(s) will appear for which error - for example,
-	 * setting `ng-message="required"` specifies that this particular element should be displayed when there
-	 * is no value present for the required field `myField` (because the key `required` will be `true` in the object
-	 * `myForm.myField.$error`).
-	 *
-	 * ### Message order
-	 *
-	 * By default, `ngMessages` will only display one message for a particular key/value collection at any time. If more
-	 * than one message (or error) key is currently true, then which message is shown is determined by the order of messages
-	 * in the HTML template code (messages declared first are prioritised). This mechanism means the developer does not have
-	 * to prioritise messages using custom JavaScript code.
-	 *
-	 * Given the following error object for our example (which informs us that the field `myField` currently has both the
-	 * `required` and `email` errors):
-	 *
-	 * ```javascript
-	 * <!-- keep in mind that ngModel automatically sets these error flags -->
-	 * myField.$error = { required : true, email: true, maxlength: false };
-	 * ```
-	 * The `required` message will be displayed to the user since it appears before the `email` message in the DOM.
-	 * Once the user types a single character, the `required` message will disappear (since the field now has a value)
-	 * but the `email` message will be visible because it is still applicable.
-	 *
-	 * ### Displaying multiple messages at the same time
-	 *
-	 * While `ngMessages` will by default only display one error element at a time, the `ng-messages-multiple` attribute can
-	 * be applied to the `ngMessages` container element to cause it to display all applicable error messages at once:
-	 *
-	 * ```html
-	 * <!-- attribute-style usage -->
-	 * <div ng-messages="myForm.myField.$error" ng-messages-multiple>...</div>
-	 *
-	 * <!-- element-style usage -->
-	 * <ng-messages for="myForm.myField.$error" multiple>...</ng-messages>
-	 * ```
-	 *
-	 * ## Reusing and Overriding Messages
-	 * In addition to prioritization, ngMessages also allows for including messages from a remote or an inline
-	 * template. This allows for generic collection of messages to be reused across multiple parts of an
-	 * application.
-	 *
-	 * ```html
-	 * <script type="text/ng-template" id="error-messages">
-	 *   <div ng-message="required">This field is required</div>
-	 *   <div ng-message="minlength">This field is too short</div>
-	 * </script>
-	 *
-	 * <div ng-messages="myForm.myField.$error" role="alert">
-	 *   <div ng-messages-include="error-messages"></div>
-	 * </div>
-	 * ```
-	 *
-	 * However, including generic messages may not be useful enough to match all input fields, therefore,
-	 * `ngMessages` provides the ability to override messages defined in the remote template by redefining
-	 * them within the directive container.
-	 *
-	 * ```html
-	 * <!-- a generic template of error messages known as "my-custom-messages" -->
-	 * <script type="text/ng-template" id="my-custom-messages">
-	 *   <div ng-message="required">This field is required</div>
-	 *   <div ng-message="minlength">This field is too short</div>
-	 * </script>
-	 *
-	 * <form name="myForm">
-	 *   <label>
-	 *     Email address
-	 *     <input type="email"
-	 *            id="email"
-	 *            name="myEmail"
-	 *            ng-model="email"
-	 *            minlength="5"
-	 *            required />
-	 *   </label>
-	 *   <!-- any ng-message elements that appear BEFORE the ng-messages-include will
-	 *        override the messages present in the ng-messages-include template -->
-	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
-	 *     <!-- this required message has overridden the template message -->
-	 *     <div ng-message="required">You did not enter your email address</div>
-	 *
-	 *     <!-- this is a brand new message and will appear last in the prioritization -->
-	 *     <div ng-message="email">Your email address is invalid</div>
-	 *
-	 *     <!-- and here are the generic error messages -->
-	 *     <div ng-messages-include="my-custom-messages"></div>
-	 *   </div>
-	 * </form>
-	 * ```
-	 *
-	 * In the example HTML code above the message that is set on required will override the corresponding
-	 * required message defined within the remote template. Therefore, with particular input fields (such
-	 * email addresses, date fields, autocomplete inputs, etc...), specialized error messages can be applied
-	 * while more generic messages can be used to handle other, more general input errors.
-	 *
-	 * ## Dynamic Messaging
-	 * ngMessages also supports using expressions to dynamically change key values. Using arrays and
-	 * repeaters to list messages is also supported. This means that the code below will be able to
-	 * fully adapt itself and display the appropriate message when any of the expression data changes:
-	 *
-	 * ```html
-	 * <form name="myForm">
-	 *   <label>
-	 *     Email address
-	 *     <input type="email"
-	 *            name="myEmail"
-	 *            ng-model="email"
-	 *            minlength="5"
-	 *            required />
-	 *   </label>
-	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
-	 *     <div ng-message="required">You did not enter your email address</div>
-	 *     <div ng-repeat="errorMessage in errorMessages">
-	 *       <!-- use ng-message-exp for a message whose key is given by an expression -->
-	 *       <div ng-message-exp="errorMessage.type">{{ errorMessage.text }}</div>
-	 *     </div>
-	 *   </div>
-	 * </form>
-	 * ```
-	 *
-	 * The `errorMessage.type` expression can be a string value or it can be an array so
-	 * that multiple errors can be associated with a single error message:
-	 *
-	 * ```html
-	 *   <label>
-	 *     Email address
-	 *     <input type="email"
-	 *            ng-model="data.email"
-	 *            name="myEmail"
-	 *            ng-minlength="5"
-	 *            ng-maxlength="100"
-	 *            required />
-	 *   </label>
-	 *   <div ng-messages="myForm.myEmail.$error" role="alert">
-	 *     <div ng-message-exp="'required'">You did not enter your email address</div>
-	 *     <div ng-message-exp="['minlength', 'maxlength']">
-	 *       Your email must be between 5 and 100 characters long
-	 *     </div>
-	 *   </div>
-	 * ```
-	 *
-	 * Feel free to use other structural directives such as ng-if and ng-switch to further control
-	 * what messages are active and when. Be careful, if you place ng-message on the same element
-	 * as these structural directives, Angular may not be able to determine if a message is active
-	 * or not. Therefore it is best to place the ng-message on a child element of the structural
-	 * directive.
-	 *
-	 * ```html
-	 * <div ng-messages="myForm.myEmail.$error" role="alert">
-	 *   <div ng-if="showRequiredError">
-	 *     <div ng-message="required">Please enter something</div>
-	 *   </div>
-	 * </div>
-	 * ```
-	 *
-	 * ## Animations
-	 * If the `ngAnimate` module is active within the application then the `ngMessages`, `ngMessage` and
-	 * `ngMessageExp` directives will trigger animations whenever any messages are added and removed from
-	 * the DOM by the `ngMessages` directive.
-	 *
-	 * Whenever the `ngMessages` directive contains one or more visible messages then the `.ng-active` CSS
-	 * class will be added to the element. The `.ng-inactive` CSS class will be applied when there are no
-	 * messages present. Therefore, CSS transitions and keyframes as well as JavaScript animations can
-	 * hook into the animations whenever these classes are added/removed.
-	 *
-	 * Let's say that our HTML code for our messages container looks like so:
-	 *
-	 * ```html
-	 * <div ng-messages="myMessages" class="my-messages" role="alert">
-	 *   <div ng-message="alert" class="some-message">...</div>
-	 *   <div ng-message="fail" class="some-message">...</div>
-	 * </div>
-	 * ```
-	 *
-	 * Then the CSS animation code for the message container looks like so:
-	 *
-	 * ```css
-	 * .my-messages {
-	 *   transition:1s linear all;
-	 * }
-	 * .my-messages.ng-active {
-	 *   // messages are visible
-	 * }
-	 * .my-messages.ng-inactive {
-	 *   // messages are hidden
-	 * }
-	 * ```
-	 *
-	 * Whenever an inner message is attached (becomes visible) or removed (becomes hidden) then the enter
-	 * and leave animation is triggered for each particular element bound to the `ngMessage` directive.
-	 *
-	 * Therefore, the CSS code for the inner messages looks like so:
-	 *
-	 * ```css
-	 * .some-message {
-	 *   transition:1s linear all;
-	 * }
-	 *
-	 * .some-message.ng-enter {}
-	 * .some-message.ng-enter.ng-enter-active {}
-	 *
-	 * .some-message.ng-leave {}
-	 * .some-message.ng-leave.ng-leave-active {}
-	 * ```
-	 *
-	 * {@link ngAnimate Click here} to learn how to use JavaScript animations or to learn more about ngAnimate.
-	 */
-	angular.module('ngMessages', [])
+	  angular.module('blocked').factory('BlockedService', ["$http", function ($http) {
 
-	   /**
-	    * @ngdoc directive
-	    * @module ngMessages
-	    * @name ngMessages
-	    * @restrict AE
-	    *
-	    * @description
-	    * `ngMessages` is a directive that is designed to show and hide messages based on the state
-	    * of a key/value object that it listens on. The directive itself complements error message
-	    * reporting with the `ngModel` $error object (which stores a key/value state of validation errors).
-	    *
-	    * `ngMessages` manages the state of internal messages within its container element. The internal
-	    * messages use the `ngMessage` directive and will be inserted/removed from the page depending
-	    * on if they're present within the key/value object. By default, only one message will be displayed
-	    * at a time and this depends on the prioritization of the messages within the template. (This can
-	    * be changed by using the `ng-messages-multiple` or `multiple` attribute on the directive container.)
-	    *
-	    * A remote template can also be used to promote message reusability and messages can also be
-	    * overridden.
-	    *
-	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
-	    *
-	    * @usage
-	    * ```html
-	    * <!-- using attribute directives -->
-	    * <ANY ng-messages="expression" role="alert">
-	    *   <ANY ng-message="stringValue">...</ANY>
-	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
-	    *   <ANY ng-message-exp="expressionValue">...</ANY>
-	    * </ANY>
-	    *
-	    * <!-- or by using element directives -->
-	    * <ng-messages for="expression" role="alert">
-	    *   <ng-message when="stringValue">...</ng-message>
-	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
-	    *   <ng-message when-exp="expressionValue">...</ng-message>
-	    * </ng-messages>
-	    * ```
-	    *
-	    * @param {string} ngMessages an angular expression evaluating to a key/value object
-	    *                 (this is typically the $error object on an ngModel instance).
-	    * @param {string=} ngMessagesMultiple|multiple when set, all messages will be displayed with true
-	    *
-	    * @example
-	    * <example name="ngMessages-directive" module="ngMessagesExample"
-	    *          deps="angular-messages.js"
-	    *          animations="true" fixBase="true">
-	    *   <file name="index.html">
-	    *     <form name="myForm">
-	    *       <label>
-	    *         Enter your name:
-	    *         <input type="text"
-	    *                name="myName"
-	    *                ng-model="name"
-	    *                ng-minlength="5"
-	    *                ng-maxlength="20"
-	    *                required />
-	    *       </label>
-	    *       <pre>myForm.myName.$error = {{ myForm.myName.$error | json }}</pre>
-	    *
-	    *       <div ng-messages="myForm.myName.$error" style="color:maroon" role="alert">
-	    *         <div ng-message="required">You did not enter a field</div>
-	    *         <div ng-message="minlength">Your field is too short</div>
-	    *         <div ng-message="maxlength">Your field is too long</div>
-	    *       </div>
-	    *     </form>
-	    *   </file>
-	    *   <file name="script.js">
-	    *     angular.module('ngMessagesExample', ['ngMessages']);
-	    *   </file>
-	    * </example>
-	    */
-	   .directive('ngMessages', ['$animate', function($animate) {
-	     var ACTIVE_CLASS = 'ng-active';
-	     var INACTIVE_CLASS = 'ng-inactive';
-
-	     return {
-	       require: 'ngMessages',
-	       restrict: 'AE',
-	       controller: ['$element', '$scope', '$attrs', function($element, $scope, $attrs) {
-	         var ctrl = this;
-	         var latestKey = 0;
-	         var nextAttachId = 0;
-
-	         this.getAttachId = function getAttachId() { return nextAttachId++; };
-
-	         var messages = this.messages = {};
-	         var renderLater, cachedCollection;
-
-	         this.render = function(collection) {
-	           collection = collection || {};
-
-	           renderLater = false;
-	           cachedCollection = collection;
-
-	           // this is true if the attribute is empty or if the attribute value is truthy
-	           var multiple = isAttrTruthy($scope, $attrs.ngMessagesMultiple) ||
-	                          isAttrTruthy($scope, $attrs.multiple);
-
-	           var unmatchedMessages = [];
-	           var matchedKeys = {};
-	           var messageItem = ctrl.head;
-	           var messageFound = false;
-	           var totalMessages = 0;
-
-	           // we use != instead of !== to allow for both undefined and null values
-	           while (messageItem != null) {
-	             totalMessages++;
-	             var messageCtrl = messageItem.message;
-
-	             var messageUsed = false;
-	             if (!messageFound) {
-	               forEach(collection, function(value, key) {
-	                 if (!messageUsed && truthy(value) && messageCtrl.test(key)) {
-	                   // this is to prevent the same error name from showing up twice
-	                   if (matchedKeys[key]) return;
-	                   matchedKeys[key] = true;
-
-	                   messageUsed = true;
-	                   messageCtrl.attach();
-	                 }
-	               });
-	             }
-
-	             if (messageUsed) {
-	               // unless we want to display multiple messages then we should
-	               // set a flag here to avoid displaying the next message in the list
-	               messageFound = !multiple;
-	             } else {
-	               unmatchedMessages.push(messageCtrl);
-	             }
-
-	             messageItem = messageItem.next;
-	           }
-
-	           forEach(unmatchedMessages, function(messageCtrl) {
-	             messageCtrl.detach();
-	           });
-
-	           unmatchedMessages.length !== totalMessages
-	              ? $animate.setClass($element, ACTIVE_CLASS, INACTIVE_CLASS)
-	              : $animate.setClass($element, INACTIVE_CLASS, ACTIVE_CLASS);
-	         };
-
-	         $scope.$watchCollection($attrs.ngMessages || $attrs['for'], ctrl.render);
-
-	         // If the element is destroyed, proactively destroy all the currently visible messages
-	         $element.on('$destroy', function() {
-	           forEach(messages, function(item) {
-	             item.message.detach();
-	           });
-	         });
-
-	         this.reRender = function() {
-	           if (!renderLater) {
-	             renderLater = true;
-	             $scope.$evalAsync(function() {
-	               if (renderLater) {
-	                 cachedCollection && ctrl.render(cachedCollection);
-	               }
-	             });
-	           }
-	         };
-
-	         this.register = function(comment, messageCtrl) {
-	           var nextKey = latestKey.toString();
-	           messages[nextKey] = {
-	             message: messageCtrl
-	           };
-	           insertMessageNode($element[0], comment, nextKey);
-	           comment.$$ngMessageNode = nextKey;
-	           latestKey++;
-
-	           ctrl.reRender();
-	         };
-
-	         this.deregister = function(comment) {
-	           var key = comment.$$ngMessageNode;
-	           delete comment.$$ngMessageNode;
-	           removeMessageNode($element[0], comment, key);
-	           delete messages[key];
-	           ctrl.reRender();
-	         };
-
-	         function findPreviousMessage(parent, comment) {
-	           var prevNode = comment;
-	           var parentLookup = [];
-
-	           while (prevNode && prevNode !== parent) {
-	             var prevKey = prevNode.$$ngMessageNode;
-	             if (prevKey && prevKey.length) {
-	               return messages[prevKey];
-	             }
-
-	             // dive deeper into the DOM and examine its children for any ngMessage
-	             // comments that may be in an element that appears deeper in the list
-	             if (prevNode.childNodes.length && parentLookup.indexOf(prevNode) == -1) {
-	               parentLookup.push(prevNode);
-	               prevNode = prevNode.childNodes[prevNode.childNodes.length - 1];
-	             } else if (prevNode.previousSibling) {
-	               prevNode = prevNode.previousSibling;
-	             } else {
-	               prevNode = prevNode.parentNode;
-	               parentLookup.push(prevNode);
-	             }
-	           }
-	         }
-
-	         function insertMessageNode(parent, comment, key) {
-	           var messageNode = messages[key];
-	           if (!ctrl.head) {
-	             ctrl.head = messageNode;
-	           } else {
-	             var match = findPreviousMessage(parent, comment);
-	             if (match) {
-	               messageNode.next = match.next;
-	               match.next = messageNode;
-	             } else {
-	               messageNode.next = ctrl.head;
-	               ctrl.head = messageNode;
-	             }
-	           }
-	         }
-
-	         function removeMessageNode(parent, comment, key) {
-	           var messageNode = messages[key];
-
-	           var match = findPreviousMessage(parent, comment);
-	           if (match) {
-	             match.next = messageNode.next;
-	           } else {
-	             ctrl.head = messageNode.next;
-	           }
-	         }
-	       }]
-	     };
-
-	     function isAttrTruthy(scope, attr) {
-	      return (isString(attr) && attr.length === 0) || //empty attribute
-	             truthy(scope.$eval(attr));
-	     }
-
-	     function truthy(val) {
-	       return isString(val) ? val.length : !!val;
-	     }
-	   }])
-
-	   /**
-	    * @ngdoc directive
-	    * @name ngMessagesInclude
-	    * @restrict AE
-	    * @scope
-	    *
-	    * @description
-	    * `ngMessagesInclude` is a directive with the purpose to import existing ngMessage template
-	    * code from a remote template and place the downloaded template code into the exact spot
-	    * that the ngMessagesInclude directive is placed within the ngMessages container. This allows
-	    * for a series of pre-defined messages to be reused and also allows for the developer to
-	    * determine what messages are overridden due to the placement of the ngMessagesInclude directive.
-	    *
-	    * @usage
-	    * ```html
-	    * <!-- using attribute directives -->
-	    * <ANY ng-messages="expression" role="alert">
-	    *   <ANY ng-messages-include="remoteTplString">...</ANY>
-	    * </ANY>
-	    *
-	    * <!-- or by using element directives -->
-	    * <ng-messages for="expression" role="alert">
-	    *   <ng-messages-include src="expressionValue1">...</ng-messages-include>
-	    * </ng-messages>
-	    * ```
-	    *
-	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
-	    *
-	    * @param {string} ngMessagesInclude|src a string value corresponding to the remote template.
-	    */
-	   .directive('ngMessagesInclude',
-	     ['$templateRequest', '$document', '$compile', function($templateRequest, $document, $compile) {
-
-	     return {
-	       restrict: 'AE',
-	       require: '^^ngMessages', // we only require this for validation sake
-	       link: function($scope, element, attrs) {
-	         var src = attrs.ngMessagesInclude || attrs.src;
-	         $templateRequest(src).then(function(html) {
-	           $compile(html)($scope, function(contents) {
-	             element.after(contents);
-
-	             // the anchor is placed for debugging purposes
-	             var comment = $compile.$$createComment ?
-	                 $compile.$$createComment('ngMessagesInclude', src) :
-	                 $document[0].createComment(' ngMessagesInclude: ' + src + ' ');
-	             var anchor = jqLite(comment);
-	             element.after(anchor);
-
-	             // we don't want to pollute the DOM anymore by keeping an empty directive element
-	             element.remove();
-	           });
-	         });
-	       }
-	     };
-	   }])
-
-	   /**
-	    * @ngdoc directive
-	    * @name ngMessage
-	    * @restrict AE
-	    * @scope
-	    *
-	    * @description
-	    * `ngMessage` is a directive with the purpose to show and hide a particular message.
-	    * For `ngMessage` to operate, a parent `ngMessages` directive on a parent DOM element
-	    * must be situated since it determines which messages are visible based on the state
-	    * of the provided key/value map that `ngMessages` listens on.
-	    *
-	    * More information about using `ngMessage` can be found in the
-	    * {@link module:ngMessages `ngMessages` module documentation}.
-	    *
-	    * @usage
-	    * ```html
-	    * <!-- using attribute directives -->
-	    * <ANY ng-messages="expression" role="alert">
-	    *   <ANY ng-message="stringValue">...</ANY>
-	    *   <ANY ng-message="stringValue1, stringValue2, ...">...</ANY>
-	    * </ANY>
-	    *
-	    * <!-- or by using element directives -->
-	    * <ng-messages for="expression" role="alert">
-	    *   <ng-message when="stringValue">...</ng-message>
-	    *   <ng-message when="stringValue1, stringValue2, ...">...</ng-message>
-	    * </ng-messages>
-	    * ```
-	    *
-	    * @param {expression} ngMessage|when a string value corresponding to the message key.
-	    */
-	  .directive('ngMessage', ngMessageDirectiveFactory())
-
-
-	   /**
-	    * @ngdoc directive
-	    * @name ngMessageExp
-	    * @restrict AE
-	    * @priority 1
-	    * @scope
-	    *
-	    * @description
-	    * `ngMessageExp` is a directive with the purpose to show and hide a particular message.
-	    * For `ngMessageExp` to operate, a parent `ngMessages` directive on a parent DOM element
-	    * must be situated since it determines which messages are visible based on the state
-	    * of the provided key/value map that `ngMessages` listens on.
-	    *
-	    * @usage
-	    * ```html
-	    * <!-- using attribute directives -->
-	    * <ANY ng-messages="expression">
-	    *   <ANY ng-message-exp="expressionValue">...</ANY>
-	    * </ANY>
-	    *
-	    * <!-- or by using element directives -->
-	    * <ng-messages for="expression">
-	    *   <ng-message when-exp="expressionValue">...</ng-message>
-	    * </ng-messages>
-	    * ```
-	    *
-	    * {@link module:ngMessages Click here} to learn more about `ngMessages` and `ngMessage`.
-	    *
-	    * @param {expression} ngMessageExp|whenExp an expression value corresponding to the message key.
-	    */
-	  .directive('ngMessageExp', ngMessageDirectiveFactory());
-
-	function ngMessageDirectiveFactory() {
-	  return ['$animate', function($animate) {
-	    return {
-	      restrict: 'AE',
-	      transclude: 'element',
-	      priority: 1, // must run before ngBind, otherwise the text is set on the comment
-	      terminal: true,
-	      require: '^^ngMessages',
-	      link: function(scope, element, attrs, ngMessagesCtrl, $transclude) {
-	        var commentNode = element[0];
-
-	        var records;
-	        var staticExp = attrs.ngMessage || attrs.when;
-	        var dynamicExp = attrs.ngMessageExp || attrs.whenExp;
-	        var assignRecords = function(items) {
-	          records = items
-	              ? (isArray(items)
-	                    ? items
-	                    : items.split(/[\s,]+/))
-	              : null;
-	          ngMessagesCtrl.reRender();
-	        };
-
-	        if (dynamicExp) {
-	          assignRecords(scope.$eval(dynamicExp));
-	          scope.$watchCollection(dynamicExp, assignRecords);
-	        } else {
-	          assignRecords(staticExp);
-	        }
-
-	        var currentElement, messageCtrl;
-	        ngMessagesCtrl.register(commentNode, messageCtrl = {
-	          test: function(name) {
-	            return contains(records, name);
-	          },
-	          attach: function() {
-	            if (!currentElement) {
-	              $transclude(scope, function(elm) {
-	                $animate.enter(elm, null, element);
-	                currentElement = elm;
-
-	                // Each time we attach this node to a message we get a new id that we can match
-	                // when we are destroying the node later.
-	                var $$attachId = currentElement.$$attachId = ngMessagesCtrl.getAttachId();
-
-	                // in the event that the element or a parent element is destroyed
-	                // by another structural directive then it's time
-	                // to deregister the message from the controller
-	                currentElement.on('$destroy', function() {
-	                  if (currentElement && currentElement.$$attachId === $$attachId) {
-	                    ngMessagesCtrl.deregister(commentNode);
-	                    messageCtrl.detach();
-	                  }
-	                });
-	              });
-	            }
-	          },
-	          detach: function() {
-	            if (currentElement) {
-	              var elm = currentElement;
-	              currentElement = null;
-	              $animate.leave(elm);
-	            }
-	          }
-	        });
-	      }
+	    var getBlocks = function getBlocks(fakeAcccountID) {
+	      var url = "api/fake_accounts/1/allTargs/blocked";
+	      return $http.get(url);
 	    };
-	  }];
 
-	  function contains(collection, key) {
-	    if (collection) {
-	      return isArray(collection)
-	          ? collection.indexOf(key) >= 0
-	          : collection.hasOwnProperty(key);
-	    }
-	  }
-	}
+	    var getPhotos = function getPhotos(tinder_id) {
+	      var url = "/api/fake_accounts/photos/target_id/" + tinder_id;
+	      return $http.get(url);
+	    };
 
+	    return {
+	      getBlocks: getBlocks,
+	      getPhotos: getPhotos
+	    };
+	  }]);
+	})();
 
-	})(window, window.angular);
+/***/ },
+/* 138 */,
+/* 139 */
+/***/ function(module, exports) {
 
+	'use strict';
+
+	angular.module('cassanova').controller('ModalLoginCtrl', ["$scope", "$uibModalInstance", "$location", function ($scope, $uibModalInstance, $location) {
+
+	  $scope.login = function () {
+	    $uibModalInstance.close();
+	    $location.path("/login");
+	  };
+
+	  $scope.signup = function () {
+	    $uibModalInstance.close();
+	    $location.path("/registration");
+	  };
+
+	  $scope.ok = function () {
+	    $uibModalInstance.close();
+	  };
+	}]);
 
 /***/ }
 /******/ ]);

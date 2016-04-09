@@ -31,11 +31,13 @@ angular.module('cassanova',[
 })
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('TokenInterceptor');
-})
+});
+
+
 // .run(function($rootScope, $location, AuthenticationService) {
 //     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
 //       console.log(nextRoute);
-//         if (nextRoute.access.requiredLogin && !AuthenticationService.isLogged) {
+//         if (!AuthenticationService.isLogged) {
 //             $location.path("/login");
 //         }
 //     });

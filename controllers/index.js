@@ -6,6 +6,7 @@ var knex = require('knex')(config[env]);
 var moment = require("moment");
 var _ = require('lodash');
 var timeUntil = require('../services/timeUntil');
+var ensureAuthenticated = require('./helpers').ensureAuthenticated;
 
 // Get all fake accounts
 router.get('/fake_accounts', function(req,res,next) {
@@ -71,7 +72,7 @@ router.get('/targets/:target_id/responses/:conversation_id', function(req,res,ne
       })
 });
 
-router.post('/responses/', function(req,res,next) {
+router.post('/responses/', ensureAuthenticated, function(req,res,next) {
   knex('responses')
     .insert(req.body.response)
     .returning('*')
@@ -80,7 +81,7 @@ router.post('/responses/', function(req,res,next) {
     })
 })
 
-router.post('/responses/:response_id/votes', function(req,res,next) {
+router.post('/responses/:response_id/votes', ensureAuthenticated, function(req,res,next) {
   knex('votes')
     .insert(req.body.vote)
     .returning('*')
