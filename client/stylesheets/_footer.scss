@@ -2,12 +2,22 @@ footer {
   width: 100%;
   background-color: $primaryColor;
   color: #fff;
-  height: 35px;
+  height: 44px;
   ul {
     padding-top: 0.6%;
     margin-bottom: 0;
     li {
       list-style: none;
+      display: inline-block;
+    }
+    li.social-buttons {
+      float: right;
+      margin-right: 2%;
     }
   }
+}
+
+.fb-share-button {
+  position: relative;
+  top: -5px;
 }
