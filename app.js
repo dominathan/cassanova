@@ -12,13 +12,12 @@ var tinderInfo = require('./services/tinder-client');
 
 var db = require('./db/db.js');
 var routes = require('./controllers/index');
+var authenitcation = require('./controllers/authentication');
 
 var app = express();
 
 // view engine setup
 app.set('view engine', 'ejs');
-
-
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -33,6 +32,7 @@ app.get('/', express.static(path.join(__dirname, 'app')));
 app.use('/api/fake_accounts',routes);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
+app.use('/api/auth', authenitcation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

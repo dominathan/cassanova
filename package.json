@@ -7,15 +7,17 @@
     "dev": "nodemon ./bin/www & node_modules/.bin/webpack -w",
     "start": "node ./bin/www",
     "build": "NODE_ENV=production node node_modules/.bin/webpack",
-    "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup" 
+    "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup"
   },
   "dependencies": {
     "angular": "^1.4.8",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-flash-alert": "^2.2.4",
+    "angular-messages": "^1.5.3",
     "angular-moment": "^0.10.3",
     "angular-route": "^1.4.8",
     "angular-ui-bootstrap": "^1.2.5",
+    "bcrypt": "^0.8.5",
     "body-parser": "~1.13.2",
     "bookshelf": "^0.9.1",
     "bower": "^1.7.7",
@@ -26,6 +28,7 @@
     "express": "~4.13.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.8.1",
+    "jwt-simple": "^0.5.0",
     "knex": "^0.9.0",
     "lodash": "^3.10.1",
     "moment": "^2.11.2",
