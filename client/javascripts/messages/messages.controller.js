@@ -31,6 +31,10 @@ require('../responses/responses.service');
             };
           })
           $scope.currentChats = stuff;
+          setTimeout(function() {
+            var elm = document.getElementsByClassName('gartner-chats')[0];
+            elm.children[0].scrollTop = elm.children[0].scrollHeight;
+          },80);
         });
 
         $scope.mostRecent = function () {
