@@ -3,13 +3,14 @@
 
   angular
     .module('users')
-    .controller('UsersController', function($scope, UserService, $location, $window, AuthenticationService) {
+    .controller('UsersController', function($scope,$rootScope, UserService, $location, $window, AuthenticationService) {
 
       $scope.login = function login(user) {
         if (user.email && user.password) {
           UserService.login(user).success(function(data) {
             AuthenticationService.isLogged = true;
             $window.sessionStorage.token = data.token;
+            $rootScope.currentUser = user.email;
             $location.path("/");
           }).error(function(status, data) {
             console.log(status);
@@ -26,6 +27,7 @@
         UserService.signup(user).success(function(data) {
           AuthenticationService.isLogged = true;
           $window.sessionStorage.token = data.token;
+          $rootScope.currentUser = user.username;
           $location.path("/");
         })
         .error(function(err,data) {
@@ -35,10 +37,10 @@
       }
 
       $scope.logout = function logout() {
-        if (UsersService.isLogged) {
+        if (AuthenticationService.isLogged) {
+          $rootScope.currentUser = null;
           AuthenticationService.isLogged = false;
           delete $window.sessionStorage.token;
-          $location.path("/");
         }
       }
 

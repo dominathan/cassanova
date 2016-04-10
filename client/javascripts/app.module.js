@@ -4,7 +4,6 @@ var angular = require('angular');
 require('angular-route');
 require('angular-flash-alert');
 require('angular-messages');
-require('ngstorage');
 
 angular.module('cassanova',[
   'ngRoute',
@@ -12,7 +11,6 @@ angular.module('cassanova',[
   'home',
   'blocked',
   'ngFlash',
-  'ngStorage',
   'users',
   'ngMessages'
 ])

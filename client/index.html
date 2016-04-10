@@ -21,7 +21,7 @@
 </head>
 <body ng-app="cassanova">
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" ng-controller="UsersController">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
@@ -38,6 +38,8 @@
           <li><a href="/#/faq">FAQ</a></li>
           <li><a href="/#/blocked-matches">Tinder Fails</a></li>
           <li><a href="/#/">Home</a></li>
+          <li ng-if="currentUser" ng-click='logout()'><a href="">Logout</a></li>
+          <li ng-if="!currentUser" ><a href="/#/login">Sign in</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
