@@ -146,7 +146,6 @@ function CronExecutables(io) {
       var messagesToSend = [];
       knex.raw(`SELECT SUM(v.up) as total_votes, msg.response_text, msg.conversation_id, msg.created_at, msg.id, tg.id, tg.tinder_id, tg.match_id FROM responses as msg LEFT JOIN votes as v on msg.id = v.response_id LEFT JOIN targets as tg on msg.target_id = tg.id WHERE msg.created_at > '${timeBefore}' AND v.up IS NOT NULL GROUP BY tg.id, msg.id ORDER BY total_votes`)
           .then(function(data) {
-            console.log("FIRST", data.rows);
              var sortedChatsByTinderAndTotalVotes = _.chain(data.rows)
                .filter(function(el) {
                  return parseInt(el.total_votes,10) > 0;
@@ -156,7 +155,6 @@ function CronExecutables(io) {
                })
                .sortByOrder(['total_votes'],['desc'])
              .value()
-             console.log("THIS IS BEST",sortedChatsByTinderAndTotalVotes);
              sortedChatsByTinderAndTotalVotes.forEach(function(el) {
                messagesToSend.push(_.last(el));
              })

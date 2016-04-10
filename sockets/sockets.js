@@ -13,28 +13,48 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
-      if(ensureSocketAuthenticated(response.token)) {
-        delete response.token
-        knex('responses')
-          .insert(response)
-          .returning('*')
-          .then(function(knexResponse) {
-            io.emit('new:response', knexResponse[0]);
-          })
+      var user = ensureSocketAuthenticated(response.token)
+        if(user) {
+          console.log("THIS IS USER"), user;
+          delete response.token
+          response.user_id = user.id;
+          knex('responses')
+            .insert(response)
+            .returning('*')
+            .then(function(knexResponse) {
+              io.emit('new:response', knexResponse[0]);
+            })
+        } else {
+        //unauthenticated
+        return false
       }
     });
 
     socket.on('new:vote', function(data) {
-      if(ensureSocketAuthenticated(data.token)) {
+      var user = ensureSocketAuthenticated(data.token)
+      if(user) {
         delete data.token
+        data.user_id = user.id
         knex('votes')
-         .insert(data)
-         .returning('*')
-         .then(function(knexVote) {
-           io.emit('new:vote',knexVote)
-         })
+        .select('*')
+        .where('response_id', data.response_id)
+        .andWhere('user_id', user.id)
+        .then(function(voteExist) {
+          if (!voteExist.length) {
+            knex('votes')
+             .insert(data)
+             .returning('*')
+             .then(function(knexVote) {
+               io.emit('new:vote',knexVote);
+             })
+          } else {
+            //user has already voted
+            return false;
+          }
+        })
       }
-    })
+
+    });
 
     socket.on('new:chat', function(data) {
       var objToSave = {room_id: parseInt(data.room_id), text: data.text};
@@ -42,20 +62,30 @@ function startSocket(server) {
       .insert(objToSave)
       .returning('*')
       .then(function(data) {
-        io.emit('new:chat',data[0])
+        io.emit('new:chat',data[0]);
       })
-    })
+    });
   })
 }
 
 function ensureSocketAuthenticated(token) {
-    var decoded = jwt.decode(token, config.TOKEN_SECRET)
+    var decoded = jwt.decode(token, config.TOKEN_SECRET);
     if(decoded.sub && decoded.exp >= moment().unix()) {
-      return true
+      return decoded.sub;
     } else {
-      return false
+      return false;
     }
 };
+
+function returnUserFromToken(token) {
+  var decoded = jwt.decode(token, config.TOKEN_SECRET);
+  var user;
+  if(decoded.sub) {
+    return decoded.sub
+  } else {
+    return null
+  }
+}
 
 
 module.exports = startSocket;

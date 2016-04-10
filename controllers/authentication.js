@@ -44,7 +44,7 @@ router.route('/login')
         if(!isMatch) {
           return res.status(401).send({error:  "Incorrect email/or password" });
         }
-        var payload = { email: data[0].email, username: data[0].username }
+        var payload = { email: data[0].email, username: data[0].username, id: data[0].id }
         res.send({token: createToken(payload), username: data[0].username})
       })
     })
@@ -75,9 +75,10 @@ router.route('/login')
             }
             knex('users')
             .insert(newUser)
-            .returning('email')
-            .then(function(userEmail) {
-              res.send({ token: createToken(req.body.email)});
+            .returning('id')
+            .then(function(id) {
+              var payload = { email: newUser.email, id: id[0] }
+              res.send({ token: createToken(payload)});
             })
           });
       });

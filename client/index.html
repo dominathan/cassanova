@@ -37,9 +37,9 @@
 
           <li><a href="/#/">Home</a></li>
           <li><a href="/#/blocked-matches">Tinder Fails</a></li>
-          <li><a href="/#/faq">How It Work</a></li>
-          <li ng-if="currentUser" ng-click='logout()'><a href="">Logout</a></li>
-          <li ng-if="!currentUser" ><a href="/#/login">Sign in</a></li>
+          <li><a href="/#/faq">How It Works</a></li>
+          <li ng-if="isSignedIn" ng-click='logout()'><a href="">Logout</a></li>
+          <li ng-if="!isSignedIn" ><a href="/#/login">Sign in</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
