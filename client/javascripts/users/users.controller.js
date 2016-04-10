@@ -10,7 +10,7 @@
           UserService.login(user).success(function(data) {
             AuthenticationService.isLogged = true;
             $window.sessionStorage.token = data.token;
-            $rootScope.currentUser = user.email;
+            $rootScope.currentUser = user.username;
             $location.path("/");
           }).error(function(status, data) {
             console.log(status);

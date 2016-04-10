@@ -23,6 +23,11 @@
     min-height: 35px;
     overflow-x: overlay;
     padding: 5px;
+    .chat-date {
+      color: #767676;
+      font-size: 0.75em;
+      float: right;
+    }
   }
 }
 form {
@@ -34,6 +39,6 @@ form {
   .chat-btn {
     width: 100%;
     padding: 0 0;
-    line-height: 1.5;
+    line-height: 2.5;
   }
 }

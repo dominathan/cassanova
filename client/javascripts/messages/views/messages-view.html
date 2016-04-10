@@ -46,7 +46,7 @@
 
       </div>
       <form>
-          <input type="text" name="suggested-response" ng-model="newResponse" class='enjoy-css' placeholder="Submit a message to send to this match!">
+          <input class="form-control" type="text" name="name" ng-model="newResponse"  placeholder="Submit a message to send to this match!">
           <input type="submit" class='btn btn-success' name="submit" value="Submit" id="submit" ng-click="submitResponse(newResponse)">
       </form>
   </div>
@@ -72,7 +72,10 @@
   <div class="gartner-chats" ng-if="groupChatShow">
     <ul>
       <li ng-repeat="chat in currentChats | orderBy: 'created_at'">
-        {{chat.text}}
+        <!-- <span ng-if="currentUser" class="user-name">{{currentUser}}: </span>
+        <span ng-if="!currentUser">Unregistered: </span> -->
+        <span class="chat-text">{{chat.text}}</span><br>
+        <span class="chat-date">{{chat.created_at | amTimeAgo}}</span>
       </li>
     </ul>
     <form ng-submit="sendChat(chat); clearText();">
