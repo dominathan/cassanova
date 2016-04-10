@@ -6,11 +6,12 @@
 var app = require('../app');
 var debug = require('debug')('cassanova:server');
 var http = require('http');
-var CronExecutables = require('../services/cronTasks');
-
+// var CronExecutables = require('../services/cronTasks');
+var socketIO = require("../sockets/sockets");
 var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile");
 var knex = require('knex')(config[env]);
+
 
 /**
  * Get port from environment and store in Express.
@@ -31,46 +32,9 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
- * CronJob for setting interval to send messages;
+ * Sockets and CronJobs;
  */
-// var CronJob = CronJob.CronJob;
-
-
-/**
- * Connect to socket.io
- */
- var io = require('socket.io').listen(server);
- var cronTasks = CronExecutables(io);
- io.on('connection', function(socket) {
-   socket.on('new:response',function(response) {
-     knex('responses')
-       .insert(response)
-       .returning('*')
-       .then(function(knexResponse) {
-         io.emit('new:response', knexResponse[0]);
-       })
-   });
-   socket.on('new:vote', function(data) {
-     knex('votes')
-      .insert(data)
-      .returning('*')
-      .then(function(knexVote) {
-        io.emit('new:vote',knexVote)
-      })
-   })
-
-   socket.on('new:chat', function(data) {
-     var objToSave = {room_id: parseInt(data.room_id), text: data.text};
-     knex('chats')
-     .insert(objToSave)
-     .returning('*')
-     .then(function(data) {
-       io.emit('new:chat',data[0])
-     })
-   })
- })
-
-
+ socketIO(server);
 
  /**
   * Normalize a port into a number, string, or false.

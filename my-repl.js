@@ -1,7 +1,10 @@
 var repl = require('repl');
 var env = process.env.NODE_ENV || 'development';
-var config = require("./knexfile");
-var knex = require('knex')(config[env]);
+var db = require("./knexfile");
+var knex = require('knex')(db[env]);
+var config = require('./config/config')
+var jwt = require('jwt-simple');
+
 var TinderClient = require('./services/tinder-client');
 var myProfile = require('./spec/fixtures/my_profile.json');
 var myUpdates = require('./spec/fixtures/new_updates.json');
@@ -20,6 +23,8 @@ var replServer = repl.start({
 replServer.context.repl = repl;
 replServer.context.knex = knex;
 replServer.context.env = env;
+replServer.context.jwt = jwt;
+replServer.context.config = config;
 
 replServer.context.myProfile = myProfile;
 replServer.context.myUpdates = myUpdates;

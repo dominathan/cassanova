@@ -78,11 +78,11 @@
 
 	__webpack_require__(14);
 	__webpack_require__(112);
-	__webpack_require__(122);
 	__webpack_require__(123);
 	__webpack_require__(124);
-	__webpack_require__(132);
+	__webpack_require__(125);
 	__webpack_require__(133);
+	__webpack_require__(134);
 
 /***/ },
 /* 1 */
@@ -59775,7 +59775,7 @@
 	__webpack_require__(116);
 	__webpack_require__(118);
 	__webpack_require__(119);
-	__webpack_require__(139);
+	__webpack_require__(122);
 
 /***/ },
 /* 113 */
@@ -59909,7 +59909,7 @@
 	(function () {
 	  'use strict';
 
-	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'AuthenticationService', 'SocketService', 'Flash', '$uibModal', function ($scope, $routeParams, $location, ResponseService, MessageServices, AuthenticationService, SocketService, Flash, $uibModal) {
+	  angular.module("cassanova").controller('MessagesController', ['$scope', '$routeParams', '$location', 'ResponseService', 'MessageServices', 'AuthenticationService', 'SocketService', 'Flash', '$uibModal', '$window', function ($scope, $routeParams, $location, ResponseService, MessageServices, AuthenticationService, SocketService, Flash, $uibModal, $window) {
 	    $scope.chat = "";
 	    $scope.responses = [];
 	    $scope.currentChats = [];
@@ -60012,17 +60012,16 @@
 	    });
 
 	    $scope.submitResponse = function (response) {
-	      if (AuthenticationService.isAuthenticated) {
-	        if (response) {
-	          response = response.replace(/gotindergarten/gi, "gigglesandcats").replace(/nigga|cunt|nigger/gi, "angel");
-	          var conversation_id = getConversationID();
-	          SocketService.emit('new:response', {
-	            response_text: response,
-	            conversation_id: conversation_id,
-	            target_id: targetId
-	          });
-	          $scope.newResponse = "";
-	        }
+	      if (AuthenticationService.isAuthenticated && $window.sessionStorage.token && response) {
+	        response = response.replace(/gotindergarten/gi, "gigglesandcats").replace(/nigga|cunt|nigger/gi, "angel");
+	        var conversation_id = getConversationID();
+	        SocketService.emit('new:response', {
+	          response_text: response,
+	          conversation_id: conversation_id,
+	          target_id: targetId,
+	          token: $window.sessionStorage.token
+	        });
+	        $scope.newResponse = "";
 	      } else {
 	        mustBeLoggedIn();
 	      }
@@ -60035,12 +60034,13 @@
 	    });
 
 	    $scope.submitUpvote = function (responseId) {
-	      if (AuthenticationService.isAuthenticated) {
+	      if (AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
 	        var convoId = getConversationID();
 	        var voteObj = {
 	          response_id: responseId,
 	          conversation_id: convoId,
-	          up: 1
+	          up: 1,
+	          token: $window.sessionStorage.token
 	        };
 	        SocketService.emit('new:vote', voteObj);
 	      } else {
@@ -60049,12 +60049,13 @@
 	    };
 
 	    $scope.submitDownvote = function (responseId) {
-	      if (AuthenticationService.isAuthenticated) {
+	      if (AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
 	        var convoId = getConversationID();
 	        var voteObj = {
 	          response_id: responseId,
 	          conversation_id: convoId,
-	          up: -1
+	          up: -1,
+	          token: $window.sessionStorage.token
 	        };
 
 	        SocketService.emit('new:vote', voteObj);
@@ -60225,6 +60226,29 @@
 
 	'use strict';
 
+	angular.module('cassanova').controller('ModalLoginCtrl', ["$scope", "$uibModalInstance", "$location", function ($scope, $uibModalInstance, $location) {
+
+	  $scope.login = function () {
+	    $uibModalInstance.close();
+	    $location.path("/login");
+	  };
+
+	  $scope.signup = function () {
+	    $uibModalInstance.close();
+	    $location.path("/registration");
+	  };
+
+	  $scope.ok = function () {
+	    $uibModalInstance.close();
+	  };
+	}]);
+
+/***/ },
+/* 123 */
+/***/ function(module, exports) {
+
+	'use strict';
+
 	(function () {
 	  'use strict';
 
@@ -60264,7 +60288,7 @@
 	})();
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60286,7 +60310,7 @@
 	})();
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60296,28 +60320,20 @@
 
 	  angular.module('users', ['ngMessages']).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/login', {
-	      template: __webpack_require__(125),
+	      template: __webpack_require__(126),
 	      controller: 'UsersController'
 	    }).when('/register', {
-	      template: __webpack_require__(126),
+	      template: __webpack_require__(127),
 	      controller: 'UsersController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(127);
 	__webpack_require__(128);
 	__webpack_require__(129);
 	__webpack_require__(130);
 	__webpack_require__(131);
-
-/***/ },
-/* 125 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/register\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
+	__webpack_require__(132);
 
 /***/ },
 /* 126 */
@@ -60325,10 +60341,18 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/register\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 127 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
+
+/***/ },
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60377,7 +60401,7 @@
 	})();
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60406,7 +60430,7 @@
 	})();
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60429,7 +60453,7 @@
 	});
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60551,7 +60575,7 @@
 	});
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60572,7 +60596,7 @@
 	})();
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60613,7 +60637,7 @@
 	}]);
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60623,25 +60647,17 @@
 
 	  angular.module('blocked', []).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/blocked-matches', {
-	      template: __webpack_require__(134),
+	      template: __webpack_require__(135),
 	      controller: 'BlockedController'
 	    }).when('/blocked-matches/:id', {
-	      template: __webpack_require__(135),
+	      template: __webpack_require__(136),
 	      controller: 'BlockedController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(136);
 	__webpack_require__(137);
-
-/***/ },
-/* 134 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
+	__webpack_require__(138);
 
 /***/ },
 /* 135 */
@@ -60649,10 +60665,18 @@
 
 	"use strict";
 
-	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <span ng-cloak>{{match}}</span>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 136 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <span ng-cloak>{{match}}</span>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+
+/***/ },
+/* 137 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60702,7 +60726,7 @@
 	})();
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60728,30 +60752,6 @@
 	    };
 	  }]);
 	})();
-
-/***/ },
-/* 138 */,
-/* 139 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').controller('ModalLoginCtrl', ["$scope", "$uibModalInstance", "$location", function ($scope, $uibModalInstance, $location) {
-
-	  $scope.login = function () {
-	    $uibModalInstance.close();
-	    $location.path("/login");
-	  };
-
-	  $scope.signup = function () {
-	    $uibModalInstance.close();
-	    $location.path("/registration");
-	  };
-
-	  $scope.ok = function () {
-	    $uibModalInstance.close();
-	  };
-	}]);
 
 /***/ }
 /******/ ]);

@@ -16,7 +16,8 @@ require('../responses/responses.service');
       'SocketService',
       'Flash',
       '$uibModal',
-      function($scope,$routeParams,$location,ResponseService,MessageServices,AuthenticationService,SocketService,Flash,$uibModal) {
+      '$window',
+      function($scope,$routeParams,$location,ResponseService,MessageServices,AuthenticationService,SocketService,Flash,$uibModal,$window) {
         $scope.chat = "";
         $scope.responses = [];
         $scope.currentChats = [];
@@ -139,18 +140,17 @@ require('../responses/responses.service');
           });
 
         $scope.submitResponse = function(response) {
-          if(AuthenticationService.isAuthenticated) {
-            if(response) {
-              response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
-              var conversation_id = getConversationID();
-              SocketService.emit('new:response', {
-                                                    response_text: response,
-                                                    conversation_id: conversation_id,
-                                                    target_id: targetId
-                                                  }
-                                 )
-              $scope.newResponse = "";
-            }
+          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token && response) {
+            response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
+            var conversation_id = getConversationID();
+            SocketService.emit('new:response', {
+                                                  response_text: response,
+                                                  conversation_id: conversation_id,
+                                                  target_id: targetId,
+                                                  token: $window.sessionStorage.token
+                                                }
+                               )
+            $scope.newResponse = "";
           } else {
             mustBeLoggedIn()
           }
@@ -163,12 +163,13 @@ require('../responses/responses.service');
         });
 
         $scope.submitUpvote = function(responseId) {
-          if(AuthenticationService.isAuthenticated) {
+          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,
                             conversation_id: convoId,
-                            up: 1
+                            up: 1,
+                            token: $window.sessionStorage.token
                           }
             SocketService.emit('new:vote', voteObj);
           } else {
@@ -177,12 +178,13 @@ require('../responses/responses.service');
         };
 
         $scope.submitDownvote = function(responseId) {
-          if(AuthenticationService.isAuthenticated) {
+          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,
                             conversation_id: convoId,
-                            up: -1
+                            up: -1,
+                            token: $window.sessionStorage.token
                           }
 
             SocketService.emit('new:vote', voteObj);

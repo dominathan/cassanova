@@ -1,5 +1,5 @@
 var jwt = require('jwt-simple');
-var config = require('../config');
+var config = require('../config/config');
 var moment = require('moment');
 /*
  |--------------------------------------------------------------------------

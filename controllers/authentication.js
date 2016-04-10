@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 var moment = require('moment');
 var jwt = require('jwt-simple');
-var config = require('../config');
+var config = require('../config/config');
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var db = require("../knexfile");
@@ -16,9 +16,9 @@ var bcrypt = require('bcrypt');
  | Generate JSON Web Token
  |--------------------------------------------------------------------------
  */
-function createToken(email) {
+function createToken(user) {
   var payload = {
-    sub: email,
+    sub: user,
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix()
   };
@@ -34,7 +34,7 @@ function createToken(email) {
 router.route('/login')
   .post(function(req, res, next) {
     knex('users')
-    .select('email','password')
+    .select('*')
     .where('email', req.body.email)
     .then(function(data) {
       if(!data[0]) {
@@ -44,7 +44,8 @@ router.route('/login')
         if(!isMatch) {
           return res.status(401).send({error:  "Incorrect email/or password" });
         }
-        res.send({token: createToken(req.body.email)})
+        var payload = { email: data[0].email, username: data[0].username }
+        res.send({token: createToken(payload), username: data[0].username})
       })
     })
   });
