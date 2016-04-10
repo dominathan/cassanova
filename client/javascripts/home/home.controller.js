@@ -46,20 +46,7 @@ require('./modalInstance.controller');
         $scope.open = function (size,target_id,name) {
           var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
-            template: `<div class="modal-header">
-                           <h3 class="modal-title">Photos for ${name}</h3>
-                       </div>
-                       <div class="modal-body">
-                           <ul>
-                             <li ng-repeat="photo in photos">
-                               <img ng-src="{{photo.photo_url}}" alt="" />
-                             </li>
-                           </ul>
-
-                       </div>
-                       <div class="modal-footer">
-                           <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                           </div>`,
+            template: require('./views/photos-modal.html'),
             size: size,
             controller: 'ModalInstanceCtrl',
             resolve: {

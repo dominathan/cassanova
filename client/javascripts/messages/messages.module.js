@@ -20,3 +20,4 @@ require('../directives/timer');
 require('../responses/responses.controller')
 require('./messages.controller');
 require('./modalLoginController')
+require('./modalProfileController')

@@ -13,6 +13,7 @@ var tinderInfo = require('./services/tinder-client');
 var db = require('./db/db.js');
 var routes = require('./controllers/index');
 var authenitcation = require('./controllers/authentication');
+var MatchController = require('./controllers/matchController');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('/', express.static(path.join(__dirname, 'app')));
 
 app.use('/api/fake_accounts',routes);
+app.use('/api/targets',MatchController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
 app.use('/api/auth', authenitcation);

@@ -1,0 +1,24 @@
+ <div class="modal-body profile-modal">
+   <div class="panel panel-primary match-panel" data-id='{{ match.id }}' data-fake-account-id='{{match.fake_account_id}}'>
+       <h3 class="">
+           {{ match.name }}
+       </h3>
+       <div class="match-photo">
+           <img ng-src="{{ photos[0].photo_url }}" alt="{{ match.name}}">
+       </div>
+       <div class="match-info">
+         <h4>{{ match.gender == 1 ? "Female" : "Male" }} | {{ match.age }}</h4>
+         <div class="match-bio">
+             <h5>{{ match.bio.slice(0,255) }}</h5>
+         </div>
+       </div>
+       <ul>
+         <li ng-repeat="photo in photos">
+           <img ng-src="{{photo.photo_url}}" alt="" />
+         </li>
+       </ul>
+   </div>
+ </div>
+ <div class="modal-footer">
+     <button class="btn btn-primary" type="button" ng-click='ok()'>Ok</button>
+ </div>

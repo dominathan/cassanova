@@ -41,6 +41,7 @@
           $rootScope.currentUser = null;
           AuthenticationService.isLogged = false;
           delete $window.sessionStorage.token;
+          $location.path('/')
         }
       }
 

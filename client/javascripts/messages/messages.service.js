@@ -26,11 +26,16 @@
         return $http.post(url,objToSave);
       }
 
+      var getMatch = function(matchId) {
+        return $http.get('/api/targets/' + matchId);
+      }
+
       return {
         getMessages: getMessages,
         getMostRecent: getMostRecent,
         getChats: getChats,
-        postChat: postChat
+        postChat: postChat,
+        getMatch: getMatch
       }
     })
 })();

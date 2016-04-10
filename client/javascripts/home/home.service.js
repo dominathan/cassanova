@@ -12,7 +12,7 @@
       }
 
       var getPhotos = function(tinder_id) {
-        var url = "/api/fake_accounts/photos/target_id/" + tinder_id;
+        var url = "/api/targets/" + tinder_id + "/photos/";
         return $http.get(url);
       }
 

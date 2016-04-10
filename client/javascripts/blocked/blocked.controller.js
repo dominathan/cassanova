@@ -5,11 +5,29 @@
       .controller('BlockedController', function($scope,BlockedService, HomeServices, MessageServices,$uibModal,$q,$routeParams) {
 
         $scope.blocks = [];
-
+        var targetId = $routeParams.id
         BlockedService.getBlocks()
           .then(function(data) {
             $scope.blocks = data.data
         })
+
+        MessageServices.getMatch(targetId)
+        .then(function(data) {
+          $scope.match = data.data[0];
+        })
+
+        $scope.getMatchInfo = function() {
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            template: require("../messages/views/profileModal.html"),
+            size: 'md',
+            controller: 'ModalProfileCtrl',
+            resolve: {
+              match: $scope.match
+            }
+          })
+        }
+
 
         if($routeParams.id) {
           MessageServices.getMessages(1,$routeParams.id)

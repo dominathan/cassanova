@@ -10,7 +10,7 @@
         };
 
         function logout() {
-
+          return
         };
 
         function signup(user) {

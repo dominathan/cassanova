@@ -73,6 +73,23 @@ require('../responses/responses.service');
           })
         };
 
+        MessageServices.getMatch(targetId)
+        .then(function(data) {
+          $scope.match = data.data[0];
+        })
+
+        $scope.getMatchInfo = function() {
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            template: require("./views/profileModal.html"),
+            size: 'md',
+            controller: 'ModalProfileCtrl',
+            resolve: {
+              match: $scope.match
+            }
+          })
+        }
+
         $scope.sendChat = function(chat) {
           if(chat) {
             document.getElementById("chatBox").value = ""
@@ -103,9 +120,6 @@ require('../responses/responses.service');
                                     .replace(/nigga|cunt|nigger/gi,"angel")
                                     .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
           });
-          if(messages.data.conversations[0] && messages.data.conversations[0].name) {
-            $scope.match = messages.data.conversations[0].name
-          }
           $scope.messages = messages.data.conversations;
           $scope.secondsLeftToSend = secondsLeft(messages.data.time,5);
         });
@@ -273,25 +287,13 @@ require('../responses/responses.service');
 
 
         function mustBeLoggedIn() {
-            var modalInstance = $uibModal.open({
-              animation: $scope.animationsEnabled,
-              template: `<div class="modal-header">
-                             <h3 class="modal-title">You must be logged in to make suggestions</h3>
-                         </div>
-                         <div class="modal-body">
-                             <p> You must be logged to submit responses, upvote responses, and downvote repsonses.</p>
-
-                         </div>
-                         <div class="modal-footer">
-                             <button class="btn btn-primary" type="button" ng-click="login()">Login</button></a>
-                             <button class="btn btn-success" type="button" ng-click="signup()">Signup</button>
-                             <button class="btn btn-danger" type="button" ng-click='ok()'>Delete</button>
-                         </div>`,
-              size: 'lg',
-              controller: 'ModalLoginCtrl'
-            })
-
-        }
+          var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            template: require('./views/must-login-modal.html'),
+            size: 'sm',
+            controller: 'ModalLoginCtrl'
+          })
+        };
 
     }]);
 })()
