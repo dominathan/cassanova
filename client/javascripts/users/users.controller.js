@@ -58,12 +58,12 @@
         }
       }
 
-      // if($location.path('/profile')) {
+      if($location.path() === "/profile") {
         UserService.getProfile()
         .then(function(data) {
           $scope.user = data.data;
         })
-      // }
+      }
 
       $scope.updateProfile = function(user) {
         UserService.updateProfile(user)
