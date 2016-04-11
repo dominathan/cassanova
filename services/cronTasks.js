@@ -88,7 +88,6 @@ function CronExecutables(io) {
         tc.getUpdates(function(err,data) {
           if(err) console.error("unable to reach tinder", err);
           if(data) {
-            console.log("NEW SHIT FROM TINDER", data);
             if(parseInt(data.status,10) > 399) {
               switch(parseInt(data.status)) {
                 case 401:
