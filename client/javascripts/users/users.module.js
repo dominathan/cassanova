@@ -14,6 +14,10 @@
           template: require('./views/register.html'),
           controller: 'UsersController'
         })
+        .when('/profile', {
+          template: require('./views/profile.html'),
+          controller: "UsersController"
+        })
     });
 
 }());

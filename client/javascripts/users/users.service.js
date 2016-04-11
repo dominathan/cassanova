@@ -17,10 +17,20 @@
           return $http.post('/api/auth/signup', user);
         }
 
+        function getProfile() {
+          return $http.get('/api/me');
+        }
+
+        function updateProfile(user) {
+          return $http.put("/api/me",user);
+        }
+
         return {
           login: login,
           logout: logout,
-          signup: signup
+          signup: signup,
+          getProfile: getProfile,
+          updateProfile: updateProfile
         };
 
 

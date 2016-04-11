@@ -5,9 +5,11 @@ var config =  {
   output: {
     filename: "./client/bundle.js"
   },
-  plugins: [new webpack.DefinePlugin({
-    ON_TEST: process.env.NODE_ENV === 'test'
-  })],
+  plugins: [
+    new webpack.DefinePlugin({
+      ON_TEST: process.env.NODE_ENV === 'test'
+    })
+  ],
   module: {
     loaders: [
       {

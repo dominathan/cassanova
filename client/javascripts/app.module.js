@@ -12,7 +12,7 @@ angular.module('cassanova',[
   'blocked',
   'ngFlash',
   'users',
-  'ngMessages'
+  'ngMessages',
 ])
 .config(function($routeProvider) {
   $routeProvider

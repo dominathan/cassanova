@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "angular": "^1.4.8",
+    "angular-animate": "^1.5.3",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-flash-alert": "^2.2.4",
     "angular-messages": "^1.5.3",

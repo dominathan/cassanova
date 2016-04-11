@@ -7,7 +7,7 @@
     .factory('BlockedService', function($http) {
 
       var getBlocks = function(fakeAcccountID) {
-        var url = "api/fake_accounts/1/allTargs/blocked";
+        var url = "/api/fake_accounts/1/allTargs/blocked";
         return $http.get(url);
       }
 

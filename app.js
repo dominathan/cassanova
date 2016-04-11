@@ -14,6 +14,7 @@ var db = require('./db/db.js');
 var routes = require('./controllers/index');
 var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');
+var ProfileController = require("./controllers/profileController");
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/api/targets',MatchController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
 app.use('/api/auth', authenitcation);
+app.use('/api',ProfileController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
