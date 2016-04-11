@@ -43,6 +43,9 @@
 }
 
 @media (min-width: 761px) and (max-width: 1024px) {
+  .center-form {
+    width: 50%;
+  }
   .navbar {
     margin-bottom: 0;
   }
@@ -133,6 +136,9 @@
 @media (min-width: 200px) and (max-width: 760px) {
   .iphone-container.blocked {
     position: static;
+  }
+  .center-form {
+    width: 80%;
   }
   .navbar {
     margin-bottom: 1px;
