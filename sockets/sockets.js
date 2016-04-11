@@ -34,6 +34,7 @@ function startSocket(server) {
     socket.on('new:vote', function(data) {
       var user = ensureSocketAuthenticated(data.token);
       if(user) {
+        console.log("SHOW USER",user);
         delete data.token
         data.user_id = user.user_id;
         knex('votes')
@@ -41,6 +42,7 @@ function startSocket(server) {
         .where('response_id', data.response_id)
         .andWhere('user_id', user.id)
         .then(function(voteExist) {
+          console.log("WHAT IS IT?", voteExist)
           console.log("ALREADY UPVOTE?", !voteExist.length)
           if (!voteExist.length) {
             console.log("ALREADY UPVOTE?", voteExist)
