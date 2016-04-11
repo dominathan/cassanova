@@ -10,18 +10,21 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
+      console.log("THIS IS RESPONSE", response)
       var user = ensureSocketAuthenticated(response.token);
       if(user) {
+        console.log("WERE INSDIEE", user);
         delete response.token
         response.user_id = user.user_id;
         knex('responses')
           .insert(response)
           .returning('*')
           .then(function(knexResponse) {
+            console.log("WHAT THE FUCK");
             io.emit('new:response', knexResponse[0]);
           })
           .catch(function(err) {
-            console.log("GOOO", err);
+            console.log("FAILS", err);
           })
 
       }
