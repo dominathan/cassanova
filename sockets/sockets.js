@@ -41,7 +41,9 @@ function startSocket(server) {
         .where('response_id', data.response_id)
         .andWhere('user_id', user.id)
         .then(function(voteExist) {
+          console.log("ALREADY UPVOTE?", !voteExist.length)
           if (!voteExist.length) {
+            console.log("ALREADY UPVOTE?", voteExist)
             knex('votes')
              .insert(data)
              .returning('*')
@@ -50,6 +52,7 @@ function startSocket(server) {
              })
           } else {
             //user has already voted
+            console.log("ALREADY VOTED");
             return false;
           }
         })
