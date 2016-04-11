@@ -131,7 +131,7 @@ require('../responses/responses.service');
           }
         });
 
-        SocketService.on('responses:clear-old', function(timestamp) {
+        SocketService.on('responses:clear-old', function() {
           $scope.responses = [];
         });
 

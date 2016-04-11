@@ -13,7 +13,7 @@ function startSocket(server) {
       var user = ensureSocketAuthenticated(response.token);
       if(user) {
         delete response.token
-        response.user_id = user.user_id;
+        response.user_id = user.id;
         knex('responses')
           .insert(response)
           .returning('*')
@@ -21,6 +21,7 @@ function startSocket(server) {
             io.emit('new:response', knexResponse[0]);
           })
           .catch(function(err) {
+            console.log("OH FUCK ERROR", err);
           })
 
       }
