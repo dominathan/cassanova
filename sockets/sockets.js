@@ -10,13 +10,19 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
+      console.log("AM I CALLED?", response)
         delete response.token
         response.user_id = 1;
+        console.log("AM I CALLED?", response)
         knex('responses')
           .insert(response)
           .returning('*')
           .then(function(knexResponse) {
+            console.log("EMITTING", knexResponse);
             io.emit('new:response', knexResponse[0]);
+          })
+          .catch(function(err) {
+            console.log("GOOO", err);
           })
 
     });
