@@ -10,21 +10,17 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
-      console.log("THIS IS RESPONSE", response)
       var user = ensureSocketAuthenticated(response.token);
       if(user) {
-        console.log("WERE INSDIEE", user);
         delete response.token
         response.user_id = user.user_id;
         knex('responses')
           .insert(response)
           .returning('*')
           .then(function(knexResponse) {
-            console.log("WHAT THE FUCK");
             io.emit('new:response', knexResponse[0]);
           })
           .catch(function(err) {
-            console.log("FAILS", err);
           })
 
       }
@@ -34,19 +30,14 @@ function startSocket(server) {
     socket.on('new:vote', function(data) {
       var user = ensureSocketAuthenticated(data.token);
       if(user) {
-        console.log("SHOW USER",user);
         delete data.token
-        console.log("WHAT IS VOTE THING", data);
         data.user_id = user.id;
         knex('votes')
         .select('*')
         .where('response_id', data.response_id)
         .andWhere('user_id', user.id)
         .then(function(voteExist) {
-          console.log("WHAT IS IT?", voteExist)
-          console.log("ALREADY UPVOTE?", !voteExist.length)
           if (!voteExist.length) {
-            console.log("ALREADY UPVOTE?", voteExist)
             knex('votes')
              .insert(data)
              .returning('*')
@@ -55,7 +46,6 @@ function startSocket(server) {
              })
           } else {
             //user has already voted
-            console.log("ALREADY VOTED");
             return false;
           }
         })

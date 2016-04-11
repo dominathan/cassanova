@@ -62,7 +62,6 @@ function CronExecutables(io) {
                 console.error('Something went wrong, check the status code', data);
             }
           } else {
-            console.log("LIKING MORE PEOPLE", data);
             data.results.forEach(function(el) {
               tc.like(el._id, function(err, data) {
                 if(err) console.log(err);
