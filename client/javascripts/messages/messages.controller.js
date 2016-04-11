@@ -154,7 +154,7 @@ require('../responses/responses.service');
           });
 
         $scope.submitResponse = function(response) {
-          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token && response) {
+          if(AuthenticationService.isLogged) {
             response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
             var conversation_id = getConversationID();
             SocketService.emit('new:response', {
@@ -177,7 +177,7 @@ require('../responses/responses.service');
         });
 
         $scope.submitUpvote = function(responseId) {
-          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
+          if(AuthenticationService.isLogged) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,
@@ -192,7 +192,7 @@ require('../responses/responses.service');
         };
 
         $scope.submitDownvote = function(responseId) {
-          if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
+          if(AuthenticationService.isLogged) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,

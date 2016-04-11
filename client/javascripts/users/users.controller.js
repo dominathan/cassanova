@@ -47,7 +47,7 @@
       }
 
       $rootScope.logout = function logout() {
-        if (AuthenticationService.isAuthenticated) {
+        if (AuthenticationService.isLogged) {
           $rootScope.currentUser = null;
           $rootScope.isSignedIn = false;
           AuthenticationService.isLogged = false;
