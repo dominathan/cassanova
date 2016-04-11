@@ -4,12 +4,12 @@ angular
 
     $scope.login = function() {
       $uibModalInstance.close();
-      $location.path("/login")
+      $location.path("/login");
     }
 
     $scope.signup = function() {
       $uibModalInstance.close();
-      $location.path("/registration")
+      $location.path("/register");
     }
 
     $scope.ok = function () {
