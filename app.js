@@ -5,12 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var newRelic = require('newrelic');
+var env = process.env.NODE_ENV || 'development';
+var configDB = require("./knexfile");
+global.knex = require('knex')(configDB[env]);
 
 var CronExecutables = require('./services/cronTasks');
 var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
 
-var db = require('./db/db.js');
 var routes = require('./controllers/index');
 var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');

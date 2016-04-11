@@ -5,9 +5,6 @@ var ensureAuthenticated = require('./helpers').ensureAuthenticated;
 
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
-var db = require("../knexfile");
-var knex = require('knex')(db[env]);
-
 /*
  |--------------------------------------------------------------------------
  | GET /api/me

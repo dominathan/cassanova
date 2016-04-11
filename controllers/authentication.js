@@ -7,7 +7,6 @@ var config = require('../config/config');
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var db = require("../knexfile");
-var knex = require('knex')(db[env]);
 var bcrypt = require('bcrypt');
 // var ensureAuthenticated = require('./helpers').ensureAuthenticated;
 

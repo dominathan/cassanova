@@ -8,9 +8,7 @@ var debug = require('debug')('cassanova:server');
 var http = require('http');
 // var CronExecutables = require('../services/cronTasks');
 var socketIO = require("../sockets/sockets");
-var env = process.env.NODE_ENV || 'development';
-var config = require("../knexfile");
-var knex = require('knex')(config[env]);
+
 
 
 /**
@@ -34,7 +32,7 @@ server.on('listening', onListening);
 /**
  * Sockets and CronJobs;
  */
- socketIO(server);
+ socketIO(server,knex);
 
  /**
   * Normalize a port into a number, string, or false.

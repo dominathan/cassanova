@@ -1,9 +1,6 @@
 var jwt = require('jwt-simple');
 var config = require('../config/config');
 var moment = require('moment');
-var env = process.env.NODE_ENV || 'development';
-var db = require("../knexfile");
-var knex = require('knex')(db[env]);
 var sockets = require('socket.io');
 var CronExecutables = require('../services/cronTasks');
 

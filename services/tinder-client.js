@@ -2,7 +2,6 @@ var request = require('request');
 var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var config = require("../knexfile");
-var knex = require('knex')(config[env]);
 
 var TINDER_HOST = "https://api.gotinder.com";
 

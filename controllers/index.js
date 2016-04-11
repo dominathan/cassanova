@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile");
-var knex = require('knex')(config[env]);
 var moment = require("moment");
 var _ = require('lodash');
 var timeUntil = require('../services/timeUntil');
