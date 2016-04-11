@@ -9,7 +9,7 @@ angular
 
     $scope.signup = function() {
       $uibModalInstance.close();
-      $location.path("/register");
+      $location.path("/signup");
     }
 
     $scope.ok = function () {
