@@ -4,6 +4,7 @@ var knex = require('knex')(config[env]);
 
 module.exports = knex;
 
-knex.migrate.latest([config]).finally(function() {
+knex.migrate.latest([config])
+.finally(function() {
   knex.destroy();
 });

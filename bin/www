@@ -6,7 +6,6 @@
 var app = require('../app');
 var debug = require('debug')('cassanova:server');
 var http = require('http');
-// var CronExecutables = require('../services/cronTasks');
 var socketIO = require("../sockets/sockets");
 
 
@@ -32,7 +31,7 @@ server.on('listening', onListening);
 /**
  * Sockets and CronJobs;
  */
- socketIO(server,knex);
+ socketIO(server);
 
  /**
   * Normalize a port into a number, string, or false.

@@ -11,25 +11,25 @@ function startSocket(server) {
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
         delete response.token
-          response.user_id = 1;
-          knex('responses')
-            .insert(response)
-            .returning('*')
-            .then(function(knexResponse) {
-              io.emit('new:response', knexResponse[0]);
-            })
+        response.user_id = 1;
+        knex('responses')
+          .insert(response)
+          .returning('*')
+          .then(function(knexResponse) {
+            io.emit('new:response', knexResponse[0]);
+          })
 
     });
 
     socket.on('new:vote', function(data) {
-        delete data.token
-        data.user_id = 1
-            knex('votes')
-             .insert(data)
-             .returning('*')
-             .then(function(knexVote) {
-               io.emit('new:vote',knexVote);
-             })
+      delete data.token
+      data.user_id = 1
+          knex('votes')
+           .insert(data)
+           .returning('*')
+           .then(function(knexVote) {
+             io.emit('new:vote',knexVote);
+           })
 
     });
 
