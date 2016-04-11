@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
       table.integer('user_id').references('id').inTable('users');
     }),
     knex.schema.table('responses',function(table) {
-      table.integer('user_id').references('id').inTable('users').notNullable();
+      table.integer('user_id').references('id').inTable('users')
     }),
     knex.schema.table('chats',function(table) {
       table.integer('user_id').references('id').inTable('users');
