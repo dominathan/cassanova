@@ -10,32 +10,37 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
-      console.log("AM I CALLED?", response)
+      var user = ensureSocketAuthenticated(response.token);
+      if(user) {
         delete response.token
-        response.user_id = 1;
-        console.log("AM I CALLED?", response)
+        response.user_id = user.user_id;
         knex('responses')
           .insert(response)
           .returning('*')
           .then(function(knexResponse) {
-            console.log("EMITTING", knexResponse);
             io.emit('new:response', knexResponse[0]);
           })
           .catch(function(err) {
             console.log("GOOO", err);
           })
 
+      }
+
     });
 
     socket.on('new:vote', function(data) {
-      delete data.token
-      data.user_id = 1
-          knex('votes')
-           .insert(data)
-           .returning('*')
-           .then(function(knexVote) {
-             io.emit('new:vote',knexVote);
-           })
+      var user = ensureSocketAuthenticated(data.token);
+      if(user) {
+        delete data.token
+        data.user_id = user.user_id;
+        knex('votes')
+         .insert(data)
+         .returning('*')
+         .then(function(knexVote) {
+           io.emit('new:vote',knexVote);
+         })
+      }
+
 
     });
 
