@@ -36,7 +36,8 @@ function startSocket(server) {
       if(user) {
         console.log("SHOW USER",user);
         delete data.token
-        data.user_id = user.user_id;
+        console.log("WHAT IS VOTE THING", data);
+        data.user_id = user.id;
         knex('votes')
         .select('*')
         .where('response_id', data.response_id)
