@@ -37,11 +37,22 @@ function startSocket(server) {
         delete data.token
         data.user_id = user.user_id;
         knex('votes')
-         .insert(data)
-         .returning('*')
-         .then(function(knexVote) {
-           io.emit('new:vote',knexVote);
-         })
+        .select('*')
+        .where('response_id', data.response_id)
+        .andWhere('user_id', user.id)
+        .then(function(voteExist) {
+          if (!voteExist.length) {
+            knex('votes')
+             .insert(data)
+             .returning('*')
+             .then(function(knexVote) {
+               io.emit('new:vote',knexVote);
+             })
+          } else {
+            //user has already voted
+            return false;
+          }
+        })
       }
 
 
