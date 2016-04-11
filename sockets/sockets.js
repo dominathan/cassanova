@@ -13,7 +13,7 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
-
+        delete response.token
           response.user_id = 1;
           knex('responses')
             .insert(response)
@@ -25,7 +25,7 @@ function startSocket(server) {
     });
 
     socket.on('new:vote', function(data) {
-
+        delete data.token
         data.user_id = 1
             knex('votes')
              .insert(data)
