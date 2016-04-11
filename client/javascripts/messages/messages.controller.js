@@ -161,7 +161,7 @@ require('../responses/responses.service');
                                                   response_text: response,
                                                   conversation_id: conversation_id,
                                                   target_id: targetId,
-                                                  token: $window.sessionStorage.token
+                                                  token: $window.localStorage.satellizer_token
                                                 }
                                )
             $scope.newResponse = "";
@@ -183,7 +183,7 @@ require('../responses/responses.service');
                             response_id: responseId,
                             conversation_id: convoId,
                             up: 1,
-                            token: $window.sessionStorage.token
+                            token: $window.localStorage.satellizer_token
                           }
             SocketService.emit('new:vote', voteObj);
           } else {
@@ -198,7 +198,7 @@ require('../responses/responses.service');
                             response_id: responseId,
                             conversation_id: convoId,
                             up: -1,
-                            token: $window.sessionStorage.token
+                            token: $window.localStorage.satellizer_token
                           }
 
             SocketService.emit('new:vote', voteObj);
