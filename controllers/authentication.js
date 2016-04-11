@@ -78,7 +78,7 @@ router.route('/login')
             .returning('id')
             .then(function(id) {
               var payload = { email: newUser.email, id: id[0] }
-              res.send({ token: createToken(payload)});
+              res.send({ token: createToken(payload), username: newUser.username});
             })
           });
       });

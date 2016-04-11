@@ -34,7 +34,7 @@ app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
-app.use('/api/auth', authenitcation);
+app.use('/auth', authenitcation);
 app.use('/api',ProfileController);
 
 // catch 404 and forward to error handler

@@ -1,9 +1,12 @@
 import '../stylesheets/main.scss';
+//@require "./views/**/*.html"
 
 var angular = require('angular');
 require('angular-route');
 require('angular-flash-alert');
 require('angular-messages');
+require('satellizer');
+
 
 angular.module('cassanova',[
   'ngRoute',
@@ -12,34 +15,18 @@ angular.module('cassanova',[
   'blocked',
   'ngFlash',
   'users',
-  'ngMessages'
+  'ngMessages',
+  'satellizer'
 ])
 .config(function($routeProvider) {
   $routeProvider
       .when('/404', {
         template: '<h1>Sorry, page not found</h1>'
       })
-      .when('/weird', {
-        template: '<h1> MUST BE LOGGED IN TO SEE </h1>',
-        // access: { requiredLogin: true }
-      })
       .otherwise({
         redirectTo: '/404'
       });
 })
-.config(function($httpProvider) {
-  $httpProvider.interceptors.push('TokenInterceptor');
-});
-
-
-// .run(function($rootScope, $location, AuthenticationService) {
-//     $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
-//       console.log(nextRoute);
-//         if (!AuthenticationService.isLogged) {
-//             $location.path("/login");
-//         }
-//     });
-// });
 
 require('./home/home.module');
 require('./messages/messages.module');
@@ -48,3 +35,4 @@ require('./utilities/pagination.service');
 require('./users/users.module');
 require('./utilities/tokenInterceptor');
 require('./blocked/blocked.module');
+require('./navbar/navbar.controller');

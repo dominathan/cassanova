@@ -3,25 +3,29 @@
 
   angular
     .module('users')
-    .controller('UsersController', function($scope,$rootScope, UserService, $location, $window, AuthenticationService,Flash) {
-      $rootScope.isSignedIn = false;
-      if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
-        $rootScope.isSignedIn = true;
-      }
+    .controller('UsersController', function($scope, UserService, $location, $window, Flash,$auth) {
+      // $rootScope.isSignedIn = false;
+      // if(AuthenticationService.isAuthenticated && $window.sessionStorage.token) {
+      //   $rootScope.isSignedIn = true;
+      // }
 
       $scope.login = function login(user) {
         if (user.email && user.password) {
-          UserService.login(user)
-          .success(function(data) {
-            AuthenticationService.isLogged = true;
-            $window.sessionStorage.token = data.token;
-            $rootScope.isSignedIn = true;
-            $rootScope.currentUser = data.username;
-            $location.path("/");
-          }).error(function(err, status) {
-            var message = "<strong> Failed to login: "+ err.error +"  </strong>"
-            Flash.create('danger',message,0,{},true);
-          });
+          $auth.login({
+            email: user.email,
+            password: user.password
+          })
+          .then(function(res) {
+            console.log("LOGIN", res)
+            var message = "<strong> Welcome Back, "+ res.data.username +"  </strong>"
+            Flash.create('success',message,0,{},true);
+            $location.path('/');
+          })
+          .catch(function(err) {
+            console.log("FAIL LOGIN", err);
+              var message = "<strong> Failed to login: "+ err.data.error +"  </strong>"
+              Flash.create('danger',message,0,{},true);
+          })
         }
       }
 
@@ -30,59 +34,22 @@
           // flash message that shit isn't work
           return
         }
-        UserService.signup(user)
-        .success(function(data) {
-          AuthenticationService.isLogged = true;
-          $window.sessionStorage.token = data.token;
-          $rootScope.isSignedIn = true;
-          $rootScope.currentUser = user.username;
-          var message = "<strong> Welcome: "+ user.username +"  </strong>"
-          Flash.create('success',message,0,{},true);
-          $location.path("/");
-        })
-        .error(function(err,status) {
-          var message = "<strong> Failed to create account: "+ err.error +"  </strong>"
-          Flash.create('danger',message,0,{},true);
-        })
+        $auth.signup({
+         username: user.username,
+         email: user.email,
+         password: user.password
+       })
+       .then(function(res) {
+         var message = "<strong> Welcome Back, "+ res.data.username +"  </strong>"
+         Flash.create('success',message,0,{},true);
+         $location.path('/login');
+       })
+       .catch(function(err) {
+         console.log("FAIL LOGIN", err);
+           var message = "<strong> Failed to login: "+ err.data.error +"  </strong>"
+           Flash.create('danger',message,0,{},true);
+       })
       }
-
-      $rootScope.logout = function logout() {
-        if (AuthenticationService.isLogged) {
-          $rootScope.currentUser = null;
-          $rootScope.isSignedIn = false;
-          AuthenticationService.isLogged = false;
-          delete $window.sessionStorage.token;
-          var message = "<strong>Signed out successfully.</strong>"
-          Flash.create('success',message,0,{},true);
-          $location.path('/')
-        }
-      }
-
-      if($location.path() === "/profile") {
-        UserService.getProfile()
-        .then(function(data) {
-          $scope.user = data.data;
-        })
-      }
-
-      $scope.updateProfile = function(user) {
-        UserService.updateProfile(user)
-        .success(function(data) {
-          if(data.name === "error") {
-            var message = "<strong>Failed to update profile: "+data.detail +"</strong>"
-            Flash.create('danger',message,0,{},true);
-          } else {
-            var message = "<strong>Updated your profile successfully.</strong>"
-            Flash.create('success',message,0,{},true);
-            $location.path('/');
-          }
-
-        }).error(function(err,status) {
-          console.log("ERROR",err);
-          console.log("status",data);
-        })
-      };
-
 
     })
 

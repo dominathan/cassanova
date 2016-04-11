@@ -6,7 +6,7 @@
     .factory('UserService', function($http) {
 
         function login(user) {
-          return $http.post('/api/auth/login', user);
+          return $http.post('/auth/login', user);
         };
 
         function logout() {
@@ -14,7 +14,7 @@
         };
 
         function signup(user) {
-          return $http.post('/api/auth/signup', user);
+          return $http.post('/auth/signup', user);
         }
 
         function getProfile() {

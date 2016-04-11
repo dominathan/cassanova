@@ -12,12 +12,12 @@ require('../responses/responses.service');
       '$location',
       'ResponseService',
       'MessageServices',
-      'AuthenticationService',
       'SocketService',
       'Flash',
       '$uibModal',
       '$window',
-      function($scope,$routeParams,$location,ResponseService,MessageServices,AuthenticationService,SocketService,Flash,$uibModal,$window) {
+      '$auth',
+      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash,$uibModal,$window,$auth) {
         $scope.chat = "";
         $scope.responses = [];
         $scope.currentChats = [];
@@ -154,7 +154,7 @@ require('../responses/responses.service');
           });
 
         $scope.submitResponse = function(response) {
-          if(AuthenticationService.isLogged) {
+          if($auth.isAuthenticated()) {
             response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
             var conversation_id = getConversationID();
             SocketService.emit('new:response', {
@@ -177,7 +177,7 @@ require('../responses/responses.service');
         });
 
         $scope.submitUpvote = function(responseId) {
-          if(AuthenticationService.isLogged) {
+          if($auth.isAuthenticated()) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,
@@ -192,7 +192,7 @@ require('../responses/responses.service');
         };
 
         $scope.submitDownvote = function(responseId) {
-          if(AuthenticationService.isLogged) {
+          if($auth.isAuthenticated()) {
             var convoId = getConversationID();
             var voteObj = {
                             response_id: responseId,
