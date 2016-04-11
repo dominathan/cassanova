@@ -13,46 +13,26 @@ function startSocket(server) {
 
   io.on('connection', function(socket) {
     socket.on('new:response',function(response) {
-      var user = ensureSocketAuthenticated(response.token)
-        if(user) {
-          console.log("THIS IS USER"), user;
-          delete response.token
-          response.user_id = user.id;
+
+          response.user_id = 1;
           knex('responses')
             .insert(response)
             .returning('*')
             .then(function(knexResponse) {
               io.emit('new:response', knexResponse[0]);
             })
-        } else {
-        //unauthenticated
-        return false
-      }
+
     });
 
     socket.on('new:vote', function(data) {
-      var user = ensureSocketAuthenticated(data.token)
-      if(user) {
-        delete data.token
-        data.user_id = user.id
-        knex('votes')
-        .select('*')
-        .where('response_id', data.response_id)
-        .andWhere('user_id', user.id)
-        .then(function(voteExist) {
-          if (!voteExist.length) {
+
+        data.user_id = 1
             knex('votes')
              .insert(data)
              .returning('*')
              .then(function(knexVote) {
                io.emit('new:vote',knexVote);
              })
-          } else {
-            //user has already voted
-            return false;
-          }
-        })
-      }
 
     });
 
