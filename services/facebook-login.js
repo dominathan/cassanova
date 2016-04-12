@@ -15,8 +15,8 @@ router.get('/update/the/tokens/please', function(req,res) {
 router.post('/update/the/token/please/', function(req,res) {
   console.log("DO IT")
   console.log(req.body);
-  knex('fake_accounts')
-    .where('facebook_user_id',req.body.fbId)
+  knex('users')
+    .where('email',req.body.fbId)
     .update({facebook_authentication_token: req.body.fbKey})
     .then(function(data) {
       res.json(data);

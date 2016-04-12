@@ -18,5 +18,23 @@
     </div>
   </div>
 
+  <div class="panel center-form ">
+    <div class="panel-heading"><h2>Add Your Tinder Account</h2></div>
+    <div class="panel-body">
+      <legend><i class="ion-clipboard"></i> TinderAccount</legend>
+      <form method="post" ng-submit="tinderizer(fb)">
+        <div class="form-group">
+          <label class="control-label"><i class="ion-person"></i>Facebook Email Address</label>
+          <input type="text" class="form-control" ng-model="fb.email" />
+        </div>
+        <div class="form-group">
+          <label class="control-label"><i class="ion-at"></i> Facebook Password</label>
+          <input type="password" class="form-control" ng-model="fb.password" />
+        </div>
+        <button class="btn btn-lg btn-success"> GET TINDERIZING</button>
+      </form>
+    </div>
+  </div>
+
 
 </div>

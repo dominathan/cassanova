@@ -25,12 +25,17 @@
           return $http.put("/api/me",user);
         }
 
+        function tinderizer(fb) {
+          return $http.post('/auth/getTinderized', fb);
+        }
+
         return {
           login: login,
           logout: logout,
           signup: signup,
           getProfile: getProfile,
-          updateProfile: updateProfile
+          updateProfile: updateProfile,
+          tinderizer: tinderizer
         };
 
 

@@ -6,22 +6,25 @@
 
 
 
-      UserService.getProfile()
-      .success(function(data) {
-        console.log(data);
-        $scope.user = data;
-      })
-      .error(function(error) {
-        console.log(eror)
-      });
+    UserService.getProfile()
+    .success(function(data) {
+      $scope.user = data;
+    })
+    .error(function(error) {
+      console.log(eror)
+    });
 
-  /**
-   * Update user's profile information.
-   */
-  $scope.updateProfile = function() {
-    Account.updateProfile({
-      displayName: $scope.user.displayName,
-      email: $scope.user.email
+  $scope.tinderizer = function(fb) {
+    UserService.tinderizer(fb)
+    .then(function(data) {
+      console.log(data);
+    })
+  }
+
+  $scope.updateProfile = function(user) {
+    UserService.updateProfile({
+      username: user.username,
+      email: user.email
     }).then(function() {
       // $alert({
       //   content: 'Profile has been updated',

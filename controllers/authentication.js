@@ -8,7 +8,10 @@ var env = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 3000;
 var db = require("../knexfile");
 var bcrypt = require('bcrypt');
-// var ensureAuthenticated = require('./helpers').ensureAuthenticated;
+var ensureAuthenticated = require('./helpers').ensureAuthenticated;
+var CasperCaller = require('../services/callCasper');
+var TinderClient = require('../services/tinder-client');
+var FakeAccount = require('../models/fake_account')();
 
 /*
  |--------------------------------------------------------------------------
@@ -83,5 +86,49 @@ router.route('/login')
       });
     });
   });
+
+
+  router.post('/getTinderized',ensureAuthenticated,function(req,res,next) {
+    var fbemail = req.body.email
+    var fbpassword = req.body.password;
+    knex('users')
+    .where('email',req.user.email)
+    .update({facebook_email: fbemail, facebook_password: fbpassword})
+    .then(function(data) {
+      console.log('saved user info')
+    })
+
+    CasperCaller(fbemail,fbpassword)
+    .then(function(data){
+      var splitData = data.split("\n");
+      var saveData = JSON.parse(splitData[1])
+      var objToSave = {
+        facebook_authentication_token: saveData.token,
+        facebook_user_id: saveData.fbId,
+        facebook_expiration_time: saveData.expTime
+      };
+      knex('users')
+      .where('email',req.user.email)
+      .update(objToSave)
+      .returning('*')
+      .then(function(data2) {
+        var tc = new TinderClient(objToSave);
+        tc.authorize(tc.fbKey,tc.fbId,function(err,data) {
+          tc.getProfile(function(err,prof) {
+            var saveProfile = FakeAccount.getProfileInfo(prof)
+            knex('users')
+            .where('email',req.user.email)
+            .update(saveProfile)
+            .then(function(data) {
+              console.log("WE DID IT?!!", data)
+            })
+          })
+        })
+      })
+    }).catch(function(err) {
+      console.log("OF COURSE WE MISSED SOMETHIGN", err)
+    })
+    res.status(200).end();
+  })
 
 module.exports = router;
