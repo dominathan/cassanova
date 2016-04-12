@@ -46,35 +46,32 @@
 
 	'use strict';
 
-	var _bootstrap = __webpack_require__(1);
+	var _bootstrapMin = __webpack_require__(1);
 
-	var _bootstrap2 = _interopRequireDefault(_bootstrap);
+	var _bootstrapMin2 = _interopRequireDefault(_bootstrapMin);
 
 	__webpack_require__(10);
 
-	var _angular = __webpack_require__(12);
+	var _bootstrapMin3 = __webpack_require__(12);
+
+	var _bootstrapMin4 = _interopRequireDefault(_bootstrapMin3);
+
+	var _angular = __webpack_require__(13);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _satellizer = __webpack_require__(14);
+	var _satellizer = __webpack_require__(15);
 
 	var _satellizer2 = _interopRequireDefault(_satellizer);
 
-	var _angularStrap = __webpack_require__(15);
-
-	var _angularStrap2 = _interopRequireDefault(_angularStrap);
-
-	var _angularStrap3 = __webpack_require__(16);
-
-	var _angularStrap4 = _interopRequireDefault(_angularStrap3);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(17);
-	__webpack_require__(19);
-	__webpack_require__(21);
+	__webpack_require__(16);
+	__webpack_require__(18);
+	__webpack_require__(20);
+	__webpack_require__(22);
 
-	_angular2.default.module('cassanova', ['ngRoute', 'messages', 'home', 'blocked', 'ngFlash', 'users', 'ngMessages', 'satellizer', 'mgcrea.ngStrap']).config(function ($routeProvider) {
+	_angular2.default.module('cassanova', ['ngRoute', 'messages', 'home', 'blocked', 'ngFlash', 'users', 'ngMessages', 'satellizer', 'ngAside']).config(function ($routeProvider) {
 	  $routeProvider.when('/404', {
 	    template: '<h1>Sorry, page not found</h1>'
 	  }).otherwise({
@@ -82,14 +79,14 @@
 	  });
 	});
 
-	__webpack_require__(23);
-	__webpack_require__(121);
-	__webpack_require__(135);
+	__webpack_require__(24);
+	__webpack_require__(122);
 	__webpack_require__(136);
 	__webpack_require__(137);
-	__webpack_require__(146);
+	__webpack_require__(138);
 	__webpack_require__(147);
-	__webpack_require__(152);
+	__webpack_require__(148);
+	__webpack_require__(153);
 
 /***/ },
 /* 1 */
@@ -107,8 +104,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../css-loader/index.js!./bootstrap.css", function() {
-				var newContent = require("!!./../../../css-loader/index.js!./bootstrap.css");
+			module.hot.accept("!!./../../../css-loader/index.js!./bootstrap.min.css", function() {
+				var newContent = require("!!./../../../css-loader/index.js!./bootstrap.min.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -126,7 +123,7 @@
 
 
 	// module
-	exports.push([module.id, "/*!\n * Bootstrap v3.3.5 (http://getbootstrap.com)\n * Copyright 2011-2015 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n */\n/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */\nhtml {\n  font-family: sans-serif;\n  -webkit-text-size-adjust: 100%;\n      -ms-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  vertical-align: baseline;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden],\ntemplate {\n  display: none;\n}\na {\n  background-color: transparent;\n}\na:active,\na:hover {\n  outline: 0;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nh1 {\n  margin: .67em 0;\n  font-size: 2em;\n}\nmark {\n  color: #000;\n  background: #ff0;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  position: relative;\n  font-size: 75%;\n  line-height: 0;\n  vertical-align: baseline;\n}\nsup {\n  top: -.5em;\n}\nsub {\n  bottom: -.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 1em 40px;\n}\nhr {\n  height: 0;\n  -webkit-box-sizing: content-box;\n     -moz-box-sizing: content-box;\n          box-sizing: content-box;\n}\npre {\n  overflow: auto;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  margin: 0;\n  font: inherit;\n  color: inherit;\n}\nbutton {\n  overflow: visible;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  padding: 0;\n  border: 0;\n}\ninput {\n  line-height: normal;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  -webkit-box-sizing: border-box;\n     -moz-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-box-sizing: content-box;\n     -moz-box-sizing: content-box;\n          box-sizing: content-box;\n  -webkit-appearance: textfield;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nfieldset {\n  padding: .35em .625em .75em;\n  margin: 0 2px;\n  border: 1px solid #c0c0c0;\n}\nlegend {\n  padding: 0;\n  border: 0;\n}\ntextarea {\n  overflow: auto;\n}\noptgroup {\n  font-weight: bold;\n}\ntable {\n  border-spacing: 0;\n  border-collapse: collapse;\n}\ntd,\nth {\n  padding: 0;\n}\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *,\n  *:before,\n  *:after {\n    color: #000 !important;\n    text-shadow: none !important;\n    background: transparent !important;\n    -webkit-box-shadow: none !important;\n            box-shadow: none !important;\n  }\n  a,\n  a:visited {\n    text-decoration: underline;\n  }\n  a[href]:after {\n    content: \" (\" attr(href) \")\";\n  }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\";\n  }\n  a[href^=\"#\"]:after,\n  a[href^=\"javascript:\"]:after {\n    content: \"\";\n  }\n  pre,\n  blockquote {\n    border: 1px solid #999;\n\n    page-break-inside: avoid;\n  }\n  thead {\n    display: table-header-group;\n  }\n  tr,\n  img {\n    page-break-inside: avoid;\n  }\n  img {\n    max-width: 100% !important;\n  }\n  p,\n  h2,\n  h3 {\n    orphans: 3;\n    widows: 3;\n  }\n  h2,\n  h3 {\n    page-break-after: avoid;\n  }\n  .navbar {\n    display: none;\n  }\n  .btn > .caret,\n  .dropup > .btn > .caret {\n    border-top-color: #000 !important;\n  }\n  .label {\n    border: 1px solid #000;\n  }\n  .table {\n    border-collapse: collapse !important;\n  }\n  .table td,\n  .table th {\n    background-color: #fff !important;\n  }\n  .table-bordered th,\n  .table-bordered td {\n    border: 1px solid #ddd !important;\n  }\n}\n@font-face {\n  font-family: 'Glyphicons Halflings';\n\n  src: url(" + __webpack_require__(4) + ");\n  src: url(" + __webpack_require__(4) + "?#iefix) format('embedded-opentype'), url(" + __webpack_require__(5) + ") format('woff2'), url(" + __webpack_require__(6) + ") format('woff'), url(" + __webpack_require__(7) + ") format('truetype'), url(" + __webpack_require__(8) + "#glyphicons_halflingsregular) format('svg');\n}\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1;\n\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.glyphicon-asterisk:before {\n  content: \"*\";\n}\n.glyphicon-plus:before {\n  content: \"+\";\n}\n.glyphicon-euro:before,\n.glyphicon-eur:before {\n  content: \"\\20AC\";\n}\n.glyphicon-minus:before {\n  content: \"\\2212\";\n}\n.glyphicon-cloud:before {\n  content: \"\\2601\";\n}\n.glyphicon-envelope:before {\n  content: \"\\2709\";\n}\n.glyphicon-pencil:before {\n  content: \"\\270F\";\n}\n.glyphicon-glass:before {\n  content: \"\\E001\";\n}\n.glyphicon-music:before {\n  content: \"\\E002\";\n}\n.glyphicon-search:before {\n  content: \"\\E003\";\n}\n.glyphicon-heart:before {\n  content: \"\\E005\";\n}\n.glyphicon-star:before {\n  content: \"\\E006\";\n}\n.glyphicon-star-empty:before {\n  content: \"\\E007\";\n}\n.glyphicon-user:before {\n  content: \"\\E008\";\n}\n.glyphicon-film:before {\n  content: \"\\E009\";\n}\n.glyphicon-th-large:before {\n  content: \"\\E010\";\n}\n.glyphicon-th:before {\n  content: \"\\E011\";\n}\n.glyphicon-th-list:before {\n  content: \"\\E012\";\n}\n.glyphicon-ok:before {\n  content: \"\\E013\";\n}\n.glyphicon-remove:before {\n  content: \"\\E014\";\n}\n.glyphicon-zoom-in:before {\n  content: \"\\E015\";\n}\n.glyphicon-zoom-out:before {\n  content: \"\\E016\";\n}\n.glyphicon-off:before {\n  content: \"\\E017\";\n}\n.glyphicon-signal:before {\n  content: \"\\E018\";\n}\n.glyphicon-cog:before {\n  content: \"\\E019\";\n}\n.glyphicon-trash:before {\n  content: \"\\E020\";\n}\n.glyphicon-home:before {\n  content: \"\\E021\";\n}\n.glyphicon-file:before {\n  content: \"\\E022\";\n}\n.glyphicon-time:before {\n  content: \"\\E023\";\n}\n.glyphicon-road:before {\n  content: \"\\E024\";\n}\n.glyphicon-download-alt:before {\n  content: \"\\E025\";\n}\n.glyphicon-download:before {\n  content: \"\\E026\";\n}\n.glyphicon-upload:before {\n  content: \"\\E027\";\n}\n.glyphicon-inbox:before {\n  content: \"\\E028\";\n}\n.glyphicon-play-circle:before {\n  content: \"\\E029\";\n}\n.glyphicon-repeat:before {\n  content: \"\\E030\";\n}\n.glyphicon-refresh:before {\n  content: \"\\E031\";\n}\n.glyphicon-list-alt:before {\n  content: \"\\E032\";\n}\n.glyphicon-lock:before {\n  content: \"\\E033\";\n}\n.glyphicon-flag:before {\n  content: \"\\E034\";\n}\n.glyphicon-headphones:before {\n  content: \"\\E035\";\n}\n.glyphicon-volume-off:before {\n  content: \"\\E036\";\n}\n.glyphicon-volume-down:before {\n  content: \"\\E037\";\n}\n.glyphicon-volume-up:before {\n  content: \"\\E038\";\n}\n.glyphicon-qrcode:before {\n  content: \"\\E039\";\n}\n.glyphicon-barcode:before {\n  content: \"\\E040\";\n}\n.glyphicon-tag:before {\n  content: \"\\E041\";\n}\n.glyphicon-tags:before {\n  content: \"\\E042\";\n}\n.glyphicon-book:before {\n  content: \"\\E043\";\n}\n.glyphicon-bookmark:before {\n  content: \"\\E044\";\n}\n.glyphicon-print:before {\n  content: \"\\E045\";\n}\n.glyphicon-camera:before {\n  content: \"\\E046\";\n}\n.glyphicon-font:before {\n  content: \"\\E047\";\n}\n.glyphicon-bold:before {\n  content: \"\\E048\";\n}\n.glyphicon-italic:before {\n  content: \"\\E049\";\n}\n.glyphicon-text-height:before {\n  content: \"\\E050\";\n}\n.glyphicon-text-width:before {\n  content: \"\\E051\";\n}\n.glyphicon-align-left:before {\n  content: \"\\E052\";\n}\n.glyphicon-align-center:before {\n  content: \"\\E053\";\n}\n.glyphicon-align-right:before {\n  content: \"\\E054\";\n}\n.glyphicon-align-justify:before {\n  content: \"\\E055\";\n}\n.glyphicon-list:before {\n  content: \"\\E056\";\n}\n.glyphicon-indent-left:before {\n  content: \"\\E057\";\n}\n.glyphicon-indent-right:before {\n  content: \"\\E058\";\n}\n.glyphicon-facetime-video:before {\n  content: \"\\E059\";\n}\n.glyphicon-picture:before {\n  content: \"\\E060\";\n}\n.glyphicon-map-marker:before {\n  content: \"\\E062\";\n}\n.glyphicon-adjust:before {\n  content: \"\\E063\";\n}\n.glyphicon-tint:before {\n  content: \"\\E064\";\n}\n.glyphicon-edit:before {\n  content: \"\\E065\";\n}\n.glyphicon-share:before {\n  content: \"\\E066\";\n}\n.glyphicon-check:before {\n  content: \"\\E067\";\n}\n.glyphicon-move:before {\n  content: \"\\E068\";\n}\n.glyphicon-step-backward:before {\n  content: \"\\E069\";\n}\n.glyphicon-fast-backward:before {\n  content: \"\\E070\";\n}\n.glyphicon-backward:before {\n  content: \"\\E071\";\n}\n.glyphicon-play:before {\n  content: \"\\E072\";\n}\n.glyphicon-pause:before {\n  content: \"\\E073\";\n}\n.glyphicon-stop:before {\n  content: \"\\E074\";\n}\n.glyphicon-forward:before {\n  content: \"\\E075\";\n}\n.glyphicon-fast-forward:before {\n  content: \"\\E076\";\n}\n.glyphicon-step-forward:before {\n  content: \"\\E077\";\n}\n.glyphicon-eject:before {\n  content: \"\\E078\";\n}\n.glyphicon-chevron-left:before {\n  content: \"\\E079\";\n}\n.glyphicon-chevron-right:before {\n  content: \"\\E080\";\n}\n.glyphicon-plus-sign:before {\n  content: \"\\E081\";\n}\n.glyphicon-minus-sign:before {\n  content: \"\\E082\";\n}\n.glyphicon-remove-sign:before {\n  content: \"\\E083\";\n}\n.glyphicon-ok-sign:before {\n  content: \"\\E084\";\n}\n.glyphicon-question-sign:before {\n  content: \"\\E085\";\n}\n.glyphicon-info-sign:before {\n  content: \"\\E086\";\n}\n.glyphicon-screenshot:before {\n  content: \"\\E087\";\n}\n.glyphicon-remove-circle:before {\n  content: \"\\E088\";\n}\n.glyphicon-ok-circle:before {\n  content: \"\\E089\";\n}\n.glyphicon-ban-circle:before {\n  content: \"\\E090\";\n}\n.glyphicon-arrow-left:before {\n  content: \"\\E091\";\n}\n.glyphicon-arrow-right:before {\n  content: \"\\E092\";\n}\n.glyphicon-arrow-up:before {\n  content: \"\\E093\";\n}\n.glyphicon-arrow-down:before {\n  content: \"\\E094\";\n}\n.glyphicon-share-alt:before {\n  content: \"\\E095\";\n}\n.glyphicon-resize-full:before {\n  content: \"\\E096\";\n}\n.glyphicon-resize-small:before {\n  content: \"\\E097\";\n}\n.glyphicon-exclamation-sign:before {\n  content: \"\\E101\";\n}\n.glyphicon-gift:before {\n  content: \"\\E102\";\n}\n.glyphicon-leaf:before {\n  content: \"\\E103\";\n}\n.glyphicon-fire:before {\n  content: \"\\E104\";\n}\n.glyphicon-eye-open:before {\n  content: \"\\E105\";\n}\n.glyphicon-eye-close:before {\n  content: \"\\E106\";\n}\n.glyphicon-warning-sign:before {\n  content: \"\\E107\";\n}\n.glyphicon-plane:before {\n  content: \"\\E108\";\n}\n.glyphicon-calendar:before {\n  content: \"\\E109\";\n}\n.glyphicon-random:before {\n  content: \"\\E110\";\n}\n.glyphicon-comment:before {\n  content: \"\\E111\";\n}\n.glyphicon-magnet:before {\n  content: \"\\E112\";\n}\n.glyphicon-chevron-up:before {\n  content: \"\\E113\";\n}\n.glyphicon-chevron-down:before {\n  content: \"\\E114\";\n}\n.glyphicon-retweet:before {\n  content: \"\\E115\";\n}\n.glyphicon-shopping-cart:before {\n  content: \"\\E116\";\n}\n.glyphicon-folder-close:before {\n  content: \"\\E117\";\n}\n.glyphicon-folder-open:before {\n  content: \"\\E118\";\n}\n.glyphicon-resize-vertical:before {\n  content: \"\\E119\";\n}\n.glyphicon-resize-horizontal:before {\n  content: \"\\E120\";\n}\n.glyphicon-hdd:before {\n  content: \"\\E121\";\n}\n.glyphicon-bullhorn:before {\n  content: \"\\E122\";\n}\n.glyphicon-bell:before {\n  content: \"\\E123\";\n}\n.glyphicon-certificate:before {\n  content: \"\\E124\";\n}\n.glyphicon-thumbs-up:before {\n  content: \"\\E125\";\n}\n.glyphicon-thumbs-down:before {\n  content: \"\\E126\";\n}\n.glyphicon-hand-right:before {\n  content: \"\\E127\";\n}\n.glyphicon-hand-left:before {\n  content: \"\\E128\";\n}\n.glyphicon-hand-up:before {\n  content: \"\\E129\";\n}\n.glyphicon-hand-down:before {\n  content: \"\\E130\";\n}\n.glyphicon-circle-arrow-right:before {\n  content: \"\\E131\";\n}\n.glyphicon-circle-arrow-left:before {\n  content: \"\\E132\";\n}\n.glyphicon-circle-arrow-up:before {\n  content: \"\\E133\";\n}\n.glyphicon-circle-arrow-down:before {\n  content: \"\\E134\";\n}\n.glyphicon-globe:before {\n  content: \"\\E135\";\n}\n.glyphicon-wrench:before {\n  content: \"\\E136\";\n}\n.glyphicon-tasks:before {\n  content: \"\\E137\";\n}\n.glyphicon-filter:before {\n  content: \"\\E138\";\n}\n.glyphicon-briefcase:before {\n  content: \"\\E139\";\n}\n.glyphicon-fullscreen:before {\n  content: \"\\E140\";\n}\n.glyphicon-dashboard:before {\n  content: \"\\E141\";\n}\n.glyphicon-paperclip:before {\n  content: \"\\E142\";\n}\n.glyphicon-heart-empty:before {\n  content: \"\\E143\";\n}\n.glyphicon-link:before {\n  content: \"\\E144\";\n}\n.glyphicon-phone:before {\n  content: \"\\E145\";\n}\n.glyphicon-pushpin:before {\n  content: \"\\E146\";\n}\n.glyphicon-usd:before {\n  content: \"\\E148\";\n}\n.glyphicon-gbp:before {\n  content: \"\\E149\";\n}\n.glyphicon-sort:before {\n  content: \"\\E150\";\n}\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\E151\";\n}\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\E152\";\n}\n.glyphicon-sort-by-order:before {\n  content: \"\\E153\";\n}\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\E154\";\n}\n.glyphicon-sort-by-attributes:before {\n  content: \"\\E155\";\n}\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\E156\";\n}\n.glyphicon-unchecked:before {\n  content: \"\\E157\";\n}\n.glyphicon-expand:before {\n  content: \"\\E158\";\n}\n.glyphicon-collapse-down:before {\n  content: \"\\E159\";\n}\n.glyphicon-collapse-up:before {\n  content: \"\\E160\";\n}\n.glyphicon-log-in:before {\n  content: \"\\E161\";\n}\n.glyphicon-flash:before {\n  content: \"\\E162\";\n}\n.glyphicon-log-out:before {\n  content: \"\\E163\";\n}\n.glyphicon-new-window:before {\n  content: \"\\E164\";\n}\n.glyphicon-record:before {\n  content: \"\\E165\";\n}\n.glyphicon-save:before {\n  content: \"\\E166\";\n}\n.glyphicon-open:before {\n  content: \"\\E167\";\n}\n.glyphicon-saved:before {\n  content: \"\\E168\";\n}\n.glyphicon-import:before {\n  content: \"\\E169\";\n}\n.glyphicon-export:before {\n  content: \"\\E170\";\n}\n.glyphicon-send:before {\n  content: \"\\E171\";\n}\n.glyphicon-floppy-disk:before {\n  content: \"\\E172\";\n}\n.glyphicon-floppy-saved:before {\n  content: \"\\E173\";\n}\n.glyphicon-floppy-remove:before {\n  content: \"\\E174\";\n}\n.glyphicon-floppy-save:before {\n  content: \"\\E175\";\n}\n.glyphicon-floppy-open:before {\n  content: \"\\E176\";\n}\n.glyphicon-credit-card:before {\n  content: \"\\E177\";\n}\n.glyphicon-transfer:before {\n  content: \"\\E178\";\n}\n.glyphicon-cutlery:before {\n  content: \"\\E179\";\n}\n.glyphicon-header:before {\n  content: \"\\E180\";\n}\n.glyphicon-compressed:before {\n  content: \"\\E181\";\n}\n.glyphicon-earphone:before {\n  content: \"\\E182\";\n}\n.glyphicon-phone-alt:before {\n  content: \"\\E183\";\n}\n.glyphicon-tower:before {\n  content: \"\\E184\";\n}\n.glyphicon-stats:before {\n  content: \"\\E185\";\n}\n.glyphicon-sd-video:before {\n  content: \"\\E186\";\n}\n.glyphicon-hd-video:before {\n  content: \"\\E187\";\n}\n.glyphicon-subtitles:before {\n  content: \"\\E188\";\n}\n.glyphicon-sound-stereo:before {\n  content: \"\\E189\";\n}\n.glyphicon-sound-dolby:before {\n  content: \"\\E190\";\n}\n.glyphicon-sound-5-1:before {\n  content: \"\\E191\";\n}\n.glyphicon-sound-6-1:before {\n  content: \"\\E192\";\n}\n.glyphicon-sound-7-1:before {\n  content: \"\\E193\";\n}\n.glyphicon-copyright-mark:before {\n  content: \"\\E194\";\n}\n.glyphicon-registration-mark:before {\n  content: \"\\E195\";\n}\n.glyphicon-cloud-download:before {\n  content: \"\\E197\";\n}\n.glyphicon-cloud-upload:before {\n  content: \"\\E198\";\n}\n.glyphicon-tree-conifer:before {\n  content: \"\\E199\";\n}\n.glyphicon-tree-deciduous:before {\n  content: \"\\E200\";\n}\n.glyphicon-cd:before {\n  content: \"\\E201\";\n}\n.glyphicon-save-file:before {\n  content: \"\\E202\";\n}\n.glyphicon-open-file:before {\n  content: \"\\E203\";\n}\n.glyphicon-level-up:before {\n  content: \"\\E204\";\n}\n.glyphicon-copy:before {\n  content: \"\\E205\";\n}\n.glyphicon-paste:before {\n  content: \"\\E206\";\n}\n.glyphicon-alert:before {\n  content: \"\\E209\";\n}\n.glyphicon-equalizer:before {\n  content: \"\\E210\";\n}\n.glyphicon-king:before {\n  content: \"\\E211\";\n}\n.glyphicon-queen:before {\n  content: \"\\E212\";\n}\n.glyphicon-pawn:before {\n  content: \"\\E213\";\n}\n.glyphicon-bishop:before {\n  content: \"\\E214\";\n}\n.glyphicon-knight:before {\n  content: \"\\E215\";\n}\n.glyphicon-baby-formula:before {\n  content: \"\\E216\";\n}\n.glyphicon-tent:before {\n  content: \"\\26FA\";\n}\n.glyphicon-blackboard:before {\n  content: \"\\E218\";\n}\n.glyphicon-bed:before {\n  content: \"\\E219\";\n}\n.glyphicon-apple:before {\n  content: \"\\F8FF\";\n}\n.glyphicon-erase:before {\n  content: \"\\E221\";\n}\n.glyphicon-hourglass:before {\n  content: \"\\231B\";\n}\n.glyphicon-lamp:before {\n  content: \"\\E223\";\n}\n.glyphicon-duplicate:before {\n  content: \"\\E224\";\n}\n.glyphicon-piggy-bank:before {\n  content: \"\\E225\";\n}\n.glyphicon-scissors:before {\n  content: \"\\E226\";\n}\n.glyphicon-bitcoin:before {\n  content: \"\\E227\";\n}\n.glyphicon-btc:before {\n  content: \"\\E227\";\n}\n.glyphicon-xbt:before {\n  content: \"\\E227\";\n}\n.glyphicon-yen:before {\n  content: \"\\A5\";\n}\n.glyphicon-jpy:before {\n  content: \"\\A5\";\n}\n.glyphicon-ruble:before {\n  content: \"\\20BD\";\n}\n.glyphicon-rub:before {\n  content: \"\\20BD\";\n}\n.glyphicon-scale:before {\n  content: \"\\E230\";\n}\n.glyphicon-ice-lolly:before {\n  content: \"\\E231\";\n}\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\E232\";\n}\n.glyphicon-education:before {\n  content: \"\\E233\";\n}\n.glyphicon-option-horizontal:before {\n  content: \"\\E234\";\n}\n.glyphicon-option-vertical:before {\n  content: \"\\E235\";\n}\n.glyphicon-menu-hamburger:before {\n  content: \"\\E236\";\n}\n.glyphicon-modal-window:before {\n  content: \"\\E237\";\n}\n.glyphicon-oil:before {\n  content: \"\\E238\";\n}\n.glyphicon-grain:before {\n  content: \"\\E239\";\n}\n.glyphicon-sunglasses:before {\n  content: \"\\E240\";\n}\n.glyphicon-text-size:before {\n  content: \"\\E241\";\n}\n.glyphicon-text-color:before {\n  content: \"\\E242\";\n}\n.glyphicon-text-background:before {\n  content: \"\\E243\";\n}\n.glyphicon-object-align-top:before {\n  content: \"\\E244\";\n}\n.glyphicon-object-align-bottom:before {\n  content: \"\\E245\";\n}\n.glyphicon-object-align-horizontal:before {\n  content: \"\\E246\";\n}\n.glyphicon-object-align-left:before {\n  content: \"\\E247\";\n}\n.glyphicon-object-align-vertical:before {\n  content: \"\\E248\";\n}\n.glyphicon-object-align-right:before {\n  content: \"\\E249\";\n}\n.glyphicon-triangle-right:before {\n  content: \"\\E250\";\n}\n.glyphicon-triangle-left:before {\n  content: \"\\E251\";\n}\n.glyphicon-triangle-bottom:before {\n  content: \"\\E252\";\n}\n.glyphicon-triangle-top:before {\n  content: \"\\E253\";\n}\n.glyphicon-console:before {\n  content: \"\\E254\";\n}\n.glyphicon-superscript:before {\n  content: \"\\E255\";\n}\n.glyphicon-subscript:before {\n  content: \"\\E256\";\n}\n.glyphicon-menu-left:before {\n  content: \"\\E257\";\n}\n.glyphicon-menu-right:before {\n  content: \"\\E258\";\n}\n.glyphicon-menu-down:before {\n  content: \"\\E259\";\n}\n.glyphicon-menu-up:before {\n  content: \"\\E260\";\n}\n* {\n  -webkit-box-sizing: border-box;\n     -moz-box-sizing: border-box;\n          box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n     -moz-box-sizing: border-box;\n          box-sizing: border-box;\n}\nhtml {\n  font-size: 10px;\n\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #333;\n  background-color: #fff;\n}\ninput,\nbutton,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\na {\n  color: #337ab7;\n  text-decoration: none;\n}\na:hover,\na:focus {\n  color: #23527c;\n  text-decoration: underline;\n}\na:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\nfigure {\n  margin: 0;\n}\nimg {\n  vertical-align: middle;\n}\n.img-responsive,\n.thumbnail > img,\n.thumbnail a > img,\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  display: block;\n  max-width: 100%;\n  height: auto;\n}\n.img-rounded {\n  border-radius: 6px;\n}\n.img-thumbnail {\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n  padding: 4px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: all .2s ease-in-out;\n       -o-transition: all .2s ease-in-out;\n          transition: all .2s ease-in-out;\n}\n.img-circle {\n  border-radius: 50%;\n}\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eee;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  padding: 0;\n  margin: -1px;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}\n[role=\"button\"] {\n  cursor: pointer;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\n.h1,\n.h2,\n.h3,\n.h4,\n.h5,\n.h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit;\n}\nh1 small,\nh2 small,\nh3 small,\nh4 small,\nh5 small,\nh6 small,\n.h1 small,\n.h2 small,\n.h3 small,\n.h4 small,\n.h5 small,\n.h6 small,\nh1 .small,\nh2 .small,\nh3 .small,\nh4 .small,\nh5 .small,\nh6 .small,\n.h1 .small,\n.h2 .small,\n.h3 .small,\n.h4 .small,\n.h5 .small,\n.h6 .small {\n  font-weight: normal;\n  line-height: 1;\n  color: #777;\n}\nh1,\n.h1,\nh2,\n.h2,\nh3,\n.h3 {\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\nh1 small,\n.h1 small,\nh2 small,\n.h2 small,\nh3 small,\n.h3 small,\nh1 .small,\n.h1 .small,\nh2 .small,\n.h2 .small,\nh3 .small,\n.h3 .small {\n  font-size: 65%;\n}\nh4,\n.h4,\nh5,\n.h5,\nh6,\n.h6 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\nh4 small,\n.h4 small,\nh5 small,\n.h5 small,\nh6 small,\n.h6 small,\nh4 .small,\n.h4 .small,\nh5 .small,\n.h5 .small,\nh6 .small,\n.h6 .small {\n  font-size: 75%;\n}\nh1,\n.h1 {\n  font-size: 36px;\n}\nh2,\n.h2 {\n  font-size: 30px;\n}\nh3,\n.h3 {\n  font-size: 24px;\n}\nh4,\n.h4 {\n  font-size: 18px;\n}\nh5,\n.h5 {\n  font-size: 14px;\n}\nh6,\n.h6 {\n  font-size: 12px;\n}\np {\n  margin: 0 0 10px;\n}\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4;\n}\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px;\n  }\n}\nsmall,\n.small {\n  font-size: 85%;\n}\nmark,\n.mark {\n  padding: .2em;\n  background-color: #fcf8e3;\n}\n.text-left {\n  text-align: left;\n}\n.text-right {\n  text-align: right;\n}\n.text-center {\n  text-align: center;\n}\n.text-justify {\n  text-align: justify;\n}\n.text-nowrap {\n  white-space: nowrap;\n}\n.text-lowercase {\n  text-transform: lowercase;\n}\n.text-uppercase {\n  text-transform: uppercase;\n}\n.text-capitalize {\n  text-transform: capitalize;\n}\n.text-muted {\n  color: #777;\n}\n.text-primary {\n  color: #337ab7;\n}\na.text-primary:hover,\na.text-primary:focus {\n  color: #286090;\n}\n.text-success {\n  color: #3c763d;\n}\na.text-success:hover,\na.text-success:focus {\n  color: #2b542c;\n}\n.text-info {\n  color: #31708f;\n}\na.text-info:hover,\na.text-info:focus {\n  color: #245269;\n}\n.text-warning {\n  color: #8a6d3b;\n}\na.text-warning:hover,\na.text-warning:focus {\n  color: #66512c;\n}\n.text-danger {\n  color: #a94442;\n}\na.text-danger:hover,\na.text-danger:focus {\n  color: #843534;\n}\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7;\n}\na.bg-primary:hover,\na.bg-primary:focus {\n  background-color: #286090;\n}\n.bg-success {\n  background-color: #dff0d8;\n}\na.bg-success:hover,\na.bg-success:focus {\n  background-color: #c1e2b3;\n}\n.bg-info {\n  background-color: #d9edf7;\n}\na.bg-info:hover,\na.bg-info:focus {\n  background-color: #afd9ee;\n}\n.bg-warning {\n  background-color: #fcf8e3;\n}\na.bg-warning:hover,\na.bg-warning:focus {\n  background-color: #f7ecb5;\n}\n.bg-danger {\n  background-color: #f2dede;\n}\na.bg-danger:hover,\na.bg-danger:focus {\n  background-color: #e4b9b9;\n}\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eee;\n}\nul,\nol {\n  margin-top: 0;\n  margin-bottom: 10px;\n}\nul ul,\nol ul,\nul ol,\nol ol {\n  margin-bottom: 0;\n}\n.list-unstyled {\n  padding-left: 0;\n  list-style: none;\n}\n.list-inline {\n  padding-left: 0;\n  margin-left: -5px;\n  list-style: none;\n}\n.list-inline > li {\n  display: inline-block;\n  padding-right: 5px;\n  padding-left: 5px;\n}\ndl {\n  margin-top: 0;\n  margin-bottom: 20px;\n}\ndt,\ndd {\n  line-height: 1.42857143;\n}\ndt {\n  font-weight: bold;\n}\ndd {\n  margin-left: 0;\n}\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    overflow: hidden;\n    clear: left;\n    text-align: right;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .dl-horizontal dd {\n    margin-left: 180px;\n  }\n}\nabbr[title],\nabbr[data-original-title] {\n  cursor: help;\n  border-bottom: 1px dotted #777;\n}\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase;\n}\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eee;\n}\nblockquote p:last-child,\nblockquote ul:last-child,\nblockquote ol:last-child {\n  margin-bottom: 0;\n}\nblockquote footer,\nblockquote small,\nblockquote .small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.42857143;\n  color: #777;\n}\nblockquote footer:before,\nblockquote small:before,\nblockquote .small:before {\n  content: '\\2014   \\A0';\n}\n.blockquote-reverse,\nblockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  text-align: right;\n  border-right: 5px solid #eee;\n  border-left: 0;\n}\n.blockquote-reverse footer:before,\nblockquote.pull-right footer:before,\n.blockquote-reverse small:before,\nblockquote.pull-right small:before,\n.blockquote-reverse .small:before,\nblockquote.pull-right .small:before {\n  content: '';\n}\n.blockquote-reverse footer:after,\nblockquote.pull-right footer:after,\n.blockquote-reverse small:after,\nblockquote.pull-right small:after,\n.blockquote-reverse .small:after,\nblockquote.pull-right .small:after {\n  content: '\\A0   \\2014';\n}\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.42857143;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: Menlo, Monaco, Consolas, \"Courier New\", monospace;\n}\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px;\n}\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #fff;\n  background-color: #333;\n  border-radius: 3px;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);\n          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);\n}\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: bold;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.42857143;\n  color: #333;\n  word-break: break-all;\n  word-wrap: break-word;\n  background-color: #f5f5f5;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n}\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0;\n}\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll;\n}\n.container {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto;\n}\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n@media (min-width: 992px) {\n  .container {\n    width: 970px;\n  }\n}\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px;\n  }\n}\n.container-fluid {\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto;\n}\n.row {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {\n  position: relative;\n  min-height: 1px;\n  padding-right: 15px;\n  padding-left: 15px;\n}\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {\n  float: left;\n}\n.col-xs-12 {\n  width: 100%;\n}\n.col-xs-11 {\n  width: 91.66666667%;\n}\n.col-xs-10 {\n  width: 83.33333333%;\n}\n.col-xs-9 {\n  width: 75%;\n}\n.col-xs-8 {\n  width: 66.66666667%;\n}\n.col-xs-7 {\n  width: 58.33333333%;\n}\n.col-xs-6 {\n  width: 50%;\n}\n.col-xs-5 {\n  width: 41.66666667%;\n}\n.col-xs-4 {\n  width: 33.33333333%;\n}\n.col-xs-3 {\n  width: 25%;\n}\n.col-xs-2 {\n  width: 16.66666667%;\n}\n.col-xs-1 {\n  width: 8.33333333%;\n}\n.col-xs-pull-12 {\n  right: 100%;\n}\n.col-xs-pull-11 {\n  right: 91.66666667%;\n}\n.col-xs-pull-10 {\n  right: 83.33333333%;\n}\n.col-xs-pull-9 {\n  right: 75%;\n}\n.col-xs-pull-8 {\n  right: 66.66666667%;\n}\n.col-xs-pull-7 {\n  right: 58.33333333%;\n}\n.col-xs-pull-6 {\n  right: 50%;\n}\n.col-xs-pull-5 {\n  right: 41.66666667%;\n}\n.col-xs-pull-4 {\n  right: 33.33333333%;\n}\n.col-xs-pull-3 {\n  right: 25%;\n}\n.col-xs-pull-2 {\n  right: 16.66666667%;\n}\n.col-xs-pull-1 {\n  right: 8.33333333%;\n}\n.col-xs-pull-0 {\n  right: auto;\n}\n.col-xs-push-12 {\n  left: 100%;\n}\n.col-xs-push-11 {\n  left: 91.66666667%;\n}\n.col-xs-push-10 {\n  left: 83.33333333%;\n}\n.col-xs-push-9 {\n  left: 75%;\n}\n.col-xs-push-8 {\n  left: 66.66666667%;\n}\n.col-xs-push-7 {\n  left: 58.33333333%;\n}\n.col-xs-push-6 {\n  left: 50%;\n}\n.col-xs-push-5 {\n  left: 41.66666667%;\n}\n.col-xs-push-4 {\n  left: 33.33333333%;\n}\n.col-xs-push-3 {\n  left: 25%;\n}\n.col-xs-push-2 {\n  left: 16.66666667%;\n}\n.col-xs-push-1 {\n  left: 8.33333333%;\n}\n.col-xs-push-0 {\n  left: auto;\n}\n.col-xs-offset-12 {\n  margin-left: 100%;\n}\n.col-xs-offset-11 {\n  margin-left: 91.66666667%;\n}\n.col-xs-offset-10 {\n  margin-left: 83.33333333%;\n}\n.col-xs-offset-9 {\n  margin-left: 75%;\n}\n.col-xs-offset-8 {\n  margin-left: 66.66666667%;\n}\n.col-xs-offset-7 {\n  margin-left: 58.33333333%;\n}\n.col-xs-offset-6 {\n  margin-left: 50%;\n}\n.col-xs-offset-5 {\n  margin-left: 41.66666667%;\n}\n.col-xs-offset-4 {\n  margin-left: 33.33333333%;\n}\n.col-xs-offset-3 {\n  margin-left: 25%;\n}\n.col-xs-offset-2 {\n  margin-left: 16.66666667%;\n}\n.col-xs-offset-1 {\n  margin-left: 8.33333333%;\n}\n.col-xs-offset-0 {\n  margin-left: 0;\n}\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {\n    float: left;\n  }\n  .col-sm-12 {\n    width: 100%;\n  }\n  .col-sm-11 {\n    width: 91.66666667%;\n  }\n  .col-sm-10 {\n    width: 83.33333333%;\n  }\n  .col-sm-9 {\n    width: 75%;\n  }\n  .col-sm-8 {\n    width: 66.66666667%;\n  }\n  .col-sm-7 {\n    width: 58.33333333%;\n  }\n  .col-sm-6 {\n    width: 50%;\n  }\n  .col-sm-5 {\n    width: 41.66666667%;\n  }\n  .col-sm-4 {\n    width: 33.33333333%;\n  }\n  .col-sm-3 {\n    width: 25%;\n  }\n  .col-sm-2 {\n    width: 16.66666667%;\n  }\n  .col-sm-1 {\n    width: 8.33333333%;\n  }\n  .col-sm-pull-12 {\n    right: 100%;\n  }\n  .col-sm-pull-11 {\n    right: 91.66666667%;\n  }\n  .col-sm-pull-10 {\n    right: 83.33333333%;\n  }\n  .col-sm-pull-9 {\n    right: 75%;\n  }\n  .col-sm-pull-8 {\n    right: 66.66666667%;\n  }\n  .col-sm-pull-7 {\n    right: 58.33333333%;\n  }\n  .col-sm-pull-6 {\n    right: 50%;\n  }\n  .col-sm-pull-5 {\n    right: 41.66666667%;\n  }\n  .col-sm-pull-4 {\n    right: 33.33333333%;\n  }\n  .col-sm-pull-3 {\n    right: 25%;\n  }\n  .col-sm-pull-2 {\n    right: 16.66666667%;\n  }\n  .col-sm-pull-1 {\n    right: 8.33333333%;\n  }\n  .col-sm-pull-0 {\n    right: auto;\n  }\n  .col-sm-push-12 {\n    left: 100%;\n  }\n  .col-sm-push-11 {\n    left: 91.66666667%;\n  }\n  .col-sm-push-10 {\n    left: 83.33333333%;\n  }\n  .col-sm-push-9 {\n    left: 75%;\n  }\n  .col-sm-push-8 {\n    left: 66.66666667%;\n  }\n  .col-sm-push-7 {\n    left: 58.33333333%;\n  }\n  .col-sm-push-6 {\n    left: 50%;\n  }\n  .col-sm-push-5 {\n    left: 41.66666667%;\n  }\n  .col-sm-push-4 {\n    left: 33.33333333%;\n  }\n  .col-sm-push-3 {\n    left: 25%;\n  }\n  .col-sm-push-2 {\n    left: 16.66666667%;\n  }\n  .col-sm-push-1 {\n    left: 8.33333333%;\n  }\n  .col-sm-push-0 {\n    left: auto;\n  }\n  .col-sm-offset-12 {\n    margin-left: 100%;\n  }\n  .col-sm-offset-11 {\n    margin-left: 91.66666667%;\n  }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333%;\n  }\n  .col-sm-offset-9 {\n    margin-left: 75%;\n  }\n  .col-sm-offset-8 {\n    margin-left: 66.66666667%;\n  }\n  .col-sm-offset-7 {\n    margin-left: 58.33333333%;\n  }\n  .col-sm-offset-6 {\n    margin-left: 50%;\n  }\n  .col-sm-offset-5 {\n    margin-left: 41.66666667%;\n  }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333%;\n  }\n  .col-sm-offset-3 {\n    margin-left: 25%;\n  }\n  .col-sm-offset-2 {\n    margin-left: 16.66666667%;\n  }\n  .col-sm-offset-1 {\n    margin-left: 8.33333333%;\n  }\n  .col-sm-offset-0 {\n    margin-left: 0;\n  }\n}\n@media (min-width: 992px) {\n  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {\n    float: left;\n  }\n  .col-md-12 {\n    width: 100%;\n  }\n  .col-md-11 {\n    width: 91.66666667%;\n  }\n  .col-md-10 {\n    width: 83.33333333%;\n  }\n  .col-md-9 {\n    width: 75%;\n  }\n  .col-md-8 {\n    width: 66.66666667%;\n  }\n  .col-md-7 {\n    width: 58.33333333%;\n  }\n  .col-md-6 {\n    width: 50%;\n  }\n  .col-md-5 {\n    width: 41.66666667%;\n  }\n  .col-md-4 {\n    width: 33.33333333%;\n  }\n  .col-md-3 {\n    width: 25%;\n  }\n  .col-md-2 {\n    width: 16.66666667%;\n  }\n  .col-md-1 {\n    width: 8.33333333%;\n  }\n  .col-md-pull-12 {\n    right: 100%;\n  }\n  .col-md-pull-11 {\n    right: 91.66666667%;\n  }\n  .col-md-pull-10 {\n    right: 83.33333333%;\n  }\n  .col-md-pull-9 {\n    right: 75%;\n  }\n  .col-md-pull-8 {\n    right: 66.66666667%;\n  }\n  .col-md-pull-7 {\n    right: 58.33333333%;\n  }\n  .col-md-pull-6 {\n    right: 50%;\n  }\n  .col-md-pull-5 {\n    right: 41.66666667%;\n  }\n  .col-md-pull-4 {\n    right: 33.33333333%;\n  }\n  .col-md-pull-3 {\n    right: 25%;\n  }\n  .col-md-pull-2 {\n    right: 16.66666667%;\n  }\n  .col-md-pull-1 {\n    right: 8.33333333%;\n  }\n  .col-md-pull-0 {\n    right: auto;\n  }\n  .col-md-push-12 {\n    left: 100%;\n  }\n  .col-md-push-11 {\n    left: 91.66666667%;\n  }\n  .col-md-push-10 {\n    left: 83.33333333%;\n  }\n  .col-md-push-9 {\n    left: 75%;\n  }\n  .col-md-push-8 {\n    left: 66.66666667%;\n  }\n  .col-md-push-7 {\n    left: 58.33333333%;\n  }\n  .col-md-push-6 {\n    left: 50%;\n  }\n  .col-md-push-5 {\n    left: 41.66666667%;\n  }\n  .col-md-push-4 {\n    left: 33.33333333%;\n  }\n  .col-md-push-3 {\n    left: 25%;\n  }\n  .col-md-push-2 {\n    left: 16.66666667%;\n  }\n  .col-md-push-1 {\n    left: 8.33333333%;\n  }\n  .col-md-push-0 {\n    left: auto;\n  }\n  .col-md-offset-12 {\n    margin-left: 100%;\n  }\n  .col-md-offset-11 {\n    margin-left: 91.66666667%;\n  }\n  .col-md-offset-10 {\n    margin-left: 83.33333333%;\n  }\n  .col-md-offset-9 {\n    margin-left: 75%;\n  }\n  .col-md-offset-8 {\n    margin-left: 66.66666667%;\n  }\n  .col-md-offset-7 {\n    margin-left: 58.33333333%;\n  }\n  .col-md-offset-6 {\n    margin-left: 50%;\n  }\n  .col-md-offset-5 {\n    margin-left: 41.66666667%;\n  }\n  .col-md-offset-4 {\n    margin-left: 33.33333333%;\n  }\n  .col-md-offset-3 {\n    margin-left: 25%;\n  }\n  .col-md-offset-2 {\n    margin-left: 16.66666667%;\n  }\n  .col-md-offset-1 {\n    margin-left: 8.33333333%;\n  }\n  .col-md-offset-0 {\n    margin-left: 0;\n  }\n}\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {\n    float: left;\n  }\n  .col-lg-12 {\n    width: 100%;\n  }\n  .col-lg-11 {\n    width: 91.66666667%;\n  }\n  .col-lg-10 {\n    width: 83.33333333%;\n  }\n  .col-lg-9 {\n    width: 75%;\n  }\n  .col-lg-8 {\n    width: 66.66666667%;\n  }\n  .col-lg-7 {\n    width: 58.33333333%;\n  }\n  .col-lg-6 {\n    width: 50%;\n  }\n  .col-lg-5 {\n    width: 41.66666667%;\n  }\n  .col-lg-4 {\n    width: 33.33333333%;\n  }\n  .col-lg-3 {\n    width: 25%;\n  }\n  .col-lg-2 {\n    width: 16.66666667%;\n  }\n  .col-lg-1 {\n    width: 8.33333333%;\n  }\n  .col-lg-pull-12 {\n    right: 100%;\n  }\n  .col-lg-pull-11 {\n    right: 91.66666667%;\n  }\n  .col-lg-pull-10 {\n    right: 83.33333333%;\n  }\n  .col-lg-pull-9 {\n    right: 75%;\n  }\n  .col-lg-pull-8 {\n    right: 66.66666667%;\n  }\n  .col-lg-pull-7 {\n    right: 58.33333333%;\n  }\n  .col-lg-pull-6 {\n    right: 50%;\n  }\n  .col-lg-pull-5 {\n    right: 41.66666667%;\n  }\n  .col-lg-pull-4 {\n    right: 33.33333333%;\n  }\n  .col-lg-pull-3 {\n    right: 25%;\n  }\n  .col-lg-pull-2 {\n    right: 16.66666667%;\n  }\n  .col-lg-pull-1 {\n    right: 8.33333333%;\n  }\n  .col-lg-pull-0 {\n    right: auto;\n  }\n  .col-lg-push-12 {\n    left: 100%;\n  }\n  .col-lg-push-11 {\n    left: 91.66666667%;\n  }\n  .col-lg-push-10 {\n    left: 83.33333333%;\n  }\n  .col-lg-push-9 {\n    left: 75%;\n  }\n  .col-lg-push-8 {\n    left: 66.66666667%;\n  }\n  .col-lg-push-7 {\n    left: 58.33333333%;\n  }\n  .col-lg-push-6 {\n    left: 50%;\n  }\n  .col-lg-push-5 {\n    left: 41.66666667%;\n  }\n  .col-lg-push-4 {\n    left: 33.33333333%;\n  }\n  .col-lg-push-3 {\n    left: 25%;\n  }\n  .col-lg-push-2 {\n    left: 16.66666667%;\n  }\n  .col-lg-push-1 {\n    left: 8.33333333%;\n  }\n  .col-lg-push-0 {\n    left: auto;\n  }\n  .col-lg-offset-12 {\n    margin-left: 100%;\n  }\n  .col-lg-offset-11 {\n    margin-left: 91.66666667%;\n  }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333%;\n  }\n  .col-lg-offset-9 {\n    margin-left: 75%;\n  }\n  .col-lg-offset-8 {\n    margin-left: 66.66666667%;\n  }\n  .col-lg-offset-7 {\n    margin-left: 58.33333333%;\n  }\n  .col-lg-offset-6 {\n    margin-left: 50%;\n  }\n  .col-lg-offset-5 {\n    margin-left: 41.66666667%;\n  }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333%;\n  }\n  .col-lg-offset-3 {\n    margin-left: 25%;\n  }\n  .col-lg-offset-2 {\n    margin-left: 16.66666667%;\n  }\n  .col-lg-offset-1 {\n    margin-left: 8.33333333%;\n  }\n  .col-lg-offset-0 {\n    margin-left: 0;\n  }\n}\ntable {\n  background-color: transparent;\n}\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777;\n  text-align: left;\n}\nth {\n  text-align: left;\n}\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px;\n}\n.table > thead > tr > th,\n.table > tbody > tr > th,\n.table > tfoot > tr > th,\n.table > thead > tr > td,\n.table > tbody > tr > td,\n.table > tfoot > tr > td {\n  padding: 8px;\n  line-height: 1.42857143;\n  vertical-align: top;\n  border-top: 1px solid #ddd;\n}\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #ddd;\n}\n.table > caption + thead > tr:first-child > th,\n.table > colgroup + thead > tr:first-child > th,\n.table > thead:first-child > tr:first-child > th,\n.table > caption + thead > tr:first-child > td,\n.table > colgroup + thead > tr:first-child > td,\n.table > thead:first-child > tr:first-child > td {\n  border-top: 0;\n}\n.table > tbody + tbody {\n  border-top: 2px solid #ddd;\n}\n.table .table {\n  background-color: #fff;\n}\n.table-condensed > thead > tr > th,\n.table-condensed > tbody > tr > th,\n.table-condensed > tfoot > tr > th,\n.table-condensed > thead > tr > td,\n.table-condensed > tbody > tr > td,\n.table-condensed > tfoot > tr > td {\n  padding: 5px;\n}\n.table-bordered {\n  border: 1px solid #ddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > tbody > tr > th,\n.table-bordered > tfoot > tr > th,\n.table-bordered > thead > tr > td,\n.table-bordered > tbody > tr > td,\n.table-bordered > tfoot > tr > td {\n  border: 1px solid #ddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > thead > tr > td {\n  border-bottom-width: 2px;\n}\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9;\n}\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5;\n}\ntable col[class*=\"col-\"] {\n  position: static;\n  display: table-column;\n  float: none;\n}\ntable td[class*=\"col-\"],\ntable th[class*=\"col-\"] {\n  position: static;\n  display: table-cell;\n  float: none;\n}\n.table > thead > tr > td.active,\n.table > tbody > tr > td.active,\n.table > tfoot > tr > td.active,\n.table > thead > tr > th.active,\n.table > tbody > tr > th.active,\n.table > tfoot > tr > th.active,\n.table > thead > tr.active > td,\n.table > tbody > tr.active > td,\n.table > tfoot > tr.active > td,\n.table > thead > tr.active > th,\n.table > tbody > tr.active > th,\n.table > tfoot > tr.active > th {\n  background-color: #f5f5f5;\n}\n.table-hover > tbody > tr > td.active:hover,\n.table-hover > tbody > tr > th.active:hover,\n.table-hover > tbody > tr.active:hover > td,\n.table-hover > tbody > tr:hover > .active,\n.table-hover > tbody > tr.active:hover > th {\n  background-color: #e8e8e8;\n}\n.table > thead > tr > td.success,\n.table > tbody > tr > td.success,\n.table > tfoot > tr > td.success,\n.table > thead > tr > th.success,\n.table > tbody > tr > th.success,\n.table > tfoot > tr > th.success,\n.table > thead > tr.success > td,\n.table > tbody > tr.success > td,\n.table > tfoot > tr.success > td,\n.table > thead > tr.success > th,\n.table > tbody > tr.success > th,\n.table > tfoot > tr.success > th {\n  background-color: #dff0d8;\n}\n.table-hover > tbody > tr > td.success:hover,\n.table-hover > tbody > tr > th.success:hover,\n.table-hover > tbody > tr.success:hover > td,\n.table-hover > tbody > tr:hover > .success,\n.table-hover > tbody > tr.success:hover > th {\n  background-color: #d0e9c6;\n}\n.table > thead > tr > td.info,\n.table > tbody > tr > td.info,\n.table > tfoot > tr > td.info,\n.table > thead > tr > th.info,\n.table > tbody > tr > th.info,\n.table > tfoot > tr > th.info,\n.table > thead > tr.info > td,\n.table > tbody > tr.info > td,\n.table > tfoot > tr.info > td,\n.table > thead > tr.info > th,\n.table > tbody > tr.info > th,\n.table > tfoot > tr.info > th {\n  background-color: #d9edf7;\n}\n.table-hover > tbody > tr > td.info:hover,\n.table-hover > tbody > tr > th.info:hover,\n.table-hover > tbody > tr.info:hover > td,\n.table-hover > tbody > tr:hover > .info,\n.table-hover > tbody > tr.info:hover > th {\n  background-color: #c4e3f3;\n}\n.table > thead > tr > td.warning,\n.table > tbody > tr > td.warning,\n.table > tfoot > tr > td.warning,\n.table > thead > tr > th.warning,\n.table > tbody > tr > th.warning,\n.table > tfoot > tr > th.warning,\n.table > thead > tr.warning > td,\n.table > tbody > tr.warning > td,\n.table > tfoot > tr.warning > td,\n.table > thead > tr.warning > th,\n.table > tbody > tr.warning > th,\n.table > tfoot > tr.warning > th {\n  background-color: #fcf8e3;\n}\n.table-hover > tbody > tr > td.warning:hover,\n.table-hover > tbody > tr > th.warning:hover,\n.table-hover > tbody > tr.warning:hover > td,\n.table-hover > tbody > tr:hover > .warning,\n.table-hover > tbody > tr.warning:hover > th {\n  background-color: #faf2cc;\n}\n.table > thead > tr > td.danger,\n.table > tbody > tr > td.danger,\n.table > tfoot > tr > td.danger,\n.table > thead > tr > th.danger,\n.table > tbody > tr > th.danger,\n.table > tfoot > tr > th.danger,\n.table > thead > tr.danger > td,\n.table > tbody > tr.danger > td,\n.table > tfoot > tr.danger > td,\n.table > thead > tr.danger > th,\n.table > tbody > tr.danger > th,\n.table > tfoot > tr.danger > th {\n  background-color: #f2dede;\n}\n.table-hover > tbody > tr > td.danger:hover,\n.table-hover > tbody > tr > th.danger:hover,\n.table-hover > tbody > tr.danger:hover > td,\n.table-hover > tbody > tr:hover > .danger,\n.table-hover > tbody > tr.danger:hover > th {\n  background-color: #ebcccc;\n}\n.table-responsive {\n  min-height: .01%;\n  overflow-x: auto;\n}\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #ddd;\n  }\n  .table-responsive > .table {\n    margin-bottom: 0;\n  }\n  .table-responsive > .table > thead > tr > th,\n  .table-responsive > .table > tbody > tr > th,\n  .table-responsive > .table > tfoot > tr > th,\n  .table-responsive > .table > thead > tr > td,\n  .table-responsive > .table > tbody > tr > td,\n  .table-responsive > .table > tfoot > tr > td {\n    white-space: nowrap;\n  }\n  .table-responsive > .table-bordered {\n    border: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:first-child,\n  .table-responsive > .table-bordered > tbody > tr > th:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n  .table-responsive > .table-bordered > thead > tr > td:first-child,\n  .table-responsive > .table-bordered > tbody > tr > td:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n    border-left: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:last-child,\n  .table-responsive > .table-bordered > tbody > tr > th:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n  .table-responsive > .table-bordered > thead > tr > td:last-child,\n  .table-responsive > .table-bordered > tbody > tr > td:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n    border-right: 0;\n  }\n  .table-responsive > .table-bordered > tbody > tr:last-child > th,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > th,\n  .table-responsive > .table-bordered > tbody > tr:last-child > td,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > td {\n    border-bottom: 0;\n  }\n}\nfieldset {\n  min-width: 0;\n  padding: 0;\n  margin: 0;\n  border: 0;\n}\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5;\n}\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: bold;\n}\ninput[type=\"search\"] {\n  -webkit-box-sizing: border-box;\n     -moz-box-sizing: border-box;\n          box-sizing: border-box;\n}\ninput[type=\"radio\"],\ninput[type=\"checkbox\"] {\n  margin: 4px 0 0;\n  margin-top: 1px \\9;\n  line-height: normal;\n}\ninput[type=\"file\"] {\n  display: block;\n}\ninput[type=\"range\"] {\n  display: block;\n  width: 100%;\n}\nselect[multiple],\nselect[size] {\n  height: auto;\n}\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n}\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.42857143;\n  color: #555;\n  background-color: #fff;\n  background-image: none;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;\n       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n}\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);\n          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);\n}\n.form-control::-moz-placeholder {\n  color: #999;\n  opacity: 1;\n}\n.form-control:-ms-input-placeholder {\n  color: #999;\n}\n.form-control::-webkit-input-placeholder {\n  color: #999;\n}\n.form-control[disabled],\n.form-control[readonly],\nfieldset[disabled] .form-control {\n  background-color: #eee;\n  opacity: 1;\n}\n.form-control[disabled],\nfieldset[disabled] .form-control {\n  cursor: not-allowed;\n}\ntextarea.form-control {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: none;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=\"date\"].form-control,\n  input[type=\"time\"].form-control,\n  input[type=\"datetime-local\"].form-control,\n  input[type=\"month\"].form-control {\n    line-height: 34px;\n  }\n  input[type=\"date\"].input-sm,\n  input[type=\"time\"].input-sm,\n  input[type=\"datetime-local\"].input-sm,\n  input[type=\"month\"].input-sm,\n  .input-group-sm input[type=\"date\"],\n  .input-group-sm input[type=\"time\"],\n  .input-group-sm input[type=\"datetime-local\"],\n  .input-group-sm input[type=\"month\"] {\n    line-height: 30px;\n  }\n  input[type=\"date\"].input-lg,\n  input[type=\"time\"].input-lg,\n  input[type=\"datetime-local\"].input-lg,\n  input[type=\"month\"].input-lg,\n  .input-group-lg input[type=\"date\"],\n  .input-group-lg input[type=\"time\"],\n  .input-group-lg input[type=\"datetime-local\"],\n  .input-group-lg input[type=\"month\"] {\n    line-height: 46px;\n  }\n}\n.form-group {\n  margin-bottom: 15px;\n}\n.radio,\n.checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.radio label,\n.checkbox label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio input[type=\"radio\"],\n.radio-inline input[type=\"radio\"],\n.checkbox input[type=\"checkbox\"],\n.checkbox-inline input[type=\"checkbox\"] {\n  position: absolute;\n  margin-top: 4px \\9;\n  margin-left: -20px;\n}\n.radio + .radio,\n.checkbox + .checkbox {\n  margin-top: -5px;\n}\n.radio-inline,\n.checkbox-inline {\n  position: relative;\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: normal;\n  vertical-align: middle;\n  cursor: pointer;\n}\n.radio-inline + .radio-inline,\n.checkbox-inline + .checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px;\n}\ninput[type=\"radio\"][disabled],\ninput[type=\"checkbox\"][disabled],\ninput[type=\"radio\"].disabled,\ninput[type=\"checkbox\"].disabled,\nfieldset[disabled] input[type=\"radio\"],\nfieldset[disabled] input[type=\"checkbox\"] {\n  cursor: not-allowed;\n}\n.radio-inline.disabled,\n.checkbox-inline.disabled,\nfieldset[disabled] .radio-inline,\nfieldset[disabled] .checkbox-inline {\n  cursor: not-allowed;\n}\n.radio.disabled label,\n.checkbox.disabled label,\nfieldset[disabled] .radio label,\nfieldset[disabled] .checkbox label {\n  cursor: not-allowed;\n}\n.form-control-static {\n  min-height: 34px;\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0;\n}\n.form-control-static.input-lg,\n.form-control-static.input-sm {\n  padding-right: 0;\n  padding-left: 0;\n}\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-sm {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-sm,\nselect[multiple].input-sm {\n  height: auto;\n}\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.form-group-sm select.form-control {\n  height: 30px;\n  line-height: 30px;\n}\n.form-group-sm textarea.form-control,\n.form-group-sm select[multiple].form-control {\n  height: auto;\n}\n.form-group-sm .form-control-static {\n  height: 30px;\n  min-height: 32px;\n  padding: 6px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n}\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-lg {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-lg,\nselect[multiple].input-lg {\n  height: auto;\n}\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\n.form-group-lg select.form-control {\n  height: 46px;\n  line-height: 46px;\n}\n.form-group-lg textarea.form-control,\n.form-group-lg select[multiple].form-control {\n  height: auto;\n}\n.form-group-lg .form-control-static {\n  height: 46px;\n  min-height: 38px;\n  padding: 11px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n}\n.has-feedback {\n  position: relative;\n}\n.has-feedback .form-control {\n  padding-right: 42.5px;\n}\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none;\n}\n.input-lg + .form-control-feedback,\n.input-group-lg + .form-control-feedback,\n.form-group-lg .form-control + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px;\n}\n.input-sm + .form-control-feedback,\n.input-group-sm + .form-control-feedback,\n.form-group-sm .form-control + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n}\n.has-success .help-block,\n.has-success .control-label,\n.has-success .radio,\n.has-success .checkbox,\n.has-success .radio-inline,\n.has-success .checkbox-inline,\n.has-success.radio label,\n.has-success.checkbox label,\n.has-success.radio-inline label,\n.has-success.checkbox-inline label {\n  color: #3c763d;\n}\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n}\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #67b168;\n}\n.has-success .input-group-addon {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #3c763d;\n}\n.has-success .form-control-feedback {\n  color: #3c763d;\n}\n.has-warning .help-block,\n.has-warning .control-label,\n.has-warning .radio,\n.has-warning .checkbox,\n.has-warning .radio-inline,\n.has-warning .checkbox-inline,\n.has-warning.radio label,\n.has-warning.checkbox label,\n.has-warning.radio-inline label,\n.has-warning.checkbox-inline label {\n  color: #8a6d3b;\n}\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n}\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #c0a16b;\n}\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #8a6d3b;\n}\n.has-warning .form-control-feedback {\n  color: #8a6d3b;\n}\n.has-error .help-block,\n.has-error .control-label,\n.has-error .radio,\n.has-error .checkbox,\n.has-error .radio-inline,\n.has-error .checkbox-inline,\n.has-error.radio label,\n.has-error.checkbox label,\n.has-error.radio-inline label,\n.has-error.checkbox-inline label {\n  color: #a94442;\n}\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);\n}\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;\n}\n.has-error .input-group-addon {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #a94442;\n}\n.has-error .form-control-feedback {\n  color: #a94442;\n}\n.has-feedback label ~ .form-control-feedback {\n  top: 25px;\n}\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0;\n}\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373;\n}\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .form-inline .form-control-static {\n    display: inline-block;\n  }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .form-inline .input-group .input-group-addon,\n  .form-inline .input-group .input-group-btn,\n  .form-inline .input-group .form-control {\n    width: auto;\n  }\n  .form-inline .input-group > .form-control {\n    width: 100%;\n  }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio,\n  .form-inline .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio label,\n  .form-inline .checkbox label {\n    padding-left: 0;\n  }\n  .form-inline .radio input[type=\"radio\"],\n  .form-inline .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox,\n.form-horizontal .radio-inline,\n.form-horizontal .checkbox-inline {\n  padding-top: 7px;\n  margin-top: 0;\n  margin-bottom: 0;\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox {\n  min-height: 27px;\n}\n.form-horizontal .form-group {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    padding-top: 7px;\n    margin-bottom: 0;\n    text-align: right;\n  }\n}\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 14.333333px;\n    font-size: 18px;\n  }\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n    font-size: 12px;\n  }\n}\n.btn {\n  display: inline-block;\n  padding: 6px 12px;\n  margin-bottom: 0;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1.42857143;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  -ms-touch-action: manipulation;\n      touch-action: manipulation;\n  cursor: pointer;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.btn:focus,\n.btn:active:focus,\n.btn.active:focus,\n.btn.focus,\n.btn:active.focus,\n.btn.active.focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\n.btn:hover,\n.btn:focus,\n.btn.focus {\n  color: #333;\n  text-decoration: none;\n}\n.btn:active,\n.btn.active {\n  background-image: none;\n  outline: 0;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);\n          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);\n}\n.btn.disabled,\n.btn[disabled],\nfieldset[disabled] .btn {\n  cursor: not-allowed;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n          box-shadow: none;\n  opacity: .65;\n}\na.btn.disabled,\nfieldset[disabled] a.btn {\n  pointer-events: none;\n}\n.btn-default {\n  color: #333;\n  background-color: #fff;\n  border-color: #ccc;\n}\n.btn-default:focus,\n.btn-default.focus {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #8c8c8c;\n}\n.btn-default:hover {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad;\n}\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  color: #333;\n  background-color: #e6e6e6;\n  border-color: #adadad;\n}\n.btn-default:active:hover,\n.btn-default.active:hover,\n.open > .dropdown-toggle.btn-default:hover,\n.btn-default:active:focus,\n.btn-default.active:focus,\n.open > .dropdown-toggle.btn-default:focus,\n.btn-default:active.focus,\n.btn-default.active.focus,\n.open > .dropdown-toggle.btn-default.focus {\n  color: #333;\n  background-color: #d4d4d4;\n  border-color: #8c8c8c;\n}\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  background-image: none;\n}\n.btn-default.disabled,\n.btn-default[disabled],\nfieldset[disabled] .btn-default,\n.btn-default.disabled:hover,\n.btn-default[disabled]:hover,\nfieldset[disabled] .btn-default:hover,\n.btn-default.disabled:focus,\n.btn-default[disabled]:focus,\nfieldset[disabled] .btn-default:focus,\n.btn-default.disabled.focus,\n.btn-default[disabled].focus,\nfieldset[disabled] .btn-default.focus,\n.btn-default.disabled:active,\n.btn-default[disabled]:active,\nfieldset[disabled] .btn-default:active,\n.btn-default.disabled.active,\n.btn-default[disabled].active,\nfieldset[disabled] .btn-default.active {\n  background-color: #fff;\n  border-color: #ccc;\n}\n.btn-default .badge {\n  color: #fff;\n  background-color: #333;\n}\n.btn-primary {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary:focus,\n.btn-primary.focus {\n  color: #fff;\n  background-color: #286090;\n  border-color: #122b40;\n}\n.btn-primary:hover {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74;\n}\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  color: #fff;\n  background-color: #286090;\n  border-color: #204d74;\n}\n.btn-primary:active:hover,\n.btn-primary.active:hover,\n.open > .dropdown-toggle.btn-primary:hover,\n.btn-primary:active:focus,\n.btn-primary.active:focus,\n.open > .dropdown-toggle.btn-primary:focus,\n.btn-primary:active.focus,\n.btn-primary.active.focus,\n.open > .dropdown-toggle.btn-primary.focus {\n  color: #fff;\n  background-color: #204d74;\n  border-color: #122b40;\n}\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  background-image: none;\n}\n.btn-primary.disabled,\n.btn-primary[disabled],\nfieldset[disabled] .btn-primary,\n.btn-primary.disabled:hover,\n.btn-primary[disabled]:hover,\nfieldset[disabled] .btn-primary:hover,\n.btn-primary.disabled:focus,\n.btn-primary[disabled]:focus,\nfieldset[disabled] .btn-primary:focus,\n.btn-primary.disabled.focus,\n.btn-primary[disabled].focus,\nfieldset[disabled] .btn-primary.focus,\n.btn-primary.disabled:active,\n.btn-primary[disabled]:active,\nfieldset[disabled] .btn-primary:active,\n.btn-primary.disabled.active,\n.btn-primary[disabled].active,\nfieldset[disabled] .btn-primary.active {\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #fff;\n}\n.btn-success {\n  color: #fff;\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success:focus,\n.btn-success.focus {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #255625;\n}\n.btn-success:hover {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439;\n}\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  color: #fff;\n  background-color: #449d44;\n  border-color: #398439;\n}\n.btn-success:active:hover,\n.btn-success.active:hover,\n.open > .dropdown-toggle.btn-success:hover,\n.btn-success:active:focus,\n.btn-success.active:focus,\n.open > .dropdown-toggle.btn-success:focus,\n.btn-success:active.focus,\n.btn-success.active.focus,\n.open > .dropdown-toggle.btn-success.focus {\n  color: #fff;\n  background-color: #398439;\n  border-color: #255625;\n}\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  background-image: none;\n}\n.btn-success.disabled,\n.btn-success[disabled],\nfieldset[disabled] .btn-success,\n.btn-success.disabled:hover,\n.btn-success[disabled]:hover,\nfieldset[disabled] .btn-success:hover,\n.btn-success.disabled:focus,\n.btn-success[disabled]:focus,\nfieldset[disabled] .btn-success:focus,\n.btn-success.disabled.focus,\n.btn-success[disabled].focus,\nfieldset[disabled] .btn-success.focus,\n.btn-success.disabled:active,\n.btn-success[disabled]:active,\nfieldset[disabled] .btn-success:active,\n.btn-success.disabled.active,\n.btn-success[disabled].active,\nfieldset[disabled] .btn-success.active {\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #fff;\n}\n.btn-info {\n  color: #fff;\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info:focus,\n.btn-info.focus {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #1b6d85;\n}\n.btn-info:hover {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc;\n}\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  color: #fff;\n  background-color: #31b0d5;\n  border-color: #269abc;\n}\n.btn-info:active:hover,\n.btn-info.active:hover,\n.open > .dropdown-toggle.btn-info:hover,\n.btn-info:active:focus,\n.btn-info.active:focus,\n.open > .dropdown-toggle.btn-info:focus,\n.btn-info:active.focus,\n.btn-info.active.focus,\n.open > .dropdown-toggle.btn-info.focus {\n  color: #fff;\n  background-color: #269abc;\n  border-color: #1b6d85;\n}\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  background-image: none;\n}\n.btn-info.disabled,\n.btn-info[disabled],\nfieldset[disabled] .btn-info,\n.btn-info.disabled:hover,\n.btn-info[disabled]:hover,\nfieldset[disabled] .btn-info:hover,\n.btn-info.disabled:focus,\n.btn-info[disabled]:focus,\nfieldset[disabled] .btn-info:focus,\n.btn-info.disabled.focus,\n.btn-info[disabled].focus,\nfieldset[disabled] .btn-info.focus,\n.btn-info.disabled:active,\n.btn-info[disabled]:active,\nfieldset[disabled] .btn-info:active,\n.btn-info.disabled.active,\n.btn-info[disabled].active,\nfieldset[disabled] .btn-info.active {\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #fff;\n}\n.btn-warning {\n  color: #fff;\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning:focus,\n.btn-warning.focus {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #985f0d;\n}\n.btn-warning:hover {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512;\n}\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  color: #fff;\n  background-color: #ec971f;\n  border-color: #d58512;\n}\n.btn-warning:active:hover,\n.btn-warning.active:hover,\n.open > .dropdown-toggle.btn-warning:hover,\n.btn-warning:active:focus,\n.btn-warning.active:focus,\n.open > .dropdown-toggle.btn-warning:focus,\n.btn-warning:active.focus,\n.btn-warning.active.focus,\n.open > .dropdown-toggle.btn-warning.focus {\n  color: #fff;\n  background-color: #d58512;\n  border-color: #985f0d;\n}\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  background-image: none;\n}\n.btn-warning.disabled,\n.btn-warning[disabled],\nfieldset[disabled] .btn-warning,\n.btn-warning.disabled:hover,\n.btn-warning[disabled]:hover,\nfieldset[disabled] .btn-warning:hover,\n.btn-warning.disabled:focus,\n.btn-warning[disabled]:focus,\nfieldset[disabled] .btn-warning:focus,\n.btn-warning.disabled.focus,\n.btn-warning[disabled].focus,\nfieldset[disabled] .btn-warning.focus,\n.btn-warning.disabled:active,\n.btn-warning[disabled]:active,\nfieldset[disabled] .btn-warning:active,\n.btn-warning.disabled.active,\n.btn-warning[disabled].active,\nfieldset[disabled] .btn-warning.active {\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #fff;\n}\n.btn-danger {\n  color: #fff;\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger:focus,\n.btn-danger.focus {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #761c19;\n}\n.btn-danger:hover {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925;\n}\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  color: #fff;\n  background-color: #c9302c;\n  border-color: #ac2925;\n}\n.btn-danger:active:hover,\n.btn-danger.active:hover,\n.open > .dropdown-toggle.btn-danger:hover,\n.btn-danger:active:focus,\n.btn-danger.active:focus,\n.open > .dropdown-toggle.btn-danger:focus,\n.btn-danger:active.focus,\n.btn-danger.active.focus,\n.open > .dropdown-toggle.btn-danger.focus {\n  color: #fff;\n  background-color: #ac2925;\n  border-color: #761c19;\n}\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  background-image: none;\n}\n.btn-danger.disabled,\n.btn-danger[disabled],\nfieldset[disabled] .btn-danger,\n.btn-danger.disabled:hover,\n.btn-danger[disabled]:hover,\nfieldset[disabled] .btn-danger:hover,\n.btn-danger.disabled:focus,\n.btn-danger[disabled]:focus,\nfieldset[disabled] .btn-danger:focus,\n.btn-danger.disabled.focus,\n.btn-danger[disabled].focus,\nfieldset[disabled] .btn-danger.focus,\n.btn-danger.disabled:active,\n.btn-danger[disabled]:active,\nfieldset[disabled] .btn-danger:active,\n.btn-danger.disabled.active,\n.btn-danger[disabled].active,\nfieldset[disabled] .btn-danger.active {\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #fff;\n}\n.btn-link {\n  font-weight: normal;\n  color: #337ab7;\n  border-radius: 0;\n}\n.btn-link,\n.btn-link:active,\n.btn-link.active,\n.btn-link[disabled],\nfieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.btn-link,\n.btn-link:hover,\n.btn-link:focus,\n.btn-link:active {\n  border-color: transparent;\n}\n.btn-link:hover,\n.btn-link:focus {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent;\n}\n.btn-link[disabled]:hover,\nfieldset[disabled] .btn-link:hover,\n.btn-link[disabled]:focus,\nfieldset[disabled] .btn-link:focus {\n  color: #777;\n  text-decoration: none;\n}\n.btn-lg,\n.btn-group-lg > .btn {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\n.btn-sm,\n.btn-group-sm > .btn {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-xs,\n.btn-group-xs > .btn {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-block {\n  display: block;\n  width: 100%;\n}\n.btn-block + .btn-block {\n  margin-top: 5px;\n}\ninput[type=\"submit\"].btn-block,\ninput[type=\"reset\"].btn-block,\ninput[type=\"button\"].btn-block {\n  width: 100%;\n}\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity .15s linear;\n       -o-transition: opacity .15s linear;\n          transition: opacity .15s linear;\n}\n.fade.in {\n  opacity: 1;\n}\n.collapse {\n  display: none;\n}\n.collapse.in {\n  display: block;\n}\ntr.collapse.in {\n  display: table-row;\n}\ntbody.collapse.in {\n  display: table-row-group;\n}\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-timing-function: ease;\n       -o-transition-timing-function: ease;\n          transition-timing-function: ease;\n  -webkit-transition-duration: .35s;\n       -o-transition-duration: .35s;\n          transition-duration: .35s;\n  -webkit-transition-property: height, visibility;\n       -o-transition-property: height, visibility;\n          transition-property: height, visibility;\n}\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px dashed;\n  border-top: 4px solid \\9;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n}\n.dropup,\n.dropdown {\n  position: relative;\n}\n.dropdown-toggle:focus {\n  outline: 0;\n}\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  font-size: 14px;\n  text-align: left;\n  list-style: none;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n          background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, .15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);\n}\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto;\n}\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: normal;\n  line-height: 1.42857143;\n  color: #333;\n  white-space: nowrap;\n}\n.dropdown-menu > li > a:hover,\n.dropdown-menu > li > a:focus {\n  color: #262626;\n  text-decoration: none;\n  background-color: #f5f5f5;\n}\n.dropdown-menu > .active > a,\n.dropdown-menu > .active > a:hover,\n.dropdown-menu > .active > a:focus {\n  color: #fff;\n  text-decoration: none;\n  background-color: #337ab7;\n  outline: 0;\n}\n.dropdown-menu > .disabled > a,\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  color: #777;\n}\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n}\n.open > .dropdown-menu {\n  display: block;\n}\n.open > a {\n  outline: 0;\n}\n.dropdown-menu-right {\n  right: 0;\n  left: auto;\n}\n.dropdown-menu-left {\n  right: auto;\n  left: 0;\n}\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.42857143;\n  color: #777;\n  white-space: nowrap;\n}\n.dropdown-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 990;\n}\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto;\n}\n.dropup .caret,\n.navbar-fixed-bottom .dropdown .caret {\n  content: \"\";\n  border-top: 0;\n  border-bottom: 4px dashed;\n  border-bottom: 4px solid \\9;\n}\n.dropup .dropdown-menu,\n.navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px;\n}\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    right: 0;\n    left: auto;\n  }\n  .navbar-right .dropdown-menu-left {\n    right: auto;\n    left: 0;\n  }\n}\n.btn-group,\n.btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle;\n}\n.btn-group > .btn,\n.btn-group-vertical > .btn {\n  position: relative;\n  float: left;\n}\n.btn-group > .btn:hover,\n.btn-group-vertical > .btn:hover,\n.btn-group > .btn:focus,\n.btn-group-vertical > .btn:focus,\n.btn-group > .btn:active,\n.btn-group-vertical > .btn:active,\n.btn-group > .btn.active,\n.btn-group-vertical > .btn.active {\n  z-index: 2;\n}\n.btn-group .btn + .btn,\n.btn-group .btn + .btn-group,\n.btn-group .btn-group + .btn,\n.btn-group .btn-group + .btn-group {\n  margin-left: -1px;\n}\n.btn-toolbar {\n  margin-left: -5px;\n}\n.btn-toolbar .btn,\n.btn-toolbar .btn-group,\n.btn-toolbar .input-group {\n  float: left;\n}\n.btn-toolbar > .btn,\n.btn-toolbar > .btn-group,\n.btn-toolbar > .input-group {\n  margin-left: 5px;\n}\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0;\n}\n.btn-group > .btn:first-child {\n  margin-left: 0;\n}\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.btn-group > .btn:last-child:not(:first-child),\n.btn-group > .dropdown-toggle:not(:first-child) {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group > .btn-group {\n  float: left;\n}\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group .dropdown-toggle:active,\n.btn-group.open .dropdown-toggle {\n  outline: 0;\n}\n.btn-group > .btn + .dropdown-toggle {\n  padding-right: 8px;\n  padding-left: 8px;\n}\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-right: 12px;\n  padding-left: 12px;\n}\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);\n          box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);\n}\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n          box-shadow: none;\n}\n.btn .caret {\n  margin-left: 0;\n}\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0;\n}\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px;\n}\n.btn-group-vertical > .btn,\n.btn-group-vertical > .btn-group,\n.btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%;\n}\n.btn-group-vertical > .btn-group > .btn {\n  float: none;\n}\n.btn-group-vertical > .btn + .btn,\n.btn-group-vertical > .btn + .btn-group,\n.btn-group-vertical > .btn-group + .btn,\n.btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0;\n}\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n  border-bottom-left-radius: 4px;\n}\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate;\n}\n.btn-group-justified > .btn,\n.btn-group-justified > .btn-group {\n  display: table-cell;\n  float: none;\n  width: 1%;\n}\n.btn-group-justified > .btn-group .btn {\n  width: 100%;\n}\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto;\n}\n[data-toggle=\"buttons\"] > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn input[type=\"checkbox\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"checkbox\"] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none;\n}\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate;\n}\n.input-group[class*=\"col-\"] {\n  float: none;\n  padding-right: 0;\n  padding-left: 0;\n}\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0;\n}\n.input-group-lg > .form-control,\n.input-group-lg > .input-group-addon,\n.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-group-lg > .form-control,\nselect.input-group-lg > .input-group-addon,\nselect.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-group-lg > .form-control,\ntextarea.input-group-lg > .input-group-addon,\ntextarea.input-group-lg > .input-group-btn > .btn,\nselect[multiple].input-group-lg > .form-control,\nselect[multiple].input-group-lg > .input-group-addon,\nselect[multiple].input-group-lg > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-sm > .form-control,\n.input-group-sm > .input-group-addon,\n.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-group-sm > .form-control,\nselect.input-group-sm > .input-group-addon,\nselect.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-group-sm > .form-control,\ntextarea.input-group-sm > .input-group-addon,\ntextarea.input-group-sm > .input-group-btn > .btn,\nselect[multiple].input-group-sm > .form-control,\nselect[multiple].input-group-sm > .input-group-addon,\nselect[multiple].input-group-sm > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-addon,\n.input-group-btn,\n.input-group .form-control {\n  display: table-cell;\n}\n.input-group-addon:not(:first-child):not(:last-child),\n.input-group-btn:not(:first-child):not(:last-child),\n.input-group .form-control:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.input-group-addon,\n.input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1;\n  color: #555;\n  text-align: center;\n  background-color: #eee;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n}\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px;\n}\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px;\n}\n.input-group-addon input[type=\"radio\"],\n.input-group-addon input[type=\"checkbox\"] {\n  margin-top: 0;\n}\n.input-group .form-control:first-child,\n.input-group-addon:first-child,\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group > .btn,\n.input-group-btn:first-child > .dropdown-toggle,\n.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),\n.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {\n  border-top-right-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.input-group-addon:first-child {\n  border-right: 0;\n}\n.input-group .form-control:last-child,\n.input-group-addon:last-child,\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group > .btn,\n.input-group-btn:last-child > .dropdown-toggle,\n.input-group-btn:first-child > .btn:not(:first-child),\n.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {\n  border-top-left-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.input-group-addon:last-child {\n  border-left: 0;\n}\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap;\n}\n.input-group-btn > .btn {\n  position: relative;\n}\n.input-group-btn > .btn + .btn {\n  margin-left: -1px;\n}\n.input-group-btn > .btn:hover,\n.input-group-btn > .btn:focus,\n.input-group-btn > .btn:active {\n  z-index: 2;\n}\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group {\n  margin-right: -1px;\n}\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group {\n  z-index: 2;\n  margin-left: -1px;\n}\n.nav {\n  padding-left: 0;\n  margin-bottom: 0;\n  list-style: none;\n}\n.nav > li {\n  position: relative;\n  display: block;\n}\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n}\n.nav > li > a:hover,\n.nav > li > a:focus {\n  text-decoration: none;\n  background-color: #eee;\n}\n.nav > li.disabled > a {\n  color: #777;\n}\n.nav > li.disabled > a:hover,\n.nav > li.disabled > a:focus {\n  color: #777;\n  text-decoration: none;\n  cursor: not-allowed;\n  background-color: transparent;\n}\n.nav .open > a,\n.nav .open > a:hover,\n.nav .open > a:focus {\n  background-color: #eee;\n  border-color: #337ab7;\n}\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.nav > li > a > img {\n  max-width: none;\n}\n.nav-tabs {\n  border-bottom: 1px solid #ddd;\n}\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px;\n}\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.42857143;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0;\n}\n.nav-tabs > li > a:hover {\n  border-color: #eee #eee #ddd;\n}\n.nav-tabs > li.active > a,\n.nav-tabs > li.active > a:hover,\n.nav-tabs > li.active > a:focus {\n  color: #555;\n  cursor: default;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-bottom-color: transparent;\n}\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0;\n}\n.nav-tabs.nav-justified > li {\n  float: none;\n}\n.nav-tabs.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center;\n}\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs.nav-justified > .active > a,\n.nav-tabs.nav-justified > .active > a:hover,\n.nav-tabs.nav-justified > .active > a:focus {\n  border: 1px solid #ddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs.nav-justified > .active > a,\n  .nav-tabs.nav-justified > .active > a:hover,\n  .nav-tabs.nav-justified > .active > a:focus {\n    border-bottom-color: #fff;\n  }\n}\n.nav-pills > li {\n  float: left;\n}\n.nav-pills > li > a {\n  border-radius: 4px;\n}\n.nav-pills > li + li {\n  margin-left: 2px;\n}\n.nav-pills > li.active > a,\n.nav-pills > li.active > a:hover,\n.nav-pills > li.active > a:focus {\n  color: #fff;\n  background-color: #337ab7;\n}\n.nav-stacked > li {\n  float: none;\n}\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0;\n}\n.nav-justified {\n  width: 100%;\n}\n.nav-justified > li {\n  float: none;\n}\n.nav-justified > li > a {\n  margin-bottom: 5px;\n  text-align: center;\n}\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs-justified {\n  border-bottom: 0;\n}\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs-justified > .active > a,\n.nav-tabs-justified > .active > a:hover,\n.nav-tabs-justified > .active > a:focus {\n  border: 1px solid #ddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #ddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs-justified > .active > a,\n  .nav-tabs-justified > .active > a:hover,\n  .nav-tabs-justified > .active > a:focus {\n    border-bottom-color: #fff;\n  }\n}\n.tab-content > .tab-pane {\n  display: none;\n}\n.tab-content > .active {\n  display: block;\n}\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n}\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left;\n  }\n}\n.navbar-collapse {\n  padding-right: 15px;\n  padding-left: 15px;\n  overflow-x: visible;\n  -webkit-overflow-scrolling: touch;\n  border-top: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);\n          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);\n}\n.navbar-collapse.in {\n  overflow-y: auto;\n}\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n  }\n  .navbar-collapse.collapse {\n    display: block !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important;\n  }\n  .navbar-collapse.in {\n    overflow-y: visible;\n  }\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-static-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    padding-right: 0;\n    padding-left: 0;\n  }\n}\n.navbar-fixed-top .navbar-collapse,\n.navbar-fixed-bottom .navbar-collapse {\n  max-height: 340px;\n}\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    max-height: 200px;\n  }\n}\n.container > .navbar-header,\n.container-fluid > .navbar-header,\n.container > .navbar-collapse,\n.container-fluid > .navbar-collapse {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n@media (min-width: 768px) {\n  .container > .navbar-header,\n  .container-fluid > .navbar-header,\n  .container > .navbar-collapse,\n  .container-fluid > .navbar-collapse {\n    margin-right: 0;\n    margin-left: 0;\n  }\n}\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px;\n}\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top,\n.navbar-fixed-bottom {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}\n@media (min-width: 768px) {\n  .navbar-fixed-top,\n  .navbar-fixed-bottom {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px;\n}\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0;\n}\n.navbar-brand {\n  float: left;\n  height: 50px;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px;\n}\n.navbar-brand:hover,\n.navbar-brand:focus {\n  text-decoration: none;\n}\n.navbar-brand > img {\n  display: block;\n}\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand,\n  .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px;\n  }\n}\n.navbar-toggle {\n  position: relative;\n  float: right;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-right: 15px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.navbar-toggle:focus {\n  outline: 0;\n}\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px;\n}\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px;\n}\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none;\n  }\n}\n.navbar-nav {\n  margin: 7.5px -15px;\n}\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px;\n}\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n  }\n  .navbar-nav .open .dropdown-menu > li > a,\n  .navbar-nav .open .dropdown-menu .dropdown-header {\n    padding: 5px 15px 5px 25px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-nav .open .dropdown-menu > li > a:focus {\n    background-image: none;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0;\n  }\n  .navbar-nav > li {\n    float: left;\n  }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px;\n  }\n}\n.navbar-form {\n  padding: 10px 15px;\n  margin-top: 8px;\n  margin-right: -15px;\n  margin-bottom: 8px;\n  margin-left: -15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);\n          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 1px 0 rgba(255, 255, 255, .1);\n}\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control-static {\n    display: inline-block;\n  }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .navbar-form .input-group .input-group-addon,\n  .navbar-form .input-group .input-group-btn,\n  .navbar-form .input-group .form-control {\n    width: auto;\n  }\n  .navbar-form .input-group > .form-control {\n    width: 100%;\n  }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio,\n  .navbar-form .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio label,\n  .navbar-form .checkbox label {\n    padding-left: 0;\n  }\n  .navbar-form .radio input[type=\"radio\"],\n  .navbar-form .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px;\n  }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    padding-top: 0;\n    padding-bottom: 0;\n    margin-right: 0;\n    margin-left: 0;\n    border: 0;\n    -webkit-box-shadow: none;\n            box-shadow: none;\n  }\n}\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px;\n}\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-right: 15px;\n    margin-left: 15px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important;\n  }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px;\n  }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0;\n  }\n}\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-brand {\n  color: #777;\n}\n.navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\n  color: #5e5e5e;\n  background-color: transparent;\n}\n.navbar-default .navbar-text {\n  color: #777;\n}\n.navbar-default .navbar-nav > li > a {\n  color: #777;\n}\n.navbar-default .navbar-nav > li > a:hover,\n.navbar-default .navbar-nav > li > a:focus {\n  color: #333;\n  background-color: transparent;\n}\n.navbar-default .navbar-nav > .active > a,\n.navbar-default .navbar-nav > .active > a:hover,\n.navbar-default .navbar-nav > .active > a:focus {\n  color: #555;\n  background-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .disabled > a,\n.navbar-default .navbar-nav > .disabled > a:hover,\n.navbar-default .navbar-nav > .disabled > a:focus {\n  color: #ccc;\n  background-color: transparent;\n}\n.navbar-default .navbar-toggle {\n  border-color: #ddd;\n}\n.navbar-default .navbar-toggle:hover,\n.navbar-default .navbar-toggle:focus {\n  background-color: #ddd;\n}\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888;\n}\n.navbar-default .navbar-collapse,\n.navbar-default .navbar-form {\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .open > a,\n.navbar-default .navbar-nav > .open > a:hover,\n.navbar-default .navbar-nav > .open > a:focus {\n  color: #555;\n  background-color: #e7e7e7;\n}\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #333;\n    background-color: transparent;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #555;\n    background-color: #e7e7e7;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #ccc;\n    background-color: transparent;\n  }\n}\n.navbar-default .navbar-link {\n  color: #777;\n}\n.navbar-default .navbar-link:hover {\n  color: #333;\n}\n.navbar-default .btn-link {\n  color: #777;\n}\n.navbar-default .btn-link:hover,\n.navbar-default .btn-link:focus {\n  color: #333;\n}\n.navbar-default .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-default .btn-link:hover,\n.navbar-default .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-default .btn-link:focus {\n  color: #ccc;\n}\n.navbar-inverse {\n  background-color: #222;\n  border-color: #080808;\n}\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-brand:hover,\n.navbar-inverse .navbar-brand:focus {\n  color: #fff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-text {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a:hover,\n.navbar-inverse .navbar-nav > li > a:focus {\n  color: #fff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-nav > .active > a,\n.navbar-inverse .navbar-nav > .active > a:hover,\n.navbar-inverse .navbar-nav > .active > a:focus {\n  color: #fff;\n  background-color: #080808;\n}\n.navbar-inverse .navbar-nav > .disabled > a,\n.navbar-inverse .navbar-nav > .disabled > a:hover,\n.navbar-inverse .navbar-nav > .disabled > a:focus {\n  color: #444;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-toggle {\n  border-color: #333;\n}\n.navbar-inverse .navbar-toggle:hover,\n.navbar-inverse .navbar-toggle:focus {\n  background-color: #333;\n}\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #fff;\n}\n.navbar-inverse .navbar-collapse,\n.navbar-inverse .navbar-form {\n  border-color: #101010;\n}\n.navbar-inverse .navbar-nav > .open > a,\n.navbar-inverse .navbar-nav > .open > a:hover,\n.navbar-inverse .navbar-nav > .open > a:focus {\n  color: #fff;\n  background-color: #080808;\n}\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #fff;\n    background-color: transparent;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #fff;\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #444;\n    background-color: transparent;\n  }\n}\n.navbar-inverse .navbar-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-link:hover {\n  color: #fff;\n}\n.navbar-inverse .btn-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link:focus {\n  color: #fff;\n}\n.navbar-inverse .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-inverse .btn-link:focus {\n  color: #444;\n}\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n}\n.breadcrumb > li {\n  display: inline-block;\n}\n.breadcrumb > li + li:before {\n  padding: 0 5px;\n  color: #ccc;\n  content: \"/\\A0\";\n}\n.breadcrumb > .active {\n  color: #777;\n}\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px;\n}\n.pagination > li {\n  display: inline;\n}\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  margin-left: -1px;\n  line-height: 1.42857143;\n  color: #337ab7;\n  text-decoration: none;\n  background-color: #fff;\n  border: 1px solid #ddd;\n}\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  margin-left: 0;\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px;\n}\n.pagination > li > a:hover,\n.pagination > li > span:hover,\n.pagination > li > a:focus,\n.pagination > li > span:focus {\n  z-index: 3;\n  color: #23527c;\n  background-color: #eee;\n  border-color: #ddd;\n}\n.pagination > .active > a,\n.pagination > .active > span,\n.pagination > .active > a:hover,\n.pagination > .active > span:hover,\n.pagination > .active > a:focus,\n.pagination > .active > span:focus {\n  z-index: 2;\n  color: #fff;\n  cursor: default;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.pagination > .disabled > span,\n.pagination > .disabled > span:hover,\n.pagination > .disabled > span:focus,\n.pagination > .disabled > a,\n.pagination > .disabled > a:hover,\n.pagination > .disabled > a:focus {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff;\n  border-color: #ddd;\n}\n.pagination-lg > li > a,\n.pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n}\n.pagination-lg > li:first-child > a,\n.pagination-lg > li:first-child > span {\n  border-top-left-radius: 6px;\n  border-bottom-left-radius: 6px;\n}\n.pagination-lg > li:last-child > a,\n.pagination-lg > li:last-child > span {\n  border-top-right-radius: 6px;\n  border-bottom-right-radius: 6px;\n}\n.pagination-sm > li > a,\n.pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n}\n.pagination-sm > li:first-child > a,\n.pagination-sm > li:first-child > span {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.pagination-sm > li:last-child > a,\n.pagination-sm > li:last-child > span {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  text-align: center;\n  list-style: none;\n}\n.pager li {\n  display: inline;\n}\n.pager li > a,\n.pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 15px;\n}\n.pager li > a:hover,\n.pager li > a:focus {\n  text-decoration: none;\n  background-color: #eee;\n}\n.pager .next > a,\n.pager .next > span {\n  float: right;\n}\n.pager .previous > a,\n.pager .previous > span {\n  float: left;\n}\n.pager .disabled > a,\n.pager .disabled > a:hover,\n.pager .disabled > a:focus,\n.pager .disabled > span {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #fff;\n}\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: bold;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em;\n}\na.label:hover,\na.label:focus {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.label:empty {\n  display: none;\n}\n.btn .label {\n  position: relative;\n  top: -1px;\n}\n.label-default {\n  background-color: #777;\n}\n.label-default[href]:hover,\n.label-default[href]:focus {\n  background-color: #5e5e5e;\n}\n.label-primary {\n  background-color: #337ab7;\n}\n.label-primary[href]:hover,\n.label-primary[href]:focus {\n  background-color: #286090;\n}\n.label-success {\n  background-color: #5cb85c;\n}\n.label-success[href]:hover,\n.label-success[href]:focus {\n  background-color: #449d44;\n}\n.label-info {\n  background-color: #5bc0de;\n}\n.label-info[href]:hover,\n.label-info[href]:focus {\n  background-color: #31b0d5;\n}\n.label-warning {\n  background-color: #f0ad4e;\n}\n.label-warning[href]:hover,\n.label-warning[href]:focus {\n  background-color: #ec971f;\n}\n.label-danger {\n  background-color: #d9534f;\n}\n.label-danger[href]:hover,\n.label-danger[href]:focus {\n  background-color: #c9302c;\n}\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: bold;\n  line-height: 1;\n  color: #fff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: middle;\n  background-color: #777;\n  border-radius: 10px;\n}\n.badge:empty {\n  display: none;\n}\n.btn .badge {\n  position: relative;\n  top: -1px;\n}\n.btn-xs .badge,\n.btn-group-xs > .btn .badge {\n  top: 0;\n  padding: 1px 5px;\n}\na.badge:hover,\na.badge:focus {\n  color: #fff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.list-group-item.active > .badge,\n.nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #fff;\n}\n.list-group-item > .badge {\n  float: right;\n}\n.list-group-item > .badge + .badge {\n  margin-right: 5px;\n}\n.nav-pills > li > a > .badge {\n  margin-left: 3px;\n}\n.jumbotron {\n  padding-top: 30px;\n  padding-bottom: 30px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eee;\n}\n.jumbotron h1,\n.jumbotron .h1 {\n  color: inherit;\n}\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200;\n}\n.jumbotron > hr {\n  border-top-color: #d5d5d5;\n}\n.container .jumbotron,\n.container-fluid .jumbotron {\n  border-radius: 6px;\n}\n.jumbotron .container {\n  max-width: 100%;\n}\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding-top: 48px;\n    padding-bottom: 48px;\n  }\n  .container .jumbotron,\n  .container-fluid .jumbotron {\n    padding-right: 60px;\n    padding-left: 60px;\n  }\n  .jumbotron h1,\n  .jumbotron .h1 {\n    font-size: 63px;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.42857143;\n  background-color: #fff;\n  border: 1px solid #ddd;\n  border-radius: 4px;\n  -webkit-transition: border .2s ease-in-out;\n       -o-transition: border .2s ease-in-out;\n          transition: border .2s ease-in-out;\n}\n.thumbnail > img,\n.thumbnail a > img {\n  margin-right: auto;\n  margin-left: auto;\n}\na.thumbnail:hover,\na.thumbnail:focus,\na.thumbnail.active {\n  border-color: #337ab7;\n}\n.thumbnail .caption {\n  padding: 9px;\n  color: #333;\n}\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.alert h4 {\n  margin-top: 0;\n  color: inherit;\n}\n.alert .alert-link {\n  font-weight: bold;\n}\n.alert > p,\n.alert > ul {\n  margin-bottom: 0;\n}\n.alert > p + p {\n  margin-top: 5px;\n}\n.alert-dismissable,\n.alert-dismissible {\n  padding-right: 35px;\n}\n.alert-dismissable .close,\n.alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit;\n}\n.alert-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n}\n.alert-success hr {\n  border-top-color: #c9e2b3;\n}\n.alert-success .alert-link {\n  color: #2b542c;\n}\n.alert-info {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n}\n.alert-info hr {\n  border-top-color: #a6e1ec;\n}\n.alert-info .alert-link {\n  color: #245269;\n}\n.alert-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n}\n.alert-warning hr {\n  border-top-color: #f7e1b5;\n}\n.alert-warning .alert-link {\n  color: #66512c;\n}\n.alert-danger {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1;\n}\n.alert-danger hr {\n  border-top-color: #e4b9c0;\n}\n.alert-danger .alert-link {\n  color: #843534;\n}\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n@-o-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n.progress {\n  height: 20px;\n  margin-bottom: 20px;\n  overflow: hidden;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);\n          box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);\n}\n.progress-bar {\n  float: left;\n  width: 0;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #fff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);\n          box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .15);\n  -webkit-transition: width .6s ease;\n       -o-transition: width .6s ease;\n          transition: width .6s ease;\n}\n.progress-striped .progress-bar,\n.progress-bar-striped {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  -webkit-background-size: 40px 40px;\n          background-size: 40px 40px;\n}\n.progress.active .progress-bar,\n.progress-bar.active {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n       -o-animation: progress-bar-stripes 2s linear infinite;\n          animation: progress-bar-stripes 2s linear infinite;\n}\n.progress-bar-success {\n  background-color: #5cb85c;\n}\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n}\n.progress-bar-info {\n  background-color: #5bc0de;\n}\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n}\n.progress-bar-warning {\n  background-color: #f0ad4e;\n}\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n}\n.progress-bar-danger {\n  background-color: #d9534f;\n}\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:      -o-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n  background-image:         linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);\n}\n.media {\n  margin-top: 15px;\n}\n.media:first-child {\n  margin-top: 0;\n}\n.media,\n.media-body {\n  overflow: hidden;\n  zoom: 1;\n}\n.media-body {\n  width: 10000px;\n}\n.media-object {\n  display: block;\n}\n.media-object.img-thumbnail {\n  max-width: none;\n}\n.media-right,\n.media > .pull-right {\n  padding-left: 10px;\n}\n.media-left,\n.media > .pull-left {\n  padding-right: 10px;\n}\n.media-left,\n.media-right,\n.media-body {\n  display: table-cell;\n  vertical-align: top;\n}\n.media-middle {\n  vertical-align: middle;\n}\n.media-bottom {\n  vertical-align: bottom;\n}\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.media-list {\n  padding-left: 0;\n  list-style: none;\n}\n.list-group {\n  padding-left: 0;\n  margin-bottom: 20px;\n}\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #fff;\n  border: 1px solid #ddd;\n}\n.list-group-item:first-child {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n}\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\na.list-group-item,\nbutton.list-group-item {\n  color: #555;\n}\na.list-group-item .list-group-item-heading,\nbutton.list-group-item .list-group-item-heading {\n  color: #333;\n}\na.list-group-item:hover,\nbutton.list-group-item:hover,\na.list-group-item:focus,\nbutton.list-group-item:focus {\n  color: #555;\n  text-decoration: none;\n  background-color: #f5f5f5;\n}\nbutton.list-group-item {\n  width: 100%;\n  text-align: left;\n}\n.list-group-item.disabled,\n.list-group-item.disabled:hover,\n.list-group-item.disabled:focus {\n  color: #777;\n  cursor: not-allowed;\n  background-color: #eee;\n}\n.list-group-item.disabled .list-group-item-heading,\n.list-group-item.disabled:hover .list-group-item-heading,\n.list-group-item.disabled:focus .list-group-item-heading {\n  color: inherit;\n}\n.list-group-item.disabled .list-group-item-text,\n.list-group-item.disabled:hover .list-group-item-text,\n.list-group-item.disabled:focus .list-group-item-text {\n  color: #777;\n}\n.list-group-item.active,\n.list-group-item.active:hover,\n.list-group-item.active:focus {\n  z-index: 2;\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.list-group-item.active .list-group-item-heading,\n.list-group-item.active:hover .list-group-item-heading,\n.list-group-item.active:focus .list-group-item-heading,\n.list-group-item.active .list-group-item-heading > small,\n.list-group-item.active:hover .list-group-item-heading > small,\n.list-group-item.active:focus .list-group-item-heading > small,\n.list-group-item.active .list-group-item-heading > .small,\n.list-group-item.active:hover .list-group-item-heading > .small,\n.list-group-item.active:focus .list-group-item-heading > .small {\n  color: inherit;\n}\n.list-group-item.active .list-group-item-text,\n.list-group-item.active:hover .list-group-item-text,\n.list-group-item.active:focus .list-group-item-text {\n  color: #c7ddef;\n}\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n}\na.list-group-item-success,\nbutton.list-group-item-success {\n  color: #3c763d;\n}\na.list-group-item-success .list-group-item-heading,\nbutton.list-group-item-success .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-success:hover,\nbutton.list-group-item-success:hover,\na.list-group-item-success:focus,\nbutton.list-group-item-success:focus {\n  color: #3c763d;\n  background-color: #d0e9c6;\n}\na.list-group-item-success.active,\nbutton.list-group-item-success.active,\na.list-group-item-success.active:hover,\nbutton.list-group-item-success.active:hover,\na.list-group-item-success.active:focus,\nbutton.list-group-item-success.active:focus {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d;\n}\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7;\n}\na.list-group-item-info,\nbutton.list-group-item-info {\n  color: #31708f;\n}\na.list-group-item-info .list-group-item-heading,\nbutton.list-group-item-info .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-info:hover,\nbutton.list-group-item-info:hover,\na.list-group-item-info:focus,\nbutton.list-group-item-info:focus {\n  color: #31708f;\n  background-color: #c4e3f3;\n}\na.list-group-item-info.active,\nbutton.list-group-item-info.active,\na.list-group-item-info.active:hover,\nbutton.list-group-item-info.active:hover,\na.list-group-item-info.active:focus,\nbutton.list-group-item-info.active:focus {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f;\n}\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n}\na.list-group-item-warning,\nbutton.list-group-item-warning {\n  color: #8a6d3b;\n}\na.list-group-item-warning .list-group-item-heading,\nbutton.list-group-item-warning .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-warning:hover,\nbutton.list-group-item-warning:hover,\na.list-group-item-warning:focus,\nbutton.list-group-item-warning:focus {\n  color: #8a6d3b;\n  background-color: #faf2cc;\n}\na.list-group-item-warning.active,\nbutton.list-group-item-warning.active,\na.list-group-item-warning.active:hover,\nbutton.list-group-item-warning.active:hover,\na.list-group-item-warning.active:focus,\nbutton.list-group-item-warning.active:focus {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b;\n}\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede;\n}\na.list-group-item-danger,\nbutton.list-group-item-danger {\n  color: #a94442;\n}\na.list-group-item-danger .list-group-item-heading,\nbutton.list-group-item-danger .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-danger:hover,\nbutton.list-group-item-danger:hover,\na.list-group-item-danger:focus,\nbutton.list-group-item-danger:focus {\n  color: #a94442;\n  background-color: #ebcccc;\n}\na.list-group-item-danger.active,\nbutton.list-group-item-danger.active,\na.list-group-item-danger.active:hover,\nbutton.list-group-item-danger.active:hover,\na.list-group-item-danger.active:focus,\nbutton.list-group-item-danger.active:focus {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442;\n}\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3;\n}\n.panel {\n  margin-bottom: 20px;\n  background-color: #fff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);\n          box-shadow: 0 1px 1px rgba(0, 0, 0, .05);\n}\n.panel-body {\n  padding: 15px;\n}\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit;\n}\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit;\n}\n.panel-title > a,\n.panel-title > small,\n.panel-title > .small,\n.panel-title > small > a,\n.panel-title > .small > a {\n  color: inherit;\n}\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #ddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .list-group,\n.panel > .panel-collapse > .list-group {\n  margin-bottom: 0;\n}\n.panel > .list-group .list-group-item,\n.panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0;\n}\n.panel > .list-group:first-child .list-group-item:first-child,\n.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .list-group:last-child .list-group-item:last-child,\n.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .panel-heading + .panel-collapse > .list-group .list-group-item:first-child {\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0;\n}\n.list-group + .panel-footer {\n  border-top-width: 0;\n}\n.panel > .table,\n.panel > .table-responsive > .table,\n.panel > .panel-collapse > .table {\n  margin-bottom: 0;\n}\n.panel > .table caption,\n.panel > .table-responsive > .table caption,\n.panel > .panel-collapse > .table caption {\n  padding-right: 15px;\n  padding-left: 15px;\n}\n.panel > .table:first-child,\n.panel > .table-responsive:first-child > .table:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px;\n}\n.panel > .table:last-child,\n.panel > .table-responsive:last-child > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px;\n}\n.panel > .panel-body + .table,\n.panel > .panel-body + .table-responsive,\n.panel > .table + .panel-body,\n.panel > .table-responsive + .panel-body {\n  border-top: 1px solid #ddd;\n}\n.panel > .table > tbody:first-child > tr:first-child th,\n.panel > .table > tbody:first-child > tr:first-child td {\n  border-top: 0;\n}\n.panel > .table-bordered,\n.panel > .table-responsive > .table-bordered {\n  border: 0;\n}\n.panel > .table-bordered > thead > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:first-child,\n.panel > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-bordered > thead > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:first-child,\n.panel > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-bordered > tfoot > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n  border-left: 0;\n}\n.panel > .table-bordered > thead > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,\n.panel > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-bordered > thead > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:last-child,\n.panel > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-bordered > tfoot > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n  border-right: 0;\n}\n.panel > .table-bordered > thead > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > td,\n.panel > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-bordered > thead > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > th,\n.panel > .table-bordered > tbody > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {\n  border-bottom: 0;\n}\n.panel > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-bordered > tfoot > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0;\n}\n.panel > .table-responsive {\n  margin-bottom: 0;\n  border: 0;\n}\n.panel-group {\n  margin-bottom: 20px;\n}\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px;\n}\n.panel-group .panel + .panel {\n  margin-top: 5px;\n}\n.panel-group .panel-heading {\n  border-bottom: 0;\n}\n.panel-group .panel-heading + .panel-collapse > .panel-body,\n.panel-group .panel-heading + .panel-collapse > .list-group {\n  border-top: 1px solid #ddd;\n}\n.panel-group .panel-footer {\n  border-top: 0;\n}\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #ddd;\n}\n.panel-default {\n  border-color: #ddd;\n}\n.panel-default > .panel-heading {\n  color: #333;\n  background-color: #f5f5f5;\n  border-color: #ddd;\n}\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ddd;\n}\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333;\n}\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ddd;\n}\n.panel-primary {\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading {\n  color: #fff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7;\n}\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #fff;\n}\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7;\n}\n.panel-success {\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6;\n}\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d;\n}\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6;\n}\n.panel-info {\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1;\n}\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f;\n}\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1;\n}\n.panel-warning {\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc;\n}\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b;\n}\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc;\n}\n.panel-danger {\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1;\n}\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442;\n}\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1;\n}\n.embed-responsive {\n  position: relative;\n  display: block;\n  height: 0;\n  padding: 0;\n  overflow: hidden;\n}\n.embed-responsive .embed-responsive-item,\n.embed-responsive iframe,\n.embed-responsive embed,\n.embed-responsive object,\n.embed-responsive video {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  border: 0;\n}\n.embed-responsive-16by9 {\n  padding-bottom: 56.25%;\n}\n.embed-responsive-4by3 {\n  padding-bottom: 75%;\n}\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);\n          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);\n}\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, .15);\n}\n.well-lg {\n  padding: 24px;\n  border-radius: 6px;\n}\n.well-sm {\n  padding: 9px;\n  border-radius: 3px;\n}\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: bold;\n  line-height: 1;\n  color: #000;\n  text-shadow: 0 1px 0 #fff;\n  filter: alpha(opacity=20);\n  opacity: .2;\n}\n.close:hover,\n.close:focus {\n  color: #000;\n  text-decoration: none;\n  cursor: pointer;\n  filter: alpha(opacity=50);\n  opacity: .5;\n}\nbutton.close {\n  -webkit-appearance: none;\n  padding: 0;\n  cursor: pointer;\n  background: transparent;\n  border: 0;\n}\n.modal-open {\n  overflow: hidden;\n}\n.modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1050;\n  display: none;\n  overflow: hidden;\n  -webkit-overflow-scrolling: touch;\n  outline: 0;\n}\n.modal.fade .modal-dialog {\n  -webkit-transition: -webkit-transform .3s ease-out;\n       -o-transition:      -o-transform .3s ease-out;\n          transition:         transform .3s ease-out;\n  -webkit-transform: translate(0, -25%);\n      -ms-transform: translate(0, -25%);\n       -o-transform: translate(0, -25%);\n          transform: translate(0, -25%);\n}\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n      -ms-transform: translate(0, 0);\n       -o-transform: translate(0, 0);\n          transform: translate(0, 0);\n}\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px;\n}\n.modal-content {\n  position: relative;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n          background-clip: padding-box;\n  border: 1px solid #999;\n  border: 1px solid rgba(0, 0, 0, .2);\n  border-radius: 6px;\n  outline: 0;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);\n          box-shadow: 0 3px 9px rgba(0, 0, 0, .5);\n}\n.modal-backdrop {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  background-color: #000;\n}\n.modal-backdrop.fade {\n  filter: alpha(opacity=0);\n  opacity: 0;\n}\n.modal-backdrop.in {\n  filter: alpha(opacity=50);\n  opacity: .5;\n}\n.modal-header {\n  min-height: 16.42857143px;\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5;\n}\n.modal-header .close {\n  margin-top: -2px;\n}\n.modal-title {\n  margin: 0;\n  line-height: 1.42857143;\n}\n.modal-body {\n  position: relative;\n  padding: 15px;\n}\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5;\n}\n.modal-footer .btn + .btn {\n  margin-bottom: 0;\n  margin-left: 5px;\n}\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px;\n}\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0;\n}\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);\n            box-shadow: 0 5px 15px rgba(0, 0, 0, .5);\n  }\n  .modal-sm {\n    width: 300px;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  filter: alpha(opacity=0);\n  opacity: 0;\n\n  line-break: auto;\n}\n.tooltip.in {\n  filter: alpha(opacity=90);\n  opacity: .9;\n}\n.tooltip.top {\n  padding: 5px 0;\n  margin-top: -3px;\n}\n.tooltip.right {\n  padding: 0 5px;\n  margin-left: 3px;\n}\n.tooltip.bottom {\n  padding: 5px 0;\n  margin-top: 3px;\n}\n.tooltip.left {\n  padding: 0 5px;\n  margin-left: -3px;\n}\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #fff;\n  text-align: center;\n  background-color: #000;\n  border-radius: 4px;\n}\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000;\n}\n.tooltip.top-left .tooltip-arrow {\n  right: 5px;\n  bottom: 0;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000;\n}\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000;\n}\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000;\n}\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000;\n}\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000;\n}\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000;\n}\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000;\n}\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1.42857143;\n  text-align: left;\n  text-align: start;\n  text-decoration: none;\n  text-shadow: none;\n  text-transform: none;\n  letter-spacing: normal;\n  word-break: normal;\n  word-spacing: normal;\n  word-wrap: normal;\n  white-space: normal;\n  background-color: #fff;\n  -webkit-background-clip: padding-box;\n          background-clip: padding-box;\n  border: 1px solid #ccc;\n  border: 1px solid rgba(0, 0, 0, .2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);\n          box-shadow: 0 5px 10px rgba(0, 0, 0, .2);\n\n  line-break: auto;\n}\n.popover.top {\n  margin-top: -10px;\n}\n.popover.right {\n  margin-left: 10px;\n}\n.popover.bottom {\n  margin-top: 10px;\n}\n.popover.left {\n  margin-left: -10px;\n}\n.popover-title {\n  padding: 8px 14px;\n  margin: 0;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0;\n}\n.popover-content {\n  padding: 9px 14px;\n}\n.popover > .arrow,\n.popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.popover > .arrow {\n  border-width: 11px;\n}\n.popover > .arrow:after {\n  content: \"\";\n  border-width: 10px;\n}\n.popover.top > .arrow {\n  bottom: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-color: #999;\n  border-top-color: rgba(0, 0, 0, .25);\n  border-bottom-width: 0;\n}\n.popover.top > .arrow:after {\n  bottom: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-color: #fff;\n  border-bottom-width: 0;\n}\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-right-color: #999;\n  border-right-color: rgba(0, 0, 0, .25);\n  border-left-width: 0;\n}\n.popover.right > .arrow:after {\n  bottom: -10px;\n  left: 1px;\n  content: \" \";\n  border-right-color: #fff;\n  border-left-width: 0;\n}\n.popover.bottom > .arrow {\n  top: -11px;\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999;\n  border-bottom-color: rgba(0, 0, 0, .25);\n}\n.popover.bottom > .arrow:after {\n  top: 1px;\n  margin-left: -10px;\n  content: \" \";\n  border-top-width: 0;\n  border-bottom-color: #fff;\n}\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999;\n  border-left-color: rgba(0, 0, 0, .25);\n}\n.popover.left > .arrow:after {\n  right: 1px;\n  bottom: -10px;\n  content: \" \";\n  border-right-width: 0;\n  border-left-color: #fff;\n}\n.carousel {\n  position: relative;\n}\n.carousel-inner {\n  position: relative;\n  width: 100%;\n  overflow: hidden;\n}\n.carousel-inner > .item {\n  position: relative;\n  display: none;\n  -webkit-transition: .6s ease-in-out left;\n       -o-transition: .6s ease-in-out left;\n          transition: .6s ease-in-out left;\n}\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  line-height: 1;\n}\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform .6s ease-in-out;\n         -o-transition:      -o-transform .6s ease-in-out;\n            transition:         transform .6s ease-in-out;\n\n    -webkit-backface-visibility: hidden;\n            backface-visibility: hidden;\n    -webkit-perspective: 1000px;\n            perspective: 1000px;\n  }\n  .carousel-inner > .item.next,\n  .carousel-inner > .item.active.right {\n    left: 0;\n    -webkit-transform: translate3d(100%, 0, 0);\n            transform: translate3d(100%, 0, 0);\n  }\n  .carousel-inner > .item.prev,\n  .carousel-inner > .item.active.left {\n    left: 0;\n    -webkit-transform: translate3d(-100%, 0, 0);\n            transform: translate3d(-100%, 0, 0);\n  }\n  .carousel-inner > .item.next.left,\n  .carousel-inner > .item.prev.right,\n  .carousel-inner > .item.active {\n    left: 0;\n    -webkit-transform: translate3d(0, 0, 0);\n            transform: translate3d(0, 0, 0);\n  }\n}\n.carousel-inner > .active,\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  display: block;\n}\n.carousel-inner > .active {\n  left: 0;\n}\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.carousel-inner > .next {\n  left: 100%;\n}\n.carousel-inner > .prev {\n  left: -100%;\n}\n.carousel-inner > .next.left,\n.carousel-inner > .prev.right {\n  left: 0;\n}\n.carousel-inner > .active.left {\n  left: -100%;\n}\n.carousel-inner > .active.right {\n  left: 100%;\n}\n.carousel-control {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  width: 15%;\n  font-size: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);\n  filter: alpha(opacity=50);\n  opacity: .5;\n}\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);\n  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));\n  background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n  background-repeat: repeat-x;\n}\n.carousel-control.right {\n  right: 0;\n  left: auto;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);\n  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);\n  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));\n  background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n  background-repeat: repeat-x;\n}\n.carousel-control:hover,\n.carousel-control:focus {\n  color: #fff;\n  text-decoration: none;\n  filter: alpha(opacity=90);\n  outline: 0;\n  opacity: .9;\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-left,\n.carousel-control .glyphicon-chevron-right {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n  margin-top: -10px;\n}\n.carousel-control .icon-prev,\n.carousel-control .glyphicon-chevron-left {\n  left: 50%;\n  margin-left: -10px;\n}\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-right {\n  right: 50%;\n  margin-right: -10px;\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next {\n  width: 20px;\n  height: 20px;\n  font-family: serif;\n  line-height: 1;\n}\n.carousel-control .icon-prev:before {\n  content: '\\2039';\n}\n.carousel-control .icon-next:before {\n  content: '\\203A';\n}\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  padding-left: 0;\n  margin-left: -30%;\n  text-align: center;\n  list-style: none;\n}\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  cursor: pointer;\n  background-color: #000 \\9;\n  background-color: rgba(0, 0, 0, 0);\n  border: 1px solid #fff;\n  border-radius: 10px;\n}\n.carousel-indicators .active {\n  width: 12px;\n  height: 12px;\n  margin: 0;\n  background-color: #fff;\n}\n.carousel-caption {\n  position: absolute;\n  right: 15%;\n  bottom: 20px;\n  left: 15%;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #fff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);\n}\n.carousel-caption .btn {\n  text-shadow: none;\n}\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-prev,\n  .carousel-control .icon-next {\n    width: 30px;\n    height: 30px;\n    margin-top: -15px;\n    font-size: 30px;\n  }\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .icon-prev {\n    margin-left: -15px;\n  }\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-next {\n    margin-right: -15px;\n  }\n  .carousel-caption {\n    right: 20%;\n    left: 20%;\n    padding-bottom: 30px;\n  }\n  .carousel-indicators {\n    bottom: 20px;\n  }\n}\n.clearfix:before,\n.clearfix:after,\n.dl-horizontal dd:before,\n.dl-horizontal dd:after,\n.container:before,\n.container:after,\n.container-fluid:before,\n.container-fluid:after,\n.row:before,\n.row:after,\n.form-horizontal .form-group:before,\n.form-horizontal .form-group:after,\n.btn-toolbar:before,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:before,\n.btn-group-vertical > .btn-group:after,\n.nav:before,\n.nav:after,\n.navbar:before,\n.navbar:after,\n.navbar-header:before,\n.navbar-header:after,\n.navbar-collapse:before,\n.navbar-collapse:after,\n.pager:before,\n.pager:after,\n.panel-body:before,\n.panel-body:after,\n.modal-footer:before,\n.modal-footer:after {\n  display: table;\n  content: \" \";\n}\n.clearfix:after,\n.dl-horizontal dd:after,\n.container:after,\n.container-fluid:after,\n.row:after,\n.form-horizontal .form-group:after,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:after,\n.nav:after,\n.navbar:after,\n.navbar-header:after,\n.navbar-collapse:after,\n.pager:after,\n.panel-body:after,\n.modal-footer:after {\n  clear: both;\n}\n.center-block {\n  display: block;\n  margin-right: auto;\n  margin-left: auto;\n}\n.pull-right {\n  float: right !important;\n}\n.pull-left {\n  float: left !important;\n}\n.hide {\n  display: none !important;\n}\n.show {\n  display: block !important;\n}\n.invisible {\n  visibility: hidden;\n}\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0;\n}\n.hidden {\n  display: none !important;\n}\n.affix {\n  position: fixed;\n}\n@-ms-viewport {\n  width: device-width;\n}\n.visible-xs,\n.visible-sm,\n.visible-md,\n.visible-lg {\n  display: none !important;\n}\n.visible-xs-block,\n.visible-xs-inline,\n.visible-xs-inline-block,\n.visible-sm-block,\n.visible-sm-inline,\n.visible-sm-inline-block,\n.visible-md-block,\n.visible-md-inline,\n.visible-md-inline-block,\n.visible-lg-block,\n.visible-lg-inline,\n.visible-lg-inline-block {\n  display: none !important;\n}\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important;\n  }\n  table.visible-xs {\n    display: table !important;\n  }\n  tr.visible-xs {\n    display: table-row !important;\n  }\n  th.visible-xs,\n  td.visible-xs {\n    display: table-cell !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important;\n  }\n  table.visible-sm {\n    display: table !important;\n  }\n  tr.visible-sm {\n    display: table-row !important;\n  }\n  th.visible-sm,\n  td.visible-sm {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important;\n  }\n  table.visible-md {\n    display: table !important;\n  }\n  tr.visible-md {\n    display: table-row !important;\n  }\n  th.visible-md,\n  td.visible-md {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important;\n  }\n  table.visible-lg {\n    display: table !important;\n  }\n  tr.visible-lg {\n    display: table-row !important;\n  }\n  th.visible-lg,\n  td.visible-lg {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important;\n  }\n}\n.visible-print {\n  display: none !important;\n}\n@media print {\n  .visible-print {\n    display: block !important;\n  }\n  table.visible-print {\n    display: table !important;\n  }\n  tr.visible-print {\n    display: table-row !important;\n  }\n  th.visible-print,\n  td.visible-print {\n    display: table-cell !important;\n  }\n}\n.visible-print-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-block {\n    display: block !important;\n  }\n}\n.visible-print-inline {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline {\n    display: inline !important;\n  }\n}\n.visible-print-inline-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important;\n  }\n}\n@media print {\n  .hidden-print {\n    display: none !important;\n  }\n}\n/*# sourceMappingURL=bootstrap.css.map */\n", ""]);
+	exports.push([module.id, "/*!\n * Bootstrap v3.3.5 (http://getbootstrap.com)\n * Copyright 2011-2015 Twitter, Inc.\n * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)\n *//*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{margin:.67em 0;font-size:2em}mark{color:#000;background:#ff0}small{font-size:80%}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{height:0;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}input{line-height:normal}input[type=checkbox],input[type=radio]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{padding:.35em .625em .75em;margin:0 2px;border:1px solid silver}legend{padding:0;border:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-spacing:0;border-collapse:collapse}td,th{padding:0}/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */@media print{*,:after,:before{color:#000!important;text-shadow:none!important;background:0 0!important;-webkit-box-shadow:none!important;box-shadow:none!important}a,a:visited{text-decoration:underline}a[href]:after{content:\" (\" attr(href) \")\"}abbr[title]:after{content:\" (\" attr(title) \")\"}a[href^=\"javascript:\"]:after,a[href^=\"#\"]:after{content:\"\"}blockquote,pre{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}img,tr{page-break-inside:avoid}img{max-width:100%!important}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}.navbar{display:none}.btn>.caret,.dropup>.btn>.caret{border-top-color:#000!important}.label{border:1px solid #000}.table{border-collapse:collapse!important}.table td,.table th{background-color:#fff!important}.table-bordered td,.table-bordered th{border:1px solid #ddd!important}}@font-face{font-family:'Glyphicons Halflings';src:url(" + __webpack_require__(4) + ");src:url(" + __webpack_require__(4) + "?#iefix) format('embedded-opentype'),url(" + __webpack_require__(5) + ") format('woff2'),url(" + __webpack_require__(6) + ") format('woff'),url(" + __webpack_require__(7) + ") format('truetype'),url(" + __webpack_require__(8) + "#glyphicons_halflingsregular) format('svg')}.glyphicon{position:relative;top:1px;display:inline-block;font-family:'Glyphicons Halflings';font-style:normal;font-weight:400;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.glyphicon-asterisk:before{content:\"*\"}.glyphicon-plus:before{content:\"+\"}.glyphicon-eur:before,.glyphicon-euro:before{content:\"\\20AC\"}.glyphicon-minus:before{content:\"\\2212\"}.glyphicon-cloud:before{content:\"\\2601\"}.glyphicon-envelope:before{content:\"\\2709\"}.glyphicon-pencil:before{content:\"\\270F\"}.glyphicon-glass:before{content:\"\\E001\"}.glyphicon-music:before{content:\"\\E002\"}.glyphicon-search:before{content:\"\\E003\"}.glyphicon-heart:before{content:\"\\E005\"}.glyphicon-star:before{content:\"\\E006\"}.glyphicon-star-empty:before{content:\"\\E007\"}.glyphicon-user:before{content:\"\\E008\"}.glyphicon-film:before{content:\"\\E009\"}.glyphicon-th-large:before{content:\"\\E010\"}.glyphicon-th:before{content:\"\\E011\"}.glyphicon-th-list:before{content:\"\\E012\"}.glyphicon-ok:before{content:\"\\E013\"}.glyphicon-remove:before{content:\"\\E014\"}.glyphicon-zoom-in:before{content:\"\\E015\"}.glyphicon-zoom-out:before{content:\"\\E016\"}.glyphicon-off:before{content:\"\\E017\"}.glyphicon-signal:before{content:\"\\E018\"}.glyphicon-cog:before{content:\"\\E019\"}.glyphicon-trash:before{content:\"\\E020\"}.glyphicon-home:before{content:\"\\E021\"}.glyphicon-file:before{content:\"\\E022\"}.glyphicon-time:before{content:\"\\E023\"}.glyphicon-road:before{content:\"\\E024\"}.glyphicon-download-alt:before{content:\"\\E025\"}.glyphicon-download:before{content:\"\\E026\"}.glyphicon-upload:before{content:\"\\E027\"}.glyphicon-inbox:before{content:\"\\E028\"}.glyphicon-play-circle:before{content:\"\\E029\"}.glyphicon-repeat:before{content:\"\\E030\"}.glyphicon-refresh:before{content:\"\\E031\"}.glyphicon-list-alt:before{content:\"\\E032\"}.glyphicon-lock:before{content:\"\\E033\"}.glyphicon-flag:before{content:\"\\E034\"}.glyphicon-headphones:before{content:\"\\E035\"}.glyphicon-volume-off:before{content:\"\\E036\"}.glyphicon-volume-down:before{content:\"\\E037\"}.glyphicon-volume-up:before{content:\"\\E038\"}.glyphicon-qrcode:before{content:\"\\E039\"}.glyphicon-barcode:before{content:\"\\E040\"}.glyphicon-tag:before{content:\"\\E041\"}.glyphicon-tags:before{content:\"\\E042\"}.glyphicon-book:before{content:\"\\E043\"}.glyphicon-bookmark:before{content:\"\\E044\"}.glyphicon-print:before{content:\"\\E045\"}.glyphicon-camera:before{content:\"\\E046\"}.glyphicon-font:before{content:\"\\E047\"}.glyphicon-bold:before{content:\"\\E048\"}.glyphicon-italic:before{content:\"\\E049\"}.glyphicon-text-height:before{content:\"\\E050\"}.glyphicon-text-width:before{content:\"\\E051\"}.glyphicon-align-left:before{content:\"\\E052\"}.glyphicon-align-center:before{content:\"\\E053\"}.glyphicon-align-right:before{content:\"\\E054\"}.glyphicon-align-justify:before{content:\"\\E055\"}.glyphicon-list:before{content:\"\\E056\"}.glyphicon-indent-left:before{content:\"\\E057\"}.glyphicon-indent-right:before{content:\"\\E058\"}.glyphicon-facetime-video:before{content:\"\\E059\"}.glyphicon-picture:before{content:\"\\E060\"}.glyphicon-map-marker:before{content:\"\\E062\"}.glyphicon-adjust:before{content:\"\\E063\"}.glyphicon-tint:before{content:\"\\E064\"}.glyphicon-edit:before{content:\"\\E065\"}.glyphicon-share:before{content:\"\\E066\"}.glyphicon-check:before{content:\"\\E067\"}.glyphicon-move:before{content:\"\\E068\"}.glyphicon-step-backward:before{content:\"\\E069\"}.glyphicon-fast-backward:before{content:\"\\E070\"}.glyphicon-backward:before{content:\"\\E071\"}.glyphicon-play:before{content:\"\\E072\"}.glyphicon-pause:before{content:\"\\E073\"}.glyphicon-stop:before{content:\"\\E074\"}.glyphicon-forward:before{content:\"\\E075\"}.glyphicon-fast-forward:before{content:\"\\E076\"}.glyphicon-step-forward:before{content:\"\\E077\"}.glyphicon-eject:before{content:\"\\E078\"}.glyphicon-chevron-left:before{content:\"\\E079\"}.glyphicon-chevron-right:before{content:\"\\E080\"}.glyphicon-plus-sign:before{content:\"\\E081\"}.glyphicon-minus-sign:before{content:\"\\E082\"}.glyphicon-remove-sign:before{content:\"\\E083\"}.glyphicon-ok-sign:before{content:\"\\E084\"}.glyphicon-question-sign:before{content:\"\\E085\"}.glyphicon-info-sign:before{content:\"\\E086\"}.glyphicon-screenshot:before{content:\"\\E087\"}.glyphicon-remove-circle:before{content:\"\\E088\"}.glyphicon-ok-circle:before{content:\"\\E089\"}.glyphicon-ban-circle:before{content:\"\\E090\"}.glyphicon-arrow-left:before{content:\"\\E091\"}.glyphicon-arrow-right:before{content:\"\\E092\"}.glyphicon-arrow-up:before{content:\"\\E093\"}.glyphicon-arrow-down:before{content:\"\\E094\"}.glyphicon-share-alt:before{content:\"\\E095\"}.glyphicon-resize-full:before{content:\"\\E096\"}.glyphicon-resize-small:before{content:\"\\E097\"}.glyphicon-exclamation-sign:before{content:\"\\E101\"}.glyphicon-gift:before{content:\"\\E102\"}.glyphicon-leaf:before{content:\"\\E103\"}.glyphicon-fire:before{content:\"\\E104\"}.glyphicon-eye-open:before{content:\"\\E105\"}.glyphicon-eye-close:before{content:\"\\E106\"}.glyphicon-warning-sign:before{content:\"\\E107\"}.glyphicon-plane:before{content:\"\\E108\"}.glyphicon-calendar:before{content:\"\\E109\"}.glyphicon-random:before{content:\"\\E110\"}.glyphicon-comment:before{content:\"\\E111\"}.glyphicon-magnet:before{content:\"\\E112\"}.glyphicon-chevron-up:before{content:\"\\E113\"}.glyphicon-chevron-down:before{content:\"\\E114\"}.glyphicon-retweet:before{content:\"\\E115\"}.glyphicon-shopping-cart:before{content:\"\\E116\"}.glyphicon-folder-close:before{content:\"\\E117\"}.glyphicon-folder-open:before{content:\"\\E118\"}.glyphicon-resize-vertical:before{content:\"\\E119\"}.glyphicon-resize-horizontal:before{content:\"\\E120\"}.glyphicon-hdd:before{content:\"\\E121\"}.glyphicon-bullhorn:before{content:\"\\E122\"}.glyphicon-bell:before{content:\"\\E123\"}.glyphicon-certificate:before{content:\"\\E124\"}.glyphicon-thumbs-up:before{content:\"\\E125\"}.glyphicon-thumbs-down:before{content:\"\\E126\"}.glyphicon-hand-right:before{content:\"\\E127\"}.glyphicon-hand-left:before{content:\"\\E128\"}.glyphicon-hand-up:before{content:\"\\E129\"}.glyphicon-hand-down:before{content:\"\\E130\"}.glyphicon-circle-arrow-right:before{content:\"\\E131\"}.glyphicon-circle-arrow-left:before{content:\"\\E132\"}.glyphicon-circle-arrow-up:before{content:\"\\E133\"}.glyphicon-circle-arrow-down:before{content:\"\\E134\"}.glyphicon-globe:before{content:\"\\E135\"}.glyphicon-wrench:before{content:\"\\E136\"}.glyphicon-tasks:before{content:\"\\E137\"}.glyphicon-filter:before{content:\"\\E138\"}.glyphicon-briefcase:before{content:\"\\E139\"}.glyphicon-fullscreen:before{content:\"\\E140\"}.glyphicon-dashboard:before{content:\"\\E141\"}.glyphicon-paperclip:before{content:\"\\E142\"}.glyphicon-heart-empty:before{content:\"\\E143\"}.glyphicon-link:before{content:\"\\E144\"}.glyphicon-phone:before{content:\"\\E145\"}.glyphicon-pushpin:before{content:\"\\E146\"}.glyphicon-usd:before{content:\"\\E148\"}.glyphicon-gbp:before{content:\"\\E149\"}.glyphicon-sort:before{content:\"\\E150\"}.glyphicon-sort-by-alphabet:before{content:\"\\E151\"}.glyphicon-sort-by-alphabet-alt:before{content:\"\\E152\"}.glyphicon-sort-by-order:before{content:\"\\E153\"}.glyphicon-sort-by-order-alt:before{content:\"\\E154\"}.glyphicon-sort-by-attributes:before{content:\"\\E155\"}.glyphicon-sort-by-attributes-alt:before{content:\"\\E156\"}.glyphicon-unchecked:before{content:\"\\E157\"}.glyphicon-expand:before{content:\"\\E158\"}.glyphicon-collapse-down:before{content:\"\\E159\"}.glyphicon-collapse-up:before{content:\"\\E160\"}.glyphicon-log-in:before{content:\"\\E161\"}.glyphicon-flash:before{content:\"\\E162\"}.glyphicon-log-out:before{content:\"\\E163\"}.glyphicon-new-window:before{content:\"\\E164\"}.glyphicon-record:before{content:\"\\E165\"}.glyphicon-save:before{content:\"\\E166\"}.glyphicon-open:before{content:\"\\E167\"}.glyphicon-saved:before{content:\"\\E168\"}.glyphicon-import:before{content:\"\\E169\"}.glyphicon-export:before{content:\"\\E170\"}.glyphicon-send:before{content:\"\\E171\"}.glyphicon-floppy-disk:before{content:\"\\E172\"}.glyphicon-floppy-saved:before{content:\"\\E173\"}.glyphicon-floppy-remove:before{content:\"\\E174\"}.glyphicon-floppy-save:before{content:\"\\E175\"}.glyphicon-floppy-open:before{content:\"\\E176\"}.glyphicon-credit-card:before{content:\"\\E177\"}.glyphicon-transfer:before{content:\"\\E178\"}.glyphicon-cutlery:before{content:\"\\E179\"}.glyphicon-header:before{content:\"\\E180\"}.glyphicon-compressed:before{content:\"\\E181\"}.glyphicon-earphone:before{content:\"\\E182\"}.glyphicon-phone-alt:before{content:\"\\E183\"}.glyphicon-tower:before{content:\"\\E184\"}.glyphicon-stats:before{content:\"\\E185\"}.glyphicon-sd-video:before{content:\"\\E186\"}.glyphicon-hd-video:before{content:\"\\E187\"}.glyphicon-subtitles:before{content:\"\\E188\"}.glyphicon-sound-stereo:before{content:\"\\E189\"}.glyphicon-sound-dolby:before{content:\"\\E190\"}.glyphicon-sound-5-1:before{content:\"\\E191\"}.glyphicon-sound-6-1:before{content:\"\\E192\"}.glyphicon-sound-7-1:before{content:\"\\E193\"}.glyphicon-copyright-mark:before{content:\"\\E194\"}.glyphicon-registration-mark:before{content:\"\\E195\"}.glyphicon-cloud-download:before{content:\"\\E197\"}.glyphicon-cloud-upload:before{content:\"\\E198\"}.glyphicon-tree-conifer:before{content:\"\\E199\"}.glyphicon-tree-deciduous:before{content:\"\\E200\"}.glyphicon-cd:before{content:\"\\E201\"}.glyphicon-save-file:before{content:\"\\E202\"}.glyphicon-open-file:before{content:\"\\E203\"}.glyphicon-level-up:before{content:\"\\E204\"}.glyphicon-copy:before{content:\"\\E205\"}.glyphicon-paste:before{content:\"\\E206\"}.glyphicon-alert:before{content:\"\\E209\"}.glyphicon-equalizer:before{content:\"\\E210\"}.glyphicon-king:before{content:\"\\E211\"}.glyphicon-queen:before{content:\"\\E212\"}.glyphicon-pawn:before{content:\"\\E213\"}.glyphicon-bishop:before{content:\"\\E214\"}.glyphicon-knight:before{content:\"\\E215\"}.glyphicon-baby-formula:before{content:\"\\E216\"}.glyphicon-tent:before{content:\"\\26FA\"}.glyphicon-blackboard:before{content:\"\\E218\"}.glyphicon-bed:before{content:\"\\E219\"}.glyphicon-apple:before{content:\"\\F8FF\"}.glyphicon-erase:before{content:\"\\E221\"}.glyphicon-hourglass:before{content:\"\\231B\"}.glyphicon-lamp:before{content:\"\\E223\"}.glyphicon-duplicate:before{content:\"\\E224\"}.glyphicon-piggy-bank:before{content:\"\\E225\"}.glyphicon-scissors:before{content:\"\\E226\"}.glyphicon-bitcoin:before{content:\"\\E227\"}.glyphicon-btc:before{content:\"\\E227\"}.glyphicon-xbt:before{content:\"\\E227\"}.glyphicon-yen:before{content:\"\\A5\"}.glyphicon-jpy:before{content:\"\\A5\"}.glyphicon-ruble:before{content:\"\\20BD\"}.glyphicon-rub:before{content:\"\\20BD\"}.glyphicon-scale:before{content:\"\\E230\"}.glyphicon-ice-lolly:before{content:\"\\E231\"}.glyphicon-ice-lolly-tasted:before{content:\"\\E232\"}.glyphicon-education:before{content:\"\\E233\"}.glyphicon-option-horizontal:before{content:\"\\E234\"}.glyphicon-option-vertical:before{content:\"\\E235\"}.glyphicon-menu-hamburger:before{content:\"\\E236\"}.glyphicon-modal-window:before{content:\"\\E237\"}.glyphicon-oil:before{content:\"\\E238\"}.glyphicon-grain:before{content:\"\\E239\"}.glyphicon-sunglasses:before{content:\"\\E240\"}.glyphicon-text-size:before{content:\"\\E241\"}.glyphicon-text-color:before{content:\"\\E242\"}.glyphicon-text-background:before{content:\"\\E243\"}.glyphicon-object-align-top:before{content:\"\\E244\"}.glyphicon-object-align-bottom:before{content:\"\\E245\"}.glyphicon-object-align-horizontal:before{content:\"\\E246\"}.glyphicon-object-align-left:before{content:\"\\E247\"}.glyphicon-object-align-vertical:before{content:\"\\E248\"}.glyphicon-object-align-right:before{content:\"\\E249\"}.glyphicon-triangle-right:before{content:\"\\E250\"}.glyphicon-triangle-left:before{content:\"\\E251\"}.glyphicon-triangle-bottom:before{content:\"\\E252\"}.glyphicon-triangle-top:before{content:\"\\E253\"}.glyphicon-console:before{content:\"\\E254\"}.glyphicon-superscript:before{content:\"\\E255\"}.glyphicon-subscript:before{content:\"\\E256\"}.glyphicon-menu-left:before{content:\"\\E257\"}.glyphicon-menu-right:before{content:\"\\E258\"}.glyphicon-menu-down:before{content:\"\\E259\"}.glyphicon-menu-up:before{content:\"\\E260\"}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{font-size:10px;-webkit-tap-highlight-color:rgba(0,0,0,0)}body{font-family:\"Helvetica Neue\",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}a{color:#337ab7;text-decoration:none}a:focus,a:hover{color:#23527c;text-decoration:underline}a:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}figure{margin:0}img{vertical-align:middle}.carousel-inner>.item>a>img,.carousel-inner>.item>img,.img-responsive,.thumbnail a>img,.thumbnail>img{display:block;max-width:100%;height:auto}.img-rounded{border-radius:6px}.img-thumbnail{display:inline-block;max-width:100%;height:auto;padding:4px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;transition:all .2s ease-in-out}.img-circle{border-radius:50%}hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}.sr-only-focusable:active,.sr-only-focusable:focus{position:static;width:auto;height:auto;margin:0;overflow:visible;clip:auto}[role=button]{cursor:pointer}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}.h1 .small,.h1 small,.h2 .small,.h2 small,.h3 .small,.h3 small,.h4 .small,.h4 small,.h5 .small,.h5 small,.h6 .small,.h6 small,h1 .small,h1 small,h2 .small,h2 small,h3 .small,h3 small,h4 .small,h4 small,h5 .small,h5 small,h6 .small,h6 small{font-weight:400;line-height:1;color:#777}.h1,.h2,.h3,h1,h2,h3{margin-top:20px;margin-bottom:10px}.h1 .small,.h1 small,.h2 .small,.h2 small,.h3 .small,.h3 small,h1 .small,h1 small,h2 .small,h2 small,h3 .small,h3 small{font-size:65%}.h4,.h5,.h6,h4,h5,h6{margin-top:10px;margin-bottom:10px}.h4 .small,.h4 small,.h5 .small,.h5 small,.h6 .small,.h6 small,h4 .small,h4 small,h5 .small,h5 small,h6 .small,h6 small{font-size:75%}.h1,h1{font-size:36px}.h2,h2{font-size:30px}.h3,h3{font-size:24px}.h4,h4{font-size:18px}.h5,h5{font-size:14px}.h6,h6{font-size:12px}p{margin:0 0 10px}.lead{margin-bottom:20px;font-size:16px;font-weight:300;line-height:1.4}@media (min-width:768px){.lead{font-size:21px}}.small,small{font-size:85%}.mark,mark{padding:.2em;background-color:#fcf8e3}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}.text-justify{text-align:justify}.text-nowrap{white-space:nowrap}.text-lowercase{text-transform:lowercase}.text-uppercase{text-transform:uppercase}.text-capitalize{text-transform:capitalize}.text-muted{color:#777}.text-primary{color:#337ab7}a.text-primary:focus,a.text-primary:hover{color:#286090}.text-success{color:#3c763d}a.text-success:focus,a.text-success:hover{color:#2b542c}.text-info{color:#31708f}a.text-info:focus,a.text-info:hover{color:#245269}.text-warning{color:#8a6d3b}a.text-warning:focus,a.text-warning:hover{color:#66512c}.text-danger{color:#a94442}a.text-danger:focus,a.text-danger:hover{color:#843534}.bg-primary{color:#fff;background-color:#337ab7}a.bg-primary:focus,a.bg-primary:hover{background-color:#286090}.bg-success{background-color:#dff0d8}a.bg-success:focus,a.bg-success:hover{background-color:#c1e2b3}.bg-info{background-color:#d9edf7}a.bg-info:focus,a.bg-info:hover{background-color:#afd9ee}.bg-warning{background-color:#fcf8e3}a.bg-warning:focus,a.bg-warning:hover{background-color:#f7ecb5}.bg-danger{background-color:#f2dede}a.bg-danger:focus,a.bg-danger:hover{background-color:#e4b9b9}.page-header{padding-bottom:9px;margin:40px 0 20px;border-bottom:1px solid #eee}ol,ul{margin-top:0;margin-bottom:10px}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}.list-unstyled{padding-left:0;list-style:none}.list-inline{padding-left:0;margin-left:-5px;list-style:none}.list-inline>li{display:inline-block;padding-right:5px;padding-left:5px}dl{margin-top:0;margin-bottom:20px}dd,dt{line-height:1.42857143}dt{font-weight:700}dd{margin-left:0}@media (min-width:768px){.dl-horizontal dt{float:left;width:160px;overflow:hidden;clear:left;text-align:right;text-overflow:ellipsis;white-space:nowrap}.dl-horizontal dd{margin-left:180px}}abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #777}.initialism{font-size:90%;text-transform:uppercase}blockquote{padding:10px 20px;margin:0 0 20px;font-size:17.5px;border-left:5px solid #eee}blockquote ol:last-child,blockquote p:last-child,blockquote ul:last-child{margin-bottom:0}blockquote .small,blockquote footer,blockquote small{display:block;font-size:80%;line-height:1.42857143;color:#777}blockquote .small:before,blockquote footer:before,blockquote small:before{content:'\\2014   \\A0'}.blockquote-reverse,blockquote.pull-right{padding-right:15px;padding-left:0;text-align:right;border-right:5px solid #eee;border-left:0}.blockquote-reverse .small:before,.blockquote-reverse footer:before,.blockquote-reverse small:before,blockquote.pull-right .small:before,blockquote.pull-right footer:before,blockquote.pull-right small:before{content:''}.blockquote-reverse .small:after,.blockquote-reverse footer:after,.blockquote-reverse small:after,blockquote.pull-right .small:after,blockquote.pull-right footer:after,blockquote.pull-right small:after{content:'\\A0   \\2014'}address{margin-bottom:20px;font-style:normal;line-height:1.42857143}code,kbd,pre,samp{font-family:Menlo,Monaco,Consolas,\"Courier New\",monospace}code{padding:2px 4px;font-size:90%;color:#c7254e;background-color:#f9f2f4;border-radius:4px}kbd{padding:2px 4px;font-size:90%;color:#fff;background-color:#333;border-radius:3px;-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,.25);box-shadow:inset 0 -1px 0 rgba(0,0,0,.25)}kbd kbd{padding:0;font-size:100%;font-weight:700;-webkit-box-shadow:none;box-shadow:none}pre{display:block;padding:9.5px;margin:0 0 10px;font-size:13px;line-height:1.42857143;color:#333;word-break:break-all;word-wrap:break-word;background-color:#f5f5f5;border:1px solid #ccc;border-radius:4px}pre code{padding:0;font-size:inherit;color:inherit;white-space:pre-wrap;background-color:transparent;border-radius:0}.pre-scrollable{max-height:340px;overflow-y:scroll}.container{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}@media (min-width:768px){.container{width:750px}}@media (min-width:992px){.container{width:970px}}@media (min-width:1200px){.container{width:1170px}}.container-fluid{padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}.row{margin-right:-15px;margin-left:-15px}.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{position:relative;min-height:1px;padding-right:15px;padding-left:15px}.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{float:left}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}.col-xs-pull-12{right:100%}.col-xs-pull-11{right:91.66666667%}.col-xs-pull-10{right:83.33333333%}.col-xs-pull-9{right:75%}.col-xs-pull-8{right:66.66666667%}.col-xs-pull-7{right:58.33333333%}.col-xs-pull-6{right:50%}.col-xs-pull-5{right:41.66666667%}.col-xs-pull-4{right:33.33333333%}.col-xs-pull-3{right:25%}.col-xs-pull-2{right:16.66666667%}.col-xs-pull-1{right:8.33333333%}.col-xs-pull-0{right:auto}.col-xs-push-12{left:100%}.col-xs-push-11{left:91.66666667%}.col-xs-push-10{left:83.33333333%}.col-xs-push-9{left:75%}.col-xs-push-8{left:66.66666667%}.col-xs-push-7{left:58.33333333%}.col-xs-push-6{left:50%}.col-xs-push-5{left:41.66666667%}.col-xs-push-4{left:33.33333333%}.col-xs-push-3{left:25%}.col-xs-push-2{left:16.66666667%}.col-xs-push-1{left:8.33333333%}.col-xs-push-0{left:auto}.col-xs-offset-12{margin-left:100%}.col-xs-offset-11{margin-left:91.66666667%}.col-xs-offset-10{margin-left:83.33333333%}.col-xs-offset-9{margin-left:75%}.col-xs-offset-8{margin-left:66.66666667%}.col-xs-offset-7{margin-left:58.33333333%}.col-xs-offset-6{margin-left:50%}.col-xs-offset-5{margin-left:41.66666667%}.col-xs-offset-4{margin-left:33.33333333%}.col-xs-offset-3{margin-left:25%}.col-xs-offset-2{margin-left:16.66666667%}.col-xs-offset-1{margin-left:8.33333333%}.col-xs-offset-0{margin-left:0}@media (min-width:768px){.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{float:left}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}.col-sm-pull-12{right:100%}.col-sm-pull-11{right:91.66666667%}.col-sm-pull-10{right:83.33333333%}.col-sm-pull-9{right:75%}.col-sm-pull-8{right:66.66666667%}.col-sm-pull-7{right:58.33333333%}.col-sm-pull-6{right:50%}.col-sm-pull-5{right:41.66666667%}.col-sm-pull-4{right:33.33333333%}.col-sm-pull-3{right:25%}.col-sm-pull-2{right:16.66666667%}.col-sm-pull-1{right:8.33333333%}.col-sm-pull-0{right:auto}.col-sm-push-12{left:100%}.col-sm-push-11{left:91.66666667%}.col-sm-push-10{left:83.33333333%}.col-sm-push-9{left:75%}.col-sm-push-8{left:66.66666667%}.col-sm-push-7{left:58.33333333%}.col-sm-push-6{left:50%}.col-sm-push-5{left:41.66666667%}.col-sm-push-4{left:33.33333333%}.col-sm-push-3{left:25%}.col-sm-push-2{left:16.66666667%}.col-sm-push-1{left:8.33333333%}.col-sm-push-0{left:auto}.col-sm-offset-12{margin-left:100%}.col-sm-offset-11{margin-left:91.66666667%}.col-sm-offset-10{margin-left:83.33333333%}.col-sm-offset-9{margin-left:75%}.col-sm-offset-8{margin-left:66.66666667%}.col-sm-offset-7{margin-left:58.33333333%}.col-sm-offset-6{margin-left:50%}.col-sm-offset-5{margin-left:41.66666667%}.col-sm-offset-4{margin-left:33.33333333%}.col-sm-offset-3{margin-left:25%}.col-sm-offset-2{margin-left:16.66666667%}.col-sm-offset-1{margin-left:8.33333333%}.col-sm-offset-0{margin-left:0}}@media (min-width:992px){.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9{float:left}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}.col-md-pull-12{right:100%}.col-md-pull-11{right:91.66666667%}.col-md-pull-10{right:83.33333333%}.col-md-pull-9{right:75%}.col-md-pull-8{right:66.66666667%}.col-md-pull-7{right:58.33333333%}.col-md-pull-6{right:50%}.col-md-pull-5{right:41.66666667%}.col-md-pull-4{right:33.33333333%}.col-md-pull-3{right:25%}.col-md-pull-2{right:16.66666667%}.col-md-pull-1{right:8.33333333%}.col-md-pull-0{right:auto}.col-md-push-12{left:100%}.col-md-push-11{left:91.66666667%}.col-md-push-10{left:83.33333333%}.col-md-push-9{left:75%}.col-md-push-8{left:66.66666667%}.col-md-push-7{left:58.33333333%}.col-md-push-6{left:50%}.col-md-push-5{left:41.66666667%}.col-md-push-4{left:33.33333333%}.col-md-push-3{left:25%}.col-md-push-2{left:16.66666667%}.col-md-push-1{left:8.33333333%}.col-md-push-0{left:auto}.col-md-offset-12{margin-left:100%}.col-md-offset-11{margin-left:91.66666667%}.col-md-offset-10{margin-left:83.33333333%}.col-md-offset-9{margin-left:75%}.col-md-offset-8{margin-left:66.66666667%}.col-md-offset-7{margin-left:58.33333333%}.col-md-offset-6{margin-left:50%}.col-md-offset-5{margin-left:41.66666667%}.col-md-offset-4{margin-left:33.33333333%}.col-md-offset-3{margin-left:25%}.col-md-offset-2{margin-left:16.66666667%}.col-md-offset-1{margin-left:8.33333333%}.col-md-offset-0{margin-left:0}}@media (min-width:1200px){.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9{float:left}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}.col-lg-pull-12{right:100%}.col-lg-pull-11{right:91.66666667%}.col-lg-pull-10{right:83.33333333%}.col-lg-pull-9{right:75%}.col-lg-pull-8{right:66.66666667%}.col-lg-pull-7{right:58.33333333%}.col-lg-pull-6{right:50%}.col-lg-pull-5{right:41.66666667%}.col-lg-pull-4{right:33.33333333%}.col-lg-pull-3{right:25%}.col-lg-pull-2{right:16.66666667%}.col-lg-pull-1{right:8.33333333%}.col-lg-pull-0{right:auto}.col-lg-push-12{left:100%}.col-lg-push-11{left:91.66666667%}.col-lg-push-10{left:83.33333333%}.col-lg-push-9{left:75%}.col-lg-push-8{left:66.66666667%}.col-lg-push-7{left:58.33333333%}.col-lg-push-6{left:50%}.col-lg-push-5{left:41.66666667%}.col-lg-push-4{left:33.33333333%}.col-lg-push-3{left:25%}.col-lg-push-2{left:16.66666667%}.col-lg-push-1{left:8.33333333%}.col-lg-push-0{left:auto}.col-lg-offset-12{margin-left:100%}.col-lg-offset-11{margin-left:91.66666667%}.col-lg-offset-10{margin-left:83.33333333%}.col-lg-offset-9{margin-left:75%}.col-lg-offset-8{margin-left:66.66666667%}.col-lg-offset-7{margin-left:58.33333333%}.col-lg-offset-6{margin-left:50%}.col-lg-offset-5{margin-left:41.66666667%}.col-lg-offset-4{margin-left:33.33333333%}.col-lg-offset-3{margin-left:25%}.col-lg-offset-2{margin-left:16.66666667%}.col-lg-offset-1{margin-left:8.33333333%}.col-lg-offset-0{margin-left:0}}table{background-color:transparent}caption{padding-top:8px;padding-bottom:8px;color:#777;text-align:left}th{text-align:left}.table{width:100%;max-width:100%;margin-bottom:20px}.table>tbody>tr>td,.table>tbody>tr>th,.table>tfoot>tr>td,.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{padding:8px;line-height:1.42857143;vertical-align:top;border-top:1px solid #ddd}.table>thead>tr>th{vertical-align:bottom;border-bottom:2px solid #ddd}.table>caption+thead>tr:first-child>td,.table>caption+thead>tr:first-child>th,.table>colgroup+thead>tr:first-child>td,.table>colgroup+thead>tr:first-child>th,.table>thead:first-child>tr:first-child>td,.table>thead:first-child>tr:first-child>th{border-top:0}.table>tbody+tbody{border-top:2px solid #ddd}.table .table{background-color:#fff}.table-condensed>tbody>tr>td,.table-condensed>tbody>tr>th,.table-condensed>tfoot>tr>td,.table-condensed>tfoot>tr>th,.table-condensed>thead>tr>td,.table-condensed>thead>tr>th{padding:5px}.table-bordered{border:1px solid #ddd}.table-bordered>tbody>tr>td,.table-bordered>tbody>tr>th,.table-bordered>tfoot>tr>td,.table-bordered>tfoot>tr>th,.table-bordered>thead>tr>td,.table-bordered>thead>tr>th{border:1px solid #ddd}.table-bordered>thead>tr>td,.table-bordered>thead>tr>th{border-bottom-width:2px}.table-striped>tbody>tr:nth-of-type(odd){background-color:#f9f9f9}.table-hover>tbody>tr:hover{background-color:#f5f5f5}table col[class*=col-]{position:static;display:table-column;float:none}table td[class*=col-],table th[class*=col-]{position:static;display:table-cell;float:none}.table>tbody>tr.active>td,.table>tbody>tr.active>th,.table>tbody>tr>td.active,.table>tbody>tr>th.active,.table>tfoot>tr.active>td,.table>tfoot>tr.active>th,.table>tfoot>tr>td.active,.table>tfoot>tr>th.active,.table>thead>tr.active>td,.table>thead>tr.active>th,.table>thead>tr>td.active,.table>thead>tr>th.active{background-color:#f5f5f5}.table-hover>tbody>tr.active:hover>td,.table-hover>tbody>tr.active:hover>th,.table-hover>tbody>tr:hover>.active,.table-hover>tbody>tr>td.active:hover,.table-hover>tbody>tr>th.active:hover{background-color:#e8e8e8}.table>tbody>tr.success>td,.table>tbody>tr.success>th,.table>tbody>tr>td.success,.table>tbody>tr>th.success,.table>tfoot>tr.success>td,.table>tfoot>tr.success>th,.table>tfoot>tr>td.success,.table>tfoot>tr>th.success,.table>thead>tr.success>td,.table>thead>tr.success>th,.table>thead>tr>td.success,.table>thead>tr>th.success{background-color:#dff0d8}.table-hover>tbody>tr.success:hover>td,.table-hover>tbody>tr.success:hover>th,.table-hover>tbody>tr:hover>.success,.table-hover>tbody>tr>td.success:hover,.table-hover>tbody>tr>th.success:hover{background-color:#d0e9c6}.table>tbody>tr.info>td,.table>tbody>tr.info>th,.table>tbody>tr>td.info,.table>tbody>tr>th.info,.table>tfoot>tr.info>td,.table>tfoot>tr.info>th,.table>tfoot>tr>td.info,.table>tfoot>tr>th.info,.table>thead>tr.info>td,.table>thead>tr.info>th,.table>thead>tr>td.info,.table>thead>tr>th.info{background-color:#d9edf7}.table-hover>tbody>tr.info:hover>td,.table-hover>tbody>tr.info:hover>th,.table-hover>tbody>tr:hover>.info,.table-hover>tbody>tr>td.info:hover,.table-hover>tbody>tr>th.info:hover{background-color:#c4e3f3}.table>tbody>tr.warning>td,.table>tbody>tr.warning>th,.table>tbody>tr>td.warning,.table>tbody>tr>th.warning,.table>tfoot>tr.warning>td,.table>tfoot>tr.warning>th,.table>tfoot>tr>td.warning,.table>tfoot>tr>th.warning,.table>thead>tr.warning>td,.table>thead>tr.warning>th,.table>thead>tr>td.warning,.table>thead>tr>th.warning{background-color:#fcf8e3}.table-hover>tbody>tr.warning:hover>td,.table-hover>tbody>tr.warning:hover>th,.table-hover>tbody>tr:hover>.warning,.table-hover>tbody>tr>td.warning:hover,.table-hover>tbody>tr>th.warning:hover{background-color:#faf2cc}.table>tbody>tr.danger>td,.table>tbody>tr.danger>th,.table>tbody>tr>td.danger,.table>tbody>tr>th.danger,.table>tfoot>tr.danger>td,.table>tfoot>tr.danger>th,.table>tfoot>tr>td.danger,.table>tfoot>tr>th.danger,.table>thead>tr.danger>td,.table>thead>tr.danger>th,.table>thead>tr>td.danger,.table>thead>tr>th.danger{background-color:#f2dede}.table-hover>tbody>tr.danger:hover>td,.table-hover>tbody>tr.danger:hover>th,.table-hover>tbody>tr:hover>.danger,.table-hover>tbody>tr>td.danger:hover,.table-hover>tbody>tr>th.danger:hover{background-color:#ebcccc}.table-responsive{min-height:.01%;overflow-x:auto}@media screen and (max-width:767px){.table-responsive{width:100%;margin-bottom:15px;overflow-y:hidden;-ms-overflow-style:-ms-autohiding-scrollbar;border:1px solid #ddd}.table-responsive>.table{margin-bottom:0}.table-responsive>.table>tbody>tr>td,.table-responsive>.table>tbody>tr>th,.table-responsive>.table>tfoot>tr>td,.table-responsive>.table>tfoot>tr>th,.table-responsive>.table>thead>tr>td,.table-responsive>.table>thead>tr>th{white-space:nowrap}.table-responsive>.table-bordered{border:0}.table-responsive>.table-bordered>tbody>tr>td:first-child,.table-responsive>.table-bordered>tbody>tr>th:first-child,.table-responsive>.table-bordered>tfoot>tr>td:first-child,.table-responsive>.table-bordered>tfoot>tr>th:first-child,.table-responsive>.table-bordered>thead>tr>td:first-child,.table-responsive>.table-bordered>thead>tr>th:first-child{border-left:0}.table-responsive>.table-bordered>tbody>tr>td:last-child,.table-responsive>.table-bordered>tbody>tr>th:last-child,.table-responsive>.table-bordered>tfoot>tr>td:last-child,.table-responsive>.table-bordered>tfoot>tr>th:last-child,.table-responsive>.table-bordered>thead>tr>td:last-child,.table-responsive>.table-bordered>thead>tr>th:last-child{border-right:0}.table-responsive>.table-bordered>tbody>tr:last-child>td,.table-responsive>.table-bordered>tbody>tr:last-child>th,.table-responsive>.table-bordered>tfoot>tr:last-child>td,.table-responsive>.table-bordered>tfoot>tr:last-child>th{border-bottom:0}}fieldset{min-width:0;padding:0;margin:0;border:0}legend{display:block;width:100%;padding:0;margin-bottom:20px;font-size:21px;line-height:inherit;color:#333;border:0;border-bottom:1px solid #e5e5e5}label{display:inline-block;max-width:100%;margin-bottom:5px;font-weight:700}input[type=search]{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}input[type=checkbox],input[type=radio]{margin:4px 0 0;margin-top:1px\\9;line-height:normal}input[type=file]{display:block}input[type=range]{display:block;width:100%}select[multiple],select[size]{height:auto}input[type=file]:focus,input[type=checkbox]:focus,input[type=radio]:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}output{display:block;padding-top:7px;font-size:14px;line-height:1.42857143;color:#555}.form-control{display:block;width:100%;height:34px;padding:6px 12px;font-size:14px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s}.form-control:focus{border-color:#66afe9;outline:0;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)}.form-control::-moz-placeholder{color:#999;opacity:1}.form-control:-ms-input-placeholder{color:#999}.form-control::-webkit-input-placeholder{color:#999}.form-control[disabled],.form-control[readonly],fieldset[disabled] .form-control{background-color:#eee;opacity:1}.form-control[disabled],fieldset[disabled] .form-control{cursor:not-allowed}textarea.form-control{height:auto}input[type=search]{-webkit-appearance:none}@media screen and (-webkit-min-device-pixel-ratio:0){input[type=date].form-control,input[type=time].form-control,input[type=datetime-local].form-control,input[type=month].form-control{line-height:34px}.input-group-sm input[type=date],.input-group-sm input[type=time],.input-group-sm input[type=datetime-local],.input-group-sm input[type=month],input[type=date].input-sm,input[type=time].input-sm,input[type=datetime-local].input-sm,input[type=month].input-sm{line-height:30px}.input-group-lg input[type=date],.input-group-lg input[type=time],.input-group-lg input[type=datetime-local],.input-group-lg input[type=month],input[type=date].input-lg,input[type=time].input-lg,input[type=datetime-local].input-lg,input[type=month].input-lg{line-height:46px}}.form-group{margin-bottom:15px}.checkbox,.radio{position:relative;display:block;margin-top:10px;margin-bottom:10px}.checkbox label,.radio label{min-height:20px;padding-left:20px;margin-bottom:0;font-weight:400;cursor:pointer}.checkbox input[type=checkbox],.checkbox-inline input[type=checkbox],.radio input[type=radio],.radio-inline input[type=radio]{position:absolute;margin-top:4px\\9;margin-left:-20px}.checkbox+.checkbox,.radio+.radio{margin-top:-5px}.checkbox-inline,.radio-inline{position:relative;display:inline-block;padding-left:20px;margin-bottom:0;font-weight:400;vertical-align:middle;cursor:pointer}.checkbox-inline+.checkbox-inline,.radio-inline+.radio-inline{margin-top:0;margin-left:10px}fieldset[disabled] input[type=checkbox],fieldset[disabled] input[type=radio],input[type=checkbox].disabled,input[type=checkbox][disabled],input[type=radio].disabled,input[type=radio][disabled]{cursor:not-allowed}.checkbox-inline.disabled,.radio-inline.disabled,fieldset[disabled] .checkbox-inline,fieldset[disabled] .radio-inline{cursor:not-allowed}.checkbox.disabled label,.radio.disabled label,fieldset[disabled] .checkbox label,fieldset[disabled] .radio label{cursor:not-allowed}.form-control-static{min-height:34px;padding-top:7px;padding-bottom:7px;margin-bottom:0}.form-control-static.input-lg,.form-control-static.input-sm{padding-right:0;padding-left:0}.input-sm{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}select.input-sm{height:30px;line-height:30px}select[multiple].input-sm,textarea.input-sm{height:auto}.form-group-sm .form-control{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}.form-group-sm select.form-control{height:30px;line-height:30px}.form-group-sm select[multiple].form-control,.form-group-sm textarea.form-control{height:auto}.form-group-sm .form-control-static{height:30px;min-height:32px;padding:6px 10px;font-size:12px;line-height:1.5}.input-lg{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}select.input-lg{height:46px;line-height:46px}select[multiple].input-lg,textarea.input-lg{height:auto}.form-group-lg .form-control{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}.form-group-lg select.form-control{height:46px;line-height:46px}.form-group-lg select[multiple].form-control,.form-group-lg textarea.form-control{height:auto}.form-group-lg .form-control-static{height:46px;min-height:38px;padding:11px 16px;font-size:18px;line-height:1.3333333}.has-feedback{position:relative}.has-feedback .form-control{padding-right:42.5px}.form-control-feedback{position:absolute;top:0;right:0;z-index:2;display:block;width:34px;height:34px;line-height:34px;text-align:center;pointer-events:none}.form-group-lg .form-control+.form-control-feedback,.input-group-lg+.form-control-feedback,.input-lg+.form-control-feedback{width:46px;height:46px;line-height:46px}.form-group-sm .form-control+.form-control-feedback,.input-group-sm+.form-control-feedback,.input-sm+.form-control-feedback{width:30px;height:30px;line-height:30px}.has-success .checkbox,.has-success .checkbox-inline,.has-success .control-label,.has-success .help-block,.has-success .radio,.has-success .radio-inline,.has-success.checkbox label,.has-success.checkbox-inline label,.has-success.radio label,.has-success.radio-inline label{color:#3c763d}.has-success .form-control{border-color:#3c763d;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-success .form-control:focus{border-color:#2b542c;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168}.has-success .input-group-addon{color:#3c763d;background-color:#dff0d8;border-color:#3c763d}.has-success .form-control-feedback{color:#3c763d}.has-warning .checkbox,.has-warning .checkbox-inline,.has-warning .control-label,.has-warning .help-block,.has-warning .radio,.has-warning .radio-inline,.has-warning.checkbox label,.has-warning.checkbox-inline label,.has-warning.radio label,.has-warning.radio-inline label{color:#8a6d3b}.has-warning .form-control{border-color:#8a6d3b;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-warning .form-control:focus{border-color:#66512c;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c0a16b;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #c0a16b}.has-warning .input-group-addon{color:#8a6d3b;background-color:#fcf8e3;border-color:#8a6d3b}.has-warning .form-control-feedback{color:#8a6d3b}.has-error .checkbox,.has-error .checkbox-inline,.has-error .control-label,.has-error .help-block,.has-error .radio,.has-error .radio-inline,.has-error.checkbox label,.has-error.checkbox-inline label,.has-error.radio label,.has-error.radio-inline label{color:#a94442}.has-error .form-control{border-color:#a94442;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075)}.has-error .form-control:focus{border-color:#843534;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483;box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #ce8483}.has-error .input-group-addon{color:#a94442;background-color:#f2dede;border-color:#a94442}.has-error .form-control-feedback{color:#a94442}.has-feedback label~.form-control-feedback{top:25px}.has-feedback label.sr-only~.form-control-feedback{top:0}.help-block{display:block;margin-top:5px;margin-bottom:10px;color:#737373}@media (min-width:768px){.form-inline .form-group{display:inline-block;margin-bottom:0;vertical-align:middle}.form-inline .form-control{display:inline-block;width:auto;vertical-align:middle}.form-inline .form-control-static{display:inline-block}.form-inline .input-group{display:inline-table;vertical-align:middle}.form-inline .input-group .form-control,.form-inline .input-group .input-group-addon,.form-inline .input-group .input-group-btn{width:auto}.form-inline .input-group>.form-control{width:100%}.form-inline .control-label{margin-bottom:0;vertical-align:middle}.form-inline .checkbox,.form-inline .radio{display:inline-block;margin-top:0;margin-bottom:0;vertical-align:middle}.form-inline .checkbox label,.form-inline .radio label{padding-left:0}.form-inline .checkbox input[type=checkbox],.form-inline .radio input[type=radio]{position:relative;margin-left:0}.form-inline .has-feedback .form-control-feedback{top:0}}.form-horizontal .checkbox,.form-horizontal .checkbox-inline,.form-horizontal .radio,.form-horizontal .radio-inline{padding-top:7px;margin-top:0;margin-bottom:0}.form-horizontal .checkbox,.form-horizontal .radio{min-height:27px}.form-horizontal .form-group{margin-right:-15px;margin-left:-15px}@media (min-width:768px){.form-horizontal .control-label{padding-top:7px;margin-bottom:0;text-align:right}}.form-horizontal .has-feedback .form-control-feedback{right:15px}@media (min-width:768px){.form-horizontal .form-group-lg .control-label{padding-top:14.33px;font-size:18px}}@media (min-width:768px){.form-horizontal .form-group-sm .control-label{padding-top:6px;font-size:12px}}.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.btn.focus,.btn:focus,.btn:hover{color:#333;text-decoration:none}.btn.active,.btn:active{background-image:none;outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn.disabled,.btn[disabled],fieldset[disabled] .btn{cursor:not-allowed;filter:alpha(opacity=65);-webkit-box-shadow:none;box-shadow:none;opacity:.65}a.btn.disabled,fieldset[disabled] a.btn{pointer-events:none}.btn-default{color:#333;background-color:#fff;border-color:#ccc}.btn-default.focus,.btn-default:focus{color:#333;background-color:#e6e6e6;border-color:#8c8c8c}.btn-default:hover{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{color:#333;background-color:#e6e6e6;border-color:#adadad}.btn-default.active.focus,.btn-default.active:focus,.btn-default.active:hover,.btn-default:active.focus,.btn-default:active:focus,.btn-default:active:hover,.open>.dropdown-toggle.btn-default.focus,.open>.dropdown-toggle.btn-default:focus,.open>.dropdown-toggle.btn-default:hover{color:#333;background-color:#d4d4d4;border-color:#8c8c8c}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{background-image:none}.btn-default.disabled,.btn-default.disabled.active,.btn-default.disabled.focus,.btn-default.disabled:active,.btn-default.disabled:focus,.btn-default.disabled:hover,.btn-default[disabled],.btn-default[disabled].active,.btn-default[disabled].focus,.btn-default[disabled]:active,.btn-default[disabled]:focus,.btn-default[disabled]:hover,fieldset[disabled] .btn-default,fieldset[disabled] .btn-default.active,fieldset[disabled] .btn-default.focus,fieldset[disabled] .btn-default:active,fieldset[disabled] .btn-default:focus,fieldset[disabled] .btn-default:hover{background-color:#fff;border-color:#ccc}.btn-default .badge{color:#fff;background-color:#333}.btn-primary{color:#fff;background-color:#337ab7;border-color:#2e6da4}.btn-primary.focus,.btn-primary:focus{color:#fff;background-color:#286090;border-color:#122b40}.btn-primary:hover{color:#fff;background-color:#286090;border-color:#204d74}.btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{color:#fff;background-color:#286090;border-color:#204d74}.btn-primary.active.focus,.btn-primary.active:focus,.btn-primary.active:hover,.btn-primary:active.focus,.btn-primary:active:focus,.btn-primary:active:hover,.open>.dropdown-toggle.btn-primary.focus,.open>.dropdown-toggle.btn-primary:focus,.open>.dropdown-toggle.btn-primary:hover{color:#fff;background-color:#204d74;border-color:#122b40}.btn-primary.active,.btn-primary:active,.open>.dropdown-toggle.btn-primary{background-image:none}.btn-primary.disabled,.btn-primary.disabled.active,.btn-primary.disabled.focus,.btn-primary.disabled:active,.btn-primary.disabled:focus,.btn-primary.disabled:hover,.btn-primary[disabled],.btn-primary[disabled].active,.btn-primary[disabled].focus,.btn-primary[disabled]:active,.btn-primary[disabled]:focus,.btn-primary[disabled]:hover,fieldset[disabled] .btn-primary,fieldset[disabled] .btn-primary.active,fieldset[disabled] .btn-primary.focus,fieldset[disabled] .btn-primary:active,fieldset[disabled] .btn-primary:focus,fieldset[disabled] .btn-primary:hover{background-color:#337ab7;border-color:#2e6da4}.btn-primary .badge{color:#337ab7;background-color:#fff}.btn-success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}.btn-success.focus,.btn-success:focus{color:#fff;background-color:#449d44;border-color:#255625}.btn-success:hover{color:#fff;background-color:#449d44;border-color:#398439}.btn-success.active,.btn-success:active,.open>.dropdown-toggle.btn-success{color:#fff;background-color:#449d44;border-color:#398439}.btn-success.active.focus,.btn-success.active:focus,.btn-success.active:hover,.btn-success:active.focus,.btn-success:active:focus,.btn-success:active:hover,.open>.dropdown-toggle.btn-success.focus,.open>.dropdown-toggle.btn-success:focus,.open>.dropdown-toggle.btn-success:hover{color:#fff;background-color:#398439;border-color:#255625}.btn-success.active,.btn-success:active,.open>.dropdown-toggle.btn-success{background-image:none}.btn-success.disabled,.btn-success.disabled.active,.btn-success.disabled.focus,.btn-success.disabled:active,.btn-success.disabled:focus,.btn-success.disabled:hover,.btn-success[disabled],.btn-success[disabled].active,.btn-success[disabled].focus,.btn-success[disabled]:active,.btn-success[disabled]:focus,.btn-success[disabled]:hover,fieldset[disabled] .btn-success,fieldset[disabled] .btn-success.active,fieldset[disabled] .btn-success.focus,fieldset[disabled] .btn-success:active,fieldset[disabled] .btn-success:focus,fieldset[disabled] .btn-success:hover{background-color:#5cb85c;border-color:#4cae4c}.btn-success .badge{color:#5cb85c;background-color:#fff}.btn-info{color:#fff;background-color:#5bc0de;border-color:#46b8da}.btn-info.focus,.btn-info:focus{color:#fff;background-color:#31b0d5;border-color:#1b6d85}.btn-info:hover{color:#fff;background-color:#31b0d5;border-color:#269abc}.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{color:#fff;background-color:#31b0d5;border-color:#269abc}.btn-info.active.focus,.btn-info.active:focus,.btn-info.active:hover,.btn-info:active.focus,.btn-info:active:focus,.btn-info:active:hover,.open>.dropdown-toggle.btn-info.focus,.open>.dropdown-toggle.btn-info:focus,.open>.dropdown-toggle.btn-info:hover{color:#fff;background-color:#269abc;border-color:#1b6d85}.btn-info.active,.btn-info:active,.open>.dropdown-toggle.btn-info{background-image:none}.btn-info.disabled,.btn-info.disabled.active,.btn-info.disabled.focus,.btn-info.disabled:active,.btn-info.disabled:focus,.btn-info.disabled:hover,.btn-info[disabled],.btn-info[disabled].active,.btn-info[disabled].focus,.btn-info[disabled]:active,.btn-info[disabled]:focus,.btn-info[disabled]:hover,fieldset[disabled] .btn-info,fieldset[disabled] .btn-info.active,fieldset[disabled] .btn-info.focus,fieldset[disabled] .btn-info:active,fieldset[disabled] .btn-info:focus,fieldset[disabled] .btn-info:hover{background-color:#5bc0de;border-color:#46b8da}.btn-info .badge{color:#5bc0de;background-color:#fff}.btn-warning{color:#fff;background-color:#f0ad4e;border-color:#eea236}.btn-warning.focus,.btn-warning:focus{color:#fff;background-color:#ec971f;border-color:#985f0d}.btn-warning:hover{color:#fff;background-color:#ec971f;border-color:#d58512}.btn-warning.active,.btn-warning:active,.open>.dropdown-toggle.btn-warning{color:#fff;background-color:#ec971f;border-color:#d58512}.btn-warning.active.focus,.btn-warning.active:focus,.btn-warning.active:hover,.btn-warning:active.focus,.btn-warning:active:focus,.btn-warning:active:hover,.open>.dropdown-toggle.btn-warning.focus,.open>.dropdown-toggle.btn-warning:focus,.open>.dropdown-toggle.btn-warning:hover{color:#fff;background-color:#d58512;border-color:#985f0d}.btn-warning.active,.btn-warning:active,.open>.dropdown-toggle.btn-warning{background-image:none}.btn-warning.disabled,.btn-warning.disabled.active,.btn-warning.disabled.focus,.btn-warning.disabled:active,.btn-warning.disabled:focus,.btn-warning.disabled:hover,.btn-warning[disabled],.btn-warning[disabled].active,.btn-warning[disabled].focus,.btn-warning[disabled]:active,.btn-warning[disabled]:focus,.btn-warning[disabled]:hover,fieldset[disabled] .btn-warning,fieldset[disabled] .btn-warning.active,fieldset[disabled] .btn-warning.focus,fieldset[disabled] .btn-warning:active,fieldset[disabled] .btn-warning:focus,fieldset[disabled] .btn-warning:hover{background-color:#f0ad4e;border-color:#eea236}.btn-warning .badge{color:#f0ad4e;background-color:#fff}.btn-danger{color:#fff;background-color:#d9534f;border-color:#d43f3a}.btn-danger.focus,.btn-danger:focus{color:#fff;background-color:#c9302c;border-color:#761c19}.btn-danger:hover{color:#fff;background-color:#c9302c;border-color:#ac2925}.btn-danger.active,.btn-danger:active,.open>.dropdown-toggle.btn-danger{color:#fff;background-color:#c9302c;border-color:#ac2925}.btn-danger.active.focus,.btn-danger.active:focus,.btn-danger.active:hover,.btn-danger:active.focus,.btn-danger:active:focus,.btn-danger:active:hover,.open>.dropdown-toggle.btn-danger.focus,.open>.dropdown-toggle.btn-danger:focus,.open>.dropdown-toggle.btn-danger:hover{color:#fff;background-color:#ac2925;border-color:#761c19}.btn-danger.active,.btn-danger:active,.open>.dropdown-toggle.btn-danger{background-image:none}.btn-danger.disabled,.btn-danger.disabled.active,.btn-danger.disabled.focus,.btn-danger.disabled:active,.btn-danger.disabled:focus,.btn-danger.disabled:hover,.btn-danger[disabled],.btn-danger[disabled].active,.btn-danger[disabled].focus,.btn-danger[disabled]:active,.btn-danger[disabled]:focus,.btn-danger[disabled]:hover,fieldset[disabled] .btn-danger,fieldset[disabled] .btn-danger.active,fieldset[disabled] .btn-danger.focus,fieldset[disabled] .btn-danger:active,fieldset[disabled] .btn-danger:focus,fieldset[disabled] .btn-danger:hover{background-color:#d9534f;border-color:#d43f3a}.btn-danger .badge{color:#d9534f;background-color:#fff}.btn-link{font-weight:400;color:#337ab7;border-radius:0}.btn-link,.btn-link.active,.btn-link:active,.btn-link[disabled],fieldset[disabled] .btn-link{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}.btn-link,.btn-link:active,.btn-link:focus,.btn-link:hover{border-color:transparent}.btn-link:focus,.btn-link:hover{color:#23527c;text-decoration:underline;background-color:transparent}.btn-link[disabled]:focus,.btn-link[disabled]:hover,fieldset[disabled] .btn-link:focus,fieldset[disabled] .btn-link:hover{color:#777;text-decoration:none}.btn-group-lg>.btn,.btn-lg{padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}.btn-group-sm>.btn,.btn-sm{padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}.btn-group-xs>.btn,.btn-xs{padding:1px 5px;font-size:12px;line-height:1.5;border-radius:3px}.btn-block{display:block;width:100%}.btn-block+.btn-block{margin-top:5px}input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-block{width:100%}.fade{opacity:0;-webkit-transition:opacity .15s linear;-o-transition:opacity .15s linear;transition:opacity .15s linear}.fade.in{opacity:1}.collapse{display:none}.collapse.in{display:block}tr.collapse.in{display:table-row}tbody.collapse.in{display:table-row-group}.collapsing{position:relative;height:0;overflow:hidden;-webkit-transition-timing-function:ease;-o-transition-timing-function:ease;transition-timing-function:ease;-webkit-transition-duration:.35s;-o-transition-duration:.35s;transition-duration:.35s;-webkit-transition-property:height,visibility;-o-transition-property:height,visibility;transition-property:height,visibility}.caret{display:inline-block;width:0;height:0;margin-left:2px;vertical-align:middle;border-top:4px dashed;border-top:4px solid\\9;border-right:4px solid transparent;border-left:4px solid transparent}.dropdown,.dropup{position:relative}.dropdown-toggle:focus{outline:0}.dropdown-menu{position:absolute;top:100%;left:0;z-index:1000;display:none;float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);box-shadow:0 6px 12px rgba(0,0,0,.175)}.dropdown-menu.pull-right{right:0;left:auto}.dropdown-menu .divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}.dropdown-menu>li>a{display:block;padding:3px 20px;clear:both;font-weight:400;line-height:1.42857143;color:#333;white-space:nowrap}.dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{color:#262626;text-decoration:none;background-color:#f5f5f5}.dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{color:#fff;text-decoration:none;background-color:#337ab7;outline:0}.dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#777}.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{text-decoration:none;cursor:not-allowed;background-color:transparent;background-image:none;filter:progid:DXImageTransform.Microsoft.gradient(enabled=false)}.open>.dropdown-menu{display:block}.open>a{outline:0}.dropdown-menu-right{right:0;left:auto}.dropdown-menu-left{right:auto;left:0}.dropdown-header{display:block;padding:3px 20px;font-size:12px;line-height:1.42857143;color:#777;white-space:nowrap}.dropdown-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:990}.pull-right>.dropdown-menu{right:0;left:auto}.dropup .caret,.navbar-fixed-bottom .dropdown .caret{content:\"\";border-top:0;border-bottom:4px dashed;border-bottom:4px solid\\9}.dropup .dropdown-menu,.navbar-fixed-bottom .dropdown .dropdown-menu{top:auto;bottom:100%;margin-bottom:2px}@media (min-width:768px){.navbar-right .dropdown-menu{right:0;left:auto}.navbar-right .dropdown-menu-left{right:auto;left:0}}.btn-group,.btn-group-vertical{position:relative;display:inline-block;vertical-align:middle}.btn-group-vertical>.btn,.btn-group>.btn{position:relative;float:left}.btn-group-vertical>.btn.active,.btn-group-vertical>.btn:active,.btn-group-vertical>.btn:focus,.btn-group-vertical>.btn:hover,.btn-group>.btn.active,.btn-group>.btn:active,.btn-group>.btn:focus,.btn-group>.btn:hover{z-index:2}.btn-group .btn+.btn,.btn-group .btn+.btn-group,.btn-group .btn-group+.btn,.btn-group .btn-group+.btn-group{margin-left:-1px}.btn-toolbar{margin-left:-5px}.btn-toolbar .btn,.btn-toolbar .btn-group,.btn-toolbar .input-group{float:left}.btn-toolbar>.btn,.btn-toolbar>.btn-group,.btn-toolbar>.input-group{margin-left:5px}.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){border-radius:0}.btn-group>.btn:first-child{margin-left:0}.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){border-top-right-radius:0;border-bottom-right-radius:0}.btn-group>.btn:last-child:not(:first-child),.btn-group>.dropdown-toggle:not(:first-child){border-top-left-radius:0;border-bottom-left-radius:0}.btn-group>.btn-group{float:left}.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn{border-radius:0}.btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle{border-top-right-radius:0;border-bottom-right-radius:0}.btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child{border-top-left-radius:0;border-bottom-left-radius:0}.btn-group .dropdown-toggle:active,.btn-group.open .dropdown-toggle{outline:0}.btn-group>.btn+.dropdown-toggle{padding-right:8px;padding-left:8px}.btn-group>.btn-lg+.dropdown-toggle{padding-right:12px;padding-left:12px}.btn-group.open .dropdown-toggle{-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn-group.open .dropdown-toggle.btn-link{-webkit-box-shadow:none;box-shadow:none}.btn .caret{margin-left:0}.btn-lg .caret{border-width:5px 5px 0;border-bottom-width:0}.dropup .btn-lg .caret{border-width:0 5px 5px}.btn-group-vertical>.btn,.btn-group-vertical>.btn-group,.btn-group-vertical>.btn-group>.btn{display:block;float:none;width:100%;max-width:100%}.btn-group-vertical>.btn-group>.btn{float:none}.btn-group-vertical>.btn+.btn,.btn-group-vertical>.btn+.btn-group,.btn-group-vertical>.btn-group+.btn,.btn-group-vertical>.btn-group+.btn-group{margin-top:-1px;margin-left:0}.btn-group-vertical>.btn:not(:first-child):not(:last-child){border-radius:0}.btn-group-vertical>.btn:first-child:not(:last-child){border-top-right-radius:4px;border-bottom-right-radius:0;border-bottom-left-radius:0}.btn-group-vertical>.btn:last-child:not(:first-child){border-top-left-radius:0;border-top-right-radius:0;border-bottom-left-radius:4px}.btn-group-vertical>.btn-group:not(:first-child):not(:last-child)>.btn{border-radius:0}.btn-group-vertical>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group-vertical>.btn-group:first-child:not(:last-child)>.dropdown-toggle{border-bottom-right-radius:0;border-bottom-left-radius:0}.btn-group-vertical>.btn-group:last-child:not(:first-child)>.btn:first-child{border-top-left-radius:0;border-top-right-radius:0}.btn-group-justified{display:table;width:100%;table-layout:fixed;border-collapse:separate}.btn-group-justified>.btn,.btn-group-justified>.btn-group{display:table-cell;float:none;width:1%}.btn-group-justified>.btn-group .btn{width:100%}.btn-group-justified>.btn-group .dropdown-menu{left:auto}[data-toggle=buttons]>.btn input[type=checkbox],[data-toggle=buttons]>.btn input[type=radio],[data-toggle=buttons]>.btn-group>.btn input[type=checkbox],[data-toggle=buttons]>.btn-group>.btn input[type=radio]{position:absolute;clip:rect(0,0,0,0);pointer-events:none}.input-group{position:relative;display:table;border-collapse:separate}.input-group[class*=col-]{float:none;padding-right:0;padding-left:0}.input-group .form-control{position:relative;z-index:2;float:left;width:100%;margin-bottom:0}.input-group-lg>.form-control,.input-group-lg>.input-group-addon,.input-group-lg>.input-group-btn>.btn{height:46px;padding:10px 16px;font-size:18px;line-height:1.3333333;border-radius:6px}select.input-group-lg>.form-control,select.input-group-lg>.input-group-addon,select.input-group-lg>.input-group-btn>.btn{height:46px;line-height:46px}select[multiple].input-group-lg>.form-control,select[multiple].input-group-lg>.input-group-addon,select[multiple].input-group-lg>.input-group-btn>.btn,textarea.input-group-lg>.form-control,textarea.input-group-lg>.input-group-addon,textarea.input-group-lg>.input-group-btn>.btn{height:auto}.input-group-sm>.form-control,.input-group-sm>.input-group-addon,.input-group-sm>.input-group-btn>.btn{height:30px;padding:5px 10px;font-size:12px;line-height:1.5;border-radius:3px}select.input-group-sm>.form-control,select.input-group-sm>.input-group-addon,select.input-group-sm>.input-group-btn>.btn{height:30px;line-height:30px}select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.input-group-addon,select[multiple].input-group-sm>.input-group-btn>.btn,textarea.input-group-sm>.form-control,textarea.input-group-sm>.input-group-addon,textarea.input-group-sm>.input-group-btn>.btn{height:auto}.input-group .form-control,.input-group-addon,.input-group-btn{display:table-cell}.input-group .form-control:not(:first-child):not(:last-child),.input-group-addon:not(:first-child):not(:last-child),.input-group-btn:not(:first-child):not(:last-child){border-radius:0}.input-group-addon,.input-group-btn{width:1%;white-space:nowrap;vertical-align:middle}.input-group-addon{padding:6px 12px;font-size:14px;font-weight:400;line-height:1;color:#555;text-align:center;background-color:#eee;border:1px solid #ccc;border-radius:4px}.input-group-addon.input-sm{padding:5px 10px;font-size:12px;border-radius:3px}.input-group-addon.input-lg{padding:10px 16px;font-size:18px;border-radius:6px}.input-group-addon input[type=checkbox],.input-group-addon input[type=radio]{margin-top:0}.input-group .form-control:first-child,.input-group-addon:first-child,.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group>.btn,.input-group-btn:first-child>.dropdown-toggle,.input-group-btn:last-child>.btn-group:not(:last-child)>.btn,.input-group-btn:last-child>.btn:not(:last-child):not(.dropdown-toggle){border-top-right-radius:0;border-bottom-right-radius:0}.input-group-addon:first-child{border-right:0}.input-group .form-control:last-child,.input-group-addon:last-child,.input-group-btn:first-child>.btn-group:not(:first-child)>.btn,.input-group-btn:first-child>.btn:not(:first-child),.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group>.btn,.input-group-btn:last-child>.dropdown-toggle{border-top-left-radius:0;border-bottom-left-radius:0}.input-group-addon:last-child{border-left:0}.input-group-btn{position:relative;font-size:0;white-space:nowrap}.input-group-btn>.btn{position:relative}.input-group-btn>.btn+.btn{margin-left:-1px}.input-group-btn>.btn:active,.input-group-btn>.btn:focus,.input-group-btn>.btn:hover{z-index:2}.input-group-btn:first-child>.btn,.input-group-btn:first-child>.btn-group{margin-right:-1px}.input-group-btn:last-child>.btn,.input-group-btn:last-child>.btn-group{z-index:2;margin-left:-1px}.nav{padding-left:0;margin-bottom:0;list-style:none}.nav>li{position:relative;display:block}.nav>li>a{position:relative;display:block;padding:10px 15px}.nav>li>a:focus,.nav>li>a:hover{text-decoration:none;background-color:#eee}.nav>li.disabled>a{color:#777}.nav>li.disabled>a:focus,.nav>li.disabled>a:hover{color:#777;text-decoration:none;cursor:not-allowed;background-color:transparent}.nav .open>a,.nav .open>a:focus,.nav .open>a:hover{background-color:#eee;border-color:#337ab7}.nav .nav-divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5}.nav>li>a>img{max-width:none}.nav-tabs{border-bottom:1px solid #ddd}.nav-tabs>li{float:left;margin-bottom:-1px}.nav-tabs>li>a{margin-right:2px;line-height:1.42857143;border:1px solid transparent;border-radius:4px 4px 0 0}.nav-tabs>li>a:hover{border-color:#eee #eee #ddd}.nav-tabs>li.active>a,.nav-tabs>li.active>a:focus,.nav-tabs>li.active>a:hover{color:#555;cursor:default;background-color:#fff;border:1px solid #ddd;border-bottom-color:transparent}.nav-tabs.nav-justified{width:100%;border-bottom:0}.nav-tabs.nav-justified>li{float:none}.nav-tabs.nav-justified>li>a{margin-bottom:5px;text-align:center}.nav-tabs.nav-justified>.dropdown .dropdown-menu{top:auto;left:auto}@media (min-width:768px){.nav-tabs.nav-justified>li{display:table-cell;width:1%}.nav-tabs.nav-justified>li>a{margin-bottom:0}}.nav-tabs.nav-justified>li>a{margin-right:0;border-radius:4px}.nav-tabs.nav-justified>.active>a,.nav-tabs.nav-justified>.active>a:focus,.nav-tabs.nav-justified>.active>a:hover{border:1px solid #ddd}@media (min-width:768px){.nav-tabs.nav-justified>li>a{border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.nav-tabs.nav-justified>.active>a,.nav-tabs.nav-justified>.active>a:focus,.nav-tabs.nav-justified>.active>a:hover{border-bottom-color:#fff}}.nav-pills>li{float:left}.nav-pills>li>a{border-radius:4px}.nav-pills>li+li{margin-left:2px}.nav-pills>li.active>a,.nav-pills>li.active>a:focus,.nav-pills>li.active>a:hover{color:#fff;background-color:#337ab7}.nav-stacked>li{float:none}.nav-stacked>li+li{margin-top:2px;margin-left:0}.nav-justified{width:100%}.nav-justified>li{float:none}.nav-justified>li>a{margin-bottom:5px;text-align:center}.nav-justified>.dropdown .dropdown-menu{top:auto;left:auto}@media (min-width:768px){.nav-justified>li{display:table-cell;width:1%}.nav-justified>li>a{margin-bottom:0}}.nav-tabs-justified{border-bottom:0}.nav-tabs-justified>li>a{margin-right:0;border-radius:4px}.nav-tabs-justified>.active>a,.nav-tabs-justified>.active>a:focus,.nav-tabs-justified>.active>a:hover{border:1px solid #ddd}@media (min-width:768px){.nav-tabs-justified>li>a{border-bottom:1px solid #ddd;border-radius:4px 4px 0 0}.nav-tabs-justified>.active>a,.nav-tabs-justified>.active>a:focus,.nav-tabs-justified>.active>a:hover{border-bottom-color:#fff}}.tab-content>.tab-pane{display:none}.tab-content>.active{display:block}.nav-tabs .dropdown-menu{margin-top:-1px;border-top-left-radius:0;border-top-right-radius:0}.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}@media (min-width:768px){.navbar{border-radius:4px}}@media (min-width:768px){.navbar-header{float:left}}.navbar-collapse{padding-right:15px;padding-left:15px;overflow-x:visible;-webkit-overflow-scrolling:touch;border-top:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}.navbar-collapse.in{overflow-y:auto}@media (min-width:768px){.navbar-collapse{width:auto;border-top:0;-webkit-box-shadow:none;box-shadow:none}.navbar-collapse.collapse{display:block!important;height:auto!important;padding-bottom:0;overflow:visible!important}.navbar-collapse.in{overflow-y:visible}.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.navbar-static-top .navbar-collapse{padding-right:0;padding-left:0}}.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:340px}@media (max-device-width:480px) and (orientation:landscape){.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse{max-height:200px}}.container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:-15px;margin-left:-15px}@media (min-width:768px){.container-fluid>.navbar-collapse,.container-fluid>.navbar-header,.container>.navbar-collapse,.container>.navbar-header{margin-right:0;margin-left:0}}.navbar-static-top{z-index:1000;border-width:0 0 1px}@media (min-width:768px){.navbar-static-top{border-radius:0}}.navbar-fixed-bottom,.navbar-fixed-top{position:fixed;right:0;left:0;z-index:1030}@media (min-width:768px){.navbar-fixed-bottom,.navbar-fixed-top{border-radius:0}}.navbar-fixed-top{top:0;border-width:0 0 1px}.navbar-fixed-bottom{bottom:0;margin-bottom:0;border-width:1px 0 0}.navbar-brand{float:left;height:50px;padding:15px 15px;font-size:18px;line-height:20px}.navbar-brand:focus,.navbar-brand:hover{text-decoration:none}.navbar-brand>img{display:block}@media (min-width:768px){.navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand{margin-left:-15px}}.navbar-toggle{position:relative;float:right;padding:9px 10px;margin-top:8px;margin-right:15px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}.navbar-toggle:focus{outline:0}.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}@media (min-width:768px){.navbar-toggle{display:none}}.navbar-nav{margin:7.5px -15px}.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}@media (max-width:767px){.navbar-nav .open .dropdown-menu{position:static;float:none;width:auto;margin-top:0;background-color:transparent;border:0;-webkit-box-shadow:none;box-shadow:none}.navbar-nav .open .dropdown-menu .dropdown-header,.navbar-nav .open .dropdown-menu>li>a{padding:5px 15px 5px 25px}.navbar-nav .open .dropdown-menu>li>a{line-height:20px}.navbar-nav .open .dropdown-menu>li>a:focus,.navbar-nav .open .dropdown-menu>li>a:hover{background-image:none}}@media (min-width:768px){.navbar-nav{float:left;margin:0}.navbar-nav>li{float:left}.navbar-nav>li>a{padding-top:15px;padding-bottom:15px}}.navbar-form{padding:10px 15px;margin-top:8px;margin-right:-15px;margin-bottom:8px;margin-left:-15px;border-top:1px solid transparent;border-bottom:1px solid transparent;-webkit-box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 1px 0 rgba(255,255,255,.1)}@media (min-width:768px){.navbar-form .form-group{display:inline-block;margin-bottom:0;vertical-align:middle}.navbar-form .form-control{display:inline-block;width:auto;vertical-align:middle}.navbar-form .form-control-static{display:inline-block}.navbar-form .input-group{display:inline-table;vertical-align:middle}.navbar-form .input-group .form-control,.navbar-form .input-group .input-group-addon,.navbar-form .input-group .input-group-btn{width:auto}.navbar-form .input-group>.form-control{width:100%}.navbar-form .control-label{margin-bottom:0;vertical-align:middle}.navbar-form .checkbox,.navbar-form .radio{display:inline-block;margin-top:0;margin-bottom:0;vertical-align:middle}.navbar-form .checkbox label,.navbar-form .radio label{padding-left:0}.navbar-form .checkbox input[type=checkbox],.navbar-form .radio input[type=radio]{position:relative;margin-left:0}.navbar-form .has-feedback .form-control-feedback{top:0}}@media (max-width:767px){.navbar-form .form-group{margin-bottom:5px}.navbar-form .form-group:last-child{margin-bottom:0}}@media (min-width:768px){.navbar-form{width:auto;padding-top:0;padding-bottom:0;margin-right:0;margin-left:0;border:0;-webkit-box-shadow:none;box-shadow:none}}.navbar-nav>li>.dropdown-menu{margin-top:0;border-top-left-radius:0;border-top-right-radius:0}.navbar-fixed-bottom .navbar-nav>li>.dropdown-menu{margin-bottom:0;border-top-left-radius:4px;border-top-right-radius:4px;border-bottom-right-radius:0;border-bottom-left-radius:0}.navbar-btn{margin-top:8px;margin-bottom:8px}.navbar-btn.btn-sm{margin-top:10px;margin-bottom:10px}.navbar-btn.btn-xs{margin-top:14px;margin-bottom:14px}.navbar-text{margin-top:15px;margin-bottom:15px}@media (min-width:768px){.navbar-text{float:left;margin-right:15px;margin-left:15px}}@media (min-width:768px){.navbar-left{float:left!important}.navbar-right{float:right!important;margin-right:-15px}.navbar-right~.navbar-right{margin-right:0}}.navbar-default{background-color:#f8f8f8;border-color:#e7e7e7}.navbar-default .navbar-brand{color:#777}.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:hover{color:#5e5e5e;background-color:transparent}.navbar-default .navbar-text{color:#777}.navbar-default .navbar-nav>li>a{color:#777}.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover{color:#333;background-color:transparent}.navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:focus,.navbar-default .navbar-nav>.active>a:hover{color:#555;background-color:#e7e7e7}.navbar-default .navbar-nav>.disabled>a,.navbar-default .navbar-nav>.disabled>a:focus,.navbar-default .navbar-nav>.disabled>a:hover{color:#ccc;background-color:transparent}.navbar-default .navbar-toggle{border-color:#ddd}.navbar-default .navbar-toggle:focus,.navbar-default .navbar-toggle:hover{background-color:#ddd}.navbar-default .navbar-toggle .icon-bar{background-color:#888}.navbar-default .navbar-collapse,.navbar-default .navbar-form{border-color:#e7e7e7}.navbar-default .navbar-nav>.open>a,.navbar-default .navbar-nav>.open>a:focus,.navbar-default .navbar-nav>.open>a:hover{color:#555;background-color:#e7e7e7}@media (max-width:767px){.navbar-default .navbar-nav .open .dropdown-menu>li>a{color:#777}.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:#333;background-color:transparent}.navbar-default .navbar-nav .open .dropdown-menu>.active>a,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover{color:#555;background-color:#e7e7e7}.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:focus,.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover{color:#ccc;background-color:transparent}}.navbar-default .navbar-link{color:#777}.navbar-default .navbar-link:hover{color:#333}.navbar-default .btn-link{color:#777}.navbar-default .btn-link:focus,.navbar-default .btn-link:hover{color:#333}.navbar-default .btn-link[disabled]:focus,.navbar-default .btn-link[disabled]:hover,fieldset[disabled] .navbar-default .btn-link:focus,fieldset[disabled] .navbar-default .btn-link:hover{color:#ccc}.navbar-inverse{background-color:#222;border-color:#080808}.navbar-inverse .navbar-brand{color:#9d9d9d}.navbar-inverse .navbar-brand:focus,.navbar-inverse .navbar-brand:hover{color:#fff;background-color:transparent}.navbar-inverse .navbar-text{color:#9d9d9d}.navbar-inverse .navbar-nav>li>a{color:#9d9d9d}.navbar-inverse .navbar-nav>li>a:focus,.navbar-inverse .navbar-nav>li>a:hover{color:#fff;background-color:transparent}.navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover{color:#fff;background-color:#080808}.navbar-inverse .navbar-nav>.disabled>a,.navbar-inverse .navbar-nav>.disabled>a:focus,.navbar-inverse .navbar-nav>.disabled>a:hover{color:#444;background-color:transparent}.navbar-inverse .navbar-toggle{border-color:#333}.navbar-inverse .navbar-toggle:focus,.navbar-inverse .navbar-toggle:hover{background-color:#333}.navbar-inverse .navbar-toggle .icon-bar{background-color:#fff}.navbar-inverse .navbar-collapse,.navbar-inverse .navbar-form{border-color:#101010}.navbar-inverse .navbar-nav>.open>a,.navbar-inverse .navbar-nav>.open>a:focus,.navbar-inverse .navbar-nav>.open>a:hover{color:#fff;background-color:#080808}@media (max-width:767px){.navbar-inverse .navbar-nav .open .dropdown-menu>.dropdown-header{border-color:#080808}.navbar-inverse .navbar-nav .open .dropdown-menu .divider{background-color:#080808}.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{color:#9d9d9d}.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus,.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{color:#fff;background-color:transparent}.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a,.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus,.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover{color:#fff;background-color:#080808}.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a,.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:focus,.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:hover{color:#444;background-color:transparent}}.navbar-inverse .navbar-link{color:#9d9d9d}.navbar-inverse .navbar-link:hover{color:#fff}.navbar-inverse .btn-link{color:#9d9d9d}.navbar-inverse .btn-link:focus,.navbar-inverse .btn-link:hover{color:#fff}.navbar-inverse .btn-link[disabled]:focus,.navbar-inverse .btn-link[disabled]:hover,fieldset[disabled] .navbar-inverse .btn-link:focus,fieldset[disabled] .navbar-inverse .btn-link:hover{color:#444}.breadcrumb{padding:8px 15px;margin-bottom:20px;list-style:none;background-color:#f5f5f5;border-radius:4px}.breadcrumb>li{display:inline-block}.breadcrumb>li+li:before{padding:0 5px;color:#ccc;content:\"/\\A0\"}.breadcrumb>.active{color:#777}.pagination{display:inline-block;padding-left:0;margin:20px 0;border-radius:4px}.pagination>li{display:inline}.pagination>li>a,.pagination>li>span{position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#337ab7;text-decoration:none;background-color:#fff;border:1px solid #ddd}.pagination>li:first-child>a,.pagination>li:first-child>span{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px}.pagination>li:last-child>a,.pagination>li:last-child>span{border-top-right-radius:4px;border-bottom-right-radius:4px}.pagination>li>a:focus,.pagination>li>a:hover,.pagination>li>span:focus,.pagination>li>span:hover{z-index:3;color:#23527c;background-color:#eee;border-color:#ddd}.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover,.pagination>.active>span,.pagination>.active>span:focus,.pagination>.active>span:hover{z-index:2;color:#fff;cursor:default;background-color:#337ab7;border-color:#337ab7}.pagination>.disabled>a,.pagination>.disabled>a:focus,.pagination>.disabled>a:hover,.pagination>.disabled>span,.pagination>.disabled>span:focus,.pagination>.disabled>span:hover{color:#777;cursor:not-allowed;background-color:#fff;border-color:#ddd}.pagination-lg>li>a,.pagination-lg>li>span{padding:10px 16px;font-size:18px;line-height:1.3333333}.pagination-lg>li:first-child>a,.pagination-lg>li:first-child>span{border-top-left-radius:6px;border-bottom-left-radius:6px}.pagination-lg>li:last-child>a,.pagination-lg>li:last-child>span{border-top-right-radius:6px;border-bottom-right-radius:6px}.pagination-sm>li>a,.pagination-sm>li>span{padding:5px 10px;font-size:12px;line-height:1.5}.pagination-sm>li:first-child>a,.pagination-sm>li:first-child>span{border-top-left-radius:3px;border-bottom-left-radius:3px}.pagination-sm>li:last-child>a,.pagination-sm>li:last-child>span{border-top-right-radius:3px;border-bottom-right-radius:3px}.pager{padding-left:0;margin:20px 0;text-align:center;list-style:none}.pager li{display:inline}.pager li>a,.pager li>span{display:inline-block;padding:5px 14px;background-color:#fff;border:1px solid #ddd;border-radius:15px}.pager li>a:focus,.pager li>a:hover{text-decoration:none;background-color:#eee}.pager .next>a,.pager .next>span{float:right}.pager .previous>a,.pager .previous>span{float:left}.pager .disabled>a,.pager .disabled>a:focus,.pager .disabled>a:hover,.pager .disabled>span{color:#777;cursor:not-allowed;background-color:#fff}.label{display:inline;padding:.2em .6em .3em;font-size:75%;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius:.25em}a.label:focus,a.label:hover{color:#fff;text-decoration:none;cursor:pointer}.label:empty{display:none}.btn .label{position:relative;top:-1px}.label-default{background-color:#777}.label-default[href]:focus,.label-default[href]:hover{background-color:#5e5e5e}.label-primary{background-color:#337ab7}.label-primary[href]:focus,.label-primary[href]:hover{background-color:#286090}.label-success{background-color:#5cb85c}.label-success[href]:focus,.label-success[href]:hover{background-color:#449d44}.label-info{background-color:#5bc0de}.label-info[href]:focus,.label-info[href]:hover{background-color:#31b0d5}.label-warning{background-color:#f0ad4e}.label-warning[href]:focus,.label-warning[href]:hover{background-color:#ec971f}.label-danger{background-color:#d9534f}.label-danger[href]:focus,.label-danger[href]:hover{background-color:#c9302c}.badge{display:inline-block;min-width:10px;padding:3px 7px;font-size:12px;font-weight:700;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:middle;background-color:#777;border-radius:10px}.badge:empty{display:none}.btn .badge{position:relative;top:-1px}.btn-group-xs>.btn .badge,.btn-xs .badge{top:0;padding:1px 5px}a.badge:focus,a.badge:hover{color:#fff;text-decoration:none;cursor:pointer}.list-group-item.active>.badge,.nav-pills>.active>a>.badge{color:#337ab7;background-color:#fff}.list-group-item>.badge{float:right}.list-group-item>.badge+.badge{margin-right:5px}.nav-pills>li>a>.badge{margin-left:3px}.jumbotron{padding-top:30px;padding-bottom:30px;margin-bottom:30px;color:inherit;background-color:#eee}.jumbotron .h1,.jumbotron h1{color:inherit}.jumbotron p{margin-bottom:15px;font-size:21px;font-weight:200}.jumbotron>hr{border-top-color:#d5d5d5}.container .jumbotron,.container-fluid .jumbotron{border-radius:6px}.jumbotron .container{max-width:100%}@media screen and (min-width:768px){.jumbotron{padding-top:48px;padding-bottom:48px}.container .jumbotron,.container-fluid .jumbotron{padding-right:60px;padding-left:60px}.jumbotron .h1,.jumbotron h1{font-size:63px}}.thumbnail{display:block;padding:4px;margin-bottom:20px;line-height:1.42857143;background-color:#fff;border:1px solid #ddd;border-radius:4px;-webkit-transition:border .2s ease-in-out;-o-transition:border .2s ease-in-out;transition:border .2s ease-in-out}.thumbnail a>img,.thumbnail>img{margin-right:auto;margin-left:auto}a.thumbnail.active,a.thumbnail:focus,a.thumbnail:hover{border-color:#337ab7}.thumbnail .caption{padding:9px;color:#333}.alert{padding:15px;margin-bottom:20px;border:1px solid transparent;border-radius:4px}.alert h4{margin-top:0;color:inherit}.alert .alert-link{font-weight:700}.alert>p,.alert>ul{margin-bottom:0}.alert>p+p{margin-top:5px}.alert-dismissable,.alert-dismissible{padding-right:35px}.alert-dismissable .close,.alert-dismissible .close{position:relative;top:-2px;right:-21px;color:inherit}.alert-success{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.alert-success hr{border-top-color:#c9e2b3}.alert-success .alert-link{color:#2b542c}.alert-info{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.alert-info hr{border-top-color:#a6e1ec}.alert-info .alert-link{color:#245269}.alert-warning{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.alert-warning hr{border-top-color:#f7e1b5}.alert-warning .alert-link{color:#66512c}.alert-danger{color:#a94442;background-color:#f2dede;border-color:#ebccd1}.alert-danger hr{border-top-color:#e4b9c0}.alert-danger .alert-link{color:#843534}@-webkit-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@-o-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}@keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}.progress{height:20px;margin-bottom:20px;overflow:hidden;background-color:#f5f5f5;border-radius:4px;-webkit-box-shadow:inset 0 1px 2px rgba(0,0,0,.1);box-shadow:inset 0 1px 2px rgba(0,0,0,.1)}.progress-bar{float:left;width:0;height:100%;font-size:12px;line-height:20px;color:#fff;text-align:center;background-color:#337ab7;-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,.15);box-shadow:inset 0 -1px 0 rgba(0,0,0,.15);-webkit-transition:width .6s ease;-o-transition:width .6s ease;transition:width .6s ease}.progress-bar-striped,.progress-striped .progress-bar{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);-webkit-background-size:40px 40px;background-size:40px 40px}.progress-bar.active,.progress.active .progress-bar{-webkit-animation:progress-bar-stripes 2s linear infinite;-o-animation:progress-bar-stripes 2s linear infinite;animation:progress-bar-stripes 2s linear infinite}.progress-bar-success{background-color:#5cb85c}.progress-striped .progress-bar-success{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)}.progress-bar-info{background-color:#5bc0de}.progress-striped .progress-bar-info{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)}.progress-bar-warning{background-color:#f0ad4e}.progress-striped .progress-bar-warning{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)}.progress-bar-danger{background-color:#d9534f}.progress-striped .progress-bar-danger{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:-o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent)}.media{margin-top:15px}.media:first-child{margin-top:0}.media,.media-body{overflow:hidden;zoom:1}.media-body{width:10000px}.media-object{display:block}.media-object.img-thumbnail{max-width:none}.media-right,.media>.pull-right{padding-left:10px}.media-left,.media>.pull-left{padding-right:10px}.media-body,.media-left,.media-right{display:table-cell;vertical-align:top}.media-middle{vertical-align:middle}.media-bottom{vertical-align:bottom}.media-heading{margin-top:0;margin-bottom:5px}.media-list{padding-left:0;list-style:none}.list-group{padding-left:0;margin-bottom:20px}.list-group-item{position:relative;display:block;padding:10px 15px;margin-bottom:-1px;background-color:#fff;border:1px solid #ddd}.list-group-item:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.list-group-item:last-child{margin-bottom:0;border-bottom-right-radius:4px;border-bottom-left-radius:4px}a.list-group-item,button.list-group-item{color:#555}a.list-group-item .list-group-item-heading,button.list-group-item .list-group-item-heading{color:#333}a.list-group-item:focus,a.list-group-item:hover,button.list-group-item:focus,button.list-group-item:hover{color:#555;text-decoration:none;background-color:#f5f5f5}button.list-group-item{width:100%;text-align:left}.list-group-item.disabled,.list-group-item.disabled:focus,.list-group-item.disabled:hover{color:#777;cursor:not-allowed;background-color:#eee}.list-group-item.disabled .list-group-item-heading,.list-group-item.disabled:focus .list-group-item-heading,.list-group-item.disabled:hover .list-group-item-heading{color:inherit}.list-group-item.disabled .list-group-item-text,.list-group-item.disabled:focus .list-group-item-text,.list-group-item.disabled:hover .list-group-item-text{color:#777}.list-group-item.active,.list-group-item.active:focus,.list-group-item.active:hover{z-index:2;color:#fff;background-color:#337ab7;border-color:#337ab7}.list-group-item.active .list-group-item-heading,.list-group-item.active .list-group-item-heading>.small,.list-group-item.active .list-group-item-heading>small,.list-group-item.active:focus .list-group-item-heading,.list-group-item.active:focus .list-group-item-heading>.small,.list-group-item.active:focus .list-group-item-heading>small,.list-group-item.active:hover .list-group-item-heading,.list-group-item.active:hover .list-group-item-heading>.small,.list-group-item.active:hover .list-group-item-heading>small{color:inherit}.list-group-item.active .list-group-item-text,.list-group-item.active:focus .list-group-item-text,.list-group-item.active:hover .list-group-item-text{color:#c7ddef}.list-group-item-success{color:#3c763d;background-color:#dff0d8}a.list-group-item-success,button.list-group-item-success{color:#3c763d}a.list-group-item-success .list-group-item-heading,button.list-group-item-success .list-group-item-heading{color:inherit}a.list-group-item-success:focus,a.list-group-item-success:hover,button.list-group-item-success:focus,button.list-group-item-success:hover{color:#3c763d;background-color:#d0e9c6}a.list-group-item-success.active,a.list-group-item-success.active:focus,a.list-group-item-success.active:hover,button.list-group-item-success.active,button.list-group-item-success.active:focus,button.list-group-item-success.active:hover{color:#fff;background-color:#3c763d;border-color:#3c763d}.list-group-item-info{color:#31708f;background-color:#d9edf7}a.list-group-item-info,button.list-group-item-info{color:#31708f}a.list-group-item-info .list-group-item-heading,button.list-group-item-info .list-group-item-heading{color:inherit}a.list-group-item-info:focus,a.list-group-item-info:hover,button.list-group-item-info:focus,button.list-group-item-info:hover{color:#31708f;background-color:#c4e3f3}a.list-group-item-info.active,a.list-group-item-info.active:focus,a.list-group-item-info.active:hover,button.list-group-item-info.active,button.list-group-item-info.active:focus,button.list-group-item-info.active:hover{color:#fff;background-color:#31708f;border-color:#31708f}.list-group-item-warning{color:#8a6d3b;background-color:#fcf8e3}a.list-group-item-warning,button.list-group-item-warning{color:#8a6d3b}a.list-group-item-warning .list-group-item-heading,button.list-group-item-warning .list-group-item-heading{color:inherit}a.list-group-item-warning:focus,a.list-group-item-warning:hover,button.list-group-item-warning:focus,button.list-group-item-warning:hover{color:#8a6d3b;background-color:#faf2cc}a.list-group-item-warning.active,a.list-group-item-warning.active:focus,a.list-group-item-warning.active:hover,button.list-group-item-warning.active,button.list-group-item-warning.active:focus,button.list-group-item-warning.active:hover{color:#fff;background-color:#8a6d3b;border-color:#8a6d3b}.list-group-item-danger{color:#a94442;background-color:#f2dede}a.list-group-item-danger,button.list-group-item-danger{color:#a94442}a.list-group-item-danger .list-group-item-heading,button.list-group-item-danger .list-group-item-heading{color:inherit}a.list-group-item-danger:focus,a.list-group-item-danger:hover,button.list-group-item-danger:focus,button.list-group-item-danger:hover{color:#a94442;background-color:#ebcccc}a.list-group-item-danger.active,a.list-group-item-danger.active:focus,a.list-group-item-danger.active:hover,button.list-group-item-danger.active,button.list-group-item-danger.active:focus,button.list-group-item-danger.active:hover{color:#fff;background-color:#a94442;border-color:#a94442}.list-group-item-heading{margin-top:0;margin-bottom:5px}.list-group-item-text{margin-bottom:0;line-height:1.3}.panel{margin-bottom:20px;background-color:#fff;border:1px solid transparent;border-radius:4px;-webkit-box-shadow:0 1px 1px rgba(0,0,0,.05);box-shadow:0 1px 1px rgba(0,0,0,.05)}.panel-body{padding:15px}.panel-heading{padding:10px 15px;border-bottom:1px solid transparent;border-top-left-radius:3px;border-top-right-radius:3px}.panel-heading>.dropdown .dropdown-toggle{color:inherit}.panel-title{margin-top:0;margin-bottom:0;font-size:16px;color:inherit}.panel-title>.small,.panel-title>.small>a,.panel-title>a,.panel-title>small,.panel-title>small>a{color:inherit}.panel-footer{padding:10px 15px;background-color:#f5f5f5;border-top:1px solid #ddd;border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.list-group,.panel>.panel-collapse>.list-group{margin-bottom:0}.panel>.list-group .list-group-item,.panel>.panel-collapse>.list-group .list-group-item{border-width:1px 0;border-radius:0}.panel>.list-group:first-child .list-group-item:first-child,.panel>.panel-collapse>.list-group:first-child .list-group-item:first-child{border-top:0;border-top-left-radius:3px;border-top-right-radius:3px}.panel>.list-group:last-child .list-group-item:last-child,.panel>.panel-collapse>.list-group:last-child .list-group-item:last-child{border-bottom:0;border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.panel-heading+.panel-collapse>.list-group .list-group-item:first-child{border-top-left-radius:0;border-top-right-radius:0}.panel-heading+.list-group .list-group-item:first-child{border-top-width:0}.list-group+.panel-footer{border-top-width:0}.panel>.panel-collapse>.table,.panel>.table,.panel>.table-responsive>.table{margin-bottom:0}.panel>.panel-collapse>.table caption,.panel>.table caption,.panel>.table-responsive>.table caption{padding-right:15px;padding-left:15px}.panel>.table-responsive:first-child>.table:first-child,.panel>.table:first-child{border-top-left-radius:3px;border-top-right-radius:3px}.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child,.panel>.table:first-child>tbody:first-child>tr:first-child,.panel>.table:first-child>thead:first-child>tr:first-child{border-top-left-radius:3px;border-top-right-radius:3px}.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:first-child,.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:first-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:first-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:first-child,.panel>.table:first-child>tbody:first-child>tr:first-child td:first-child,.panel>.table:first-child>tbody:first-child>tr:first-child th:first-child,.panel>.table:first-child>thead:first-child>tr:first-child td:first-child,.panel>.table:first-child>thead:first-child>tr:first-child th:first-child{border-top-left-radius:3px}.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child td:last-child,.panel>.table-responsive:first-child>.table:first-child>tbody:first-child>tr:first-child th:last-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child td:last-child,.panel>.table-responsive:first-child>.table:first-child>thead:first-child>tr:first-child th:last-child,.panel>.table:first-child>tbody:first-child>tr:first-child td:last-child,.panel>.table:first-child>tbody:first-child>tr:first-child th:last-child,.panel>.table:first-child>thead:first-child>tr:first-child td:last-child,.panel>.table:first-child>thead:first-child>tr:first-child th:last-child{border-top-right-radius:3px}.panel>.table-responsive:last-child>.table:last-child,.panel>.table:last-child{border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child,.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child,.panel>.table:last-child>tbody:last-child>tr:last-child,.panel>.table:last-child>tfoot:last-child>tr:last-child{border-bottom-right-radius:3px;border-bottom-left-radius:3px}.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:first-child,.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:first-child,.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:first-child,.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:first-child,.panel>.table:last-child>tbody:last-child>tr:last-child td:first-child,.panel>.table:last-child>tbody:last-child>tr:last-child th:first-child,.panel>.table:last-child>tfoot:last-child>tr:last-child td:first-child,.panel>.table:last-child>tfoot:last-child>tr:last-child th:first-child{border-bottom-left-radius:3px}.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child td:last-child,.panel>.table-responsive:last-child>.table:last-child>tbody:last-child>tr:last-child th:last-child,.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child td:last-child,.panel>.table-responsive:last-child>.table:last-child>tfoot:last-child>tr:last-child th:last-child,.panel>.table:last-child>tbody:last-child>tr:last-child td:last-child,.panel>.table:last-child>tbody:last-child>tr:last-child th:last-child,.panel>.table:last-child>tfoot:last-child>tr:last-child td:last-child,.panel>.table:last-child>tfoot:last-child>tr:last-child th:last-child{border-bottom-right-radius:3px}.panel>.panel-body+.table,.panel>.panel-body+.table-responsive,.panel>.table+.panel-body,.panel>.table-responsive+.panel-body{border-top:1px solid #ddd}.panel>.table>tbody:first-child>tr:first-child td,.panel>.table>tbody:first-child>tr:first-child th{border-top:0}.panel>.table-bordered,.panel>.table-responsive>.table-bordered{border:0}.panel>.table-bordered>tbody>tr>td:first-child,.panel>.table-bordered>tbody>tr>th:first-child,.panel>.table-bordered>tfoot>tr>td:first-child,.panel>.table-bordered>tfoot>tr>th:first-child,.panel>.table-bordered>thead>tr>td:first-child,.panel>.table-bordered>thead>tr>th:first-child,.panel>.table-responsive>.table-bordered>tbody>tr>td:first-child,.panel>.table-responsive>.table-bordered>tbody>tr>th:first-child,.panel>.table-responsive>.table-bordered>tfoot>tr>td:first-child,.panel>.table-responsive>.table-bordered>tfoot>tr>th:first-child,.panel>.table-responsive>.table-bordered>thead>tr>td:first-child,.panel>.table-responsive>.table-bordered>thead>tr>th:first-child{border-left:0}.panel>.table-bordered>tbody>tr>td:last-child,.panel>.table-bordered>tbody>tr>th:last-child,.panel>.table-bordered>tfoot>tr>td:last-child,.panel>.table-bordered>tfoot>tr>th:last-child,.panel>.table-bordered>thead>tr>td:last-child,.panel>.table-bordered>thead>tr>th:last-child,.panel>.table-responsive>.table-bordered>tbody>tr>td:last-child,.panel>.table-responsive>.table-bordered>tbody>tr>th:last-child,.panel>.table-responsive>.table-bordered>tfoot>tr>td:last-child,.panel>.table-responsive>.table-bordered>tfoot>tr>th:last-child,.panel>.table-responsive>.table-bordered>thead>tr>td:last-child,.panel>.table-responsive>.table-bordered>thead>tr>th:last-child{border-right:0}.panel>.table-bordered>tbody>tr:first-child>td,.panel>.table-bordered>tbody>tr:first-child>th,.panel>.table-bordered>thead>tr:first-child>td,.panel>.table-bordered>thead>tr:first-child>th,.panel>.table-responsive>.table-bordered>tbody>tr:first-child>td,.panel>.table-responsive>.table-bordered>tbody>tr:first-child>th,.panel>.table-responsive>.table-bordered>thead>tr:first-child>td,.panel>.table-responsive>.table-bordered>thead>tr:first-child>th{border-bottom:0}.panel>.table-bordered>tbody>tr:last-child>td,.panel>.table-bordered>tbody>tr:last-child>th,.panel>.table-bordered>tfoot>tr:last-child>td,.panel>.table-bordered>tfoot>tr:last-child>th,.panel>.table-responsive>.table-bordered>tbody>tr:last-child>td,.panel>.table-responsive>.table-bordered>tbody>tr:last-child>th,.panel>.table-responsive>.table-bordered>tfoot>tr:last-child>td,.panel>.table-responsive>.table-bordered>tfoot>tr:last-child>th{border-bottom:0}.panel>.table-responsive{margin-bottom:0;border:0}.panel-group{margin-bottom:20px}.panel-group .panel{margin-bottom:0;border-radius:4px}.panel-group .panel+.panel{margin-top:5px}.panel-group .panel-heading{border-bottom:0}.panel-group .panel-heading+.panel-collapse>.list-group,.panel-group .panel-heading+.panel-collapse>.panel-body{border-top:1px solid #ddd}.panel-group .panel-footer{border-top:0}.panel-group .panel-footer+.panel-collapse .panel-body{border-bottom:1px solid #ddd}.panel-default{border-color:#ddd}.panel-default>.panel-heading{color:#333;background-color:#f5f5f5;border-color:#ddd}.panel-default>.panel-heading+.panel-collapse>.panel-body{border-top-color:#ddd}.panel-default>.panel-heading .badge{color:#f5f5f5;background-color:#333}.panel-default>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#ddd}.panel-primary{border-color:#337ab7}.panel-primary>.panel-heading{color:#fff;background-color:#337ab7;border-color:#337ab7}.panel-primary>.panel-heading+.panel-collapse>.panel-body{border-top-color:#337ab7}.panel-primary>.panel-heading .badge{color:#337ab7;background-color:#fff}.panel-primary>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#337ab7}.panel-success{border-color:#d6e9c6}.panel-success>.panel-heading{color:#3c763d;background-color:#dff0d8;border-color:#d6e9c6}.panel-success>.panel-heading+.panel-collapse>.panel-body{border-top-color:#d6e9c6}.panel-success>.panel-heading .badge{color:#dff0d8;background-color:#3c763d}.panel-success>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#d6e9c6}.panel-info{border-color:#bce8f1}.panel-info>.panel-heading{color:#31708f;background-color:#d9edf7;border-color:#bce8f1}.panel-info>.panel-heading+.panel-collapse>.panel-body{border-top-color:#bce8f1}.panel-info>.panel-heading .badge{color:#d9edf7;background-color:#31708f}.panel-info>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#bce8f1}.panel-warning{border-color:#faebcc}.panel-warning>.panel-heading{color:#8a6d3b;background-color:#fcf8e3;border-color:#faebcc}.panel-warning>.panel-heading+.panel-collapse>.panel-body{border-top-color:#faebcc}.panel-warning>.panel-heading .badge{color:#fcf8e3;background-color:#8a6d3b}.panel-warning>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#faebcc}.panel-danger{border-color:#ebccd1}.panel-danger>.panel-heading{color:#a94442;background-color:#f2dede;border-color:#ebccd1}.panel-danger>.panel-heading+.panel-collapse>.panel-body{border-top-color:#ebccd1}.panel-danger>.panel-heading .badge{color:#f2dede;background-color:#a94442}.panel-danger>.panel-footer+.panel-collapse>.panel-body{border-bottom-color:#ebccd1}.embed-responsive{position:relative;display:block;height:0;padding:0;overflow:hidden}.embed-responsive .embed-responsive-item,.embed-responsive embed,.embed-responsive iframe,.embed-responsive object,.embed-responsive video{position:absolute;top:0;bottom:0;left:0;width:100%;height:100%;border:0}.embed-responsive-16by9{padding-bottom:56.25%}.embed-responsive-4by3{padding-bottom:75%}.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.05);box-shadow:inset 0 1px 1px rgba(0,0,0,.05)}.well blockquote{border-color:#ddd;border-color:rgba(0,0,0,.15)}.well-lg{padding:24px;border-radius:6px}.well-sm{padding:9px;border-radius:3px}.close{float:right;font-size:21px;font-weight:700;line-height:1;color:#000;text-shadow:0 1px 0 #fff;filter:alpha(opacity=20);opacity:.2}.close:focus,.close:hover{color:#000;text-decoration:none;cursor:pointer;filter:alpha(opacity=50);opacity:.5}button.close{-webkit-appearance:none;padding:0;cursor:pointer;background:0 0;border:0}.modal-open{overflow:hidden}.modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1050;display:none;overflow:hidden;-webkit-overflow-scrolling:touch;outline:0}.modal.fade .modal-dialog{-webkit-transition:-webkit-transform .3s ease-out;-o-transition:-o-transform .3s ease-out;transition:transform .3s ease-out;-webkit-transform:translate(0,-25%);-ms-transform:translate(0,-25%);-o-transform:translate(0,-25%);transform:translate(0,-25%)}.modal.in .modal-dialog{-webkit-transform:translate(0,0);-ms-transform:translate(0,0);-o-transform:translate(0,0);transform:translate(0,0)}.modal-open .modal{overflow-x:hidden;overflow-y:auto}.modal-dialog{position:relative;width:auto;margin:10px}.modal-content{position:relative;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #999;border:1px solid rgba(0,0,0,.2);border-radius:6px;outline:0;-webkit-box-shadow:0 3px 9px rgba(0,0,0,.5);box-shadow:0 3px 9px rgba(0,0,0,.5)}.modal-backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1040;background-color:#000}.modal-backdrop.fade{filter:alpha(opacity=0);opacity:0}.modal-backdrop.in{filter:alpha(opacity=50);opacity:.5}.modal-header{min-height:16.43px;padding:15px;border-bottom:1px solid #e5e5e5}.modal-header .close{margin-top:-2px}.modal-title{margin:0;line-height:1.42857143}.modal-body{position:relative;padding:15px}.modal-footer{padding:15px;text-align:right;border-top:1px solid #e5e5e5}.modal-footer .btn+.btn{margin-bottom:0;margin-left:5px}.modal-footer .btn-group .btn+.btn{margin-left:-1px}.modal-footer .btn-block+.btn-block{margin-left:0}.modal-scrollbar-measure{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}@media (min-width:768px){.modal-dialog{width:600px;margin:30px auto}.modal-content{-webkit-box-shadow:0 5px 15px rgba(0,0,0,.5);box-shadow:0 5px 15px rgba(0,0,0,.5)}.modal-sm{width:300px}}@media (min-width:992px){.modal-lg{width:900px}}.tooltip{position:absolute;z-index:1070;display:block;font-family:\"Helvetica Neue\",Helvetica,Arial,sans-serif;font-size:12px;font-style:normal;font-weight:400;line-height:1.42857143;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;filter:alpha(opacity=0);opacity:0;line-break:auto}.tooltip.in{filter:alpha(opacity=90);opacity:.9}.tooltip.top{padding:5px 0;margin-top:-3px}.tooltip.right{padding:0 5px;margin-left:3px}.tooltip.bottom{padding:5px 0;margin-top:3px}.tooltip.left{padding:0 5px;margin-left:-3px}.tooltip-inner{max-width:200px;padding:3px 8px;color:#fff;text-align:center;background-color:#000;border-radius:4px}.tooltip-arrow{position:absolute;width:0;height:0;border-color:transparent;border-style:solid}.tooltip.top .tooltip-arrow{bottom:0;left:50%;margin-left:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.top-left .tooltip-arrow{right:5px;bottom:0;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.top-right .tooltip-arrow{bottom:0;left:5px;margin-bottom:-5px;border-width:5px 5px 0;border-top-color:#000}.tooltip.right .tooltip-arrow{top:50%;left:0;margin-top:-5px;border-width:5px 5px 5px 0;border-right-color:#000}.tooltip.left .tooltip-arrow{top:50%;right:0;margin-top:-5px;border-width:5px 0 5px 5px;border-left-color:#000}.tooltip.bottom .tooltip-arrow{top:0;left:50%;margin-left:-5px;border-width:0 5px 5px;border-bottom-color:#000}.tooltip.bottom-left .tooltip-arrow{top:0;right:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#000}.tooltip.bottom-right .tooltip-arrow{top:0;left:5px;margin-top:-5px;border-width:0 5px 5px;border-bottom-color:#000}.popover{position:absolute;top:0;left:0;z-index:1060;display:none;max-width:276px;padding:1px;font-family:\"Helvetica Neue\",Helvetica,Arial,sans-serif;font-size:14px;font-style:normal;font-weight:400;line-height:1.42857143;text-align:left;text-align:start;text-decoration:none;text-shadow:none;text-transform:none;letter-spacing:normal;word-break:normal;word-spacing:normal;word-wrap:normal;white-space:normal;background-color:#fff;-webkit-background-clip:padding-box;background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.2);border-radius:6px;-webkit-box-shadow:0 5px 10px rgba(0,0,0,.2);box-shadow:0 5px 10px rgba(0,0,0,.2);line-break:auto}.popover.top{margin-top:-10px}.popover.right{margin-left:10px}.popover.bottom{margin-top:10px}.popover.left{margin-left:-10px}.popover-title{padding:8px 14px;margin:0;font-size:14px;background-color:#f7f7f7;border-bottom:1px solid #ebebeb;border-radius:5px 5px 0 0}.popover-content{padding:9px 14px}.popover>.arrow,.popover>.arrow:after{position:absolute;display:block;width:0;height:0;border-color:transparent;border-style:solid}.popover>.arrow{border-width:11px}.popover>.arrow:after{content:\"\";border-width:10px}.popover.top>.arrow{bottom:-11px;left:50%;margin-left:-11px;border-top-color:#999;border-top-color:rgba(0,0,0,.25);border-bottom-width:0}.popover.top>.arrow:after{bottom:1px;margin-left:-10px;content:\" \";border-top-color:#fff;border-bottom-width:0}.popover.right>.arrow{top:50%;left:-11px;margin-top:-11px;border-right-color:#999;border-right-color:rgba(0,0,0,.25);border-left-width:0}.popover.right>.arrow:after{bottom:-10px;left:1px;content:\" \";border-right-color:#fff;border-left-width:0}.popover.bottom>.arrow{top:-11px;left:50%;margin-left:-11px;border-top-width:0;border-bottom-color:#999;border-bottom-color:rgba(0,0,0,.25)}.popover.bottom>.arrow:after{top:1px;margin-left:-10px;content:\" \";border-top-width:0;border-bottom-color:#fff}.popover.left>.arrow{top:50%;right:-11px;margin-top:-11px;border-right-width:0;border-left-color:#999;border-left-color:rgba(0,0,0,.25)}.popover.left>.arrow:after{right:1px;bottom:-10px;content:\" \";border-right-width:0;border-left-color:#fff}.carousel{position:relative}.carousel-inner{position:relative;width:100%;overflow:hidden}.carousel-inner>.item{position:relative;display:none;-webkit-transition:.6s ease-in-out left;-o-transition:.6s ease-in-out left;transition:.6s ease-in-out left}.carousel-inner>.item>a>img,.carousel-inner>.item>img{line-height:1}@media all and (transform-3d),(-webkit-transform-3d){.carousel-inner>.item{-webkit-transition:-webkit-transform .6s ease-in-out;-o-transition:-o-transform .6s ease-in-out;transition:transform .6s ease-in-out;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000px;perspective:1000px}.carousel-inner>.item.active.right,.carousel-inner>.item.next{left:0;-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}.carousel-inner>.item.active.left,.carousel-inner>.item.prev{left:0;-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}.carousel-inner>.item.active,.carousel-inner>.item.next.left,.carousel-inner>.item.prev.right{left:0;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}.carousel-inner>.active,.carousel-inner>.next,.carousel-inner>.prev{display:block}.carousel-inner>.active{left:0}.carousel-inner>.next,.carousel-inner>.prev{position:absolute;top:0;width:100%}.carousel-inner>.next{left:100%}.carousel-inner>.prev{left:-100%}.carousel-inner>.next.left,.carousel-inner>.prev.right{left:0}.carousel-inner>.active.left{left:-100%}.carousel-inner>.active.right{left:100%}.carousel-control{position:absolute;top:0;bottom:0;left:0;width:15%;font-size:20px;color:#fff;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.6);filter:alpha(opacity=50);opacity:.5}.carousel-control.left{background-image:-webkit-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);background-image:-o-linear-gradient(left,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.5)),to(rgba(0,0,0,.0001)));background-image:linear-gradient(to right,rgba(0,0,0,.5) 0,rgba(0,0,0,.0001) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);background-repeat:repeat-x}.carousel-control.right{right:0;left:auto;background-image:-webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);background-image:-o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);background-image:-webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));background-image:linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);background-repeat:repeat-x}.carousel-control:focus,.carousel-control:hover{color:#fff;text-decoration:none;filter:alpha(opacity=90);outline:0;opacity:.9}.carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right,.carousel-control .icon-next,.carousel-control .icon-prev{position:absolute;top:50%;z-index:5;display:inline-block;margin-top:-10px}.carousel-control .glyphicon-chevron-left,.carousel-control .icon-prev{left:50%;margin-left:-10px}.carousel-control .glyphicon-chevron-right,.carousel-control .icon-next{right:50%;margin-right:-10px}.carousel-control .icon-next,.carousel-control .icon-prev{width:20px;height:20px;font-family:serif;line-height:1}.carousel-control .icon-prev:before{content:'\\2039'}.carousel-control .icon-next:before{content:'\\203A'}.carousel-indicators{position:absolute;bottom:10px;left:50%;z-index:15;width:60%;padding-left:0;margin-left:-30%;text-align:center;list-style:none}.carousel-indicators li{display:inline-block;width:10px;height:10px;margin:1px;text-indent:-999px;cursor:pointer;background-color:#000\\9;background-color:rgba(0,0,0,0);border:1px solid #fff;border-radius:10px}.carousel-indicators .active{width:12px;height:12px;margin:0;background-color:#fff}.carousel-caption{position:absolute;right:15%;bottom:20px;left:15%;z-index:10;padding-top:20px;padding-bottom:20px;color:#fff;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.6)}.carousel-caption .btn{text-shadow:none}@media screen and (min-width:768px){.carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right,.carousel-control .icon-next,.carousel-control .icon-prev{width:30px;height:30px;margin-top:-15px;font-size:30px}.carousel-control .glyphicon-chevron-left,.carousel-control .icon-prev{margin-left:-15px}.carousel-control .glyphicon-chevron-right,.carousel-control .icon-next{margin-right:-15px}.carousel-caption{right:20%;left:20%;padding-bottom:30px}.carousel-indicators{bottom:20px}}.btn-group-vertical>.btn-group:after,.btn-group-vertical>.btn-group:before,.btn-toolbar:after,.btn-toolbar:before,.clearfix:after,.clearfix:before,.container-fluid:after,.container-fluid:before,.container:after,.container:before,.dl-horizontal dd:after,.dl-horizontal dd:before,.form-horizontal .form-group:after,.form-horizontal .form-group:before,.modal-footer:after,.modal-footer:before,.nav:after,.nav:before,.navbar-collapse:after,.navbar-collapse:before,.navbar-header:after,.navbar-header:before,.navbar:after,.navbar:before,.pager:after,.pager:before,.panel-body:after,.panel-body:before,.row:after,.row:before{display:table;content:\" \"}.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.form-horizontal .form-group:after,.modal-footer:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}.center-block{display:block;margin-right:auto;margin-left:auto}.pull-right{float:right!important}.pull-left{float:left!important}.hide{display:none!important}.show{display:block!important}.invisible{visibility:hidden}.text-hide{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0}.hidden{display:none!important}.affix{position:fixed}@-ms-viewport{width:device-width}.visible-lg,.visible-md,.visible-sm,.visible-xs{display:none!important}.visible-lg-block,.visible-lg-inline,.visible-lg-inline-block,.visible-md-block,.visible-md-inline,.visible-md-inline-block,.visible-sm-block,.visible-sm-inline,.visible-sm-inline-block,.visible-xs-block,.visible-xs-inline,.visible-xs-inline-block{display:none!important}@media (max-width:767px){.visible-xs{display:block!important}table.visible-xs{display:table!important}tr.visible-xs{display:table-row!important}td.visible-xs,th.visible-xs{display:table-cell!important}}@media (max-width:767px){.visible-xs-block{display:block!important}}@media (max-width:767px){.visible-xs-inline{display:inline!important}}@media (max-width:767px){.visible-xs-inline-block{display:inline-block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm{display:block!important}table.visible-sm{display:table!important}tr.visible-sm{display:table-row!important}td.visible-sm,th.visible-sm{display:table-cell!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-block{display:block!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline{display:inline!important}}@media (min-width:768px) and (max-width:991px){.visible-sm-inline-block{display:inline-block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md{display:block!important}table.visible-md{display:table!important}tr.visible-md{display:table-row!important}td.visible-md,th.visible-md{display:table-cell!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-block{display:block!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline{display:inline!important}}@media (min-width:992px) and (max-width:1199px){.visible-md-inline-block{display:inline-block!important}}@media (min-width:1200px){.visible-lg{display:block!important}table.visible-lg{display:table!important}tr.visible-lg{display:table-row!important}td.visible-lg,th.visible-lg{display:table-cell!important}}@media (min-width:1200px){.visible-lg-block{display:block!important}}@media (min-width:1200px){.visible-lg-inline{display:inline!important}}@media (min-width:1200px){.visible-lg-inline-block{display:inline-block!important}}@media (max-width:767px){.hidden-xs{display:none!important}}@media (min-width:768px) and (max-width:991px){.hidden-sm{display:none!important}}@media (min-width:992px) and (max-width:1199px){.hidden-md{display:none!important}}@media (min-width:1200px){.hidden-lg{display:none!important}}.visible-print{display:none!important}@media print{.visible-print{display:block!important}table.visible-print{display:table!important}tr.visible-print{display:table-row!important}td.visible-print,th.visible-print{display:table-cell!important}}.visible-print-block{display:none!important}@media print{.visible-print-block{display:block!important}}.visible-print-inline{display:none!important}@media print{.visible-print-inline{display:inline!important}}.visible-print-inline-block{display:none!important}@media print{.visible-print-inline-block{display:inline-block!important}}@media print{.hidden-print{display:none!important}}", ""]);
 
 	// exports
 
@@ -517,14 +514,26 @@
 
 /***/ },
 /* 12 */
+/***/ function(module, exports) {
+
+	/*!
+	 * Bootstrap v3.3.5 (http://getbootstrap.com)
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under the MIT license
+	 */
+	if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires jQuery");+function(a){"use strict";var b=a.fn.jquery.split(" ")[0].split(".");if(b[0]<2&&b[1]<9||1==b[0]&&9==b[1]&&b[2]<1)throw new Error("Bootstrap's JavaScript requires jQuery version 1.9.1 or higher")}(jQuery),+function(a){"use strict";function b(){var a=document.createElement("bootstrap"),b={WebkitTransition:"webkitTransitionEnd",MozTransition:"transitionend",OTransition:"oTransitionEnd otransitionend",transition:"transitionend"};for(var c in b)if(void 0!==a.style[c])return{end:b[c]};return!1}a.fn.emulateTransitionEnd=function(b){var c=!1,d=this;a(this).one("bsTransitionEnd",function(){c=!0});var e=function(){c||a(d).trigger(a.support.transition.end)};return setTimeout(e,b),this},a(function(){a.support.transition=b(),a.support.transition&&(a.event.special.bsTransitionEnd={bindType:a.support.transition.end,delegateType:a.support.transition.end,handle:function(b){return a(b.target).is(this)?b.handleObj.handler.apply(this,arguments):void 0}})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var c=a(this),e=c.data("bs.alert");e||c.data("bs.alert",e=new d(this)),"string"==typeof b&&e[b].call(c)})}var c='[data-dismiss="alert"]',d=function(b){a(b).on("click",c,this.close)};d.VERSION="3.3.5",d.TRANSITION_DURATION=150,d.prototype.close=function(b){function c(){g.detach().trigger("closed.bs.alert").remove()}var e=a(this),f=e.attr("data-target");f||(f=e.attr("href"),f=f&&f.replace(/.*(?=#[^\s]*$)/,""));var g=a(f);b&&b.preventDefault(),g.length||(g=e.closest(".alert")),g.trigger(b=a.Event("close.bs.alert")),b.isDefaultPrevented()||(g.removeClass("in"),a.support.transition&&g.hasClass("fade")?g.one("bsTransitionEnd",c).emulateTransitionEnd(d.TRANSITION_DURATION):c())};var e=a.fn.alert;a.fn.alert=b,a.fn.alert.Constructor=d,a.fn.alert.noConflict=function(){return a.fn.alert=e,this},a(document).on("click.bs.alert.data-api",c,d.prototype.close)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.button"),f="object"==typeof b&&b;e||d.data("bs.button",e=new c(this,f)),"toggle"==b?e.toggle():b&&e.setState(b)})}var c=function(b,d){this.$element=a(b),this.options=a.extend({},c.DEFAULTS,d),this.isLoading=!1};c.VERSION="3.3.5",c.DEFAULTS={loadingText:"loading..."},c.prototype.setState=function(b){var c="disabled",d=this.$element,e=d.is("input")?"val":"html",f=d.data();b+="Text",null==f.resetText&&d.data("resetText",d[e]()),setTimeout(a.proxy(function(){d[e](null==f[b]?this.options[b]:f[b]),"loadingText"==b?(this.isLoading=!0,d.addClass(c).attr(c,c)):this.isLoading&&(this.isLoading=!1,d.removeClass(c).removeAttr(c))},this),0)},c.prototype.toggle=function(){var a=!0,b=this.$element.closest('[data-toggle="buttons"]');if(b.length){var c=this.$element.find("input");"radio"==c.prop("type")?(c.prop("checked")&&(a=!1),b.find(".active").removeClass("active"),this.$element.addClass("active")):"checkbox"==c.prop("type")&&(c.prop("checked")!==this.$element.hasClass("active")&&(a=!1),this.$element.toggleClass("active")),c.prop("checked",this.$element.hasClass("active")),a&&c.trigger("change")}else this.$element.attr("aria-pressed",!this.$element.hasClass("active")),this.$element.toggleClass("active")};var d=a.fn.button;a.fn.button=b,a.fn.button.Constructor=c,a.fn.button.noConflict=function(){return a.fn.button=d,this},a(document).on("click.bs.button.data-api",'[data-toggle^="button"]',function(c){var d=a(c.target);d.hasClass("btn")||(d=d.closest(".btn")),b.call(d,"toggle"),a(c.target).is('input[type="radio"]')||a(c.target).is('input[type="checkbox"]')||c.preventDefault()}).on("focus.bs.button.data-api blur.bs.button.data-api",'[data-toggle^="button"]',function(b){a(b.target).closest(".btn").toggleClass("focus",/^focus(in)?$/.test(b.type))})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.carousel"),f=a.extend({},c.DEFAULTS,d.data(),"object"==typeof b&&b),g="string"==typeof b?b:f.slide;e||d.data("bs.carousel",e=new c(this,f)),"number"==typeof b?e.to(b):g?e[g]():f.interval&&e.pause().cycle()})}var c=function(b,c){this.$element=a(b),this.$indicators=this.$element.find(".carousel-indicators"),this.options=c,this.paused=null,this.sliding=null,this.interval=null,this.$active=null,this.$items=null,this.options.keyboard&&this.$element.on("keydown.bs.carousel",a.proxy(this.keydown,this)),"hover"==this.options.pause&&!("ontouchstart"in document.documentElement)&&this.$element.on("mouseenter.bs.carousel",a.proxy(this.pause,this)).on("mouseleave.bs.carousel",a.proxy(this.cycle,this))};c.VERSION="3.3.5",c.TRANSITION_DURATION=600,c.DEFAULTS={interval:5e3,pause:"hover",wrap:!0,keyboard:!0},c.prototype.keydown=function(a){if(!/input|textarea/i.test(a.target.tagName)){switch(a.which){case 37:this.prev();break;case 39:this.next();break;default:return}a.preventDefault()}},c.prototype.cycle=function(b){return b||(this.paused=!1),this.interval&&clearInterval(this.interval),this.options.interval&&!this.paused&&(this.interval=setInterval(a.proxy(this.next,this),this.options.interval)),this},c.prototype.getItemIndex=function(a){return this.$items=a.parent().children(".item"),this.$items.index(a||this.$active)},c.prototype.getItemForDirection=function(a,b){var c=this.getItemIndex(b),d="prev"==a&&0===c||"next"==a&&c==this.$items.length-1;if(d&&!this.options.wrap)return b;var e="prev"==a?-1:1,f=(c+e)%this.$items.length;return this.$items.eq(f)},c.prototype.to=function(a){var b=this,c=this.getItemIndex(this.$active=this.$element.find(".item.active"));return a>this.$items.length-1||0>a?void 0:this.sliding?this.$element.one("slid.bs.carousel",function(){b.to(a)}):c==a?this.pause().cycle():this.slide(a>c?"next":"prev",this.$items.eq(a))},c.prototype.pause=function(b){return b||(this.paused=!0),this.$element.find(".next, .prev").length&&a.support.transition&&(this.$element.trigger(a.support.transition.end),this.cycle(!0)),this.interval=clearInterval(this.interval),this},c.prototype.next=function(){return this.sliding?void 0:this.slide("next")},c.prototype.prev=function(){return this.sliding?void 0:this.slide("prev")},c.prototype.slide=function(b,d){var e=this.$element.find(".item.active"),f=d||this.getItemForDirection(b,e),g=this.interval,h="next"==b?"left":"right",i=this;if(f.hasClass("active"))return this.sliding=!1;var j=f[0],k=a.Event("slide.bs.carousel",{relatedTarget:j,direction:h});if(this.$element.trigger(k),!k.isDefaultPrevented()){if(this.sliding=!0,g&&this.pause(),this.$indicators.length){this.$indicators.find(".active").removeClass("active");var l=a(this.$indicators.children()[this.getItemIndex(f)]);l&&l.addClass("active")}var m=a.Event("slid.bs.carousel",{relatedTarget:j,direction:h});return a.support.transition&&this.$element.hasClass("slide")?(f.addClass(b),f[0].offsetWidth,e.addClass(h),f.addClass(h),e.one("bsTransitionEnd",function(){f.removeClass([b,h].join(" ")).addClass("active"),e.removeClass(["active",h].join(" ")),i.sliding=!1,setTimeout(function(){i.$element.trigger(m)},0)}).emulateTransitionEnd(c.TRANSITION_DURATION)):(e.removeClass("active"),f.addClass("active"),this.sliding=!1,this.$element.trigger(m)),g&&this.cycle(),this}};var d=a.fn.carousel;a.fn.carousel=b,a.fn.carousel.Constructor=c,a.fn.carousel.noConflict=function(){return a.fn.carousel=d,this};var e=function(c){var d,e=a(this),f=a(e.attr("data-target")||(d=e.attr("href"))&&d.replace(/.*(?=#[^\s]+$)/,""));if(f.hasClass("carousel")){var g=a.extend({},f.data(),e.data()),h=e.attr("data-slide-to");h&&(g.interval=!1),b.call(f,g),h&&f.data("bs.carousel").to(h),c.preventDefault()}};a(document).on("click.bs.carousel.data-api","[data-slide]",e).on("click.bs.carousel.data-api","[data-slide-to]",e),a(window).on("load",function(){a('[data-ride="carousel"]').each(function(){var c=a(this);b.call(c,c.data())})})}(jQuery),+function(a){"use strict";function b(b){var c,d=b.attr("data-target")||(c=b.attr("href"))&&c.replace(/.*(?=#[^\s]+$)/,"");return a(d)}function c(b){return this.each(function(){var c=a(this),e=c.data("bs.collapse"),f=a.extend({},d.DEFAULTS,c.data(),"object"==typeof b&&b);!e&&f.toggle&&/show|hide/.test(b)&&(f.toggle=!1),e||c.data("bs.collapse",e=new d(this,f)),"string"==typeof b&&e[b]()})}var d=function(b,c){this.$element=a(b),this.options=a.extend({},d.DEFAULTS,c),this.$trigger=a('[data-toggle="collapse"][href="#'+b.id+'"],[data-toggle="collapse"][data-target="#'+b.id+'"]'),this.transitioning=null,this.options.parent?this.$parent=this.getParent():this.addAriaAndCollapsedClass(this.$element,this.$trigger),this.options.toggle&&this.toggle()};d.VERSION="3.3.5",d.TRANSITION_DURATION=350,d.DEFAULTS={toggle:!0},d.prototype.dimension=function(){var a=this.$element.hasClass("width");return a?"width":"height"},d.prototype.show=function(){if(!this.transitioning&&!this.$element.hasClass("in")){var b,e=this.$parent&&this.$parent.children(".panel").children(".in, .collapsing");if(!(e&&e.length&&(b=e.data("bs.collapse"),b&&b.transitioning))){var f=a.Event("show.bs.collapse");if(this.$element.trigger(f),!f.isDefaultPrevented()){e&&e.length&&(c.call(e,"hide"),b||e.data("bs.collapse",null));var g=this.dimension();this.$element.removeClass("collapse").addClass("collapsing")[g](0).attr("aria-expanded",!0),this.$trigger.removeClass("collapsed").attr("aria-expanded",!0),this.transitioning=1;var h=function(){this.$element.removeClass("collapsing").addClass("collapse in")[g](""),this.transitioning=0,this.$element.trigger("shown.bs.collapse")};if(!a.support.transition)return h.call(this);var i=a.camelCase(["scroll",g].join("-"));this.$element.one("bsTransitionEnd",a.proxy(h,this)).emulateTransitionEnd(d.TRANSITION_DURATION)[g](this.$element[0][i])}}}},d.prototype.hide=function(){if(!this.transitioning&&this.$element.hasClass("in")){var b=a.Event("hide.bs.collapse");if(this.$element.trigger(b),!b.isDefaultPrevented()){var c=this.dimension();this.$element[c](this.$element[c]())[0].offsetHeight,this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded",!1),this.$trigger.addClass("collapsed").attr("aria-expanded",!1),this.transitioning=1;var e=function(){this.transitioning=0,this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse")};return a.support.transition?void this.$element[c](0).one("bsTransitionEnd",a.proxy(e,this)).emulateTransitionEnd(d.TRANSITION_DURATION):e.call(this)}}},d.prototype.toggle=function(){this[this.$element.hasClass("in")?"hide":"show"]()},d.prototype.getParent=function(){return a(this.options.parent).find('[data-toggle="collapse"][data-parent="'+this.options.parent+'"]').each(a.proxy(function(c,d){var e=a(d);this.addAriaAndCollapsedClass(b(e),e)},this)).end()},d.prototype.addAriaAndCollapsedClass=function(a,b){var c=a.hasClass("in");a.attr("aria-expanded",c),b.toggleClass("collapsed",!c).attr("aria-expanded",c)};var e=a.fn.collapse;a.fn.collapse=c,a.fn.collapse.Constructor=d,a.fn.collapse.noConflict=function(){return a.fn.collapse=e,this},a(document).on("click.bs.collapse.data-api",'[data-toggle="collapse"]',function(d){var e=a(this);e.attr("data-target")||d.preventDefault();var f=b(e),g=f.data("bs.collapse"),h=g?"toggle":e.data();c.call(f,h)})}(jQuery),+function(a){"use strict";function b(b){var c=b.attr("data-target");c||(c=b.attr("href"),c=c&&/#[A-Za-z]/.test(c)&&c.replace(/.*(?=#[^\s]*$)/,""));var d=c&&a(c);return d&&d.length?d:b.parent()}function c(c){c&&3===c.which||(a(e).remove(),a(f).each(function(){var d=a(this),e=b(d),f={relatedTarget:this};e.hasClass("open")&&(c&&"click"==c.type&&/input|textarea/i.test(c.target.tagName)&&a.contains(e[0],c.target)||(e.trigger(c=a.Event("hide.bs.dropdown",f)),c.isDefaultPrevented()||(d.attr("aria-expanded","false"),e.removeClass("open").trigger("hidden.bs.dropdown",f))))}))}function d(b){return this.each(function(){var c=a(this),d=c.data("bs.dropdown");d||c.data("bs.dropdown",d=new g(this)),"string"==typeof b&&d[b].call(c)})}var e=".dropdown-backdrop",f='[data-toggle="dropdown"]',g=function(b){a(b).on("click.bs.dropdown",this.toggle)};g.VERSION="3.3.5",g.prototype.toggle=function(d){var e=a(this);if(!e.is(".disabled, :disabled")){var f=b(e),g=f.hasClass("open");if(c(),!g){"ontouchstart"in document.documentElement&&!f.closest(".navbar-nav").length&&a(document.createElement("div")).addClass("dropdown-backdrop").insertAfter(a(this)).on("click",c);var h={relatedTarget:this};if(f.trigger(d=a.Event("show.bs.dropdown",h)),d.isDefaultPrevented())return;e.trigger("focus").attr("aria-expanded","true"),f.toggleClass("open").trigger("shown.bs.dropdown",h)}return!1}},g.prototype.keydown=function(c){if(/(38|40|27|32)/.test(c.which)&&!/input|textarea/i.test(c.target.tagName)){var d=a(this);if(c.preventDefault(),c.stopPropagation(),!d.is(".disabled, :disabled")){var e=b(d),g=e.hasClass("open");if(!g&&27!=c.which||g&&27==c.which)return 27==c.which&&e.find(f).trigger("focus"),d.trigger("click");var h=" li:not(.disabled):visible a",i=e.find(".dropdown-menu"+h);if(i.length){var j=i.index(c.target);38==c.which&&j>0&&j--,40==c.which&&j<i.length-1&&j++,~j||(j=0),i.eq(j).trigger("focus")}}}};var h=a.fn.dropdown;a.fn.dropdown=d,a.fn.dropdown.Constructor=g,a.fn.dropdown.noConflict=function(){return a.fn.dropdown=h,this},a(document).on("click.bs.dropdown.data-api",c).on("click.bs.dropdown.data-api",".dropdown form",function(a){a.stopPropagation()}).on("click.bs.dropdown.data-api",f,g.prototype.toggle).on("keydown.bs.dropdown.data-api",f,g.prototype.keydown).on("keydown.bs.dropdown.data-api",".dropdown-menu",g.prototype.keydown)}(jQuery),+function(a){"use strict";function b(b,d){return this.each(function(){var e=a(this),f=e.data("bs.modal"),g=a.extend({},c.DEFAULTS,e.data(),"object"==typeof b&&b);f||e.data("bs.modal",f=new c(this,g)),"string"==typeof b?f[b](d):g.show&&f.show(d)})}var c=function(b,c){this.options=c,this.$body=a(document.body),this.$element=a(b),this.$dialog=this.$element.find(".modal-dialog"),this.$backdrop=null,this.isShown=null,this.originalBodyPad=null,this.scrollbarWidth=0,this.ignoreBackdropClick=!1,this.options.remote&&this.$element.find(".modal-content").load(this.options.remote,a.proxy(function(){this.$element.trigger("loaded.bs.modal")},this))};c.VERSION="3.3.5",c.TRANSITION_DURATION=300,c.BACKDROP_TRANSITION_DURATION=150,c.DEFAULTS={backdrop:!0,keyboard:!0,show:!0},c.prototype.toggle=function(a){return this.isShown?this.hide():this.show(a)},c.prototype.show=function(b){var d=this,e=a.Event("show.bs.modal",{relatedTarget:b});this.$element.trigger(e),this.isShown||e.isDefaultPrevented()||(this.isShown=!0,this.checkScrollbar(),this.setScrollbar(),this.$body.addClass("modal-open"),this.escape(),this.resize(),this.$element.on("click.dismiss.bs.modal",'[data-dismiss="modal"]',a.proxy(this.hide,this)),this.$dialog.on("mousedown.dismiss.bs.modal",function(){d.$element.one("mouseup.dismiss.bs.modal",function(b){a(b.target).is(d.$element)&&(d.ignoreBackdropClick=!0)})}),this.backdrop(function(){var e=a.support.transition&&d.$element.hasClass("fade");d.$element.parent().length||d.$element.appendTo(d.$body),d.$element.show().scrollTop(0),d.adjustDialog(),e&&d.$element[0].offsetWidth,d.$element.addClass("in"),d.enforceFocus();var f=a.Event("shown.bs.modal",{relatedTarget:b});e?d.$dialog.one("bsTransitionEnd",function(){d.$element.trigger("focus").trigger(f)}).emulateTransitionEnd(c.TRANSITION_DURATION):d.$element.trigger("focus").trigger(f)}))},c.prototype.hide=function(b){b&&b.preventDefault(),b=a.Event("hide.bs.modal"),this.$element.trigger(b),this.isShown&&!b.isDefaultPrevented()&&(this.isShown=!1,this.escape(),this.resize(),a(document).off("focusin.bs.modal"),this.$element.removeClass("in").off("click.dismiss.bs.modal").off("mouseup.dismiss.bs.modal"),this.$dialog.off("mousedown.dismiss.bs.modal"),a.support.transition&&this.$element.hasClass("fade")?this.$element.one("bsTransitionEnd",a.proxy(this.hideModal,this)).emulateTransitionEnd(c.TRANSITION_DURATION):this.hideModal())},c.prototype.enforceFocus=function(){a(document).off("focusin.bs.modal").on("focusin.bs.modal",a.proxy(function(a){this.$element[0]===a.target||this.$element.has(a.target).length||this.$element.trigger("focus")},this))},c.prototype.escape=function(){this.isShown&&this.options.keyboard?this.$element.on("keydown.dismiss.bs.modal",a.proxy(function(a){27==a.which&&this.hide()},this)):this.isShown||this.$element.off("keydown.dismiss.bs.modal")},c.prototype.resize=function(){this.isShown?a(window).on("resize.bs.modal",a.proxy(this.handleUpdate,this)):a(window).off("resize.bs.modal")},c.prototype.hideModal=function(){var a=this;this.$element.hide(),this.backdrop(function(){a.$body.removeClass("modal-open"),a.resetAdjustments(),a.resetScrollbar(),a.$element.trigger("hidden.bs.modal")})},c.prototype.removeBackdrop=function(){this.$backdrop&&this.$backdrop.remove(),this.$backdrop=null},c.prototype.backdrop=function(b){var d=this,e=this.$element.hasClass("fade")?"fade":"";if(this.isShown&&this.options.backdrop){var f=a.support.transition&&e;if(this.$backdrop=a(document.createElement("div")).addClass("modal-backdrop "+e).appendTo(this.$body),this.$element.on("click.dismiss.bs.modal",a.proxy(function(a){return this.ignoreBackdropClick?void(this.ignoreBackdropClick=!1):void(a.target===a.currentTarget&&("static"==this.options.backdrop?this.$element[0].focus():this.hide()))},this)),f&&this.$backdrop[0].offsetWidth,this.$backdrop.addClass("in"),!b)return;f?this.$backdrop.one("bsTransitionEnd",b).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):b()}else if(!this.isShown&&this.$backdrop){this.$backdrop.removeClass("in");var g=function(){d.removeBackdrop(),b&&b()};a.support.transition&&this.$element.hasClass("fade")?this.$backdrop.one("bsTransitionEnd",g).emulateTransitionEnd(c.BACKDROP_TRANSITION_DURATION):g()}else b&&b()},c.prototype.handleUpdate=function(){this.adjustDialog()},c.prototype.adjustDialog=function(){var a=this.$element[0].scrollHeight>document.documentElement.clientHeight;this.$element.css({paddingLeft:!this.bodyIsOverflowing&&a?this.scrollbarWidth:"",paddingRight:this.bodyIsOverflowing&&!a?this.scrollbarWidth:""})},c.prototype.resetAdjustments=function(){this.$element.css({paddingLeft:"",paddingRight:""})},c.prototype.checkScrollbar=function(){var a=window.innerWidth;if(!a){var b=document.documentElement.getBoundingClientRect();a=b.right-Math.abs(b.left)}this.bodyIsOverflowing=document.body.clientWidth<a,this.scrollbarWidth=this.measureScrollbar()},c.prototype.setScrollbar=function(){var a=parseInt(this.$body.css("padding-right")||0,10);this.originalBodyPad=document.body.style.paddingRight||"",this.bodyIsOverflowing&&this.$body.css("padding-right",a+this.scrollbarWidth)},c.prototype.resetScrollbar=function(){this.$body.css("padding-right",this.originalBodyPad)},c.prototype.measureScrollbar=function(){var a=document.createElement("div");a.className="modal-scrollbar-measure",this.$body.append(a);var b=a.offsetWidth-a.clientWidth;return this.$body[0].removeChild(a),b};var d=a.fn.modal;a.fn.modal=b,a.fn.modal.Constructor=c,a.fn.modal.noConflict=function(){return a.fn.modal=d,this},a(document).on("click.bs.modal.data-api",'[data-toggle="modal"]',function(c){var d=a(this),e=d.attr("href"),f=a(d.attr("data-target")||e&&e.replace(/.*(?=#[^\s]+$)/,"")),g=f.data("bs.modal")?"toggle":a.extend({remote:!/#/.test(e)&&e},f.data(),d.data());d.is("a")&&c.preventDefault(),f.one("show.bs.modal",function(a){a.isDefaultPrevented()||f.one("hidden.bs.modal",function(){d.is(":visible")&&d.trigger("focus")})}),b.call(f,g,this)})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tooltip"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.tooltip",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.type=null,this.options=null,this.enabled=null,this.timeout=null,this.hoverState=null,this.$element=null,this.inState=null,this.init("tooltip",a,b)};c.VERSION="3.3.5",c.TRANSITION_DURATION=150,c.DEFAULTS={animation:!0,placement:"top",selector:!1,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,container:!1,viewport:{selector:"body",padding:0}},c.prototype.init=function(b,c,d){if(this.enabled=!0,this.type=b,this.$element=a(c),this.options=this.getOptions(d),this.$viewport=this.options.viewport&&a(a.isFunction(this.options.viewport)?this.options.viewport.call(this,this.$element):this.options.viewport.selector||this.options.viewport),this.inState={click:!1,hover:!1,focus:!1},this.$element[0]instanceof document.constructor&&!this.options.selector)throw new Error("`selector` option must be specified when initializing "+this.type+" on the window.document object!");for(var e=this.options.trigger.split(" "),f=e.length;f--;){var g=e[f];if("click"==g)this.$element.on("click."+this.type,this.options.selector,a.proxy(this.toggle,this));else if("manual"!=g){var h="hover"==g?"mouseenter":"focusin",i="hover"==g?"mouseleave":"focusout";this.$element.on(h+"."+this.type,this.options.selector,a.proxy(this.enter,this)),this.$element.on(i+"."+this.type,this.options.selector,a.proxy(this.leave,this))}}this.options.selector?this._options=a.extend({},this.options,{trigger:"manual",selector:""}):this.fixTitle()},c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.getOptions=function(b){return b=a.extend({},this.getDefaults(),this.$element.data(),b),b.delay&&"number"==typeof b.delay&&(b.delay={show:b.delay,hide:b.delay}),b},c.prototype.getDelegateOptions=function(){var b={},c=this.getDefaults();return this._options&&a.each(this._options,function(a,d){c[a]!=d&&(b[a]=d)}),b},c.prototype.enter=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),b instanceof a.Event&&(c.inState["focusin"==b.type?"focus":"hover"]=!0),c.tip().hasClass("in")||"in"==c.hoverState?void(c.hoverState="in"):(clearTimeout(c.timeout),c.hoverState="in",c.options.delay&&c.options.delay.show?void(c.timeout=setTimeout(function(){"in"==c.hoverState&&c.show()},c.options.delay.show)):c.show())},c.prototype.isInStateTrue=function(){for(var a in this.inState)if(this.inState[a])return!0;return!1},c.prototype.leave=function(b){var c=b instanceof this.constructor?b:a(b.currentTarget).data("bs."+this.type);return c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c)),b instanceof a.Event&&(c.inState["focusout"==b.type?"focus":"hover"]=!1),c.isInStateTrue()?void 0:(clearTimeout(c.timeout),c.hoverState="out",c.options.delay&&c.options.delay.hide?void(c.timeout=setTimeout(function(){"out"==c.hoverState&&c.hide()},c.options.delay.hide)):c.hide())},c.prototype.show=function(){var b=a.Event("show.bs."+this.type);if(this.hasContent()&&this.enabled){this.$element.trigger(b);var d=a.contains(this.$element[0].ownerDocument.documentElement,this.$element[0]);if(b.isDefaultPrevented()||!d)return;var e=this,f=this.tip(),g=this.getUID(this.type);this.setContent(),f.attr("id",g),this.$element.attr("aria-describedby",g),this.options.animation&&f.addClass("fade");var h="function"==typeof this.options.placement?this.options.placement.call(this,f[0],this.$element[0]):this.options.placement,i=/\s?auto?\s?/i,j=i.test(h);j&&(h=h.replace(i,"")||"top"),f.detach().css({top:0,left:0,display:"block"}).addClass(h).data("bs."+this.type,this),this.options.container?f.appendTo(this.options.container):f.insertAfter(this.$element),this.$element.trigger("inserted.bs."+this.type);var k=this.getPosition(),l=f[0].offsetWidth,m=f[0].offsetHeight;if(j){var n=h,o=this.getPosition(this.$viewport);h="bottom"==h&&k.bottom+m>o.bottom?"top":"top"==h&&k.top-m<o.top?"bottom":"right"==h&&k.right+l>o.width?"left":"left"==h&&k.left-l<o.left?"right":h,f.removeClass(n).addClass(h)}var p=this.getCalculatedOffset(h,k,l,m);this.applyPlacement(p,h);var q=function(){var a=e.hoverState;e.$element.trigger("shown.bs."+e.type),e.hoverState=null,"out"==a&&e.leave(e)};a.support.transition&&this.$tip.hasClass("fade")?f.one("bsTransitionEnd",q).emulateTransitionEnd(c.TRANSITION_DURATION):q()}},c.prototype.applyPlacement=function(b,c){var d=this.tip(),e=d[0].offsetWidth,f=d[0].offsetHeight,g=parseInt(d.css("margin-top"),10),h=parseInt(d.css("margin-left"),10);isNaN(g)&&(g=0),isNaN(h)&&(h=0),b.top+=g,b.left+=h,a.offset.setOffset(d[0],a.extend({using:function(a){d.css({top:Math.round(a.top),left:Math.round(a.left)})}},b),0),d.addClass("in");var i=d[0].offsetWidth,j=d[0].offsetHeight;"top"==c&&j!=f&&(b.top=b.top+f-j);var k=this.getViewportAdjustedDelta(c,b,i,j);k.left?b.left+=k.left:b.top+=k.top;var l=/top|bottom/.test(c),m=l?2*k.left-e+i:2*k.top-f+j,n=l?"offsetWidth":"offsetHeight";d.offset(b),this.replaceArrow(m,d[0][n],l)},c.prototype.replaceArrow=function(a,b,c){this.arrow().css(c?"left":"top",50*(1-a/b)+"%").css(c?"top":"left","")},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle();a.find(".tooltip-inner")[this.options.html?"html":"text"](b),a.removeClass("fade in top bottom left right")},c.prototype.hide=function(b){function d(){"in"!=e.hoverState&&f.detach(),e.$element.removeAttr("aria-describedby").trigger("hidden.bs."+e.type),b&&b()}var e=this,f=a(this.$tip),g=a.Event("hide.bs."+this.type);return this.$element.trigger(g),g.isDefaultPrevented()?void 0:(f.removeClass("in"),a.support.transition&&f.hasClass("fade")?f.one("bsTransitionEnd",d).emulateTransitionEnd(c.TRANSITION_DURATION):d(),this.hoverState=null,this)},c.prototype.fixTitle=function(){var a=this.$element;(a.attr("title")||"string"!=typeof a.attr("data-original-title"))&&a.attr("data-original-title",a.attr("title")||"").attr("title","")},c.prototype.hasContent=function(){return this.getTitle()},c.prototype.getPosition=function(b){b=b||this.$element;var c=b[0],d="BODY"==c.tagName,e=c.getBoundingClientRect();null==e.width&&(e=a.extend({},e,{width:e.right-e.left,height:e.bottom-e.top}));var f=d?{top:0,left:0}:b.offset(),g={scroll:d?document.documentElement.scrollTop||document.body.scrollTop:b.scrollTop()},h=d?{width:a(window).width(),height:a(window).height()}:null;return a.extend({},e,g,h,f)},c.prototype.getCalculatedOffset=function(a,b,c,d){return"bottom"==a?{top:b.top+b.height,left:b.left+b.width/2-c/2}:"top"==a?{top:b.top-d,left:b.left+b.width/2-c/2}:"left"==a?{top:b.top+b.height/2-d/2,left:b.left-c}:{top:b.top+b.height/2-d/2,left:b.left+b.width}},c.prototype.getViewportAdjustedDelta=function(a,b,c,d){var e={top:0,left:0};if(!this.$viewport)return e;var f=this.options.viewport&&this.options.viewport.padding||0,g=this.getPosition(this.$viewport);if(/right|left/.test(a)){var h=b.top-f-g.scroll,i=b.top+f-g.scroll+d;h<g.top?e.top=g.top-h:i>g.top+g.height&&(e.top=g.top+g.height-i)}else{var j=b.left-f,k=b.left+f+c;j<g.left?e.left=g.left-j:k>g.right&&(e.left=g.left+g.width-k)}return e},c.prototype.getTitle=function(){var a,b=this.$element,c=this.options;return a=b.attr("data-original-title")||("function"==typeof c.title?c.title.call(b[0]):c.title)},c.prototype.getUID=function(a){do a+=~~(1e6*Math.random());while(document.getElementById(a));return a},c.prototype.tip=function(){if(!this.$tip&&(this.$tip=a(this.options.template),1!=this.$tip.length))throw new Error(this.type+" `template` option must consist of exactly 1 top-level element!");return this.$tip},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".tooltip-arrow")},c.prototype.enable=function(){this.enabled=!0},c.prototype.disable=function(){this.enabled=!1},c.prototype.toggleEnabled=function(){this.enabled=!this.enabled},c.prototype.toggle=function(b){var c=this;b&&(c=a(b.currentTarget).data("bs."+this.type),c||(c=new this.constructor(b.currentTarget,this.getDelegateOptions()),a(b.currentTarget).data("bs."+this.type,c))),b?(c.inState.click=!c.inState.click,c.isInStateTrue()?c.enter(c):c.leave(c)):c.tip().hasClass("in")?c.leave(c):c.enter(c)},c.prototype.destroy=function(){var a=this;clearTimeout(this.timeout),this.hide(function(){a.$element.off("."+a.type).removeData("bs."+a.type),a.$tip&&a.$tip.detach(),a.$tip=null,a.$arrow=null,a.$viewport=null})};var d=a.fn.tooltip;a.fn.tooltip=b,a.fn.tooltip.Constructor=c,a.fn.tooltip.noConflict=function(){return a.fn.tooltip=d,this}}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.popover"),f="object"==typeof b&&b;(e||!/destroy|hide/.test(b))&&(e||d.data("bs.popover",e=new c(this,f)),"string"==typeof b&&e[b]())})}var c=function(a,b){this.init("popover",a,b)};if(!a.fn.tooltip)throw new Error("Popover requires tooltip.js");c.VERSION="3.3.5",c.DEFAULTS=a.extend({},a.fn.tooltip.Constructor.DEFAULTS,{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'}),c.prototype=a.extend({},a.fn.tooltip.Constructor.prototype),c.prototype.constructor=c,c.prototype.getDefaults=function(){return c.DEFAULTS},c.prototype.setContent=function(){var a=this.tip(),b=this.getTitle(),c=this.getContent();a.find(".popover-title")[this.options.html?"html":"text"](b),a.find(".popover-content").children().detach().end()[this.options.html?"string"==typeof c?"html":"append":"text"](c),a.removeClass("fade top bottom left right in"),a.find(".popover-title").html()||a.find(".popover-title").hide()},c.prototype.hasContent=function(){return this.getTitle()||this.getContent()},c.prototype.getContent=function(){var a=this.$element,b=this.options;return a.attr("data-content")||("function"==typeof b.content?b.content.call(a[0]):b.content)},c.prototype.arrow=function(){return this.$arrow=this.$arrow||this.tip().find(".arrow")};var d=a.fn.popover;a.fn.popover=b,a.fn.popover.Constructor=c,a.fn.popover.noConflict=function(){return a.fn.popover=d,this}}(jQuery),+function(a){"use strict";function b(c,d){this.$body=a(document.body),this.$scrollElement=a(a(c).is(document.body)?window:c),this.options=a.extend({},b.DEFAULTS,d),this.selector=(this.options.target||"")+" .nav li > a",this.offsets=[],this.targets=[],this.activeTarget=null,this.scrollHeight=0,this.$scrollElement.on("scroll.bs.scrollspy",a.proxy(this.process,this)),this.refresh(),this.process()}function c(c){return this.each(function(){var d=a(this),e=d.data("bs.scrollspy"),f="object"==typeof c&&c;e||d.data("bs.scrollspy",e=new b(this,f)),"string"==typeof c&&e[c]()})}b.VERSION="3.3.5",b.DEFAULTS={offset:10},b.prototype.getScrollHeight=function(){return this.$scrollElement[0].scrollHeight||Math.max(this.$body[0].scrollHeight,document.documentElement.scrollHeight)},b.prototype.refresh=function(){var b=this,c="offset",d=0;this.offsets=[],this.targets=[],this.scrollHeight=this.getScrollHeight(),a.isWindow(this.$scrollElement[0])||(c="position",d=this.$scrollElement.scrollTop()),this.$body.find(this.selector).map(function(){var b=a(this),e=b.data("target")||b.attr("href"),f=/^#./.test(e)&&a(e);return f&&f.length&&f.is(":visible")&&[[f[c]().top+d,e]]||null}).sort(function(a,b){return a[0]-b[0]}).each(function(){b.offsets.push(this[0]),b.targets.push(this[1])})},b.prototype.process=function(){var a,b=this.$scrollElement.scrollTop()+this.options.offset,c=this.getScrollHeight(),d=this.options.offset+c-this.$scrollElement.height(),e=this.offsets,f=this.targets,g=this.activeTarget;if(this.scrollHeight!=c&&this.refresh(),b>=d)return g!=(a=f[f.length-1])&&this.activate(a);if(g&&b<e[0])return this.activeTarget=null,this.clear();for(a=e.length;a--;)g!=f[a]&&b>=e[a]&&(void 0===e[a+1]||b<e[a+1])&&this.activate(f[a])},b.prototype.activate=function(b){this.activeTarget=b,this.clear();var c=this.selector+'[data-target="'+b+'"],'+this.selector+'[href="'+b+'"]',d=a(c).parents("li").addClass("active");d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active")),
+	d.trigger("activate.bs.scrollspy")},b.prototype.clear=function(){a(this.selector).parentsUntil(this.options.target,".active").removeClass("active")};var d=a.fn.scrollspy;a.fn.scrollspy=c,a.fn.scrollspy.Constructor=b,a.fn.scrollspy.noConflict=function(){return a.fn.scrollspy=d,this},a(window).on("load.bs.scrollspy.data-api",function(){a('[data-spy="scroll"]').each(function(){var b=a(this);c.call(b,b.data())})})}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.tab");e||d.data("bs.tab",e=new c(this)),"string"==typeof b&&e[b]()})}var c=function(b){this.element=a(b)};c.VERSION="3.3.5",c.TRANSITION_DURATION=150,c.prototype.show=function(){var b=this.element,c=b.closest("ul:not(.dropdown-menu)"),d=b.data("target");if(d||(d=b.attr("href"),d=d&&d.replace(/.*(?=#[^\s]*$)/,"")),!b.parent("li").hasClass("active")){var e=c.find(".active:last a"),f=a.Event("hide.bs.tab",{relatedTarget:b[0]}),g=a.Event("show.bs.tab",{relatedTarget:e[0]});if(e.trigger(f),b.trigger(g),!g.isDefaultPrevented()&&!f.isDefaultPrevented()){var h=a(d);this.activate(b.closest("li"),c),this.activate(h,h.parent(),function(){e.trigger({type:"hidden.bs.tab",relatedTarget:b[0]}),b.trigger({type:"shown.bs.tab",relatedTarget:e[0]})})}}},c.prototype.activate=function(b,d,e){function f(){g.removeClass("active").find("> .dropdown-menu > .active").removeClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!1),b.addClass("active").find('[data-toggle="tab"]').attr("aria-expanded",!0),h?(b[0].offsetWidth,b.addClass("in")):b.removeClass("fade"),b.parent(".dropdown-menu").length&&b.closest("li.dropdown").addClass("active").end().find('[data-toggle="tab"]').attr("aria-expanded",!0),e&&e()}var g=d.find("> .active"),h=e&&a.support.transition&&(g.length&&g.hasClass("fade")||!!d.find("> .fade").length);g.length&&h?g.one("bsTransitionEnd",f).emulateTransitionEnd(c.TRANSITION_DURATION):f(),g.removeClass("in")};var d=a.fn.tab;a.fn.tab=b,a.fn.tab.Constructor=c,a.fn.tab.noConflict=function(){return a.fn.tab=d,this};var e=function(c){c.preventDefault(),b.call(a(this),"show")};a(document).on("click.bs.tab.data-api",'[data-toggle="tab"]',e).on("click.bs.tab.data-api",'[data-toggle="pill"]',e)}(jQuery),+function(a){"use strict";function b(b){return this.each(function(){var d=a(this),e=d.data("bs.affix"),f="object"==typeof b&&b;e||d.data("bs.affix",e=new c(this,f)),"string"==typeof b&&e[b]()})}var c=function(b,d){this.options=a.extend({},c.DEFAULTS,d),this.$target=a(this.options.target).on("scroll.bs.affix.data-api",a.proxy(this.checkPosition,this)).on("click.bs.affix.data-api",a.proxy(this.checkPositionWithEventLoop,this)),this.$element=a(b),this.affixed=null,this.unpin=null,this.pinnedOffset=null,this.checkPosition()};c.VERSION="3.3.5",c.RESET="affix affix-top affix-bottom",c.DEFAULTS={offset:0,target:window},c.prototype.getState=function(a,b,c,d){var e=this.$target.scrollTop(),f=this.$element.offset(),g=this.$target.height();if(null!=c&&"top"==this.affixed)return c>e?"top":!1;if("bottom"==this.affixed)return null!=c?e+this.unpin<=f.top?!1:"bottom":a-d>=e+g?!1:"bottom";var h=null==this.affixed,i=h?e:f.top,j=h?g:b;return null!=c&&c>=e?"top":null!=d&&i+j>=a-d?"bottom":!1},c.prototype.getPinnedOffset=function(){if(this.pinnedOffset)return this.pinnedOffset;this.$element.removeClass(c.RESET).addClass("affix");var a=this.$target.scrollTop(),b=this.$element.offset();return this.pinnedOffset=b.top-a},c.prototype.checkPositionWithEventLoop=function(){setTimeout(a.proxy(this.checkPosition,this),1)},c.prototype.checkPosition=function(){if(this.$element.is(":visible")){var b=this.$element.height(),d=this.options.offset,e=d.top,f=d.bottom,g=Math.max(a(document).height(),a(document.body).height());"object"!=typeof d&&(f=e=d),"function"==typeof e&&(e=d.top(this.$element)),"function"==typeof f&&(f=d.bottom(this.$element));var h=this.getState(g,b,e,f);if(this.affixed!=h){null!=this.unpin&&this.$element.css("top","");var i="affix"+(h?"-"+h:""),j=a.Event(i+".bs.affix");if(this.$element.trigger(j),j.isDefaultPrevented())return;this.affixed=h,this.unpin="bottom"==h?this.getPinnedOffset():null,this.$element.removeClass(c.RESET).addClass(i).trigger(i.replace("affix","affixed")+".bs.affix")}"bottom"==h&&this.$element.offset({top:g-b-f})}};var d=a.fn.affix;a.fn.affix=b,a.fn.affix.Constructor=c,a.fn.affix.noConflict=function(){return a.fn.affix=d,this},a(window).on("load",function(){a('[data-spy="affix"]').each(function(){var c=a(this),d=c.data();d.offset=d.offset||{},null!=d.offsetBottom&&(d.offset.bottom=d.offsetBottom),null!=d.offsetTop&&(d.offset.top=d.offsetTop),b.call(c,d)})})}(jQuery);
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(13);
+	__webpack_require__(14);
 	module.exports = angular;
 
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports) {
 
 	/**
@@ -29547,7 +29556,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/**
@@ -30514,4406 +30523,15 @@
 
 
 /***/ },
-/* 15 */
-/***/ function(module, exports) {
-
-	/**
-	 * angular-strap
-	 * @version v2.3.8 - 2016-03-31
-	 * @link http://mgcrea.github.io/angular-strap
-	 * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
-	 * @license MIT License, http://www.opensource.org/licenses/MIT
-	 */
-	(function(window, document, undefined) {
-	  'use strict';
-	  bsCompilerService.$inject = [ '$q', '$http', '$injector', '$compile', '$controller', '$templateCache' ];
-	  angular.module('mgcrea.ngStrap.tooltip', [ 'mgcrea.ngStrap.core', 'mgcrea.ngStrap.helpers.dimensions' ]).provider('$tooltip', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      customClass: '',
-	      prefixClass: 'tooltip',
-	      prefixEvent: 'tooltip',
-	      container: false,
-	      target: false,
-	      placement: 'top',
-	      templateUrl: 'tooltip/tooltip.tpl.html',
-	      template: '',
-	      titleTemplate: false,
-	      trigger: 'hover focus',
-	      keyboard: false,
-	      html: false,
-	      show: false,
-	      title: '',
-	      type: '',
-	      delay: 0,
-	      autoClose: false,
-	      bsEnabled: true,
-	      viewport: {
-	        selector: 'body',
-	        padding: 0
-	      }
-	    };
-	    this.$get = [ '$window', '$rootScope', '$bsCompiler', '$q', '$templateCache', '$http', '$animate', '$sce', 'dimensions', '$$rAF', '$timeout', function($window, $rootScope, $bsCompiler, $q, $templateCache, $http, $animate, $sce, dimensions, $$rAF, $timeout) {
-	      var isTouch = 'createTouch' in $window.document;
-	      var $body = angular.element($window.document);
-	      function TooltipFactory(element, config) {
-	        var $tooltip = {};
-	        var options = $tooltip.$options = angular.extend({}, defaults, config);
-	        var promise = $tooltip.$promise = $bsCompiler.compile(options);
-	        var scope = $tooltip.$scope = options.scope && options.scope.$new() || $rootScope.$new();
-	        var nodeName = element[0].nodeName.toLowerCase();
-	        if (options.delay && angular.isString(options.delay)) {
-	          var split = options.delay.split(',').map(parseFloat);
-	          options.delay = split.length > 1 ? {
-	            show: split[0],
-	            hide: split[1]
-	          } : split[0];
-	        }
-	        $tooltip.$id = options.id || element.attr('id') || '';
-	        if (options.title) {
-	          scope.title = $sce.trustAsHtml(options.title);
-	        }
-	        scope.$setEnabled = function(isEnabled) {
-	          scope.$$postDigest(function() {
-	            $tooltip.setEnabled(isEnabled);
-	          });
-	        };
-	        scope.$hide = function() {
-	          scope.$$postDigest(function() {
-	            $tooltip.hide();
-	          });
-	        };
-	        scope.$show = function() {
-	          scope.$$postDigest(function() {
-	            $tooltip.show();
-	          });
-	        };
-	        scope.$toggle = function() {
-	          scope.$$postDigest(function() {
-	            $tooltip.toggle();
-	          });
-	        };
-	        $tooltip.$isShown = scope.$isShown = false;
-	        var timeout;
-	        var hoverState;
-	        var compileData;
-	        var tipElement;
-	        var tipContainer;
-	        var tipScope;
-	        promise.then(function(data) {
-	          compileData = data;
-	          $tooltip.init();
-	        });
-	        $tooltip.init = function() {
-	          if (options.delay && angular.isNumber(options.delay)) {
-	            options.delay = {
-	              show: options.delay,
-	              hide: options.delay
-	            };
-	          }
-	          if (options.container === 'self') {
-	            tipContainer = element;
-	          } else if (angular.isElement(options.container)) {
-	            tipContainer = options.container;
-	          } else if (options.container) {
-	            tipContainer = findElement(options.container);
-	          }
-	          bindTriggerEvents();
-	          if (options.target) {
-	            options.target = angular.isElement(options.target) ? options.target : findElement(options.target);
-	          }
-	          if (options.show) {
-	            scope.$$postDigest(function() {
-	              if (options.trigger === 'focus') {
-	                element[0].focus();
-	              } else {
-	                $tooltip.show();
-	              }
-	            });
-	          }
-	        };
-	        $tooltip.destroy = function() {
-	          unbindTriggerEvents();
-	          destroyTipElement();
-	          scope.$destroy();
-	        };
-	        $tooltip.enter = function() {
-	          clearTimeout(timeout);
-	          hoverState = 'in';
-	          if (!options.delay || !options.delay.show) {
-	            return $tooltip.show();
-	          }
-	          timeout = setTimeout(function() {
-	            if (hoverState === 'in') $tooltip.show();
-	          }, options.delay.show);
-	        };
-	        $tooltip.show = function() {
-	          if (!options.bsEnabled || $tooltip.$isShown) return;
-	          scope.$emit(options.prefixEvent + '.show.before', $tooltip);
-	          var parent;
-	          var after;
-	          if (options.container) {
-	            parent = tipContainer;
-	            if (tipContainer[0].lastChild) {
-	              after = angular.element(tipContainer[0].lastChild);
-	            } else {
-	              after = null;
-	            }
-	          } else {
-	            parent = null;
-	            after = element;
-	          }
-	          if (tipElement) destroyTipElement();
-	          tipScope = $tooltip.$scope.$new();
-	          tipElement = $tooltip.$element = compileData.link(tipScope, function(clonedElement, scope) {});
-	          tipElement.css({
-	            top: '-9999px',
-	            left: '-9999px',
-	            right: 'auto',
-	            display: 'block',
-	            visibility: 'hidden'
-	          });
-	          if (options.animation) tipElement.addClass(options.animation);
-	          if (options.type) tipElement.addClass(options.prefixClass + '-' + options.type);
-	          if (options.customClass) tipElement.addClass(options.customClass);
-	          if (after) {
-	            after.after(tipElement);
-	          } else {
-	            parent.prepend(tipElement);
-	          }
-	          $tooltip.$isShown = scope.$isShown = true;
-	          safeDigest(scope);
-	          $tooltip.$applyPlacement();
-	          if (angular.version.minor <= 2) {
-	            $animate.enter(tipElement, parent, after, enterAnimateCallback);
-	          } else {
-	            $animate.enter(tipElement, parent, after).then(enterAnimateCallback);
-	          }
-	          safeDigest(scope);
-	          $$rAF(function() {
-	            if (tipElement) tipElement.css({
-	              visibility: 'visible'
-	            });
-	            if (options.keyboard) {
-	              if (options.trigger !== 'focus') {
-	                $tooltip.focus();
-	              }
-	              bindKeyboardEvents();
-	            }
-	          });
-	          if (options.autoClose) {
-	            bindAutoCloseEvents();
-	          }
-	        };
-	        function enterAnimateCallback() {
-	          scope.$emit(options.prefixEvent + '.show', $tooltip);
-	        }
-	        $tooltip.leave = function() {
-	          clearTimeout(timeout);
-	          hoverState = 'out';
-	          if (!options.delay || !options.delay.hide) {
-	            return $tooltip.hide();
-	          }
-	          timeout = setTimeout(function() {
-	            if (hoverState === 'out') {
-	              $tooltip.hide();
-	            }
-	          }, options.delay.hide);
-	        };
-	        var _blur;
-	        var _tipToHide;
-	        $tooltip.hide = function(blur) {
-	          if (!$tooltip.$isShown) return;
-	          scope.$emit(options.prefixEvent + '.hide.before', $tooltip);
-	          _blur = blur;
-	          _tipToHide = tipElement;
-	          if (angular.version.minor <= 2) {
-	            $animate.leave(tipElement, leaveAnimateCallback);
-	          } else {
-	            $animate.leave(tipElement).then(leaveAnimateCallback);
-	          }
-	          $tooltip.$isShown = scope.$isShown = false;
-	          safeDigest(scope);
-	          if (options.keyboard && tipElement !== null) {
-	            unbindKeyboardEvents();
-	          }
-	          if (options.autoClose && tipElement !== null) {
-	            unbindAutoCloseEvents();
-	          }
-	        };
-	        function leaveAnimateCallback() {
-	          scope.$emit(options.prefixEvent + '.hide', $tooltip);
-	          if (tipElement === _tipToHide) {
-	            if (_blur && options.trigger === 'focus') {
-	              return element[0].blur();
-	            }
-	            destroyTipElement();
-	          }
-	        }
-	        $tooltip.toggle = function(evt) {
-	          if (evt) {
-	            evt.preventDefault();
-	          }
-	          if ($tooltip.$isShown) {
-	            $tooltip.leave();
-	          } else {
-	            $tooltip.enter();
-	          }
-	        };
-	        $tooltip.focus = function() {
-	          tipElement[0].focus();
-	        };
-	        $tooltip.setEnabled = function(isEnabled) {
-	          options.bsEnabled = isEnabled;
-	        };
-	        $tooltip.setViewport = function(viewport) {
-	          options.viewport = viewport;
-	        };
-	        $tooltip.$applyPlacement = function() {
-	          if (!tipElement) return;
-	          var placement = options.placement;
-	          var autoToken = /\s?auto?\s?/i;
-	          var autoPlace = autoToken.test(placement);
-	          if (autoPlace) {
-	            placement = placement.replace(autoToken, '') || defaults.placement;
-	          }
-	          tipElement.addClass(options.placement);
-	          var elementPosition = getPosition();
-	          var tipWidth = tipElement.prop('offsetWidth');
-	          var tipHeight = tipElement.prop('offsetHeight');
-	          $tooltip.$viewport = options.viewport && findElement(options.viewport.selector || options.viewport);
-	          if (autoPlace) {
-	            var originalPlacement = placement;
-	            var viewportPosition = getPosition($tooltip.$viewport);
-	            if (/bottom/.test(originalPlacement) && elementPosition.bottom + tipHeight > viewportPosition.bottom) {
-	              placement = originalPlacement.replace('bottom', 'top');
-	            } else if (/top/.test(originalPlacement) && elementPosition.top - tipHeight < viewportPosition.top) {
-	              placement = originalPlacement.replace('top', 'bottom');
-	            }
-	            if (/left/.test(originalPlacement) && elementPosition.left - tipWidth < viewportPosition.left) {
-	              placement = placement.replace('left', 'right');
-	            } else if (/right/.test(originalPlacement) && elementPosition.right + tipWidth > viewportPosition.width) {
-	              placement = placement.replace('right', 'left');
-	            }
-	            tipElement.removeClass(originalPlacement).addClass(placement);
-	          }
-	          var tipPosition = getCalculatedOffset(placement, elementPosition, tipWidth, tipHeight);
-	          applyPlacement(tipPosition, placement);
-	        };
-	        $tooltip.$onKeyUp = function(evt) {
-	          if (evt.which === 27 && $tooltip.$isShown) {
-	            $tooltip.hide();
-	            evt.stopPropagation();
-	          }
-	        };
-	        $tooltip.$onFocusKeyUp = function(evt) {
-	          if (evt.which === 27) {
-	            element[0].blur();
-	            evt.stopPropagation();
-	          }
-	        };
-	        $tooltip.$onFocusElementMouseDown = function(evt) {
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          if ($tooltip.$isShown) {
-	            element[0].blur();
-	          } else {
-	            element[0].focus();
-	          }
-	        };
-	        function bindTriggerEvents() {
-	          var triggers = options.trigger.split(' ');
-	          angular.forEach(triggers, function(trigger) {
-	            if (trigger === 'click' || trigger === 'contextmenu') {
-	              element.on(trigger, $tooltip.toggle);
-	            } else if (trigger !== 'manual') {
-	              element.on(trigger === 'hover' ? 'mouseenter' : 'focus', $tooltip.enter);
-	              element.on(trigger === 'hover' ? 'mouseleave' : 'blur', $tooltip.leave);
-	              if (nodeName === 'button' && trigger !== 'hover') {
-	                element.on(isTouch ? 'touchstart' : 'mousedown', $tooltip.$onFocusElementMouseDown);
-	              }
-	            }
-	          });
-	        }
-	        function unbindTriggerEvents() {
-	          var triggers = options.trigger.split(' ');
-	          for (var i = triggers.length; i--; ) {
-	            var trigger = triggers[i];
-	            if (trigger === 'click' || trigger === 'contextmenu') {
-	              element.off(trigger, $tooltip.toggle);
-	            } else if (trigger !== 'manual') {
-	              element.off(trigger === 'hover' ? 'mouseenter' : 'focus', $tooltip.enter);
-	              element.off(trigger === 'hover' ? 'mouseleave' : 'blur', $tooltip.leave);
-	              if (nodeName === 'button' && trigger !== 'hover') {
-	                element.off(isTouch ? 'touchstart' : 'mousedown', $tooltip.$onFocusElementMouseDown);
-	              }
-	            }
-	          }
-	        }
-	        function bindKeyboardEvents() {
-	          if (options.trigger !== 'focus') {
-	            tipElement.on('keyup', $tooltip.$onKeyUp);
-	          } else {
-	            element.on('keyup', $tooltip.$onFocusKeyUp);
-	          }
-	        }
-	        function unbindKeyboardEvents() {
-	          if (options.trigger !== 'focus') {
-	            tipElement.off('keyup', $tooltip.$onKeyUp);
-	          } else {
-	            element.off('keyup', $tooltip.$onFocusKeyUp);
-	          }
-	        }
-	        var _autoCloseEventsBinded = false;
-	        function bindAutoCloseEvents() {
-	          $timeout(function() {
-	            tipElement.on('click', stopEventPropagation);
-	            $body.on('click', $tooltip.hide);
-	            _autoCloseEventsBinded = true;
-	          }, 0, false);
-	        }
-	        function unbindAutoCloseEvents() {
-	          if (_autoCloseEventsBinded) {
-	            tipElement.off('click', stopEventPropagation);
-	            $body.off('click', $tooltip.hide);
-	            _autoCloseEventsBinded = false;
-	          }
-	        }
-	        function stopEventPropagation(event) {
-	          event.stopPropagation();
-	        }
-	        function getPosition($element) {
-	          $element = $element || (options.target || element);
-	          var el = $element[0];
-	          var isBody = el.tagName === 'BODY';
-	          var elRect = el.getBoundingClientRect();
-	          var rect = {};
-	          for (var p in elRect) {
-	            rect[p] = elRect[p];
-	          }
-	          if (rect.width === null) {
-	            rect = angular.extend({}, rect, {
-	              width: elRect.right - elRect.left,
-	              height: elRect.bottom - elRect.top
-	            });
-	          }
-	          var elOffset = isBody ? {
-	            top: 0,
-	            left: 0
-	          } : dimensions.offset(el);
-	          var scroll = {
-	            scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.prop('scrollTop') || 0
-	          };
-	          var outerDims = isBody ? {
-	            width: document.documentElement.clientWidth,
-	            height: $window.innerHeight
-	          } : null;
-	          return angular.extend({}, rect, scroll, outerDims, elOffset);
-	        }
-	        function getCalculatedOffset(placement, position, actualWidth, actualHeight) {
-	          var offset;
-	          var split = placement.split('-');
-	          switch (split[0]) {
-	           case 'right':
-	            offset = {
-	              top: position.top + position.height / 2 - actualHeight / 2,
-	              left: position.left + position.width
-	            };
-	            break;
-
-	           case 'bottom':
-	            offset = {
-	              top: position.top + position.height,
-	              left: position.left + position.width / 2 - actualWidth / 2
-	            };
-	            break;
-
-	           case 'left':
-	            offset = {
-	              top: position.top + position.height / 2 - actualHeight / 2,
-	              left: position.left - actualWidth
-	            };
-	            break;
-
-	           default:
-	            offset = {
-	              top: position.top - actualHeight,
-	              left: position.left + position.width / 2 - actualWidth / 2
-	            };
-	            break;
-	          }
-	          if (!split[1]) {
-	            return offset;
-	          }
-	          if (split[0] === 'top' || split[0] === 'bottom') {
-	            switch (split[1]) {
-	             case 'left':
-	              offset.left = position.left;
-	              break;
-
-	             case 'right':
-	              offset.left = position.left + position.width - actualWidth;
-	              break;
-
-	             default:
-	              break;
-	            }
-	          } else if (split[0] === 'left' || split[0] === 'right') {
-	            switch (split[1]) {
-	             case 'top':
-	              offset.top = position.top - actualHeight + position.height;
-	              break;
-
-	             case 'bottom':
-	              offset.top = position.top;
-	              break;
-
-	             default:
-	              break;
-	            }
-	          }
-	          return offset;
-	        }
-	        function applyPlacement(offset, placement) {
-	          var tip = tipElement[0];
-	          var width = tip.offsetWidth;
-	          var height = tip.offsetHeight;
-	          var marginTop = parseInt(dimensions.css(tip, 'margin-top'), 10);
-	          var marginLeft = parseInt(dimensions.css(tip, 'margin-left'), 10);
-	          if (isNaN(marginTop)) marginTop = 0;
-	          if (isNaN(marginLeft)) marginLeft = 0;
-	          offset.top = offset.top + marginTop;
-	          offset.left = offset.left + marginLeft;
-	          dimensions.setOffset(tip, angular.extend({
-	            using: function(props) {
-	              tipElement.css({
-	                top: Math.round(props.top) + 'px',
-	                left: Math.round(props.left) + 'px',
-	                right: ''
-	              });
-	            }
-	          }, offset), 0);
-	          var actualWidth = tip.offsetWidth;
-	          var actualHeight = tip.offsetHeight;
-	          if (placement === 'top' && actualHeight !== height) {
-	            offset.top = offset.top + height - actualHeight;
-	          }
-	          if (/top-left|top-right|bottom-left|bottom-right/.test(placement)) return;
-	          var delta = getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
-	          if (delta.left) {
-	            offset.left += delta.left;
-	          } else {
-	            offset.top += delta.top;
-	          }
-	          dimensions.setOffset(tip, offset);
-	          if (/top|right|bottom|left/.test(placement)) {
-	            var isVertical = /top|bottom/.test(placement);
-	            var arrowDelta = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight;
-	            var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight';
-	            replaceArrow(arrowDelta, tip[arrowOffsetPosition], isVertical);
-	          }
-	        }
-	        function getViewportAdjustedDelta(placement, position, actualWidth, actualHeight) {
-	          var delta = {
-	            top: 0,
-	            left: 0
-	          };
-	          if (!$tooltip.$viewport) return delta;
-	          var viewportPadding = options.viewport && options.viewport.padding || 0;
-	          var viewportDimensions = getPosition($tooltip.$viewport);
-	          if (/right|left/.test(placement)) {
-	            var topEdgeOffset = position.top - viewportPadding - viewportDimensions.scroll;
-	            var bottomEdgeOffset = position.top + viewportPadding - viewportDimensions.scroll + actualHeight;
-	            if (topEdgeOffset < viewportDimensions.top) {
-	              delta.top = viewportDimensions.top - topEdgeOffset;
-	            } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) {
-	              delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
-	            }
-	          } else {
-	            var leftEdgeOffset = position.left - viewportPadding;
-	            var rightEdgeOffset = position.left + viewportPadding + actualWidth;
-	            if (leftEdgeOffset < viewportDimensions.left) {
-	              delta.left = viewportDimensions.left - leftEdgeOffset;
-	            } else if (rightEdgeOffset > viewportDimensions.right) {
-	              delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
-	            }
-	          }
-	          return delta;
-	        }
-	        function replaceArrow(delta, dimension, isHorizontal) {
-	          var $arrow = findElement('.tooltip-arrow, .arrow', tipElement[0]);
-	          $arrow.css(isHorizontal ? 'left' : 'top', 50 * (1 - delta / dimension) + '%').css(isHorizontal ? 'top' : 'left', '');
-	        }
-	        function destroyTipElement() {
-	          clearTimeout(timeout);
-	          if ($tooltip.$isShown && tipElement !== null) {
-	            if (options.autoClose) {
-	              unbindAutoCloseEvents();
-	            }
-	            if (options.keyboard) {
-	              unbindKeyboardEvents();
-	            }
-	          }
-	          if (tipScope) {
-	            tipScope.$destroy();
-	            tipScope = null;
-	          }
-	          if (tipElement) {
-	            tipElement.remove();
-	            tipElement = $tooltip.$element = null;
-	          }
-	        }
-	        return $tooltip;
-	      }
-	      function safeDigest(scope) {
-	        scope.$$phase || scope.$root && scope.$root.$$phase || scope.$digest();
-	      }
-	      function findElement(query, element) {
-	        return angular.element((element || document).querySelectorAll(query));
-	      }
-	      return TooltipFactory;
-	    } ];
-	  }).directive('bsTooltip', [ '$window', '$location', '$sce', '$tooltip', '$$rAF', function($window, $location, $sce, $tooltip, $$rAF) {
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      link: function postLink(scope, element, attr, transclusion) {
-	        var tooltip;
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'titleTemplate', 'placement', 'container', 'delay', 'trigger', 'html', 'animation', 'backdropAnimation', 'type', 'customClass', 'id' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) {
-	            options[key] = false;
-	          }
-	        });
-	        var dataTarget = element.attr('data-target');
-	        if (angular.isDefined(dataTarget)) {
-	          if (falseValueRegExp.test(dataTarget)) {
-	            options.target = false;
-	          } else {
-	            options.target = dataTarget;
-	          }
-	        }
-	        if (!scope.hasOwnProperty('title')) {
-	          scope.title = '';
-	        }
-	        attr.$observe('title', function(newValue) {
-	          if (angular.isDefined(newValue) || !scope.hasOwnProperty('title')) {
-	            var oldValue = scope.title;
-	            scope.title = $sce.trustAsHtml(newValue);
-	            if (angular.isDefined(oldValue)) {
-	              $$rAF(function() {
-	                if (tooltip) tooltip.$applyPlacement();
-	              });
-	            }
-	          }
-	        });
-	        attr.$observe('disabled', function(newValue) {
-	          if (newValue && tooltip.$isShown) {
-	            tooltip.hide();
-	          }
-	        });
-	        if (attr.bsTooltip) {
-	          scope.$watch(attr.bsTooltip, function(newValue, oldValue) {
-	            if (angular.isObject(newValue)) {
-	              angular.extend(scope, newValue);
-	            } else {
-	              scope.title = newValue;
-	            }
-	            if (angular.isDefined(oldValue)) {
-	              $$rAF(function() {
-	                if (tooltip) tooltip.$applyPlacement();
-	              });
-	            }
-	          }, true);
-	        }
-	        if (attr.bsShow) {
-	          scope.$watch(attr.bsShow, function(newValue, oldValue) {
-	            if (!tooltip || !angular.isDefined(newValue)) return;
-	            if (angular.isString(newValue)) newValue = !!newValue.match(/true|,?(tooltip),?/i);
-	            if (newValue === true) {
-	              tooltip.show();
-	            } else {
-	              tooltip.hide();
-	            }
-	          });
-	        }
-	        if (attr.bsEnabled) {
-	          scope.$watch(attr.bsEnabled, function(newValue, oldValue) {
-	            if (!tooltip || !angular.isDefined(newValue)) return;
-	            if (angular.isString(newValue)) newValue = !!newValue.match(/true|1|,?(tooltip),?/i);
-	            if (newValue === false) {
-	              tooltip.setEnabled(false);
-	            } else {
-	              tooltip.setEnabled(true);
-	            }
-	          });
-	        }
-	        if (attr.viewport) {
-	          scope.$watch(attr.viewport, function(newValue) {
-	            if (!tooltip || !angular.isDefined(newValue)) return;
-	            tooltip.setViewport(newValue);
-	          });
-	        }
-	        tooltip = $tooltip(element, options);
-	        scope.$on('$destroy', function() {
-	          if (tooltip) tooltip.destroy();
-	          options = null;
-	          tooltip = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.typeahead', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngStrap.helpers.parseOptions' ]).provider('$typeahead', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'typeahead',
-	      prefixEvent: '$typeahead',
-	      placement: 'bottom-left',
-	      templateUrl: 'typeahead/typeahead.tpl.html',
-	      trigger: 'focus',
-	      container: false,
-	      keyboard: true,
-	      html: false,
-	      delay: 0,
-	      minLength: 1,
-	      filter: 'bsAsyncFilter',
-	      limit: 6,
-	      autoSelect: false,
-	      comparator: '',
-	      trimValue: true
-	    };
-	    this.$get = [ '$window', '$rootScope', '$tooltip', '$$rAF', '$timeout', function($window, $rootScope, $tooltip, $$rAF, $timeout) {
-	      function TypeaheadFactory(element, controller, config) {
-	        var $typeahead = {};
-	        var options = angular.extend({}, defaults, config);
-	        $typeahead = $tooltip(element, options);
-	        var parentScope = config.scope;
-	        var scope = $typeahead.$scope;
-	        scope.$resetMatches = function() {
-	          scope.$matches = [];
-	          scope.$activeIndex = options.autoSelect ? 0 : -1;
-	        };
-	        scope.$resetMatches();
-	        scope.$activate = function(index) {
-	          scope.$$postDigest(function() {
-	            $typeahead.activate(index);
-	          });
-	        };
-	        scope.$select = function(index, evt) {
-	          scope.$$postDigest(function() {
-	            $typeahead.select(index);
-	          });
-	        };
-	        scope.$isVisible = function() {
-	          return $typeahead.$isVisible();
-	        };
-	        $typeahead.update = function(matches) {
-	          scope.$matches = matches;
-	          if (scope.$activeIndex >= matches.length) {
-	            scope.$activeIndex = options.autoSelect ? 0 : -1;
-	          }
-	          safeDigest(scope);
-	          $$rAF($typeahead.$applyPlacement);
-	        };
-	        $typeahead.activate = function(index) {
-	          scope.$activeIndex = index;
-	        };
-	        $typeahead.select = function(index) {
-	          if (index === -1) return;
-	          var value = scope.$matches[index].value;
-	          controller.$setViewValue(value);
-	          controller.$render();
-	          scope.$resetMatches();
-	          if (parentScope) parentScope.$digest();
-	          scope.$emit(options.prefixEvent + '.select', value, index, $typeahead);
-	        };
-	        $typeahead.$isVisible = function() {
-	          if (!options.minLength || !controller) {
-	            return !!scope.$matches.length;
-	          }
-	          return scope.$matches.length && angular.isString(controller.$viewValue) && controller.$viewValue.length >= options.minLength;
-	        };
-	        $typeahead.$getIndex = function(value) {
-	          var index;
-	          for (index = scope.$matches.length; index--; ) {
-	            if (angular.equals(scope.$matches[index].value, value)) break;
-	          }
-	          return index;
-	        };
-	        $typeahead.$onMouseDown = function(evt) {
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	        };
-	        $typeahead.$onKeyDown = function(evt) {
-	          if (!/(38|40|13)/.test(evt.keyCode)) return;
-	          if ($typeahead.$isVisible() && !(evt.keyCode === 13 && scope.$activeIndex === -1)) {
-	            evt.preventDefault();
-	            evt.stopPropagation();
-	          }
-	          if (evt.keyCode === 13 && scope.$matches.length) {
-	            $typeahead.select(scope.$activeIndex);
-	          } else if (evt.keyCode === 38 && scope.$activeIndex > 0) {
-	            scope.$activeIndex--;
-	          } else if (evt.keyCode === 40 && scope.$activeIndex < scope.$matches.length - 1) {
-	            scope.$activeIndex++;
-	          } else if (angular.isUndefined(scope.$activeIndex)) {
-	            scope.$activeIndex = 0;
-	          }
-	          scope.$digest();
-	        };
-	        var show = $typeahead.show;
-	        $typeahead.show = function() {
-	          show();
-	          $timeout(function() {
-	            if ($typeahead.$element) {
-	              $typeahead.$element.on('mousedown', $typeahead.$onMouseDown);
-	              if (options.keyboard) {
-	                if (element) element.on('keydown', $typeahead.$onKeyDown);
-	              }
-	            }
-	          }, 0, false);
-	        };
-	        var hide = $typeahead.hide;
-	        $typeahead.hide = function() {
-	          if ($typeahead.$element) $typeahead.$element.off('mousedown', $typeahead.$onMouseDown);
-	          if (options.keyboard) {
-	            if (element) element.off('keydown', $typeahead.$onKeyDown);
-	          }
-	          if (!options.autoSelect) {
-	            $typeahead.activate(-1);
-	          }
-	          hide();
-	        };
-	        return $typeahead;
-	      }
-	      function safeDigest(scope) {
-	        scope.$$phase || scope.$root && scope.$root.$$phase || scope.$digest();
-	      }
-	      TypeaheadFactory.defaults = defaults;
-	      return TypeaheadFactory;
-	    } ];
-	  }).filter('bsAsyncFilter', [ '$filter', function($filter) {
-	    return function(array, expression, comparator) {
-	      if (array && angular.isFunction(array.then)) {
-	        return array.then(function(results) {
-	          return $filter('filter')(results, expression, comparator);
-	        });
-	      }
-	      return $filter('filter')(array, expression, comparator);
-	    };
-	  } ]).directive('bsTypeahead', [ '$window', '$parse', '$q', '$typeahead', '$parseOptions', function($window, $parse, $q, $typeahead, $parseOptions) {
-	    var defaults = $typeahead.defaults;
-	    return {
-	      restrict: 'EAC',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        element.off('change');
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'keyboard', 'html', 'animation', 'filter', 'limit', 'minLength', 'watchOptions', 'selectMode', 'autoSelect', 'comparator', 'id', 'prefixEvent', 'prefixClass' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container', 'trimValue', 'filter' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	        });
-	        if (!element.attr('autocomplete')) element.attr('autocomplete', 'off');
-	        var filter = angular.isDefined(options.filter) ? options.filter : defaults.filter;
-	        var limit = options.limit || defaults.limit;
-	        var comparator = options.comparator || defaults.comparator;
-	        var bsOptions = attr.bsOptions;
-	        if (filter) {
-	          bsOptions += ' | ' + filter + ':$viewValue';
-	          if (comparator) bsOptions += ':' + comparator;
-	        }
-	        if (limit) bsOptions += ' | limitTo:' + limit;
-	        var parsedOptions = $parseOptions(bsOptions);
-	        var typeahead = $typeahead(element, controller, options);
-	        if (options.watchOptions) {
-	          var watchedOptions = parsedOptions.$match[7].replace(/\|.+/, '').replace(/\(.*\)/g, '').trim();
-	          scope.$watchCollection(watchedOptions, function(newValue, oldValue) {
-	            parsedOptions.valuesFn(scope, controller).then(function(values) {
-	              typeahead.update(values);
-	              controller.$render();
-	            });
-	          });
-	        }
-	        scope.$watch(attr.ngModel, function(newValue, oldValue) {
-	          scope.$modelValue = newValue;
-	          parsedOptions.valuesFn(scope, controller).then(function(values) {
-	            if (options.selectMode && !values.length && newValue.length > 0) {
-	              controller.$setViewValue(controller.$viewValue.substring(0, controller.$viewValue.length - 1));
-	              return;
-	            }
-	            if (values.length > limit) values = values.slice(0, limit);
-	            typeahead.update(values);
-	            controller.$render();
-	          });
-	        });
-	        controller.$formatters.push(function(modelValue) {
-	          var displayValue = parsedOptions.displayValue(modelValue);
-	          if (displayValue) {
-	            return displayValue;
-	          }
-	          if (angular.isDefined(modelValue) && typeof modelValue !== 'object') {
-	            return modelValue;
-	          }
-	          return '';
-	        });
-	        controller.$render = function() {
-	          if (controller.$isEmpty(controller.$viewValue)) {
-	            return element.val('');
-	          }
-	          var index = typeahead.$getIndex(controller.$modelValue);
-	          var selected = index !== -1 ? typeahead.$scope.$matches[index].label : controller.$viewValue;
-	          selected = angular.isObject(selected) ? parsedOptions.displayValue(selected) : selected;
-	          var value = selected ? selected.toString().replace(/<(?:.|\n)*?>/gm, '') : '';
-	          element.val(options.trimValue === false ? value : value.trim());
-	        };
-	        scope.$on('$destroy', function() {
-	          if (typeahead) typeahead.destroy();
-	          options = null;
-	          typeahead = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.timepicker', [ 'mgcrea.ngStrap.helpers.dateParser', 'mgcrea.ngStrap.helpers.dateFormatter', 'mgcrea.ngStrap.tooltip' ]).provider('$timepicker', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'timepicker',
-	      placement: 'bottom-left',
-	      templateUrl: 'timepicker/timepicker.tpl.html',
-	      trigger: 'focus',
-	      container: false,
-	      keyboard: true,
-	      html: false,
-	      delay: 0,
-	      useNative: true,
-	      timeType: 'date',
-	      timeFormat: 'shortTime',
-	      timezone: null,
-	      modelTimeFormat: null,
-	      autoclose: false,
-	      minTime: -Infinity,
-	      maxTime: +Infinity,
-	      length: 5,
-	      hourStep: 1,
-	      minuteStep: 5,
-	      secondStep: 5,
-	      roundDisplay: false,
-	      iconUp: 'glyphicon glyphicon-chevron-up',
-	      iconDown: 'glyphicon glyphicon-chevron-down',
-	      arrowBehavior: 'pager'
-	    };
-	    this.$get = [ '$window', '$document', '$rootScope', '$sce', '$dateFormatter', '$tooltip', '$timeout', function($window, $document, $rootScope, $sce, $dateFormatter, $tooltip, $timeout) {
-	      var isNative = /(ip[ao]d|iphone|android)/gi.test($window.navigator.userAgent);
-	      var isTouch = 'createTouch' in $window.document && isNative;
-	      if (!defaults.lang) {
-	        defaults.lang = $dateFormatter.getDefaultLocale();
-	      }
-	      function timepickerFactory(element, controller, config) {
-	        var $timepicker = $tooltip(element, angular.extend({}, defaults, config));
-	        var parentScope = config.scope;
-	        var options = $timepicker.$options;
-	        var scope = $timepicker.$scope;
-	        var lang = options.lang;
-	        var formatDate = function(date, format, timezone) {
-	          return $dateFormatter.formatDate(date, format, lang, timezone);
-	        };
-	        function floorMinutes(time) {
-	          var coeff = 1e3 * 60 * options.minuteStep;
-	          return new Date(Math.floor(time.getTime() / coeff) * coeff);
-	        }
-	        var selectedIndex = 0;
-	        var defaultDate = options.roundDisplay ? floorMinutes(new Date()) : new Date();
-	        var startDate = controller.$dateValue || defaultDate;
-	        var viewDate = {
-	          hour: startDate.getHours(),
-	          meridian: startDate.getHours() < 12,
-	          minute: startDate.getMinutes(),
-	          second: startDate.getSeconds(),
-	          millisecond: startDate.getMilliseconds()
-	        };
-	        var format = $dateFormatter.getDatetimeFormat(options.timeFormat, lang);
-	        var hoursFormat = $dateFormatter.hoursFormat(format);
-	        var timeSeparator = $dateFormatter.timeSeparator(format);
-	        var minutesFormat = $dateFormatter.minutesFormat(format);
-	        var secondsFormat = $dateFormatter.secondsFormat(format);
-	        var showSeconds = $dateFormatter.showSeconds(format);
-	        var showAM = $dateFormatter.showAM(format);
-	        scope.$iconUp = options.iconUp;
-	        scope.$iconDown = options.iconDown;
-	        scope.$select = function(date, index) {
-	          $timepicker.select(date, index);
-	        };
-	        scope.$moveIndex = function(value, index) {
-	          $timepicker.$moveIndex(value, index);
-	        };
-	        scope.$switchMeridian = function(date) {
-	          $timepicker.switchMeridian(date);
-	        };
-	        $timepicker.update = function(date) {
-	          if (angular.isDate(date) && !isNaN(date.getTime())) {
-	            $timepicker.$date = date;
-	            angular.extend(viewDate, {
-	              hour: date.getHours(),
-	              minute: date.getMinutes(),
-	              second: date.getSeconds(),
-	              millisecond: date.getMilliseconds()
-	            });
-	            $timepicker.$build();
-	          } else if (!$timepicker.$isBuilt) {
-	            $timepicker.$build();
-	          }
-	        };
-	        $timepicker.select = function(date, index, keep) {
-	          if (!controller.$dateValue || isNaN(controller.$dateValue.getTime())) controller.$dateValue = new Date(1970, 0, 1);
-	          if (!angular.isDate(date)) date = new Date(date);
-	          if (index === 0) controller.$dateValue.setHours(date.getHours()); else if (index === 1) controller.$dateValue.setMinutes(date.getMinutes()); else if (index === 2) controller.$dateValue.setSeconds(date.getSeconds());
-	          controller.$setViewValue(angular.copy(controller.$dateValue));
-	          controller.$render();
-	          if (options.autoclose && !keep) {
-	            $timeout(function() {
-	              $timepicker.hide(true);
-	            });
-	          }
-	        };
-	        $timepicker.switchMeridian = function(date) {
-	          if (!controller.$dateValue || isNaN(controller.$dateValue.getTime())) {
-	            return;
-	          }
-	          var hours = (date || controller.$dateValue).getHours();
-	          controller.$dateValue.setHours(hours < 12 ? hours + 12 : hours - 12);
-	          controller.$setViewValue(angular.copy(controller.$dateValue));
-	          controller.$render();
-	        };
-	        $timepicker.$build = function() {
-	          var i;
-	          var midIndex = scope.midIndex = parseInt(options.length / 2, 10);
-	          var hours = [];
-	          var hour;
-	          for (i = 0; i < options.length; i++) {
-	            hour = new Date(1970, 0, 1, viewDate.hour - (midIndex - i) * options.hourStep);
-	            hours.push({
-	              date: hour,
-	              label: formatDate(hour, hoursFormat),
-	              selected: $timepicker.$date && $timepicker.$isSelected(hour, 0),
-	              disabled: $timepicker.$isDisabled(hour, 0)
-	            });
-	          }
-	          var minutes = [];
-	          var minute;
-	          for (i = 0; i < options.length; i++) {
-	            minute = new Date(1970, 0, 1, 0, viewDate.minute - (midIndex - i) * options.minuteStep);
-	            minutes.push({
-	              date: minute,
-	              label: formatDate(minute, minutesFormat),
-	              selected: $timepicker.$date && $timepicker.$isSelected(minute, 1),
-	              disabled: $timepicker.$isDisabled(minute, 1)
-	            });
-	          }
-	          var seconds = [];
-	          var second;
-	          for (i = 0; i < options.length; i++) {
-	            second = new Date(1970, 0, 1, 0, 0, viewDate.second - (midIndex - i) * options.secondStep);
-	            seconds.push({
-	              date: second,
-	              label: formatDate(second, secondsFormat),
-	              selected: $timepicker.$date && $timepicker.$isSelected(second, 2),
-	              disabled: $timepicker.$isDisabled(second, 2)
-	            });
-	          }
-	          var rows = [];
-	          for (i = 0; i < options.length; i++) {
-	            if (showSeconds) {
-	              rows.push([ hours[i], minutes[i], seconds[i] ]);
-	            } else {
-	              rows.push([ hours[i], minutes[i] ]);
-	            }
-	          }
-	          scope.rows = rows;
-	          scope.showSeconds = showSeconds;
-	          scope.showAM = showAM;
-	          scope.isAM = ($timepicker.$date || hours[midIndex].date).getHours() < 12;
-	          scope.timeSeparator = timeSeparator;
-	          $timepicker.$isBuilt = true;
-	        };
-	        $timepicker.$isSelected = function(date, index) {
-	          if (!$timepicker.$date) return false; else if (index === 0) {
-	            return date.getHours() === $timepicker.$date.getHours();
-	          } else if (index === 1) {
-	            return date.getMinutes() === $timepicker.$date.getMinutes();
-	          } else if (index === 2) {
-	            return date.getSeconds() === $timepicker.$date.getSeconds();
-	          }
-	        };
-	        $timepicker.$isDisabled = function(date, index) {
-	          var selectedTime;
-	          if (index === 0) {
-	            selectedTime = date.getTime() + viewDate.minute * 6e4 + viewDate.second * 1e3;
-	          } else if (index === 1) {
-	            selectedTime = date.getTime() + viewDate.hour * 36e5 + viewDate.second * 1e3;
-	          } else if (index === 2) {
-	            selectedTime = date.getTime() + viewDate.hour * 36e5 + viewDate.minute * 6e4;
-	          }
-	          return selectedTime < options.minTime * 1 || selectedTime > options.maxTime * 1;
-	        };
-	        scope.$arrowAction = function(value, index) {
-	          if (options.arrowBehavior === 'picker') {
-	            $timepicker.$setTimeByStep(value, index);
-	          } else {
-	            $timepicker.$moveIndex(value, index);
-	          }
-	        };
-	        $timepicker.$setTimeByStep = function(value, index) {
-	          var newDate = new Date($timepicker.$date || startDate);
-	          var hours = newDate.getHours();
-	          var minutes = newDate.getMinutes();
-	          var seconds = newDate.getSeconds();
-	          if (index === 0) {
-	            newDate.setHours(hours - parseInt(options.hourStep, 10) * value);
-	          } else if (index === 1) {
-	            newDate.setMinutes(minutes - parseInt(options.minuteStep, 10) * value);
-	          } else if (index === 2) {
-	            newDate.setSeconds(seconds - parseInt(options.secondStep, 10) * value);
-	          }
-	          $timepicker.select(newDate, index, true);
-	        };
-	        $timepicker.$moveIndex = function(value, index) {
-	          var targetDate;
-	          if (index === 0) {
-	            targetDate = new Date(1970, 0, 1, viewDate.hour + value * options.length, viewDate.minute, viewDate.second);
-	            angular.extend(viewDate, {
-	              hour: targetDate.getHours()
-	            });
-	          } else if (index === 1) {
-	            targetDate = new Date(1970, 0, 1, viewDate.hour, viewDate.minute + value * options.length * options.minuteStep, viewDate.second);
-	            angular.extend(viewDate, {
-	              minute: targetDate.getMinutes()
-	            });
-	          } else if (index === 2) {
-	            targetDate = new Date(1970, 0, 1, viewDate.hour, viewDate.minute, viewDate.second + value * options.length * options.secondStep);
-	            angular.extend(viewDate, {
-	              second: targetDate.getSeconds()
-	            });
-	          }
-	          $timepicker.$build();
-	        };
-	        $timepicker.$onMouseDown = function(evt) {
-	          if (evt.target.nodeName.toLowerCase() !== 'input') evt.preventDefault();
-	          evt.stopPropagation();
-	          if (isTouch) {
-	            var targetEl = angular.element(evt.target);
-	            if (targetEl[0].nodeName.toLowerCase() !== 'button') {
-	              targetEl = targetEl.parent();
-	            }
-	            targetEl.triggerHandler('click');
-	          }
-	        };
-	        $timepicker.$onKeyDown = function(evt) {
-	          if (!/(38|37|39|40|13)/.test(evt.keyCode) || evt.shiftKey || evt.altKey) return;
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          if (evt.keyCode === 13) {
-	            $timepicker.hide(true);
-	            return;
-	          }
-	          var newDate = new Date($timepicker.$date);
-	          var hours = newDate.getHours();
-	          var hoursLength = formatDate(newDate, hoursFormat).length;
-	          var minutes = newDate.getMinutes();
-	          var minutesLength = formatDate(newDate, minutesFormat).length;
-	          var seconds = newDate.getSeconds();
-	          var secondsLength = formatDate(newDate, secondsFormat).length;
-	          var sepLength = 1;
-	          var lateralMove = /(37|39)/.test(evt.keyCode);
-	          var count = 2 + showSeconds * 1 + showAM * 1;
-	          if (lateralMove) {
-	            if (evt.keyCode === 37) selectedIndex = selectedIndex < 1 ? count - 1 : selectedIndex - 1; else if (evt.keyCode === 39) selectedIndex = selectedIndex < count - 1 ? selectedIndex + 1 : 0;
-	          }
-	          var selectRange = [ 0, hoursLength ];
-	          var incr = 0;
-	          if (evt.keyCode === 38) incr = -1;
-	          if (evt.keyCode === 40) incr = +1;
-	          var isSeconds = selectedIndex === 2 && showSeconds;
-	          var isMeridian = selectedIndex === 2 && !showSeconds || selectedIndex === 3 && showSeconds;
-	          if (selectedIndex === 0) {
-	            newDate.setHours(hours + incr * parseInt(options.hourStep, 10));
-	            hoursLength = formatDate(newDate, hoursFormat).length;
-	            selectRange = [ 0, hoursLength ];
-	          } else if (selectedIndex === 1) {
-	            newDate.setMinutes(minutes + incr * parseInt(options.minuteStep, 10));
-	            minutesLength = formatDate(newDate, minutesFormat).length;
-	            selectRange = [ hoursLength + sepLength, minutesLength ];
-	          } else if (isSeconds) {
-	            newDate.setSeconds(seconds + incr * parseInt(options.secondStep, 10));
-	            secondsLength = formatDate(newDate, secondsFormat).length;
-	            selectRange = [ hoursLength + sepLength + minutesLength + sepLength, secondsLength ];
-	          } else if (isMeridian) {
-	            if (!lateralMove) $timepicker.switchMeridian();
-	            selectRange = [ hoursLength + sepLength + minutesLength + sepLength + (secondsLength + sepLength) * showSeconds, 2 ];
-	          }
-	          $timepicker.select(newDate, selectedIndex, true);
-	          createSelection(selectRange[0], selectRange[1]);
-	          parentScope.$digest();
-	        };
-	        function createSelection(start, length) {
-	          var end = start + length;
-	          if (element[0].createTextRange) {
-	            var selRange = element[0].createTextRange();
-	            selRange.collapse(true);
-	            selRange.moveStart('character', start);
-	            selRange.moveEnd('character', end);
-	            selRange.select();
-	          } else if (element[0].setSelectionRange) {
-	            element[0].setSelectionRange(start, end);
-	          } else if (angular.isUndefined(element[0].selectionStart)) {
-	            element[0].selectionStart = start;
-	            element[0].selectionEnd = end;
-	          }
-	        }
-	        function focusElement() {
-	          element[0].focus();
-	        }
-	        var _init = $timepicker.init;
-	        $timepicker.init = function() {
-	          if (isNative && options.useNative) {
-	            element.prop('type', 'time');
-	            element.css('-webkit-appearance', 'textfield');
-	            return;
-	          } else if (isTouch) {
-	            element.prop('type', 'text');
-	            element.attr('readonly', 'true');
-	            element.on('click', focusElement);
-	          }
-	          _init();
-	        };
-	        var _destroy = $timepicker.destroy;
-	        $timepicker.destroy = function() {
-	          if (isNative && options.useNative) {
-	            element.off('click', focusElement);
-	          }
-	          _destroy();
-	        };
-	        var _show = $timepicker.show;
-	        $timepicker.show = function() {
-	          if (!isTouch && element.attr('readonly') || element.attr('disabled')) return;
-	          _show();
-	          $timeout(function() {
-	            if ($timepicker.$element) $timepicker.$element.on(isTouch ? 'touchstart' : 'mousedown', $timepicker.$onMouseDown);
-	            if (options.keyboard) {
-	              if (element) element.on('keydown', $timepicker.$onKeyDown);
-	            }
-	          }, 0, false);
-	        };
-	        var _hide = $timepicker.hide;
-	        $timepicker.hide = function(blur) {
-	          if (!$timepicker.$isShown) return;
-	          if ($timepicker.$element) $timepicker.$element.off(isTouch ? 'touchstart' : 'mousedown', $timepicker.$onMouseDown);
-	          if (options.keyboard) {
-	            if (element) element.off('keydown', $timepicker.$onKeyDown);
-	          }
-	          _hide(blur);
-	        };
-	        return $timepicker;
-	      }
-	      timepickerFactory.defaults = defaults;
-	      return timepickerFactory;
-	    } ];
-	  }).directive('bsTimepicker', [ '$window', '$parse', '$q', '$dateFormatter', '$dateParser', '$timepicker', function($window, $parse, $q, $dateFormatter, $dateParser, $timepicker) {
-	    var defaults = $timepicker.defaults;
-	    var isNative = /(ip[ao]d|iphone|android)/gi.test($window.navigator.userAgent);
-	    return {
-	      restrict: 'EAC',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'keyboard', 'html', 'animation', 'autoclose', 'timeType', 'timeFormat', 'timezone', 'modelTimeFormat', 'useNative', 'hourStep', 'minuteStep', 'secondStep', 'length', 'arrowBehavior', 'iconUp', 'iconDown', 'roundDisplay', 'id', 'prefixClass', 'prefixEvent' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container', 'autoclose', 'useNative', 'roundDisplay' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) {
-	            options[key] = false;
-	          }
-	        });
-	        if (isNative && (options.useNative || defaults.useNative)) options.timeFormat = 'HH:mm';
-	        var timepicker = $timepicker(element, controller, options);
-	        options = timepicker.$options;
-	        var lang = options.lang;
-	        var formatDate = function(date, format, timezone) {
-	          return $dateFormatter.formatDate(date, format, lang, timezone);
-	        };
-	        if (attr.bsShow) {
-	          scope.$watch(attr.bsShow, function(newValue, oldValue) {
-	            if (!timepicker || !angular.isDefined(newValue)) return;
-	            if (angular.isString(newValue)) newValue = !!newValue.match(/true|,?(timepicker),?/i);
-	            if (newValue === true) {
-	              timepicker.show();
-	            } else {
-	              timepicker.hide();
-	            }
-	          });
-	        }
-	        var dateParser = $dateParser({
-	          format: options.timeFormat,
-	          lang: lang
-	        });
-	        angular.forEach([ 'minTime', 'maxTime' ], function(key) {
-	          if (angular.isDefined(attr[key])) {
-	            attr.$observe(key, function(newValue) {
-	              timepicker.$options[key] = dateParser.getTimeForAttribute(key, newValue);
-	              if (!isNaN(timepicker.$options[key])) timepicker.$build();
-	              validateAgainstMinMaxTime(controller.$dateValue);
-	            });
-	          }
-	        });
-	        scope.$watch(attr.ngModel, function(newValue, oldValue) {
-	          timepicker.update(controller.$dateValue);
-	        }, true);
-	        function validateAgainstMinMaxTime(parsedTime) {
-	          if (!angular.isDate(parsedTime)) return;
-	          var isMinValid = isNaN(options.minTime) || new Date(parsedTime.getTime()).setFullYear(1970, 0, 1) >= options.minTime;
-	          var isMaxValid = isNaN(options.maxTime) || new Date(parsedTime.getTime()).setFullYear(1970, 0, 1) <= options.maxTime;
-	          var isValid = isMinValid && isMaxValid;
-	          controller.$setValidity('date', isValid);
-	          controller.$setValidity('min', isMinValid);
-	          controller.$setValidity('max', isMaxValid);
-	          if (!isValid) {
-	            return;
-	          }
-	          controller.$dateValue = parsedTime;
-	        }
-	        controller.$parsers.unshift(function(viewValue) {
-	          var date;
-	          if (!viewValue) {
-	            controller.$setValidity('date', true);
-	            return null;
-	          }
-	          var parsedTime = angular.isDate(viewValue) ? viewValue : dateParser.parse(viewValue, controller.$dateValue);
-	          if (!parsedTime || isNaN(parsedTime.getTime())) {
-	            controller.$setValidity('date', false);
-	            return undefined;
-	          }
-	          validateAgainstMinMaxTime(parsedTime);
-	          if (options.timeType === 'string') {
-	            date = dateParser.timezoneOffsetAdjust(parsedTime, options.timezone, true);
-	            return formatDate(date, options.modelTimeFormat || options.timeFormat);
-	          }
-	          date = dateParser.timezoneOffsetAdjust(controller.$dateValue, options.timezone, true);
-	          if (options.timeType === 'number') {
-	            return date.getTime();
-	          } else if (options.timeType === 'unix') {
-	            return date.getTime() / 1e3;
-	          } else if (options.timeType === 'iso') {
-	            return date.toISOString();
-	          }
-	          return new Date(date);
-	        });
-	        controller.$formatters.push(function(modelValue) {
-	          var date;
-	          if (angular.isUndefined(modelValue) || modelValue === null) {
-	            date = NaN;
-	          } else if (angular.isDate(modelValue)) {
-	            date = modelValue;
-	          } else if (options.timeType === 'string') {
-	            date = dateParser.parse(modelValue, null, options.modelTimeFormat);
-	          } else if (options.timeType === 'unix') {
-	            date = new Date(modelValue * 1e3);
-	          } else {
-	            date = new Date(modelValue);
-	          }
-	          controller.$dateValue = dateParser.timezoneOffsetAdjust(date, options.timezone);
-	          return getTimeFormattedString();
-	        });
-	        controller.$render = function() {
-	          element.val(getTimeFormattedString());
-	        };
-	        function getTimeFormattedString() {
-	          return !controller.$dateValue || isNaN(controller.$dateValue.getTime()) ? '' : formatDate(controller.$dateValue, options.timeFormat);
-	        }
-	        scope.$on('$destroy', function() {
-	          if (timepicker) timepicker.destroy();
-	          options = null;
-	          timepicker = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.tab', []).provider('$tab', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      template: 'tab/tab.tpl.html',
-	      navClass: 'nav-tabs',
-	      activeClass: 'active'
-	    };
-	    var controller = this.controller = function($scope, $element, $attrs) {
-	      var self = this;
-	      self.$options = angular.copy(defaults);
-	      angular.forEach([ 'animation', 'navClass', 'activeClass' ], function(key) {
-	        if (angular.isDefined($attrs[key])) self.$options[key] = $attrs[key];
-	      });
-	      $scope.$navClass = self.$options.navClass;
-	      $scope.$activeClass = self.$options.activeClass;
-	      self.$panes = $scope.$panes = [];
-	      self.$activePaneChangeListeners = self.$viewChangeListeners = [];
-	      self.$push = function(pane) {
-	        if (angular.isUndefined(self.$panes.$active)) {
-	          $scope.$setActive(pane.name || 0);
-	        }
-	        self.$panes.push(pane);
-	      };
-	      self.$remove = function(pane) {
-	        var index = self.$panes.indexOf(pane);
-	        var active = self.$panes.$active;
-	        var activeIndex;
-	        if (angular.isString(active)) {
-	          activeIndex = self.$panes.map(function(pane) {
-	            return pane.name;
-	          }).indexOf(active);
-	        } else {
-	          activeIndex = self.$panes.$active;
-	        }
-	        self.$panes.splice(index, 1);
-	        if (index < activeIndex) {
-	          activeIndex--;
-	        } else if (index === activeIndex && activeIndex === self.$panes.length) {
-	          activeIndex--;
-	        }
-	        if (activeIndex >= 0 && activeIndex < self.$panes.length) {
-	          self.$setActive(self.$panes[activeIndex].name || activeIndex);
-	        } else {
-	          self.$setActive();
-	        }
-	      };
-	      self.$setActive = $scope.$setActive = function(value) {
-	        self.$panes.$active = value;
-	        self.$activePaneChangeListeners.forEach(function(fn) {
-	          fn();
-	        });
-	      };
-	      self.$isActive = $scope.$isActive = function($pane, $index) {
-	        return self.$panes.$active === $pane.name || self.$panes.$active === $index;
-	      };
-	    };
-	    this.$get = function() {
-	      var $tab = {};
-	      $tab.defaults = defaults;
-	      $tab.controller = controller;
-	      return $tab;
-	    };
-	  }).directive('bsTabs', [ '$window', '$animate', '$tab', '$parse', function($window, $animate, $tab, $parse) {
-	    var defaults = $tab.defaults;
-	    return {
-	      require: [ '?ngModel', 'bsTabs' ],
-	      transclude: true,
-	      scope: true,
-	      controller: [ '$scope', '$element', '$attrs', $tab.controller ],
-	      templateUrl: function(element, attr) {
-	        return attr.template || defaults.template;
-	      },
-	      link: function postLink(scope, element, attrs, controllers) {
-	        var ngModelCtrl = controllers[0];
-	        var bsTabsCtrl = controllers[1];
-	        if (ngModelCtrl) {
-	          bsTabsCtrl.$activePaneChangeListeners.push(function() {
-	            ngModelCtrl.$setViewValue(bsTabsCtrl.$panes.$active);
-	          });
-	          ngModelCtrl.$formatters.push(function(modelValue) {
-	            bsTabsCtrl.$setActive(modelValue);
-	            return modelValue;
-	          });
-	        }
-	        if (attrs.bsActivePane) {
-	          var parsedBsActivePane = $parse(attrs.bsActivePane);
-	          bsTabsCtrl.$activePaneChangeListeners.push(function() {
-	            parsedBsActivePane.assign(scope, bsTabsCtrl.$panes.$active);
-	          });
-	          scope.$watch(attrs.bsActivePane, function(newValue, oldValue) {
-	            bsTabsCtrl.$setActive(newValue);
-	          }, true);
-	        }
-	      }
-	    };
-	  } ]).directive('bsPane', [ '$window', '$animate', '$sce', function($window, $animate, $sce) {
-	    return {
-	      require: [ '^?ngModel', '^bsTabs' ],
-	      scope: true,
-	      link: function postLink(scope, element, attrs, controllers) {
-	        var bsTabsCtrl = controllers[1];
-	        element.addClass('tab-pane');
-	        attrs.$observe('title', function(newValue, oldValue) {
-	          scope.title = $sce.trustAsHtml(newValue);
-	        });
-	        scope.name = attrs.name;
-	        if (bsTabsCtrl.$options.animation) {
-	          element.addClass(bsTabsCtrl.$options.animation);
-	        }
-	        attrs.$observe('disabled', function(newValue, oldValue) {
-	          scope.disabled = scope.$eval(newValue);
-	        });
-	        bsTabsCtrl.$push(scope);
-	        scope.$on('$destroy', function() {
-	          bsTabsCtrl.$remove(scope);
-	        });
-	        function render() {
-	          var index = bsTabsCtrl.$panes.indexOf(scope);
-	          $animate[bsTabsCtrl.$isActive(scope, index) ? 'addClass' : 'removeClass'](element, bsTabsCtrl.$options.activeClass);
-	        }
-	        bsTabsCtrl.$activePaneChangeListeners.push(function() {
-	          render();
-	        });
-	        render();
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.select', [ 'mgcrea.ngStrap.tooltip', 'mgcrea.ngStrap.helpers.parseOptions' ]).provider('$select', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'select',
-	      prefixEvent: '$select',
-	      placement: 'bottom-left',
-	      templateUrl: 'select/select.tpl.html',
-	      trigger: 'focus',
-	      container: false,
-	      keyboard: true,
-	      html: false,
-	      delay: 0,
-	      multiple: false,
-	      allNoneButtons: false,
-	      sort: true,
-	      caretHtml: '&nbsp;<span class="caret"></span>',
-	      placeholder: 'Choose among the following...',
-	      allText: 'All',
-	      noneText: 'None',
-	      maxLength: 3,
-	      maxLengthHtml: 'selected',
-	      iconCheckmark: 'glyphicon glyphicon-ok'
-	    };
-	    this.$get = [ '$window', '$document', '$rootScope', '$tooltip', '$timeout', function($window, $document, $rootScope, $tooltip, $timeout) {
-	      var isNative = /(ip[ao]d|iphone|android)/gi.test($window.navigator.userAgent);
-	      var isTouch = 'createTouch' in $window.document && isNative;
-	      function SelectFactory(element, controller, config) {
-	        var $select = {};
-	        var options = angular.extend({}, defaults, config);
-	        $select = $tooltip(element, options);
-	        var scope = $select.$scope;
-	        scope.$matches = [];
-	        if (options.multiple) {
-	          scope.$activeIndex = [];
-	        } else {
-	          scope.$activeIndex = -1;
-	        }
-	        scope.$isMultiple = options.multiple;
-	        scope.$showAllNoneButtons = options.allNoneButtons && options.multiple;
-	        scope.$iconCheckmark = options.iconCheckmark;
-	        scope.$allText = options.allText;
-	        scope.$noneText = options.noneText;
-	        scope.$activate = function(index) {
-	          scope.$$postDigest(function() {
-	            $select.activate(index);
-	          });
-	        };
-	        scope.$select = function(index, evt) {
-	          scope.$$postDigest(function() {
-	            $select.select(index);
-	          });
-	        };
-	        scope.$isVisible = function() {
-	          return $select.$isVisible();
-	        };
-	        scope.$isActive = function(index) {
-	          return $select.$isActive(index);
-	        };
-	        scope.$selectAll = function() {
-	          for (var i = 0; i < scope.$matches.length; i++) {
-	            if (!scope.$isActive(i)) {
-	              scope.$select(i);
-	            }
-	          }
-	        };
-	        scope.$selectNone = function() {
-	          for (var i = 0; i < scope.$matches.length; i++) {
-	            if (scope.$isActive(i)) {
-	              scope.$select(i);
-	            }
-	          }
-	        };
-	        $select.update = function(matches) {
-	          scope.$matches = matches;
-	          $select.$updateActiveIndex();
-	        };
-	        $select.activate = function(index) {
-	          if (options.multiple) {
-	            if ($select.$isActive(index)) {
-	              scope.$activeIndex.splice(scope.$activeIndex.indexOf(index), 1);
-	            } else {
-	              scope.$activeIndex.push(index);
-	            }
-	            if (options.sort) scope.$activeIndex.sort(function(a, b) {
-	              return a - b;
-	            });
-	          } else {
-	            scope.$activeIndex = index;
-	          }
-	          return scope.$activeIndex;
-	        };
-	        $select.select = function(index) {
-	          var value = scope.$matches[index].value;
-	          scope.$apply(function() {
-	            $select.activate(index);
-	            if (options.multiple) {
-	              controller.$setViewValue(scope.$activeIndex.map(function(index) {
-	                if (angular.isUndefined(scope.$matches[index])) {
-	                  return null;
-	                }
-	                return scope.$matches[index].value;
-	              }));
-	            } else {
-	              controller.$setViewValue(value);
-	              $select.hide();
-	            }
-	          });
-	          scope.$emit(options.prefixEvent + '.select', value, index, $select);
-	        };
-	        $select.$updateActiveIndex = function() {
-	          if (options.multiple) {
-	            if (angular.isArray(controller.$modelValue)) {
-	              scope.$activeIndex = controller.$modelValue.map(function(value) {
-	                return $select.$getIndex(value);
-	              });
-	            } else {
-	              scope.$activeIndex = [];
-	            }
-	          } else {
-	            if (angular.isDefined(controller.$modelValue) && scope.$matches.length) {
-	              scope.$activeIndex = $select.$getIndex(controller.$modelValue);
-	            } else {
-	              scope.$activeIndex = -1;
-	            }
-	          }
-	        };
-	        $select.$isVisible = function() {
-	          if (!options.minLength || !controller) {
-	            return scope.$matches.length;
-	          }
-	          return scope.$matches.length && controller.$viewValue.length >= options.minLength;
-	        };
-	        $select.$isActive = function(index) {
-	          if (options.multiple) {
-	            return scope.$activeIndex.indexOf(index) !== -1;
-	          }
-	          return scope.$activeIndex === index;
-	        };
-	        $select.$getIndex = function(value) {
-	          var index;
-	          for (index = scope.$matches.length; index--; ) {
-	            if (angular.equals(scope.$matches[index].value, value)) break;
-	          }
-	          return index;
-	        };
-	        $select.$onMouseDown = function(evt) {
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          if (isTouch) {
-	            var targetEl = angular.element(evt.target);
-	            targetEl.triggerHandler('click');
-	          }
-	        };
-	        $select.$onKeyDown = function(evt) {
-	          if (!/(9|13|38|40)/.test(evt.keyCode)) return;
-	          if (evt.keyCode !== 9) {
-	            evt.preventDefault();
-	            evt.stopPropagation();
-	          }
-	          if (options.multiple && evt.keyCode === 9) {
-	            return $select.hide();
-	          }
-	          if (!options.multiple && (evt.keyCode === 13 || evt.keyCode === 9)) {
-	            return $select.select(scope.$activeIndex);
-	          }
-	          if (!options.multiple) {
-	            if (evt.keyCode === 38 && scope.$activeIndex > 0) scope.$activeIndex--; else if (evt.keyCode === 38 && scope.$activeIndex < 0) scope.$activeIndex = scope.$matches.length - 1; else if (evt.keyCode === 40 && scope.$activeIndex < scope.$matches.length - 1) scope.$activeIndex++; else if (angular.isUndefined(scope.$activeIndex)) scope.$activeIndex = 0;
-	            scope.$digest();
-	          }
-	        };
-	        $select.$isIE = function() {
-	          var ua = $window.navigator.userAgent;
-	          return ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0;
-	        };
-	        $select.$selectScrollFix = function(e) {
-	          if ($document[0].activeElement.tagName === 'UL') {
-	            e.preventDefault();
-	            e.stopImmediatePropagation();
-	            e.target.focus();
-	          }
-	        };
-	        var _show = $select.show;
-	        $select.show = function() {
-	          _show();
-	          if (options.multiple) {
-	            $select.$element.addClass('select-multiple');
-	          }
-	          $timeout(function() {
-	            $select.$element.on(isTouch ? 'touchstart' : 'mousedown', $select.$onMouseDown);
-	            if (options.keyboard) {
-	              element.on('keydown', $select.$onKeyDown);
-	            }
-	          }, 0, false);
-	        };
-	        var _hide = $select.hide;
-	        $select.hide = function() {
-	          if (!options.multiple && angular.isUndefined(controller.$modelValue)) {
-	            scope.$activeIndex = -1;
-	          }
-	          $select.$element.off(isTouch ? 'touchstart' : 'mousedown', $select.$onMouseDown);
-	          if (options.keyboard) {
-	            element.off('keydown', $select.$onKeyDown);
-	          }
-	          _hide(true);
-	        };
-	        return $select;
-	      }
-	      SelectFactory.defaults = defaults;
-	      return SelectFactory;
-	    } ];
-	  }).directive('bsSelect', [ '$window', '$parse', '$q', '$select', '$parseOptions', function($window, $parse, $q, $select, $parseOptions) {
-	    var defaults = $select.defaults;
-	    return {
-	      restrict: 'EAC',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = {
-	          scope: scope,
-	          placeholder: defaults.placeholder
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'keyboard', 'html', 'animation', 'placeholder', 'allNoneButtons', 'maxLength', 'maxLengthHtml', 'allText', 'noneText', 'iconCheckmark', 'autoClose', 'id', 'sort', 'caretHtml', 'prefixClass', 'prefixEvent' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container', 'allNoneButtons', 'sort' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) {
-	            options[key] = false;
-	          }
-	        });
-	        var dataMultiple = element.attr('data-multiple');
-	        if (angular.isDefined(dataMultiple)) {
-	          if (falseValueRegExp.test(dataMultiple)) {
-	            options.multiple = false;
-	          } else {
-	            options.multiple = dataMultiple;
-	          }
-	        }
-	        if (element[0].nodeName.toLowerCase() === 'select') {
-	          var inputEl = element;
-	          inputEl.css('display', 'none');
-	          element = angular.element('<button type="button" class="btn btn-default"></button>');
-	          inputEl.after(element);
-	        }
-	        var parsedOptions = $parseOptions(attr.bsOptions);
-	        var select = $select(element, controller, options);
-	        if (select.$isIE()) {
-	          element[0].addEventListener('blur', select.$selectScrollFix);
-	        }
-	        var watchedOptions = parsedOptions.$match[7].replace(/\|.+/, '').trim();
-	        scope.$watch(watchedOptions, function(newValue, oldValue) {
-	          parsedOptions.valuesFn(scope, controller).then(function(values) {
-	            select.update(values);
-	            controller.$render();
-	          });
-	        }, true);
-	        scope.$watch(attr.ngModel, function(newValue, oldValue) {
-	          select.$updateActiveIndex();
-	          controller.$render();
-	        }, true);
-	        controller.$render = function() {
-	          var selected;
-	          var index;
-	          if (options.multiple && angular.isArray(controller.$modelValue)) {
-	            selected = controller.$modelValue.map(function(value) {
-	              index = select.$getIndex(value);
-	              return index !== -1 ? select.$scope.$matches[index].label : false;
-	            }).filter(angular.isDefined);
-	            if (selected.length > (options.maxLength || defaults.maxLength)) {
-	              selected = selected.length + ' ' + (options.maxLengthHtml || defaults.maxLengthHtml);
-	            } else {
-	              selected = selected.join(', ');
-	            }
-	          } else {
-	            index = select.$getIndex(controller.$modelValue);
-	            selected = index !== -1 ? select.$scope.$matches[index].label : false;
-	          }
-	          element.html((selected || options.placeholder) + (options.caretHtml || defaults.caretHtml));
-	        };
-	        if (options.multiple) {
-	          controller.$isEmpty = function(value) {
-	            return !value || value.length === 0;
-	          };
-	        }
-	        scope.$on('$destroy', function() {
-	          if (select) select.destroy();
-	          options = null;
-	          select = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.scrollspy', [ 'mgcrea.ngStrap.helpers.debounce', 'mgcrea.ngStrap.helpers.dimensions' ]).provider('$scrollspy', function() {
-	    var spies = this.$$spies = {};
-	    var defaults = this.defaults = {
-	      debounce: 150,
-	      throttle: 100,
-	      offset: 100
-	    };
-	    this.$get = [ '$window', '$document', '$rootScope', 'dimensions', 'debounce', 'throttle', function($window, $document, $rootScope, dimensions, debounce, throttle) {
-	      var windowEl = angular.element($window);
-	      var docEl = angular.element($document.prop('documentElement'));
-	      var bodyEl = angular.element($window.document.body);
-	      function nodeName(element, name) {
-	        return element[0].nodeName && element[0].nodeName.toLowerCase() === name.toLowerCase();
-	      }
-	      function ScrollSpyFactory(config) {
-	        var options = angular.extend({}, defaults, config);
-	        if (!options.element) options.element = bodyEl;
-	        var isWindowSpy = nodeName(options.element, 'body');
-	        var scrollEl = isWindowSpy ? windowEl : options.element;
-	        var scrollId = isWindowSpy ? 'window' : options.id;
-	        if (spies[scrollId]) {
-	          spies[scrollId].$$count++;
-	          return spies[scrollId];
-	        }
-	        var $scrollspy = {};
-	        var unbindViewContentLoaded;
-	        var unbindIncludeContentLoaded;
-	        var trackedElements = $scrollspy.$trackedElements = [];
-	        var sortedElements = [];
-	        var activeTarget;
-	        var debouncedCheckPosition;
-	        var throttledCheckPosition;
-	        var debouncedCheckOffsets;
-	        var viewportHeight;
-	        var scrollTop;
-	        $scrollspy.init = function() {
-	          this.$$count = 1;
-	          debouncedCheckPosition = debounce(this.checkPosition, options.debounce);
-	          throttledCheckPosition = throttle(this.checkPosition, options.throttle);
-	          scrollEl.on('click', this.checkPositionWithEventLoop);
-	          windowEl.on('resize', debouncedCheckPosition);
-	          scrollEl.on('scroll', throttledCheckPosition);
-	          debouncedCheckOffsets = debounce(this.checkOffsets, options.debounce);
-	          unbindViewContentLoaded = $rootScope.$on('$viewContentLoaded', debouncedCheckOffsets);
-	          unbindIncludeContentLoaded = $rootScope.$on('$includeContentLoaded', debouncedCheckOffsets);
-	          debouncedCheckOffsets();
-	          if (scrollId) {
-	            spies[scrollId] = $scrollspy;
-	          }
-	        };
-	        $scrollspy.destroy = function() {
-	          this.$$count--;
-	          if (this.$$count > 0) {
-	            return;
-	          }
-	          scrollEl.off('click', this.checkPositionWithEventLoop);
-	          windowEl.off('resize', debouncedCheckPosition);
-	          scrollEl.off('scroll', throttledCheckPosition);
-	          unbindViewContentLoaded();
-	          unbindIncludeContentLoaded();
-	          if (scrollId) {
-	            delete spies[scrollId];
-	          }
-	        };
-	        $scrollspy.checkPosition = function() {
-	          if (!sortedElements.length) return;
-	          scrollTop = (isWindowSpy ? $window.pageYOffset : scrollEl.prop('scrollTop')) || 0;
-	          viewportHeight = Math.max($window.innerHeight, docEl.prop('clientHeight'));
-	          if (scrollTop < sortedElements[0].offsetTop && activeTarget !== sortedElements[0].target) {
-	            return $scrollspy.$activateElement(sortedElements[0]);
-	          }
-	          for (var i = sortedElements.length; i--; ) {
-	            if (angular.isUndefined(sortedElements[i].offsetTop) || sortedElements[i].offsetTop === null) continue;
-	            if (activeTarget === sortedElements[i].target) continue;
-	            if (scrollTop < sortedElements[i].offsetTop) continue;
-	            if (sortedElements[i + 1] && scrollTop > sortedElements[i + 1].offsetTop) continue;
-	            return $scrollspy.$activateElement(sortedElements[i]);
-	          }
-	        };
-	        $scrollspy.checkPositionWithEventLoop = function() {
-	          setTimeout($scrollspy.checkPosition, 1);
-	        };
-	        $scrollspy.$activateElement = function(element) {
-	          if (activeTarget) {
-	            var activeElement = $scrollspy.$getTrackedElement(activeTarget);
-	            if (activeElement) {
-	              activeElement.source.removeClass('active');
-	              if (nodeName(activeElement.source, 'li') && nodeName(activeElement.source.parent().parent(), 'li')) {
-	                activeElement.source.parent().parent().removeClass('active');
-	              }
-	            }
-	          }
-	          activeTarget = element.target;
-	          element.source.addClass('active');
-	          if (nodeName(element.source, 'li') && nodeName(element.source.parent().parent(), 'li')) {
-	            element.source.parent().parent().addClass('active');
-	          }
-	        };
-	        $scrollspy.$getTrackedElement = function(target) {
-	          return trackedElements.filter(function(obj) {
-	            return obj.target === target;
-	          })[0];
-	        };
-	        $scrollspy.checkOffsets = function() {
-	          angular.forEach(trackedElements, function(trackedElement) {
-	            var targetElement = document.querySelector(trackedElement.target);
-	            trackedElement.offsetTop = targetElement ? dimensions.offset(targetElement).top : null;
-	            if (options.offset && trackedElement.offsetTop !== null) trackedElement.offsetTop -= options.offset * 1;
-	          });
-	          sortedElements = trackedElements.filter(function(el) {
-	            return el.offsetTop !== null;
-	          }).sort(function(a, b) {
-	            return a.offsetTop - b.offsetTop;
-	          });
-	          debouncedCheckPosition();
-	        };
-	        $scrollspy.trackElement = function(target, source) {
-	          trackedElements.push({
-	            target: target,
-	            source: source
-	          });
-	        };
-	        $scrollspy.untrackElement = function(target, source) {
-	          var toDelete;
-	          for (var i = trackedElements.length; i--; ) {
-	            if (trackedElements[i].target === target && trackedElements[i].source === source) {
-	              toDelete = i;
-	              break;
-	            }
-	          }
-	          trackedElements.splice(toDelete, 1);
-	        };
-	        $scrollspy.activate = function(i) {
-	          trackedElements[i].addClass('active');
-	        };
-	        $scrollspy.init();
-	        return $scrollspy;
-	      }
-	      return ScrollSpyFactory;
-	    } ];
-	  }).directive('bsScrollspy', [ '$rootScope', 'debounce', 'dimensions', '$scrollspy', function($rootScope, debounce, dimensions, $scrollspy) {
-	    return {
-	      restrict: 'EAC',
-	      link: function postLink(scope, element, attr) {
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'offset', 'target' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var scrollspy = $scrollspy(options);
-	        scrollspy.trackElement(options.target, element);
-	        scope.$on('$destroy', function() {
-	          if (scrollspy) {
-	            scrollspy.untrackElement(options.target, element);
-	            scrollspy.destroy();
-	          }
-	          options = null;
-	          scrollspy = null;
-	        });
-	      }
-	    };
-	  } ]).directive('bsScrollspyList', [ '$rootScope', 'debounce', 'dimensions', '$scrollspy', function($rootScope, debounce, dimensions, $scrollspy) {
-	    return {
-	      restrict: 'A',
-	      compile: function postLink(element, attr) {
-	        var children = element[0].querySelectorAll('li > a[href]');
-	        angular.forEach(children, function(child) {
-	          var childEl = angular.element(child);
-	          childEl.parent().attr('bs-scrollspy', '').attr('data-target', childEl.attr('href'));
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.popover', [ 'mgcrea.ngStrap.tooltip' ]).provider('$popover', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      customClass: '',
-	      container: false,
-	      target: false,
-	      placement: 'right',
-	      templateUrl: 'popover/popover.tpl.html',
-	      contentTemplate: false,
-	      trigger: 'click',
-	      keyboard: true,
-	      html: false,
-	      title: '',
-	      content: '',
-	      delay: 0,
-	      autoClose: false
-	    };
-	    this.$get = [ '$tooltip', function($tooltip) {
-	      function PopoverFactory(element, config) {
-	        var options = angular.extend({}, defaults, config);
-	        var $popover = $tooltip(element, options);
-	        if (options.content) {
-	          $popover.$scope.content = options.content;
-	        }
-	        return $popover;
-	      }
-	      return PopoverFactory;
-	    } ];
-	  }).directive('bsPopover', [ '$window', '$sce', '$popover', function($window, $sce, $popover) {
-	    var requestAnimationFrame = $window.requestAnimationFrame || $window.setTimeout;
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      link: function postLink(scope, element, attr) {
-	        var popover;
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'contentTemplate', 'placement', 'container', 'delay', 'trigger', 'html', 'animation', 'customClass', 'autoClose', 'id', 'prefixClass', 'prefixEvent' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container', 'autoClose' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	        });
-	        var dataTarget = element.attr('data-target');
-	        if (angular.isDefined(dataTarget)) {
-	          if (falseValueRegExp.test(dataTarget)) {
-	            options.target = false;
-	          } else {
-	            options.target = dataTarget;
-	          }
-	        }
-	        angular.forEach([ 'title', 'content' ], function(key) {
-	          if (attr[key]) {
-	            attr.$observe(key, function(newValue, oldValue) {
-	              scope[key] = $sce.trustAsHtml(newValue);
-	              if (angular.isDefined(oldValue)) {
-	                requestAnimationFrame(function() {
-	                  if (popover) popover.$applyPlacement();
-	                });
-	              }
-	            });
-	          }
-	        });
-	        if (attr.bsPopover) {
-	          scope.$watch(attr.bsPopover, function(newValue, oldValue) {
-	            if (angular.isObject(newValue)) {
-	              angular.extend(scope, newValue);
-	            } else {
-	              scope.content = newValue;
-	            }
-	            if (angular.isDefined(oldValue)) {
-	              requestAnimationFrame(function() {
-	                if (popover) popover.$applyPlacement();
-	              });
-	            }
-	          }, true);
-	        }
-	        if (attr.bsShow) {
-	          scope.$watch(attr.bsShow, function(newValue, oldValue) {
-	            if (!popover || !angular.isDefined(newValue)) return;
-	            if (angular.isString(newValue)) newValue = !!newValue.match(/true|,?(popover),?/i);
-	            if (newValue === true) {
-	              popover.show();
-	            } else {
-	              popover.hide();
-	            }
-	          });
-	        }
-	        if (attr.viewport) {
-	          scope.$watch(attr.viewport, function(newValue) {
-	            if (!popover || !angular.isDefined(newValue)) return;
-	            popover.setViewport(newValue);
-	          });
-	        }
-	        popover = $popover(element, options);
-	        scope.$on('$destroy', function() {
-	          if (popover) popover.destroy();
-	          options = null;
-	          popover = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.navbar', []).provider('$navbar', function() {
-	    var defaults = this.defaults = {
-	      activeClass: 'active',
-	      routeAttr: 'data-match-route',
-	      strict: false
-	    };
-	    this.$get = function() {
-	      return {
-	        defaults: defaults
-	      };
-	    };
-	  }).directive('bsNavbar', [ '$window', '$location', '$navbar', function($window, $location, $navbar) {
-	    var defaults = $navbar.defaults;
-	    return {
-	      restrict: 'A',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = angular.copy(defaults);
-	        angular.forEach(Object.keys(defaults), function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        scope.$watch(function() {
-	          return $location.path();
-	        }, function(newValue, oldValue) {
-	          var liElements = element[0].querySelectorAll('li[' + options.routeAttr + ']');
-	          angular.forEach(liElements, function(li) {
-	            var liElement = angular.element(li);
-	            var pattern = liElement.attr(options.routeAttr).replace('/', '\\/');
-	            if (options.strict) {
-	              pattern = '^' + pattern + '$';
-	            }
-	            var regexp = new RegExp(pattern, 'i');
-	            if (regexp.test(newValue)) {
-	              liElement.addClass(options.activeClass);
-	            } else {
-	              liElement.removeClass(options.activeClass);
-	            }
-	          });
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.dropdown', [ 'mgcrea.ngStrap.tooltip' ]).provider('$dropdown', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'dropdown',
-	      prefixEvent: 'dropdown',
-	      placement: 'bottom-left',
-	      templateUrl: 'dropdown/dropdown.tpl.html',
-	      trigger: 'click',
-	      container: false,
-	      keyboard: true,
-	      html: false,
-	      delay: 0
-	    };
-	    this.$get = [ '$window', '$rootScope', '$tooltip', '$timeout', function($window, $rootScope, $tooltip, $timeout) {
-	      var bodyEl = angular.element($window.document.body);
-	      var matchesSelector = Element.prototype.matchesSelector || Element.prototype.webkitMatchesSelector || Element.prototype.mozMatchesSelector || Element.prototype.msMatchesSelector || Element.prototype.oMatchesSelector;
-	      function DropdownFactory(element, config) {
-	        var $dropdown = {};
-	        var options = angular.extend({}, defaults, config);
-	        $dropdown.$scope = options.scope && options.scope.$new() || $rootScope.$new();
-	        $dropdown = $tooltip(element, options);
-	        var parentEl = element.parent();
-	        $dropdown.$onKeyDown = function(evt) {
-	          if (!/(38|40)/.test(evt.keyCode)) return;
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          var items = angular.element($dropdown.$element[0].querySelectorAll('li:not(.divider) a'));
-	          if (!items.length) return;
-	          var index;
-	          angular.forEach(items, function(el, i) {
-	            if (matchesSelector && matchesSelector.call(el, ':focus')) index = i;
-	          });
-	          if (evt.keyCode === 38 && index > 0) index--; else if (evt.keyCode === 40 && index < items.length - 1) index++; else if (angular.isUndefined(index)) index = 0;
-	          items.eq(index)[0].focus();
-	        };
-	        var show = $dropdown.show;
-	        $dropdown.show = function() {
-	          show();
-	          $timeout(function() {
-	            if (options.keyboard && $dropdown.$element) $dropdown.$element.on('keydown', $dropdown.$onKeyDown);
-	            bodyEl.on('click', onBodyClick);
-	          }, 0, false);
-	          if (parentEl.hasClass('dropdown')) parentEl.addClass('open');
-	        };
-	        var hide = $dropdown.hide;
-	        $dropdown.hide = function() {
-	          if (!$dropdown.$isShown) return;
-	          if (options.keyboard && $dropdown.$element) $dropdown.$element.off('keydown', $dropdown.$onKeyDown);
-	          bodyEl.off('click', onBodyClick);
-	          if (parentEl.hasClass('dropdown')) parentEl.removeClass('open');
-	          hide();
-	        };
-	        var destroy = $dropdown.destroy;
-	        $dropdown.destroy = function() {
-	          bodyEl.off('click', onBodyClick);
-	          destroy();
-	        };
-	        function onBodyClick(evt) {
-	          if (evt.target === element[0]) return;
-	          return evt.target !== element[0] && $dropdown.hide();
-	        }
-	        return $dropdown;
-	      }
-	      return DropdownFactory;
-	    } ];
-	  }).directive('bsDropdown', [ '$window', '$sce', '$dropdown', function($window, $sce, $dropdown) {
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      compile: function(tElement, tAttrs) {
-	        if (!tAttrs.bsDropdown) {
-	          var nextSibling = tElement[0].nextSibling;
-	          while (nextSibling && nextSibling.nodeType !== 1) {
-	            nextSibling = nextSibling.nextSibling;
-	          }
-	          if (nextSibling && nextSibling.className.split(' ').indexOf('dropdown-menu') >= 0) {
-	            tAttrs.template = nextSibling.outerHTML;
-	            tAttrs.templateUrl = undefined;
-	            nextSibling.parentNode.removeChild(nextSibling);
-	          }
-	        }
-	        return function postLink(scope, element, attr) {
-	          var options = {
-	            scope: scope
-	          };
-	          angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'keyboard', 'html', 'animation', 'id', 'autoClose' ], function(key) {
-	            if (angular.isDefined(tAttrs[key])) options[key] = tAttrs[key];
-	          });
-	          var falseValueRegExp = /^(false|0|)$/i;
-	          angular.forEach([ 'html', 'container' ], function(key) {
-	            if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	          });
-	          if (attr.bsDropdown) {
-	            scope.$watch(attr.bsDropdown, function(newValue, oldValue) {
-	              scope.content = newValue;
-	            }, true);
-	          }
-	          var dropdown = $dropdown(element, options);
-	          if (attr.bsShow) {
-	            scope.$watch(attr.bsShow, function(newValue, oldValue) {
-	              if (!dropdown || !angular.isDefined(newValue)) return;
-	              if (angular.isString(newValue)) newValue = !!newValue.match(/true|,?(dropdown),?/i);
-	              if (newValue === true) {
-	                dropdown.show();
-	              } else {
-	                dropdown.hide();
-	              }
-	            });
-	          }
-	          scope.$on('$destroy', function() {
-	            if (dropdown) dropdown.destroy();
-	            options = null;
-	            dropdown = null;
-	          });
-	        };
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.modal', [ 'mgcrea.ngStrap.core', 'mgcrea.ngStrap.helpers.dimensions' ]).provider('$modal', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      backdropAnimation: 'am-fade',
-	      customClass: '',
-	      prefixClass: 'modal',
-	      prefixEvent: 'modal',
-	      placement: 'top',
-	      templateUrl: 'modal/modal.tpl.html',
-	      template: '',
-	      contentTemplate: false,
-	      container: false,
-	      element: null,
-	      backdrop: true,
-	      keyboard: true,
-	      html: false,
-	      show: true,
-	      size: null
-	    };
-	    this.$get = [ '$window', '$rootScope', '$bsCompiler', '$animate', '$timeout', '$sce', 'dimensions', function($window, $rootScope, $bsCompiler, $animate, $timeout, $sce, dimensions) {
-	      var forEach = angular.forEach;
-	      var requestAnimationFrame = $window.requestAnimationFrame || $window.setTimeout;
-	      var bodyElement = angular.element($window.document.body);
-	      var backdropCount = 0;
-	      var dialogBaseZindex = 1050;
-	      var backdropBaseZindex = 1040;
-	      var validSizes = {
-	        lg: 'modal-lg',
-	        sm: 'modal-sm'
-	      };
-	      function ModalFactory(config) {
-	        var $modal = {};
-	        var options = $modal.$options = angular.extend({}, defaults, config);
-	        var promise = $modal.$promise = $bsCompiler.compile(options);
-	        var scope = $modal.$scope = options.scope && options.scope.$new() || $rootScope.$new();
-	        if (!options.element && !options.container) {
-	          options.container = 'body';
-	        }
-	        $modal.$id = options.id || options.element && options.element.attr('id') || '';
-	        forEach([ 'title', 'content' ], function(key) {
-	          if (options[key]) scope[key] = $sce.trustAsHtml(options[key]);
-	        });
-	        scope.$hide = function() {
-	          scope.$$postDigest(function() {
-	            $modal.hide();
-	          });
-	        };
-	        scope.$show = function() {
-	          scope.$$postDigest(function() {
-	            $modal.show();
-	          });
-	        };
-	        scope.$toggle = function() {
-	          scope.$$postDigest(function() {
-	            $modal.toggle();
-	          });
-	        };
-	        $modal.$isShown = scope.$isShown = false;
-	        var compileData;
-	        var modalElement;
-	        var modalScope;
-	        var backdropElement = angular.element('<div class="' + options.prefixClass + '-backdrop"/>');
-	        backdropElement.css({
-	          position: 'fixed',
-	          top: '0px',
-	          left: '0px',
-	          bottom: '0px',
-	          right: '0px'
-	        });
-	        promise.then(function(data) {
-	          compileData = data;
-	          $modal.init();
-	        });
-	        $modal.init = function() {
-	          if (options.show) {
-	            scope.$$postDigest(function() {
-	              $modal.show();
-	            });
-	          }
-	        };
-	        $modal.destroy = function() {
-	          destroyModalElement();
-	          if (backdropElement) {
-	            backdropElement.remove();
-	            backdropElement = null;
-	          }
-	          scope.$destroy();
-	        };
-	        $modal.show = function() {
-	          if ($modal.$isShown) return;
-	          var parent;
-	          var after;
-	          if (angular.isElement(options.container)) {
-	            parent = options.container;
-	            after = options.container[0].lastChild ? angular.element(options.container[0].lastChild) : null;
-	          } else {
-	            if (options.container) {
-	              parent = findElement(options.container);
-	              after = parent[0] && parent[0].lastChild ? angular.element(parent[0].lastChild) : null;
-	            } else {
-	              parent = null;
-	              after = options.element;
-	            }
-	          }
-	          if (modalElement) destroyModalElement();
-	          modalScope = $modal.$scope.$new();
-	          modalElement = $modal.$element = compileData.link(modalScope, function(clonedElement, scope) {});
-	          if (options.backdrop) {
-	            modalElement.css({
-	              'z-index': dialogBaseZindex + backdropCount * 20
-	            });
-	            backdropElement.css({
-	              'z-index': backdropBaseZindex + backdropCount * 20
-	            });
-	            backdropCount++;
-	          }
-	          if (scope.$emit(options.prefixEvent + '.show.before', $modal).defaultPrevented) {
-	            return;
-	          }
-	          modalElement.css({
-	            display: 'block'
-	          }).addClass(options.placement);
-	          if (options.customClass) {
-	            modalElement.addClass(options.customClass);
-	          }
-	          if (options.size && validSizes[options.size]) {
-	            angular.element(findElement('.modal-dialog', modalElement[0])).addClass(validSizes[options.size]);
-	          }
-	          if (options.animation) {
-	            if (options.backdrop) {
-	              backdropElement.addClass(options.backdropAnimation);
-	            }
-	            modalElement.addClass(options.animation);
-	          }
-	          if (options.backdrop) {
-	            $animate.enter(backdropElement, bodyElement, null);
-	          }
-	          if (angular.version.minor <= 2) {
-	            $animate.enter(modalElement, parent, after, enterAnimateCallback);
-	          } else {
-	            $animate.enter(modalElement, parent, after).then(enterAnimateCallback);
-	          }
-	          $modal.$isShown = scope.$isShown = true;
-	          safeDigest(scope);
-	          var el = modalElement[0];
-	          requestAnimationFrame(function() {
-	            el.focus();
-	          });
-	          bodyElement.addClass(options.prefixClass + '-open');
-	          if (options.animation) {
-	            bodyElement.addClass(options.prefixClass + '-with-' + options.animation);
-	          }
-	          bindBackdropEvents();
-	          bindKeyboardEvents();
-	        };
-	        function enterAnimateCallback() {
-	          scope.$emit(options.prefixEvent + '.show', $modal);
-	        }
-	        $modal.hide = function() {
-	          if (!$modal.$isShown) return;
-	          if (options.backdrop) {
-	            backdropCount--;
-	          }
-	          if (scope.$emit(options.prefixEvent + '.hide.before', $modal).defaultPrevented) {
-	            return;
-	          }
-	          if (angular.version.minor <= 2) {
-	            $animate.leave(modalElement, leaveAnimateCallback);
-	          } else {
-	            $animate.leave(modalElement).then(leaveAnimateCallback);
-	          }
-	          if (options.backdrop) {
-	            $animate.leave(backdropElement);
-	          }
-	          $modal.$isShown = scope.$isShown = false;
-	          safeDigest(scope);
-	          unbindBackdropEvents();
-	          unbindKeyboardEvents();
-	        };
-	        function leaveAnimateCallback() {
-	          scope.$emit(options.prefixEvent + '.hide', $modal);
-	          bodyElement.removeClass(options.prefixClass + '-open');
-	          if (options.animation) {
-	            bodyElement.removeClass(options.prefixClass + '-with-' + options.animation);
-	          }
-	        }
-	        $modal.toggle = function() {
-	          if ($modal.$isShown) {
-	            $modal.hide();
-	          } else {
-	            $modal.show();
-	          }
-	        };
-	        $modal.focus = function() {
-	          modalElement[0].focus();
-	        };
-	        $modal.$onKeyUp = function(evt) {
-	          if (evt.which === 27 && $modal.$isShown) {
-	            $modal.hide();
-	            evt.stopPropagation();
-	          }
-	        };
-	        function bindBackdropEvents() {
-	          if (options.backdrop) {
-	            modalElement.on('click', hideOnBackdropClick);
-	            backdropElement.on('click', hideOnBackdropClick);
-	            backdropElement.on('wheel', preventEventDefault);
-	          }
-	        }
-	        function unbindBackdropEvents() {
-	          if (options.backdrop) {
-	            modalElement.off('click', hideOnBackdropClick);
-	            backdropElement.off('click', hideOnBackdropClick);
-	            backdropElement.off('wheel', preventEventDefault);
-	          }
-	        }
-	        function bindKeyboardEvents() {
-	          if (options.keyboard) {
-	            modalElement.on('keyup', $modal.$onKeyUp);
-	          }
-	        }
-	        function unbindKeyboardEvents() {
-	          if (options.keyboard) {
-	            modalElement.off('keyup', $modal.$onKeyUp);
-	          }
-	        }
-	        function hideOnBackdropClick(evt) {
-	          if (evt.target !== evt.currentTarget) return;
-	          if (options.backdrop === 'static') {
-	            $modal.focus();
-	          } else {
-	            $modal.hide();
-	          }
-	        }
-	        function preventEventDefault(evt) {
-	          evt.preventDefault();
-	        }
-	        function destroyModalElement() {
-	          if ($modal.$isShown && modalElement !== null) {
-	            unbindBackdropEvents();
-	            unbindKeyboardEvents();
-	          }
-	          if (modalScope) {
-	            modalScope.$destroy();
-	            modalScope = null;
-	          }
-	          if (modalElement) {
-	            modalElement.remove();
-	            modalElement = $modal.$element = null;
-	          }
-	        }
-	        return $modal;
-	      }
-	      function safeDigest(scope) {
-	        scope.$$phase || scope.$root && scope.$root.$$phase || scope.$digest();
-	      }
-	      function findElement(query, element) {
-	        return angular.element((element || document).querySelectorAll(query));
-	      }
-	      return ModalFactory;
-	    } ];
-	  }).directive('bsModal', [ '$window', '$sce', '$modal', function($window, $sce, $modal) {
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      link: function postLink(scope, element, attr, transclusion) {
-	        var options = {
-	          scope: scope,
-	          element: element,
-	          show: false
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'contentTemplate', 'placement', 'backdrop', 'keyboard', 'html', 'container', 'animation', 'backdropAnimation', 'id', 'prefixEvent', 'prefixClass', 'customClass', 'modalClass', 'size' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        if (options.modalClass) {
-	          options.customClass = options.modalClass;
-	        }
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'backdrop', 'keyboard', 'html', 'container' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	        });
-	        angular.forEach([ 'title', 'content' ], function(key) {
-	          if (attr[key]) {
-	            attr.$observe(key, function(newValue, oldValue) {
-	              scope[key] = $sce.trustAsHtml(newValue);
-	            });
-	          }
-	        });
-	        if (attr.bsModal) {
-	          scope.$watch(attr.bsModal, function(newValue, oldValue) {
-	            if (angular.isObject(newValue)) {
-	              angular.extend(scope, newValue);
-	            } else {
-	              scope.content = newValue;
-	            }
-	          }, true);
-	        }
-	        var modal = $modal(options);
-	        element.on(attr.trigger || 'click', modal.toggle);
-	        scope.$on('$destroy', function() {
-	          if (modal) modal.destroy();
-	          options = null;
-	          modal = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  if (angular.version.minor < 3 && angular.version.dot < 14) {
-	    angular.module('ng').factory('$$rAF', [ '$window', '$timeout', function($window, $timeout) {
-	      var requestAnimationFrame = $window.requestAnimationFrame || $window.webkitRequestAnimationFrame || $window.mozRequestAnimationFrame;
-	      var cancelAnimationFrame = $window.cancelAnimationFrame || $window.webkitCancelAnimationFrame || $window.mozCancelAnimationFrame || $window.webkitCancelRequestAnimationFrame;
-	      var rafSupported = !!requestAnimationFrame;
-	      var raf = rafSupported ? function(fn) {
-	        var id = requestAnimationFrame(fn);
-	        return function() {
-	          cancelAnimationFrame(id);
-	        };
-	      } : function(fn) {
-	        var timer = $timeout(fn, 16.66, false);
-	        return function() {
-	          $timeout.cancel(timer);
-	        };
-	      };
-	      raf.supported = rafSupported;
-	      return raf;
-	    } ]);
-	  }
-	  angular.module('mgcrea.ngStrap.helpers.parseOptions', []).provider('$parseOptions', function() {
-	    var defaults = this.defaults = {
-	      regexp: /^\s*(.*?)(?:\s+as\s+(.*?))?(?:\s+group\s+by\s+(.*))?\s+for\s+(?:([\$\w][\$\w]*)|(?:\(\s*([\$\w][\$\w]*)\s*,\s*([\$\w][\$\w]*)\s*\)))\s+in\s+(.*?)(?:\s+track\s+by\s+(.*?))?$/
-	    };
-	    this.$get = [ '$parse', '$q', function($parse, $q) {
-	      function ParseOptionsFactory(attr, config) {
-	        var $parseOptions = {};
-	        var options = angular.extend({}, defaults, config);
-	        $parseOptions.$values = [];
-	        var match;
-	        var displayFn;
-	        var valueName;
-	        var keyName;
-	        var groupByFn;
-	        var valueFn;
-	        var valuesFn;
-	        $parseOptions.init = function() {
-	          $parseOptions.$match = match = attr.match(options.regexp);
-	          displayFn = $parse(match[2] || match[1]);
-	          valueName = match[4] || match[6];
-	          keyName = match[5];
-	          groupByFn = $parse(match[3] || '');
-	          valueFn = $parse(match[2] ? match[1] : valueName);
-	          valuesFn = $parse(match[7]);
-	        };
-	        $parseOptions.valuesFn = function(scope, controller) {
-	          return $q.when(valuesFn(scope, controller)).then(function(values) {
-	            if (!angular.isArray(values)) {
-	              values = [];
-	            }
-	            $parseOptions.$values = values.length ? parseValues(values, scope) : [];
-	            return $parseOptions.$values;
-	          });
-	        };
-	        $parseOptions.displayValue = function(modelValue) {
-	          var scope = {};
-	          scope[valueName] = modelValue;
-	          return displayFn(scope);
-	        };
-	        function parseValues(values, scope) {
-	          return values.map(function(match, index) {
-	            var locals = {};
-	            var label;
-	            var value;
-	            locals[valueName] = match;
-	            label = displayFn(scope, locals);
-	            value = valueFn(scope, locals);
-	            return {
-	              label: label,
-	              value: value,
-	              index: index
-	            };
-	          });
-	        }
-	        $parseOptions.init();
-	        return $parseOptions;
-	      }
-	      return ParseOptionsFactory;
-	    } ];
-	  });
-	  angular.module('mgcrea.ngStrap.helpers.dimensions', []).factory('dimensions', function() {
-	    var fn = {};
-	    var nodeName = fn.nodeName = function(element, name) {
-	      return element.nodeName && element.nodeName.toLowerCase() === name.toLowerCase();
-	    };
-	    fn.css = function(element, prop, extra) {
-	      var value;
-	      if (element.currentStyle) {
-	        value = element.currentStyle[prop];
-	      } else if (window.getComputedStyle) {
-	        value = window.getComputedStyle(element)[prop];
-	      } else {
-	        value = element.style[prop];
-	      }
-	      return extra === true ? parseFloat(value) || 0 : value;
-	    };
-	    fn.offset = function(element) {
-	      var boxRect = element.getBoundingClientRect();
-	      var docElement = element.ownerDocument;
-	      return {
-	        width: boxRect.width || element.offsetWidth,
-	        height: boxRect.height || element.offsetHeight,
-	        top: boxRect.top + (window.pageYOffset || docElement.documentElement.scrollTop) - (docElement.documentElement.clientTop || 0),
-	        left: boxRect.left + (window.pageXOffset || docElement.documentElement.scrollLeft) - (docElement.documentElement.clientLeft || 0)
-	      };
-	    };
-	    fn.setOffset = function(element, options, i) {
-	      var curPosition;
-	      var curLeft;
-	      var curCSSTop;
-	      var curTop;
-	      var curOffset;
-	      var curCSSLeft;
-	      var calculatePosition;
-	      var position = fn.css(element, 'position');
-	      var curElem = angular.element(element);
-	      var props = {};
-	      if (position === 'static') {
-	        element.style.position = 'relative';
-	      }
-	      curOffset = fn.offset(element);
-	      curCSSTop = fn.css(element, 'top');
-	      curCSSLeft = fn.css(element, 'left');
-	      calculatePosition = (position === 'absolute' || position === 'fixed') && (curCSSTop + curCSSLeft).indexOf('auto') > -1;
-	      if (calculatePosition) {
-	        curPosition = fn.position(element);
-	        curTop = curPosition.top;
-	        curLeft = curPosition.left;
-	      } else {
-	        curTop = parseFloat(curCSSTop) || 0;
-	        curLeft = parseFloat(curCSSLeft) || 0;
-	      }
-	      if (angular.isFunction(options)) {
-	        options = options.call(element, i, curOffset);
-	      }
-	      if (options.top !== null) {
-	        props.top = options.top - curOffset.top + curTop;
-	      }
-	      if (options.left !== null) {
-	        props.left = options.left - curOffset.left + curLeft;
-	      }
-	      if ('using' in options) {
-	        options.using.call(curElem, props);
-	      } else {
-	        curElem.css({
-	          top: props.top + 'px',
-	          left: props.left + 'px'
-	        });
-	      }
-	    };
-	    fn.position = function(element) {
-	      var offsetParentRect = {
-	        top: 0,
-	        left: 0
-	      };
-	      var offsetParentEl;
-	      var offset;
-	      if (fn.css(element, 'position') === 'fixed') {
-	        offset = element.getBoundingClientRect();
-	      } else {
-	        offsetParentEl = offsetParentElement(element);
-	        offset = fn.offset(element);
-	        if (!nodeName(offsetParentEl, 'html')) {
-	          offsetParentRect = fn.offset(offsetParentEl);
-	        }
-	        offsetParentRect.top += fn.css(offsetParentEl, 'borderTopWidth', true);
-	        offsetParentRect.left += fn.css(offsetParentEl, 'borderLeftWidth', true);
-	      }
-	      return {
-	        width: element.offsetWidth,
-	        height: element.offsetHeight,
-	        top: offset.top - offsetParentRect.top - fn.css(element, 'marginTop', true),
-	        left: offset.left - offsetParentRect.left - fn.css(element, 'marginLeft', true)
-	      };
-	    };
-	    function offsetParentElement(element) {
-	      var docElement = element.ownerDocument;
-	      var offsetParent = element.offsetParent || docElement;
-	      if (nodeName(offsetParent, '#document')) return docElement.documentElement;
-	      while (offsetParent && !nodeName(offsetParent, 'html') && fn.css(offsetParent, 'position') === 'static') {
-	        offsetParent = offsetParent.offsetParent;
-	      }
-	      return offsetParent || docElement.documentElement;
-	    }
-	    fn.height = function(element, outer) {
-	      var value = element.offsetHeight;
-	      if (outer) {
-	        value += fn.css(element, 'marginTop', true) + fn.css(element, 'marginBottom', true);
-	      } else {
-	        value -= fn.css(element, 'paddingTop', true) + fn.css(element, 'paddingBottom', true) + fn.css(element, 'borderTopWidth', true) + fn.css(element, 'borderBottomWidth', true);
-	      }
-	      return value;
-	    };
-	    fn.width = function(element, outer) {
-	      var value = element.offsetWidth;
-	      if (outer) {
-	        value += fn.css(element, 'marginLeft', true) + fn.css(element, 'marginRight', true);
-	      } else {
-	        value -= fn.css(element, 'paddingLeft', true) + fn.css(element, 'paddingRight', true) + fn.css(element, 'borderLeftWidth', true) + fn.css(element, 'borderRightWidth', true);
-	      }
-	      return value;
-	    };
-	    return fn;
-	  });
-	  angular.module('mgcrea.ngStrap.helpers.debounce', []).factory('debounce', [ '$timeout', function($timeout) {
-	    return function(func, wait, immediate) {
-	      var timeout = null;
-	      return function() {
-	        var context = this;
-	        var args = arguments;
-	        var callNow = immediate && !timeout;
-	        if (timeout) {
-	          $timeout.cancel(timeout);
-	        }
-	        timeout = $timeout(function later() {
-	          timeout = null;
-	          if (!immediate) {
-	            func.apply(context, args);
-	          }
-	        }, wait, false);
-	        if (callNow) {
-	          func.apply(context, args);
-	        }
-	        return timeout;
-	      };
-	    };
-	  } ]).factory('throttle', [ '$timeout', function($timeout) {
-	    return function(func, wait, options) {
-	      var timeout = null;
-	      if (!options) options = {};
-	      return function() {
-	        var context = this;
-	        var args = arguments;
-	        if (!timeout) {
-	          if (options.leading !== false) {
-	            func.apply(context, args);
-	          }
-	          timeout = $timeout(function later() {
-	            timeout = null;
-	            if (options.trailing !== false) {
-	              func.apply(context, args);
-	            }
-	          }, wait, false);
-	        }
-	      };
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.helpers.dateParser', []).provider('$dateParser', [ '$localeProvider', function($localeProvider) {
-	    function ParseDate() {
-	      this.year = 1970;
-	      this.month = 0;
-	      this.day = 1;
-	      this.hours = 0;
-	      this.minutes = 0;
-	      this.seconds = 0;
-	      this.milliseconds = 0;
-	    }
-	    ParseDate.prototype.setMilliseconds = function(value) {
-	      this.milliseconds = value;
-	    };
-	    ParseDate.prototype.setSeconds = function(value) {
-	      this.seconds = value;
-	    };
-	    ParseDate.prototype.setMinutes = function(value) {
-	      this.minutes = value;
-	    };
-	    ParseDate.prototype.setHours = function(value) {
-	      this.hours = value;
-	    };
-	    ParseDate.prototype.getHours = function() {
-	      return this.hours;
-	    };
-	    ParseDate.prototype.setDate = function(value) {
-	      this.day = value;
-	    };
-	    ParseDate.prototype.setMonth = function(value) {
-	      this.month = value;
-	    };
-	    ParseDate.prototype.setFullYear = function(value) {
-	      this.year = value;
-	    };
-	    ParseDate.prototype.fromDate = function(value) {
-	      this.year = value.getFullYear();
-	      this.month = value.getMonth();
-	      this.day = value.getDate();
-	      this.hours = value.getHours();
-	      this.minutes = value.getMinutes();
-	      this.seconds = value.getSeconds();
-	      this.milliseconds = value.getMilliseconds();
-	      return this;
-	    };
-	    ParseDate.prototype.toDate = function() {
-	      return new Date(this.year, this.month, this.day, this.hours, this.minutes, this.seconds, this.milliseconds);
-	    };
-	    var proto = ParseDate.prototype;
-	    function noop() {}
-	    function isNumeric(n) {
-	      return !isNaN(parseFloat(n)) && isFinite(n);
-	    }
-	    function indexOfCaseInsensitive(array, value) {
-	      var len = array.length;
-	      var str = value.toString().toLowerCase();
-	      for (var i = 0; i < len; i++) {
-	        if (array[i].toLowerCase() === str) {
-	          return i;
-	        }
-	      }
-	      return -1;
-	    }
-	    var defaults = this.defaults = {
-	      format: 'shortDate',
-	      strict: false
-	    };
-	    this.$get = [ '$locale', 'dateFilter', function($locale, dateFilter) {
-	      var DateParserFactory = function(config) {
-	        var options = angular.extend({}, defaults, config);
-	        var $dateParser = {};
-	        var regExpMap = {
-	          sss: '[0-9]{3}',
-	          ss: '[0-5][0-9]',
-	          s: options.strict ? '[1-5]?[0-9]' : '[0-9]|[0-5][0-9]',
-	          mm: '[0-5][0-9]',
-	          m: options.strict ? '[1-5]?[0-9]' : '[0-9]|[0-5][0-9]',
-	          HH: '[01][0-9]|2[0-3]',
-	          H: options.strict ? '1?[0-9]|2[0-3]' : '[01]?[0-9]|2[0-3]',
-	          hh: '[0][1-9]|[1][012]',
-	          h: options.strict ? '[1-9]|1[012]' : '0?[1-9]|1[012]',
-	          a: 'AM|PM',
-	          EEEE: $locale.DATETIME_FORMATS.DAY.join('|'),
-	          EEE: $locale.DATETIME_FORMATS.SHORTDAY.join('|'),
-	          dd: '0[1-9]|[12][0-9]|3[01]',
-	          d: options.strict ? '[1-9]|[1-2][0-9]|3[01]' : '0?[1-9]|[1-2][0-9]|3[01]',
-	          MMMM: $locale.DATETIME_FORMATS.MONTH.join('|'),
-	          MMM: $locale.DATETIME_FORMATS.SHORTMONTH.join('|'),
-	          MM: '0[1-9]|1[012]',
-	          M: options.strict ? '[1-9]|1[012]' : '0?[1-9]|1[012]',
-	          yyyy: '[1]{1}[0-9]{3}|[2]{1}[0-9]{3}',
-	          yy: '[0-9]{2}',
-	          y: options.strict ? '-?(0|[1-9][0-9]{0,3})' : '-?0*[0-9]{1,4}'
-	        };
-	        var setFnMap = {
-	          sss: proto.setMilliseconds,
-	          ss: proto.setSeconds,
-	          s: proto.setSeconds,
-	          mm: proto.setMinutes,
-	          m: proto.setMinutes,
-	          HH: proto.setHours,
-	          H: proto.setHours,
-	          hh: proto.setHours,
-	          h: proto.setHours,
-	          EEEE: noop,
-	          EEE: noop,
-	          dd: proto.setDate,
-	          d: proto.setDate,
-	          a: function(value) {
-	            var hours = this.getHours() % 12;
-	            return this.setHours(value.match(/pm/i) ? hours + 12 : hours);
-	          },
-	          MMMM: function(value) {
-	            return this.setMonth(indexOfCaseInsensitive($locale.DATETIME_FORMATS.MONTH, value));
-	          },
-	          MMM: function(value) {
-	            return this.setMonth(indexOfCaseInsensitive($locale.DATETIME_FORMATS.SHORTMONTH, value));
-	          },
-	          MM: function(value) {
-	            return this.setMonth(1 * value - 1);
-	          },
-	          M: function(value) {
-	            return this.setMonth(1 * value - 1);
-	          },
-	          yyyy: proto.setFullYear,
-	          yy: function(value) {
-	            return this.setFullYear(2e3 + 1 * value);
-	          },
-	          y: function(value) {
-	            return 1 * value <= 50 && value.length === 2 ? this.setFullYear(2e3 + 1 * value) : this.setFullYear(1 * value);
-	          }
-	        };
-	        var regex;
-	        var setMap;
-	        $dateParser.init = function() {
-	          $dateParser.$format = $locale.DATETIME_FORMATS[options.format] || options.format;
-	          regex = regExpForFormat($dateParser.$format);
-	          setMap = setMapForFormat($dateParser.$format);
-	        };
-	        $dateParser.isValid = function(date) {
-	          if (angular.isDate(date)) return !isNaN(date.getTime());
-	          return regex.test(date);
-	        };
-	        $dateParser.parse = function(value, baseDate, format, timezone) {
-	          if (format) format = $locale.DATETIME_FORMATS[format] || format;
-	          if (angular.isDate(value)) value = dateFilter(value, format || $dateParser.$format, timezone);
-	          var formatRegex = format ? regExpForFormat(format) : regex;
-	          var formatSetMap = format ? setMapForFormat(format) : setMap;
-	          var matches = formatRegex.exec(value);
-	          if (!matches) return false;
-	          var date = baseDate && !isNaN(baseDate.getTime()) ? new ParseDate().fromDate(baseDate) : new ParseDate().fromDate(new Date(1970, 0, 1, 0));
-	          for (var i = 0; i < matches.length - 1; i++) {
-	            if (formatSetMap[i]) formatSetMap[i].call(date, matches[i + 1]);
-	          }
-	          var newDate = date.toDate();
-	          if (parseInt(date.day, 10) !== newDate.getDate()) {
-	            return false;
-	          }
-	          return newDate;
-	        };
-	        $dateParser.getDateForAttribute = function(key, value) {
-	          var date;
-	          if (value === 'today') {
-	            var today = new Date();
-	            date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + (key === 'maxDate' ? 1 : 0), 0, 0, 0, key === 'minDate' ? 0 : -1);
-	          } else if (angular.isString(value) && value.match(/^".+"$/)) {
-	            date = new Date(value.substr(1, value.length - 2));
-	          } else if (isNumeric(value)) {
-	            date = new Date(parseInt(value, 10));
-	          } else if (angular.isString(value) && value.length === 0) {
-	            date = key === 'minDate' ? -Infinity : +Infinity;
-	          } else {
-	            date = new Date(value);
-	          }
-	          return date;
-	        };
-	        $dateParser.getTimeForAttribute = function(key, value) {
-	          var time;
-	          if (value === 'now') {
-	            time = new Date().setFullYear(1970, 0, 1);
-	          } else if (angular.isString(value) && value.match(/^".+"$/)) {
-	            time = new Date(value.substr(1, value.length - 2)).setFullYear(1970, 0, 1);
-	          } else if (isNumeric(value)) {
-	            time = new Date(parseInt(value, 10)).setFullYear(1970, 0, 1);
-	          } else if (angular.isString(value) && value.length === 0) {
-	            time = key === 'minTime' ? -Infinity : +Infinity;
-	          } else {
-	            time = $dateParser.parse(value, new Date(1970, 0, 1, 0));
-	          }
-	          return time;
-	        };
-	        $dateParser.daylightSavingAdjust = function(date) {
-	          if (!date) {
-	            return null;
-	          }
-	          date.setHours(date.getHours() > 12 ? date.getHours() + 2 : 0);
-	          return date;
-	        };
-	        $dateParser.timezoneOffsetAdjust = function(date, timezone, undo) {
-	          if (!date) {
-	            return null;
-	          }
-	          if (timezone && timezone === 'UTC') {
-	            date = new Date(date.getTime());
-	            date.setMinutes(date.getMinutes() + (undo ? -1 : 1) * date.getTimezoneOffset());
-	          }
-	          return date;
-	        };
-	        function regExpForFormat(format) {
-	          var re = buildDateAbstractRegex(format);
-	          return buildDateParseRegex(re);
-	        }
-	        function buildDateAbstractRegex(format) {
-	          var escapedFormat = escapeReservedSymbols(format);
-	          var escapedLiteralFormat = escapedFormat.replace(/''/g, '\\\'');
-	          var literalRegex = /('(?:\\'|.)*?')/;
-	          var formatParts = escapedLiteralFormat.split(literalRegex);
-	          var dateElements = Object.keys(regExpMap);
-	          var dateRegexParts = [];
-	          angular.forEach(formatParts, function(part) {
-	            if (isFormatStringLiteral(part)) {
-	              part = trimLiteralEscapeChars(part);
-	            } else {
-	              for (var i = 0; i < dateElements.length; i++) {
-	                part = part.split(dateElements[i]).join('${' + i + '}');
-	              }
-	            }
-	            dateRegexParts.push(part);
-	          });
-	          return dateRegexParts.join('');
-	        }
-	        function escapeReservedSymbols(text) {
-	          return text.replace(/\\/g, '[\\\\]').replace(/-/g, '[-]').replace(/\./g, '[.]').replace(/\*/g, '[*]').replace(/\+/g, '[+]').replace(/\?/g, '[?]').replace(/\$/g, '[$]').replace(/\^/g, '[^]').replace(/\//g, '[/]').replace(/\\s/g, '[\\s]');
-	        }
-	        function isFormatStringLiteral(text) {
-	          return /^'.*'$/.test(text);
-	        }
-	        function trimLiteralEscapeChars(text) {
-	          return text.replace(/^'(.*)'$/, '$1');
-	        }
-	        function buildDateParseRegex(abstractRegex) {
-	          var dateElements = Object.keys(regExpMap);
-	          var re = abstractRegex;
-	          for (var i = 0; i < dateElements.length; i++) {
-	            re = re.split('${' + i + '}').join('(' + regExpMap[dateElements[i]] + ')');
-	          }
-	          return new RegExp('^' + re + '$', [ 'i' ]);
-	        }
-	        function setMapForFormat(format) {
-	          var re = buildDateAbstractRegex(format);
-	          return buildDateParseValuesMap(re);
-	        }
-	        function buildDateParseValuesMap(abstractRegex) {
-	          var dateElements = Object.keys(regExpMap);
-	          var valuesRegex = new RegExp('\\${(\\d+)}', 'g');
-	          var valuesMatch;
-	          var keyIndex;
-	          var valueKey;
-	          var valueFunction;
-	          var valuesFunctionMap = [];
-	          while ((valuesMatch = valuesRegex.exec(abstractRegex)) !== null) {
-	            keyIndex = valuesMatch[1];
-	            valueKey = dateElements[keyIndex];
-	            valueFunction = setFnMap[valueKey];
-	            valuesFunctionMap.push(valueFunction);
-	          }
-	          return valuesFunctionMap;
-	        }
-	        $dateParser.init();
-	        return $dateParser;
-	      };
-	      return DateParserFactory;
-	    } ];
-	  } ]);
-	  angular.module('mgcrea.ngStrap.helpers.dateFormatter', []).service('$dateFormatter', [ '$locale', 'dateFilter', function($locale, dateFilter) {
-	    this.getDefaultLocale = function() {
-	      return $locale.id;
-	    };
-	    this.getDatetimeFormat = function(format, lang) {
-	      return $locale.DATETIME_FORMATS[format] || format;
-	    };
-	    this.weekdaysShort = function(lang) {
-	      return $locale.DATETIME_FORMATS.SHORTDAY;
-	    };
-	    function splitTimeFormat(format) {
-	      return /(h+)([:\.])?(m+)([:\.])?(s*)[ ]?(a?)/i.exec(format).slice(1);
-	    }
-	    this.hoursFormat = function(timeFormat) {
-	      return splitTimeFormat(timeFormat)[0];
-	    };
-	    this.minutesFormat = function(timeFormat) {
-	      return splitTimeFormat(timeFormat)[2];
-	    };
-	    this.secondsFormat = function(timeFormat) {
-	      return splitTimeFormat(timeFormat)[4];
-	    };
-	    this.timeSeparator = function(timeFormat) {
-	      return splitTimeFormat(timeFormat)[1];
-	    };
-	    this.showSeconds = function(timeFormat) {
-	      return !!splitTimeFormat(timeFormat)[4];
-	    };
-	    this.showAM = function(timeFormat) {
-	      return !!splitTimeFormat(timeFormat)[5];
-	    };
-	    this.formatDate = function(date, format, lang, timezone) {
-	      return dateFilter(date, format, timezone);
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.core', []).service('$bsCompiler', bsCompilerService);
-	  function bsCompilerService($q, $http, $injector, $compile, $controller, $templateCache) {
-	    this.compile = function(options) {
-	      if (options.template && /\.html$/.test(options.template)) {
-	        console.warn('Deprecated use of `template` option to pass a file. Please use the `templateUrl` option instead.');
-	        options.templateUrl = options.template;
-	        options.template = '';
-	      }
-	      var templateUrl = options.templateUrl;
-	      var template = options.template || '';
-	      var controller = options.controller;
-	      var controllerAs = options.controllerAs;
-	      var resolve = angular.copy(options.resolve || {});
-	      var locals = angular.copy(options.locals || {});
-	      var transformTemplate = options.transformTemplate || angular.identity;
-	      var bindToController = options.bindToController;
-	      angular.forEach(resolve, function(value, key) {
-	        if (angular.isString(value)) {
-	          resolve[key] = $injector.get(value);
-	        } else {
-	          resolve[key] = $injector.invoke(value);
-	        }
-	      });
-	      angular.extend(resolve, locals);
-	      if (template) {
-	        resolve.$template = $q.when(template);
-	      } else if (templateUrl) {
-	        resolve.$template = fetchTemplate(templateUrl);
-	      } else {
-	        throw new Error('Missing `template` / `templateUrl` option.');
-	      }
-	      if (options.titleTemplate) {
-	        resolve.$template = $q.all([ resolve.$template, fetchTemplate(options.titleTemplate) ]).then(function(templates) {
-	          var templateEl = angular.element(templates[0]);
-	          findElement('[ng-bind="title"]', templateEl[0]).removeAttr('ng-bind').html(templates[1]);
-	          return templateEl[0].outerHTML;
-	        });
-	      }
-	      if (options.contentTemplate) {
-	        resolve.$template = $q.all([ resolve.$template, fetchTemplate(options.contentTemplate) ]).then(function(templates) {
-	          var templateEl = angular.element(templates[0]);
-	          var contentEl = findElement('[ng-bind="content"]', templateEl[0]).removeAttr('ng-bind').html(templates[1]);
-	          if (!options.templateUrl) contentEl.next().remove();
-	          return templateEl[0].outerHTML;
-	        });
-	      }
-	      return $q.all(resolve).then(function(locals) {
-	        var template = transformTemplate(locals.$template);
-	        if (options.html) {
-	          template = template.replace(/ng-bind="/gi, 'ng-bind-html="');
-	        }
-	        var element = angular.element('<div>').html(template.trim()).contents();
-	        var linkFn = $compile(element);
-	        return {
-	          locals: locals,
-	          element: element,
-	          link: function link(scope) {
-	            locals.$scope = scope;
-	            if (controller) {
-	              var invokeCtrl = $controller(controller, locals, true);
-	              if (bindToController) {
-	                angular.extend(invokeCtrl.instance, locals);
-	              }
-	              var ctrl = angular.isObject(invokeCtrl) ? invokeCtrl : invokeCtrl();
-	              element.data('$ngControllerController', ctrl);
-	              element.children().data('$ngControllerController', ctrl);
-	              if (controllerAs) {
-	                scope[controllerAs] = ctrl;
-	              }
-	            }
-	            return linkFn.apply(null, arguments);
-	          }
-	        };
-	      });
-	    };
-	    function findElement(query, element) {
-	      return angular.element((element || document).querySelectorAll(query));
-	    }
-	    var fetchPromises = {};
-	    function fetchTemplate(template) {
-	      if (fetchPromises[template]) return fetchPromises[template];
-	      return fetchPromises[template] = $http.get(template, {
-	        cache: $templateCache
-	      }).then(function(res) {
-	        return res.data;
-	      });
-	    }
-	  }
-	  angular.module('mgcrea.ngStrap.datepicker', [ 'mgcrea.ngStrap.helpers.dateParser', 'mgcrea.ngStrap.helpers.dateFormatter', 'mgcrea.ngStrap.tooltip' ]).provider('$datepicker', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'datepicker',
-	      placement: 'bottom-left',
-	      templateUrl: 'datepicker/datepicker.tpl.html',
-	      trigger: 'focus',
-	      container: false,
-	      keyboard: true,
-	      html: false,
-	      delay: 0,
-	      useNative: false,
-	      dateType: 'date',
-	      dateFormat: 'shortDate',
-	      timezone: null,
-	      modelDateFormat: null,
-	      dayFormat: 'dd',
-	      monthFormat: 'MMM',
-	      yearFormat: 'yyyy',
-	      monthTitleFormat: 'MMMM yyyy',
-	      yearTitleFormat: 'yyyy',
-	      strictFormat: false,
-	      autoclose: false,
-	      minDate: -Infinity,
-	      maxDate: +Infinity,
-	      startView: 0,
-	      minView: 0,
-	      startWeek: 0,
-	      daysOfWeekDisabled: '',
-	      iconLeft: 'glyphicon glyphicon-chevron-left',
-	      iconRight: 'glyphicon glyphicon-chevron-right'
-	    };
-	    this.$get = [ '$window', '$document', '$rootScope', '$sce', '$dateFormatter', 'datepickerViews', '$tooltip', '$timeout', function($window, $document, $rootScope, $sce, $dateFormatter, datepickerViews, $tooltip, $timeout) {
-	      var isNative = /(ip[ao]d|iphone|android)/gi.test($window.navigator.userAgent);
-	      var isTouch = 'createTouch' in $window.document && isNative;
-	      if (!defaults.lang) defaults.lang = $dateFormatter.getDefaultLocale();
-	      function DatepickerFactory(element, controller, config) {
-	        var $datepicker = $tooltip(element, angular.extend({}, defaults, config));
-	        var parentScope = config.scope;
-	        var options = $datepicker.$options;
-	        var scope = $datepicker.$scope;
-	        if (options.startView) options.startView -= options.minView;
-	        var pickerViews = datepickerViews($datepicker);
-	        $datepicker.$views = pickerViews.views;
-	        var viewDate = pickerViews.viewDate;
-	        scope.$mode = options.startView;
-	        scope.$iconLeft = options.iconLeft;
-	        scope.$iconRight = options.iconRight;
-	        var $picker = $datepicker.$views[scope.$mode];
-	        scope.$select = function(date) {
-	          $datepicker.select(date);
-	        };
-	        scope.$selectPane = function(value) {
-	          $datepicker.$selectPane(value);
-	        };
-	        scope.$toggleMode = function() {
-	          $datepicker.setMode((scope.$mode + 1) % $datepicker.$views.length);
-	        };
-	        $datepicker.update = function(date) {
-	          if (angular.isDate(date) && !isNaN(date.getTime())) {
-	            $datepicker.$date = date;
-	            $picker.update.call($picker, date);
-	          }
-	          $datepicker.$build(true);
-	        };
-	        $datepicker.updateDisabledDates = function(dateRanges) {
-	          options.disabledDateRanges = dateRanges;
-	          for (var i = 0, l = scope.rows.length; i < l; i++) {
-	            angular.forEach(scope.rows[i], $datepicker.$setDisabledEl);
-	          }
-	        };
-	        $datepicker.select = function(date, keep) {
-	          if (!angular.isDate(controller.$dateValue)) controller.$dateValue = new Date(date);
-	          if (!scope.$mode || keep) {
-	            controller.$setViewValue(angular.copy(date));
-	            controller.$render();
-	            if (options.autoclose && !keep) {
-	              $timeout(function() {
-	                $datepicker.hide(true);
-	              });
-	            }
-	          } else {
-	            angular.extend(viewDate, {
-	              year: date.getFullYear(),
-	              month: date.getMonth(),
-	              date: date.getDate()
-	            });
-	            $datepicker.setMode(scope.$mode - 1);
-	            $datepicker.$build();
-	          }
-	        };
-	        $datepicker.setMode = function(mode) {
-	          scope.$mode = mode;
-	          $picker = $datepicker.$views[scope.$mode];
-	          $datepicker.$build();
-	        };
-	        $datepicker.$build = function(pristine) {
-	          if (pristine === true && $picker.built) return;
-	          if (pristine === false && !$picker.built) return;
-	          $picker.build.call($picker);
-	        };
-	        $datepicker.$updateSelected = function() {
-	          for (var i = 0, l = scope.rows.length; i < l; i++) {
-	            angular.forEach(scope.rows[i], updateSelected);
-	          }
-	        };
-	        $datepicker.$isSelected = function(date) {
-	          return $picker.isSelected(date);
-	        };
-	        $datepicker.$setDisabledEl = function(el) {
-	          el.disabled = $picker.isDisabled(el.date);
-	        };
-	        $datepicker.$selectPane = function(value) {
-	          var steps = $picker.steps;
-	          var targetDate = new Date(Date.UTC(viewDate.year + (steps.year || 0) * value, viewDate.month + (steps.month || 0) * value, 1));
-	          angular.extend(viewDate, {
-	            year: targetDate.getUTCFullYear(),
-	            month: targetDate.getUTCMonth(),
-	            date: targetDate.getUTCDate()
-	          });
-	          $datepicker.$build();
-	        };
-	        $datepicker.$onMouseDown = function(evt) {
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          if (isTouch) {
-	            var targetEl = angular.element(evt.target);
-	            if (targetEl[0].nodeName.toLowerCase() !== 'button') {
-	              targetEl = targetEl.parent();
-	            }
-	            targetEl.triggerHandler('click');
-	          }
-	        };
-	        $datepicker.$onKeyDown = function(evt) {
-	          if (!/(38|37|39|40|13)/.test(evt.keyCode) || evt.shiftKey || evt.altKey) return;
-	          evt.preventDefault();
-	          evt.stopPropagation();
-	          if (evt.keyCode === 13) {
-	            if (!scope.$mode) {
-	              $datepicker.hide(true);
-	            } else {
-	              scope.$apply(function() {
-	                $datepicker.setMode(scope.$mode - 1);
-	              });
-	            }
-	            return;
-	          }
-	          $picker.onKeyDown(evt);
-	          parentScope.$digest();
-	        };
-	        function updateSelected(el) {
-	          el.selected = $datepicker.$isSelected(el.date);
-	        }
-	        function focusElement() {
-	          element[0].focus();
-	        }
-	        var _init = $datepicker.init;
-	        $datepicker.init = function() {
-	          if (isNative && options.useNative) {
-	            element.prop('type', 'date');
-	            element.css('-webkit-appearance', 'textfield');
-	            return;
-	          } else if (isTouch) {
-	            element.prop('type', 'text');
-	            element.attr('readonly', 'true');
-	            element.on('click', focusElement);
-	          }
-	          _init();
-	        };
-	        var _destroy = $datepicker.destroy;
-	        $datepicker.destroy = function() {
-	          if (isNative && options.useNative) {
-	            element.off('click', focusElement);
-	          }
-	          _destroy();
-	        };
-	        var _show = $datepicker.show;
-	        $datepicker.show = function() {
-	          if (!isTouch && element.attr('readonly') || element.attr('disabled')) return;
-	          _show();
-	          $timeout(function() {
-	            if (!$datepicker.$isShown) return;
-	            $datepicker.$element.on(isTouch ? 'touchstart' : 'mousedown', $datepicker.$onMouseDown);
-	            if (options.keyboard) {
-	              element.on('keydown', $datepicker.$onKeyDown);
-	            }
-	          }, 0, false);
-	        };
-	        var _hide = $datepicker.hide;
-	        $datepicker.hide = function(blur) {
-	          if (!$datepicker.$isShown) return;
-	          $datepicker.$element.off(isTouch ? 'touchstart' : 'mousedown', $datepicker.$onMouseDown);
-	          if (options.keyboard) {
-	            element.off('keydown', $datepicker.$onKeyDown);
-	          }
-	          _hide(blur);
-	        };
-	        return $datepicker;
-	      }
-	      DatepickerFactory.defaults = defaults;
-	      return DatepickerFactory;
-	    } ];
-	  }).directive('bsDatepicker', [ '$window', '$parse', '$q', '$dateFormatter', '$dateParser', '$datepicker', function($window, $parse, $q, $dateFormatter, $dateParser, $datepicker) {
-	    var isNative = /(ip[ao]d|iphone|android)/gi.test($window.navigator.userAgent);
-	    return {
-	      restrict: 'EAC',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = {
-	          scope: scope
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'container', 'delay', 'trigger', 'html', 'animation', 'autoclose', 'dateType', 'dateFormat', 'timezone', 'modelDateFormat', 'dayFormat', 'strictFormat', 'startWeek', 'startDate', 'useNative', 'lang', 'startView', 'minView', 'iconLeft', 'iconRight', 'daysOfWeekDisabled', 'id', 'prefixClass', 'prefixEvent' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'html', 'container', 'autoclose', 'useNative' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) {
-	            options[key] = false;
-	          }
-	        });
-	        var datepicker = $datepicker(element, controller, options);
-	        options = datepicker.$options;
-	        if (isNative && options.useNative) options.dateFormat = 'yyyy-MM-dd';
-	        var lang = options.lang;
-	        var formatDate = function(date, format) {
-	          return $dateFormatter.formatDate(date, format, lang);
-	        };
-	        var dateParser = $dateParser({
-	          format: options.dateFormat,
-	          lang: lang,
-	          strict: options.strictFormat
-	        });
-	        if (attr.bsShow) {
-	          scope.$watch(attr.bsShow, function(newValue, oldValue) {
-	            if (!datepicker || !angular.isDefined(newValue)) return;
-	            if (angular.isString(newValue)) newValue = !!newValue.match(/true|,?(datepicker),?/i);
-	            if (newValue === true) {
-	              datepicker.show();
-	            } else {
-	              datepicker.hide();
-	            }
-	          });
-	        }
-	        angular.forEach([ 'minDate', 'maxDate' ], function(key) {
-	          if (angular.isDefined(attr[key])) {
-	            attr.$observe(key, function(newValue) {
-	              datepicker.$options[key] = dateParser.getDateForAttribute(key, newValue);
-	              if (!isNaN(datepicker.$options[key])) datepicker.$build(false);
-	              validateAgainstMinMaxDate(controller.$dateValue);
-	            });
-	          }
-	        });
-	        if (angular.isDefined(attr.dateFormat)) {
-	          attr.$observe('dateFormat', function(newValue) {
-	            datepicker.$options.dateFormat = newValue;
-	          });
-	        }
-	        scope.$watch(attr.ngModel, function(newValue, oldValue) {
-	          datepicker.update(controller.$dateValue);
-	        }, true);
-	        function normalizeDateRanges(ranges) {
-	          if (!ranges || !ranges.length) return null;
-	          return ranges;
-	        }
-	        if (angular.isDefined(attr.disabledDates)) {
-	          scope.$watch(attr.disabledDates, function(disabledRanges, previousValue) {
-	            disabledRanges = normalizeDateRanges(disabledRanges);
-	            previousValue = normalizeDateRanges(previousValue);
-	            if (disabledRanges) {
-	              datepicker.updateDisabledDates(disabledRanges);
-	            }
-	          });
-	        }
-	        function validateAgainstMinMaxDate(parsedDate) {
-	          if (!angular.isDate(parsedDate)) return;
-	          var isMinValid = isNaN(datepicker.$options.minDate) || parsedDate.getTime() >= datepicker.$options.minDate;
-	          var isMaxValid = isNaN(datepicker.$options.maxDate) || parsedDate.getTime() <= datepicker.$options.maxDate;
-	          var isValid = isMinValid && isMaxValid;
-	          controller.$setValidity('date', isValid);
-	          controller.$setValidity('min', isMinValid);
-	          controller.$setValidity('max', isMaxValid);
-	          if (isValid) controller.$dateValue = parsedDate;
-	        }
-	        controller.$parsers.unshift(function(viewValue) {
-	          var date;
-	          if (!viewValue) {
-	            controller.$setValidity('date', true);
-	            return null;
-	          }
-	          var parsedDate = dateParser.parse(viewValue, controller.$dateValue);
-	          if (!parsedDate || isNaN(parsedDate.getTime())) {
-	            controller.$setValidity('date', false);
-	            return;
-	          }
-	          validateAgainstMinMaxDate(parsedDate);
-	          if (options.dateType === 'string') {
-	            date = dateParser.timezoneOffsetAdjust(parsedDate, options.timezone, true);
-	            return formatDate(date, options.modelDateFormat || options.dateFormat);
-	          }
-	          date = dateParser.timezoneOffsetAdjust(controller.$dateValue, options.timezone, true);
-	          if (options.dateType === 'number') {
-	            return date.getTime();
-	          } else if (options.dateType === 'unix') {
-	            return date.getTime() / 1e3;
-	          } else if (options.dateType === 'iso') {
-	            return date.toISOString();
-	          }
-	          return new Date(date);
-	        });
-	        controller.$formatters.push(function(modelValue) {
-	          var date;
-	          if (angular.isUndefined(modelValue) || modelValue === null) {
-	            date = NaN;
-	          } else if (angular.isDate(modelValue)) {
-	            date = modelValue;
-	          } else if (options.dateType === 'string') {
-	            date = dateParser.parse(modelValue, null, options.modelDateFormat);
-	          } else if (options.dateType === 'unix') {
-	            date = new Date(modelValue * 1e3);
-	          } else {
-	            date = new Date(modelValue);
-	          }
-	          controller.$dateValue = dateParser.timezoneOffsetAdjust(date, options.timezone);
-	          return getDateFormattedString();
-	        });
-	        controller.$render = function() {
-	          element.val(getDateFormattedString());
-	        };
-	        function getDateFormattedString() {
-	          return !controller.$dateValue || isNaN(controller.$dateValue.getTime()) ? '' : formatDate(controller.$dateValue, options.dateFormat);
-	        }
-	        scope.$on('$destroy', function() {
-	          if (datepicker) datepicker.destroy();
-	          options = null;
-	          datepicker = null;
-	        });
-	      }
-	    };
-	  } ]).provider('datepickerViews', function() {
-	    function split(arr, size) {
-	      var arrays = [];
-	      while (arr.length > 0) {
-	        arrays.push(arr.splice(0, size));
-	      }
-	      return arrays;
-	    }
-	    function mod(n, m) {
-	      return (n % m + m) % m;
-	    }
-	    this.$get = [ '$dateFormatter', '$dateParser', '$sce', function($dateFormatter, $dateParser, $sce) {
-	      return function(picker) {
-	        var scope = picker.$scope;
-	        var options = picker.$options;
-	        var lang = options.lang;
-	        var formatDate = function(date, format) {
-	          return $dateFormatter.formatDate(date, format, lang);
-	        };
-	        var dateParser = $dateParser({
-	          format: options.dateFormat,
-	          lang: lang,
-	          strict: options.strictFormat
-	        });
-	        var weekDaysMin = $dateFormatter.weekdaysShort(lang);
-	        var weekDaysLabels = weekDaysMin.slice(options.startWeek).concat(weekDaysMin.slice(0, options.startWeek));
-	        var weekDaysLabelsHtml = $sce.trustAsHtml('<th class="dow text-center">' + weekDaysLabels.join('</th><th class="dow text-center">') + '</th>');
-	        var startDate = picker.$date || (options.startDate ? dateParser.getDateForAttribute('startDate', options.startDate) : new Date());
-	        var viewDate = {
-	          year: startDate.getFullYear(),
-	          month: startDate.getMonth(),
-	          date: startDate.getDate()
-	        };
-	        var views = [ {
-	          format: options.dayFormat,
-	          split: 7,
-	          steps: {
-	            month: 1
-	          },
-	          update: function(date, force) {
-	            if (!this.built || force || date.getFullYear() !== viewDate.year || date.getMonth() !== viewDate.month) {
-	              angular.extend(viewDate, {
-	                year: picker.$date.getFullYear(),
-	                month: picker.$date.getMonth(),
-	                date: picker.$date.getDate()
-	              });
-	              picker.$build();
-	            } else if (date.getDate() !== viewDate.date || date.getDate() === 1) {
-	              viewDate.date = picker.$date.getDate();
-	              picker.$updateSelected();
-	            }
-	          },
-	          build: function() {
-	            var firstDayOfMonth = new Date(viewDate.year, viewDate.month, 1);
-	            var firstDayOfMonthOffset = firstDayOfMonth.getTimezoneOffset();
-	            var firstDate = new Date(+firstDayOfMonth - mod(firstDayOfMonth.getDay() - options.startWeek, 7) * 864e5);
-	            var firstDateOffset = firstDate.getTimezoneOffset();
-	            var today = dateParser.timezoneOffsetAdjust(new Date(), options.timezone).toDateString();
-	            if (firstDateOffset !== firstDayOfMonthOffset) firstDate = new Date(+firstDate + (firstDateOffset - firstDayOfMonthOffset) * 6e4);
-	            var days = [];
-	            var day;
-	            for (var i = 0; i < 42; i++) {
-	              day = dateParser.daylightSavingAdjust(new Date(firstDate.getFullYear(), firstDate.getMonth(), firstDate.getDate() + i));
-	              days.push({
-	                date: day,
-	                isToday: day.toDateString() === today,
-	                label: formatDate(day, this.format),
-	                selected: picker.$date && this.isSelected(day),
-	                muted: day.getMonth() !== viewDate.month,
-	                disabled: this.isDisabled(day)
-	              });
-	            }
-	            scope.title = formatDate(firstDayOfMonth, options.monthTitleFormat);
-	            scope.showLabels = true;
-	            scope.labels = weekDaysLabelsHtml;
-	            scope.rows = split(days, this.split);
-	            this.built = true;
-	          },
-	          isSelected: function(date) {
-	            return picker.$date && date.getFullYear() === picker.$date.getFullYear() && date.getMonth() === picker.$date.getMonth() && date.getDate() === picker.$date.getDate();
-	          },
-	          isDisabled: function(date) {
-	            var time = date.getTime();
-	            if (time < options.minDate || time > options.maxDate) return true;
-	            if (options.daysOfWeekDisabled.indexOf(date.getDay()) !== -1) return true;
-	            if (options.disabledDateRanges) {
-	              for (var i = 0; i < options.disabledDateRanges.length; i++) {
-	                if (time >= options.disabledDateRanges[i].start && time <= options.disabledDateRanges[i].end) {
-	                  return true;
-	                }
-	              }
-	            }
-	            return false;
-	          },
-	          onKeyDown: function(evt) {
-	            if (!picker.$date) {
-	              return;
-	            }
-	            var actualTime = picker.$date.getTime();
-	            var newDate;
-	            if (evt.keyCode === 37) newDate = new Date(actualTime - 1 * 864e5); else if (evt.keyCode === 38) newDate = new Date(actualTime - 7 * 864e5); else if (evt.keyCode === 39) newDate = new Date(actualTime + 1 * 864e5); else if (evt.keyCode === 40) newDate = new Date(actualTime + 7 * 864e5);
-	            if (!this.isDisabled(newDate)) picker.select(newDate, true);
-	          }
-	        }, {
-	          name: 'month',
-	          format: options.monthFormat,
-	          split: 4,
-	          steps: {
-	            year: 1
-	          },
-	          update: function(date, force) {
-	            if (!this.built || date.getFullYear() !== viewDate.year) {
-	              angular.extend(viewDate, {
-	                year: picker.$date.getFullYear(),
-	                month: picker.$date.getMonth(),
-	                date: picker.$date.getDate()
-	              });
-	              picker.$build();
-	            } else if (date.getMonth() !== viewDate.month) {
-	              angular.extend(viewDate, {
-	                month: picker.$date.getMonth(),
-	                date: picker.$date.getDate()
-	              });
-	              picker.$updateSelected();
-	            }
-	          },
-	          build: function() {
-	            var months = [];
-	            var month;
-	            for (var i = 0; i < 12; i++) {
-	              month = new Date(viewDate.year, i, 1);
-	              months.push({
-	                date: month,
-	                label: formatDate(month, this.format),
-	                selected: picker.$isSelected(month),
-	                disabled: this.isDisabled(month)
-	              });
-	            }
-	            scope.title = formatDate(month, options.yearTitleFormat);
-	            scope.showLabels = false;
-	            scope.rows = split(months, this.split);
-	            this.built = true;
-	          },
-	          isSelected: function(date) {
-	            return picker.$date && date.getFullYear() === picker.$date.getFullYear() && date.getMonth() === picker.$date.getMonth();
-	          },
-	          isDisabled: function(date) {
-	            var lastDate = +new Date(date.getFullYear(), date.getMonth() + 1, 0);
-	            return lastDate < options.minDate || date.getTime() > options.maxDate;
-	          },
-	          onKeyDown: function(evt) {
-	            if (!picker.$date) {
-	              return;
-	            }
-	            var actualMonth = picker.$date.getMonth();
-	            var newDate = new Date(picker.$date);
-	            if (evt.keyCode === 37) newDate.setMonth(actualMonth - 1); else if (evt.keyCode === 38) newDate.setMonth(actualMonth - 4); else if (evt.keyCode === 39) newDate.setMonth(actualMonth + 1); else if (evt.keyCode === 40) newDate.setMonth(actualMonth + 4);
-	            if (!this.isDisabled(newDate)) picker.select(newDate, true);
-	          }
-	        }, {
-	          name: 'year',
-	          format: options.yearFormat,
-	          split: 4,
-	          steps: {
-	            year: 12
-	          },
-	          update: function(date, force) {
-	            if (!this.built || force || parseInt(date.getFullYear() / 20, 10) !== parseInt(viewDate.year / 20, 10)) {
-	              angular.extend(viewDate, {
-	                year: picker.$date.getFullYear(),
-	                month: picker.$date.getMonth(),
-	                date: picker.$date.getDate()
-	              });
-	              picker.$build();
-	            } else if (date.getFullYear() !== viewDate.year) {
-	              angular.extend(viewDate, {
-	                year: picker.$date.getFullYear(),
-	                month: picker.$date.getMonth(),
-	                date: picker.$date.getDate()
-	              });
-	              picker.$updateSelected();
-	            }
-	          },
-	          build: function() {
-	            var firstYear = viewDate.year - viewDate.year % (this.split * 3);
-	            var years = [];
-	            var year;
-	            for (var i = 0; i < 12; i++) {
-	              year = new Date(firstYear + i, 0, 1);
-	              years.push({
-	                date: year,
-	                label: formatDate(year, this.format),
-	                selected: picker.$isSelected(year),
-	                disabled: this.isDisabled(year)
-	              });
-	            }
-	            scope.title = years[0].label + '-' + years[years.length - 1].label;
-	            scope.showLabels = false;
-	            scope.rows = split(years, this.split);
-	            this.built = true;
-	          },
-	          isSelected: function(date) {
-	            return picker.$date && date.getFullYear() === picker.$date.getFullYear();
-	          },
-	          isDisabled: function(date) {
-	            var lastDate = +new Date(date.getFullYear() + 1, 0, 0);
-	            return lastDate < options.minDate || date.getTime() > options.maxDate;
-	          },
-	          onKeyDown: function(evt) {
-	            if (!picker.$date) {
-	              return;
-	            }
-	            var actualYear = picker.$date.getFullYear();
-	            var newDate = new Date(picker.$date);
-	            if (evt.keyCode === 37) newDate.setYear(actualYear - 1); else if (evt.keyCode === 38) newDate.setYear(actualYear - 4); else if (evt.keyCode === 39) newDate.setYear(actualYear + 1); else if (evt.keyCode === 40) newDate.setYear(actualYear + 4);
-	            if (!this.isDisabled(newDate)) picker.select(newDate, true);
-	          }
-	        } ];
-	        return {
-	          views: options.minView ? Array.prototype.slice.call(views, options.minView) : views,
-	          viewDate: viewDate
-	        };
-	      };
-	    } ];
-	  });
-	  angular.module('mgcrea.ngStrap.collapse', []).provider('$collapse', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-collapse',
-	      disallowToggle: false,
-	      activeClass: 'in',
-	      startCollapsed: false,
-	      allowMultiple: false
-	    };
-	    var controller = this.controller = function($scope, $element, $attrs) {
-	      var self = this;
-	      self.$options = angular.copy(defaults);
-	      angular.forEach([ 'animation', 'disallowToggle', 'activeClass', 'startCollapsed', 'allowMultiple' ], function(key) {
-	        if (angular.isDefined($attrs[key])) self.$options[key] = $attrs[key];
-	      });
-	      var falseValueRegExp = /^(false|0|)$/i;
-	      angular.forEach([ 'disallowToggle', 'startCollapsed', 'allowMultiple' ], function(key) {
-	        if (angular.isDefined($attrs[key]) && falseValueRegExp.test($attrs[key])) {
-	          self.$options[key] = false;
-	        }
-	      });
-	      self.$toggles = [];
-	      self.$targets = [];
-	      self.$viewChangeListeners = [];
-	      self.$registerToggle = function(element) {
-	        self.$toggles.push(element);
-	      };
-	      self.$registerTarget = function(element) {
-	        self.$targets.push(element);
-	      };
-	      self.$unregisterToggle = function(element) {
-	        var index = self.$toggles.indexOf(element);
-	        self.$toggles.splice(index, 1);
-	      };
-	      self.$unregisterTarget = function(element) {
-	        var index = self.$targets.indexOf(element);
-	        self.$targets.splice(index, 1);
-	        if (self.$options.allowMultiple) {
-	          deactivateItem(element);
-	        }
-	        fixActiveItemIndexes(index);
-	        self.$viewChangeListeners.forEach(function(fn) {
-	          fn();
-	        });
-	      };
-	      self.$targets.$active = !self.$options.startCollapsed ? [ 0 ] : [];
-	      self.$setActive = $scope.$setActive = function(value) {
-	        if (angular.isArray(value)) {
-	          self.$targets.$active = value;
-	        } else if (!self.$options.disallowToggle && isActive(value)) {
-	          deactivateItem(value);
-	        } else {
-	          activateItem(value);
-	        }
-	        self.$viewChangeListeners.forEach(function(fn) {
-	          fn();
-	        });
-	      };
-	      self.$activeIndexes = function() {
-	        if (self.$options.allowMultiple) {
-	          return self.$targets.$active;
-	        }
-	        return self.$targets.$active.length === 1 ? self.$targets.$active[0] : -1;
-	      };
-	      function fixActiveItemIndexes(index) {
-	        var activeIndexes = self.$targets.$active;
-	        for (var i = 0; i < activeIndexes.length; i++) {
-	          if (index < activeIndexes[i]) {
-	            activeIndexes[i] = activeIndexes[i] - 1;
-	          }
-	          if (activeIndexes[i] === self.$targets.length) {
-	            activeIndexes[i] = self.$targets.length - 1;
-	          }
-	        }
-	      }
-	      function isActive(value) {
-	        var activeItems = self.$targets.$active;
-	        return activeItems.indexOf(value) !== -1;
-	      }
-	      function deactivateItem(value) {
-	        var index = self.$targets.$active.indexOf(value);
-	        if (index !== -1) {
-	          self.$targets.$active.splice(index, 1);
-	        }
-	      }
-	      function activateItem(value) {
-	        if (!self.$options.allowMultiple) {
-	          self.$targets.$active.splice(0, 1);
-	        }
-	        if (self.$targets.$active.indexOf(value) === -1) {
-	          self.$targets.$active.push(value);
-	        }
-	      }
-	    };
-	    this.$get = function() {
-	      var $collapse = {};
-	      $collapse.defaults = defaults;
-	      $collapse.controller = controller;
-	      return $collapse;
-	    };
-	  }).directive('bsCollapse', [ '$window', '$animate', '$collapse', function($window, $animate, $collapse) {
-	    return {
-	      require: [ '?ngModel', 'bsCollapse' ],
-	      controller: [ '$scope', '$element', '$attrs', $collapse.controller ],
-	      link: function postLink(scope, element, attrs, controllers) {
-	        var ngModelCtrl = controllers[0];
-	        var bsCollapseCtrl = controllers[1];
-	        if (ngModelCtrl) {
-	          bsCollapseCtrl.$viewChangeListeners.push(function() {
-	            ngModelCtrl.$setViewValue(bsCollapseCtrl.$activeIndexes());
-	          });
-	          ngModelCtrl.$formatters.push(function(modelValue) {
-	            if (angular.isArray(modelValue)) {
-	              bsCollapseCtrl.$setActive(modelValue);
-	            } else {
-	              var activeIndexes = bsCollapseCtrl.$activeIndexes();
-	              if (angular.isArray(activeIndexes)) {
-	                if (activeIndexes.indexOf(modelValue * 1) === -1) {
-	                  bsCollapseCtrl.$setActive(modelValue * 1);
-	                }
-	              } else if (activeIndexes !== modelValue * 1) {
-	                bsCollapseCtrl.$setActive(modelValue * 1);
-	              }
-	            }
-	            return modelValue;
-	          });
-	        }
-	      }
-	    };
-	  } ]).directive('bsCollapseToggle', function() {
-	    return {
-	      require: [ '^?ngModel', '^bsCollapse' ],
-	      link: function postLink(scope, element, attrs, controllers) {
-	        var bsCollapseCtrl = controllers[1];
-	        element.attr('data-toggle', 'collapse');
-	        bsCollapseCtrl.$registerToggle(element);
-	        scope.$on('$destroy', function() {
-	          bsCollapseCtrl.$unregisterToggle(element);
-	        });
-	        element.on('click', function() {
-	          if (!attrs.disabled) {
-	            var index = attrs.bsCollapseToggle && attrs.bsCollapseToggle !== 'bs-collapse-toggle' ? attrs.bsCollapseToggle : bsCollapseCtrl.$toggles.indexOf(element);
-	            bsCollapseCtrl.$setActive(index * 1);
-	            scope.$apply();
-	          }
-	        });
-	      }
-	    };
-	  }).directive('bsCollapseTarget', [ '$animate', function($animate) {
-	    return {
-	      require: [ '^?ngModel', '^bsCollapse' ],
-	      link: function postLink(scope, element, attrs, controllers) {
-	        var bsCollapseCtrl = controllers[1];
-	        element.addClass('collapse');
-	        if (bsCollapseCtrl.$options.animation) {
-	          element.addClass(bsCollapseCtrl.$options.animation);
-	        }
-	        bsCollapseCtrl.$registerTarget(element);
-	        scope.$on('$destroy', function() {
-	          bsCollapseCtrl.$unregisterTarget(element);
-	        });
-	        function render() {
-	          var index = bsCollapseCtrl.$targets.indexOf(element);
-	          var active = bsCollapseCtrl.$activeIndexes();
-	          var action = 'removeClass';
-	          if (angular.isArray(active)) {
-	            if (active.indexOf(index) !== -1) {
-	              action = 'addClass';
-	            }
-	          } else if (index === active) {
-	            action = 'addClass';
-	          }
-	          $animate[action](element, bsCollapseCtrl.$options.activeClass);
-	        }
-	        bsCollapseCtrl.$viewChangeListeners.push(function() {
-	          render();
-	        });
-	        render();
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.button', []).provider('$button', function() {
-	    var defaults = this.defaults = {
-	      activeClass: 'active',
-	      toggleEvent: 'click'
-	    };
-	    this.$get = function() {
-	      return {
-	        defaults: defaults
-	      };
-	    };
-	  }).directive('bsCheckboxGroup', function() {
-	    return {
-	      restrict: 'A',
-	      require: 'ngModel',
-	      compile: function postLink(element, attr) {
-	        element.attr('data-toggle', 'buttons');
-	        element.removeAttr('ng-model');
-	        var children = element[0].querySelectorAll('input[type="checkbox"]');
-	        angular.forEach(children, function(child) {
-	          var childEl = angular.element(child);
-	          childEl.attr('bs-checkbox', '');
-	          childEl.attr('ng-model', attr.ngModel + '.' + childEl.attr('value'));
-	        });
-	      }
-	    };
-	  }).directive('bsCheckbox', [ '$button', '$$rAF', function($button, $$rAF) {
-	    var defaults = $button.defaults;
-	    var constantValueRegExp = /^(true|false|\d+)$/;
-	    return {
-	      restrict: 'A',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = defaults;
-	        var isInput = element[0].nodeName === 'INPUT';
-	        var activeElement = isInput ? element.parent() : element;
-	        var trueValue = angular.isDefined(attr.trueValue) ? attr.trueValue : true;
-	        if (constantValueRegExp.test(attr.trueValue)) {
-	          trueValue = scope.$eval(attr.trueValue);
-	        }
-	        var falseValue = angular.isDefined(attr.falseValue) ? attr.falseValue : false;
-	        if (constantValueRegExp.test(attr.falseValue)) {
-	          falseValue = scope.$eval(attr.falseValue);
-	        }
-	        var hasExoticValues = typeof trueValue !== 'boolean' || typeof falseValue !== 'boolean';
-	        if (hasExoticValues) {
-	          controller.$parsers.push(function(viewValue) {
-	            return viewValue ? trueValue : falseValue;
-	          });
-	          controller.$formatters.push(function(modelValue) {
-	            return angular.equals(modelValue, trueValue);
-	          });
-	          scope.$watch(attr.ngModel, function(newValue, oldValue) {
-	            controller.$render();
-	          });
-	        }
-	        controller.$render = function() {
-	          var isActive = angular.equals(controller.$modelValue, trueValue);
-	          $$rAF(function() {
-	            if (isInput) element[0].checked = isActive;
-	            activeElement.toggleClass(options.activeClass, isActive);
-	          });
-	        };
-	        element.bind(options.toggleEvent, function() {
-	          scope.$apply(function() {
-	            if (!isInput) {
-	              controller.$setViewValue(!activeElement.hasClass('active'));
-	            }
-	            if (!hasExoticValues) {
-	              controller.$render();
-	            }
-	          });
-	        });
-	      }
-	    };
-	  } ]).directive('bsRadioGroup', function() {
-	    return {
-	      restrict: 'A',
-	      require: 'ngModel',
-	      compile: function postLink(element, attr) {
-	        element.attr('data-toggle', 'buttons');
-	        element.removeAttr('ng-model');
-	        var children = element[0].querySelectorAll('input[type="radio"]');
-	        angular.forEach(children, function(child) {
-	          angular.element(child).attr('bs-radio', '');
-	          angular.element(child).attr('ng-model', attr.ngModel);
-	        });
-	      }
-	    };
-	  }).directive('bsRadio', [ '$button', '$$rAF', function($button, $$rAF) {
-	    var defaults = $button.defaults;
-	    var constantValueRegExp = /^(true|false|\d+)$/;
-	    return {
-	      restrict: 'A',
-	      require: 'ngModel',
-	      link: function postLink(scope, element, attr, controller) {
-	        var options = defaults;
-	        var isInput = element[0].nodeName === 'INPUT';
-	        var activeElement = isInput ? element.parent() : element;
-	        var value;
-	        attr.$observe('value', function(v) {
-	          if (typeof v !== 'boolean' && constantValueRegExp.test(v)) {
-	            value = scope.$eval(v);
-	          } else {
-	            value = v;
-	          }
-	          controller.$render();
-	        });
-	        controller.$render = function() {
-	          var isActive = angular.equals(controller.$modelValue, value);
-	          $$rAF(function() {
-	            if (isInput) element[0].checked = isActive;
-	            activeElement.toggleClass(options.activeClass, isActive);
-	          });
-	        };
-	        element.bind(options.toggleEvent, function() {
-	          scope.$apply(function() {
-	            controller.$setViewValue(value);
-	            controller.$render();
-	          });
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.alert', [ 'mgcrea.ngStrap.modal' ]).provider('$alert', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade',
-	      prefixClass: 'alert',
-	      prefixEvent: 'alert',
-	      placement: null,
-	      templateUrl: 'alert/alert.tpl.html',
-	      container: false,
-	      element: null,
-	      backdrop: false,
-	      keyboard: true,
-	      show: true,
-	      duration: false,
-	      type: false,
-	      dismissable: true
-	    };
-	    this.$get = [ '$modal', '$timeout', function($modal, $timeout) {
-	      function AlertFactory(config) {
-	        var $alert = {};
-	        var options = angular.extend({}, defaults, config);
-	        $alert = $modal(options);
-	        $alert.$scope.dismissable = !!options.dismissable;
-	        if (options.type) {
-	          $alert.$scope.type = options.type;
-	        }
-	        var show = $alert.show;
-	        if (options.duration) {
-	          $alert.show = function() {
-	            show();
-	            $timeout(function() {
-	              $alert.hide();
-	            }, options.duration * 1e3);
-	          };
-	        }
-	        return $alert;
-	      }
-	      return AlertFactory;
-	    } ];
-	  }).directive('bsAlert', [ '$window', '$sce', '$alert', function($window, $sce, $alert) {
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      link: function postLink(scope, element, attr, transclusion) {
-	        var options = {
-	          scope: scope,
-	          element: element,
-	          show: false
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'placement', 'keyboard', 'html', 'container', 'animation', 'duration', 'dismissable' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'keyboard', 'html', 'container', 'dismissable' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	        });
-	        if (!scope.hasOwnProperty('title')) {
-	          scope.title = '';
-	        }
-	        angular.forEach([ 'title', 'content', 'type' ], function(key) {
-	          if (attr[key]) {
-	            attr.$observe(key, function(newValue, oldValue) {
-	              scope[key] = $sce.trustAsHtml(newValue);
-	            });
-	          }
-	        });
-	        if (attr.bsAlert) {
-	          scope.$watch(attr.bsAlert, function(newValue, oldValue) {
-	            if (angular.isObject(newValue)) {
-	              angular.extend(scope, newValue);
-	            } else {
-	              scope.content = newValue;
-	            }
-	          }, true);
-	        }
-	        var alert = $alert(options);
-	        element.on(attr.trigger || 'click', alert.toggle);
-	        scope.$on('$destroy', function() {
-	          if (alert) alert.destroy();
-	          options = null;
-	          alert = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.aside', [ 'mgcrea.ngStrap.modal' ]).provider('$aside', function() {
-	    var defaults = this.defaults = {
-	      animation: 'am-fade-and-slide-right',
-	      prefixClass: 'aside',
-	      prefixEvent: 'aside',
-	      placement: 'right',
-	      templateUrl: 'aside/aside.tpl.html',
-	      contentTemplate: false,
-	      container: false,
-	      element: null,
-	      backdrop: true,
-	      keyboard: true,
-	      html: false,
-	      show: true
-	    };
-	    this.$get = [ '$modal', function($modal) {
-	      function AsideFactory(config) {
-	        var $aside = {};
-	        var options = angular.extend({}, defaults, config);
-	        $aside = $modal(options);
-	        return $aside;
-	      }
-	      return AsideFactory;
-	    } ];
-	  }).directive('bsAside', [ '$window', '$sce', '$aside', function($window, $sce, $aside) {
-	    return {
-	      restrict: 'EAC',
-	      scope: true,
-	      link: function postLink(scope, element, attr, transclusion) {
-	        var options = {
-	          scope: scope,
-	          element: element,
-	          show: false
-	        };
-	        angular.forEach([ 'template', 'templateUrl', 'controller', 'controllerAs', 'contentTemplate', 'placement', 'backdrop', 'keyboard', 'html', 'container', 'animation' ], function(key) {
-	          if (angular.isDefined(attr[key])) options[key] = attr[key];
-	        });
-	        var falseValueRegExp = /^(false|0|)$/i;
-	        angular.forEach([ 'backdrop', 'keyboard', 'html', 'container' ], function(key) {
-	          if (angular.isDefined(attr[key]) && falseValueRegExp.test(attr[key])) options[key] = false;
-	        });
-	        angular.forEach([ 'title', 'content' ], function(key) {
-	          if (attr[key]) {
-	            attr.$observe(key, function(newValue, oldValue) {
-	              scope[key] = $sce.trustAsHtml(newValue);
-	            });
-	          }
-	        });
-	        if (attr.bsAside) {
-	          scope.$watch(attr.bsAside, function(newValue, oldValue) {
-	            if (angular.isObject(newValue)) {
-	              angular.extend(scope, newValue);
-	            } else {
-	              scope.content = newValue;
-	            }
-	          }, true);
-	        }
-	        var aside = $aside(options);
-	        element.on(attr.trigger || 'click', aside.toggle);
-	        scope.$on('$destroy', function() {
-	          if (aside) aside.destroy();
-	          options = null;
-	          aside = null;
-	        });
-	      }
-	    };
-	  } ]);
-	  angular.module('mgcrea.ngStrap.affix', [ 'mgcrea.ngStrap.helpers.dimensions', 'mgcrea.ngStrap.helpers.debounce' ]).provider('$affix', function() {
-	    var defaults = this.defaults = {
-	      offsetTop: 'auto',
-	      inlineStyles: true
-	    };
-	    this.$get = [ '$window', 'debounce', 'dimensions', function($window, debounce, dimensions) {
-	      var bodyEl = angular.element($window.document.body);
-	      var windowEl = angular.element($window);
-	      function AffixFactory(element, config) {
-	        var $affix = {};
-	        var options = angular.extend({}, defaults, config);
-	        var targetEl = options.target;
-	        var reset = 'affix affix-top affix-bottom';
-	        var setWidth = false;
-	        var initialAffixTop = 0;
-	        var initialOffsetTop = 0;
-	        var offsetTop = 0;
-	        var offsetBottom = 0;
-	        var affixed = null;
-	        var unpin = null;
-	        var parent = element.parent();
-	        if (options.offsetParent) {
-	          if (options.offsetParent.match(/^\d+$/)) {
-	            for (var i = 0; i < options.offsetParent * 1 - 1; i++) {
-	              parent = parent.parent();
-	            }
-	          } else {
-	            parent = angular.element(options.offsetParent);
-	          }
-	        }
-	        $affix.init = function() {
-	          this.$parseOffsets();
-	          initialOffsetTop = dimensions.offset(element[0]).top + initialAffixTop;
-	          setWidth = !element[0].style.width;
-	          targetEl.on('scroll', this.checkPosition);
-	          targetEl.on('click', this.checkPositionWithEventLoop);
-	          windowEl.on('resize', this.$debouncedOnResize);
-	          this.checkPosition();
-	          this.checkPositionWithEventLoop();
-	        };
-	        $affix.destroy = function() {
-	          targetEl.off('scroll', this.checkPosition);
-	          targetEl.off('click', this.checkPositionWithEventLoop);
-	          windowEl.off('resize', this.$debouncedOnResize);
-	        };
-	        $affix.checkPositionWithEventLoop = function() {
-	          setTimeout($affix.checkPosition, 1);
-	        };
-	        $affix.checkPosition = function() {
-	          var scrollTop = getScrollTop();
-	          var position = dimensions.offset(element[0]);
-	          var elementHeight = dimensions.height(element[0]);
-	          var affix = getRequiredAffixClass(unpin, position, elementHeight);
-	          if (affixed === affix) return;
-	          affixed = affix;
-	          if (affix === 'top') {
-	            unpin = null;
-	            if (setWidth) {
-	              element.css('width', '');
-	            }
-	            if (options.inlineStyles) {
-	              element.css('position', options.offsetParent ? '' : 'relative');
-	              element.css('top', '');
-	            }
-	          } else if (affix === 'bottom') {
-	            if (options.offsetUnpin) {
-	              unpin = -(options.offsetUnpin * 1);
-	            } else {
-	              unpin = position.top - scrollTop;
-	            }
-	            if (setWidth) {
-	              element.css('width', '');
-	            }
-	            if (options.inlineStyles) {
-	              element.css('position', options.offsetParent ? '' : 'relative');
-	              element.css('top', options.offsetParent ? '' : bodyEl[0].offsetHeight - offsetBottom - elementHeight - initialOffsetTop + 'px');
-	            }
-	          } else {
-	            unpin = null;
-	            if (setWidth) {
-	              element.css('width', element[0].offsetWidth + 'px');
-	            }
-	            if (options.inlineStyles) {
-	              element.css('position', 'fixed');
-	              element.css('top', initialAffixTop + 'px');
-	            }
-	          }
-	          element.removeClass(reset).addClass('affix' + (affix !== 'middle' ? '-' + affix : ''));
-	        };
-	        $affix.$onResize = function() {
-	          $affix.$parseOffsets();
-	          $affix.checkPosition();
-	        };
-	        $affix.$debouncedOnResize = debounce($affix.$onResize, 50);
-	        $affix.$parseOffsets = function() {
-	          var initialPosition = element.css('position');
-	          if (options.inlineStyles) {
-	            element.css('position', options.offsetParent ? '' : 'relative');
-	          }
-	          if (options.offsetTop) {
-	            if (options.offsetTop === 'auto') {
-	              options.offsetTop = '+0';
-	            }
-	            if (options.offsetTop.match(/^[-+]\d+$/)) {
-	              initialAffixTop = -options.offsetTop * 1;
-	              if (options.offsetParent) {
-	                offsetTop = dimensions.offset(parent[0]).top + options.offsetTop * 1;
-	              } else {
-	                offsetTop = dimensions.offset(element[0]).top - dimensions.css(element[0], 'marginTop', true) + options.offsetTop * 1;
-	              }
-	            } else {
-	              offsetTop = options.offsetTop * 1;
-	            }
-	          }
-	          if (options.offsetBottom) {
-	            if (options.offsetParent && options.offsetBottom.match(/^[-+]\d+$/)) {
-	              offsetBottom = getScrollHeight() - (dimensions.offset(parent[0]).top + dimensions.height(parent[0])) + options.offsetBottom * 1 + 1;
-	            } else {
-	              offsetBottom = options.offsetBottom * 1;
-	            }
-	          }
-	          if (options.inlineStyles) {
-	            element.css('position', initialPosition);
-	          }
-	        };
-	        function getRequiredAffixClass(_unpin, position, elementHeight) {
-	          var scrollTop = getScrollTop();
-	          var scrollHeight = getScrollHeight();
-	          if (scrollTop <= offsetTop) {
-	            return 'top';
-	          } else if (_unpin !== null && scrollTop + _unpin <= position.top) {
-	            return 'middle';
-	          } else if (offsetBottom !== null && position.top + elementHeight + initialAffixTop >= scrollHeight - offsetBottom) {
-	            return 'bottom';
-	          }
-	          return 'middle';
-	        }
-	        function getScrollTop() {
-	          return targetEl[0] === $window ? $window.pageYOffset : targetEl[0].scrollTop;
-	        }
-	        function getScrollHeight() {
-	          return targetEl[0] === $window ? $window.document.body.scrollHeight : targetEl[0].scrollHeight;
-	        }
-	        $affix.init();
-	        return $affix;
-	      }
-	      return AffixFactory;
-	    } ];
-	  }).directive('bsAffix', [ '$affix', '$window', function($affix, $window) {
-	    return {
-	      restrict: 'EAC',
-	      require: '^?bsAffixTarget',
-	      link: function postLink(scope, element, attr, affixTarget) {
-	        var options = {
-	          scope: scope,
-	          target: affixTarget ? affixTarget.$element : angular.element($window)
-	        };
-	        angular.forEach([ 'offsetTop', 'offsetBottom', 'offsetParent', 'offsetUnpin', 'inlineStyles' ], function(key) {
-	          if (angular.isDefined(attr[key])) {
-	            var option = attr[key];
-	            if (/true/i.test(option)) option = true;
-	            if (/false/i.test(option)) option = false;
-	            options[key] = option;
-	          }
-	        });
-	        var affix = $affix(element, options);
-	        scope.$on('$destroy', function() {
-	          if (affix) affix.destroy();
-	          options = null;
-	          affix = null;
-	        });
-	      }
-	    };
-	  } ]).directive('bsAffixTarget', function() {
-	    return {
-	      controller: [ '$element', function($element) {
-	        this.$element = $element;
-	      } ]
-	    };
-	  });
-	  angular.module('mgcrea.ngStrap', [ 'mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside', 'mgcrea.ngStrap.alert', 'mgcrea.ngStrap.button', 'mgcrea.ngStrap.select', 'mgcrea.ngStrap.datepicker', 'mgcrea.ngStrap.timepicker', 'mgcrea.ngStrap.navbar', 'mgcrea.ngStrap.tooltip', 'mgcrea.ngStrap.popover', 'mgcrea.ngStrap.dropdown', 'mgcrea.ngStrap.typeahead', 'mgcrea.ngStrap.scrollspy', 'mgcrea.ngStrap.affix', 'mgcrea.ngStrap.tab', 'mgcrea.ngStrap.collapse' ]);
-	})(window, document);
-
-/***/ },
 /* 16 */
-/***/ function(module, exports) {
-
-	/**
-	 * angular-strap
-	 * @version v2.3.8 - 2016-03-31
-	 * @link http://mgcrea.github.io/angular-strap
-	 * @author Olivier Louvignes <olivier@mg-crea.com> (https://github.com/mgcrea)
-	 * @license MIT License, http://www.opensource.org/licenses/MIT
-	 */
-	(function(window, document, undefined) {
-	  'use strict';
-	  angular.module('mgcrea.ngStrap.aside').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('aside/aside.tpl.html', '<div class="aside" tabindex="-1" role="dialog"><div class="aside-dialog"><div class="aside-content"><div class="aside-header" ng-show="title"><button type="button" class="close" ng-click="$hide()">&times;</button><h4 class="aside-title" ng-bind="title"></h4></div><div class="aside-body" ng-bind="content"></div><div class="aside-footer"><button type="button" class="btn btn-default" ng-click="$hide()">Close</button></div></div></div></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.alert').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('alert/alert.tpl.html', '<div class="alert" ng-class="[type ? \'alert-\' + type : null]"><button type="button" class="close" ng-if="dismissable" ng-click="$hide()">&times;</button> <strong ng-bind="title"></strong>&nbsp;<span ng-bind-html="content"></span></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.datepicker').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('datepicker/datepicker.tpl.html', '<div class="dropdown-menu datepicker" ng-class="\'datepicker-mode-\' + $mode" style="max-width: 320px"><table style="table-layout: fixed; height: 100%; width: 100%"><thead><tr class="text-center"><th><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$selectPane(-1)"><i class="{{$iconLeft}}"></i></button></th><th colspan="{{ rows[0].length - 2 }}"><button tabindex="-1" type="button" class="btn btn-default btn-block text-strong" ng-click="$toggleMode()"><strong style="text-transform: capitalize" ng-bind="title"></strong></button></th><th><button tabindex="-1" type="button" class="btn btn-default pull-right" ng-click="$selectPane(+1)"><i class="{{$iconRight}}"></i></button></th></tr><tr ng-if="showLabels" ng-bind-html="labels"></tr></thead><tbody><tr ng-repeat="(i, row) in rows" height="{{ 100 / rows.length }}%"><td class="text-center" ng-repeat="(j, el) in row"><button tabindex="-1" type="button" class="btn btn-default" style="width: 100%" ng-class="{\'btn-primary\': el.selected, \'btn-info btn-today\': el.isToday && !el.selected}" ng-click="$select(el.date)" ng-disabled="el.disabled"><span ng-class="{\'text-muted\': el.muted}" ng-bind="el.label"></span></button></td></tr></tbody></table></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.modal').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('modal/modal.tpl.html', '<div class="modal" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header" ng-show="title"><button type="button" class="close" aria-label="Close" ng-click="$hide()"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" ng-bind="title"></h4></div><div class="modal-body" ng-bind="content"></div><div class="modal-footer"><button type="button" class="btn btn-default" ng-click="$hide()">Close</button></div></div></div></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.dropdown').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('dropdown/dropdown.tpl.html', '<ul tabindex="-1" class="dropdown-menu" role="menu" ng-show="content && content.length"><li role="presentation" ng-class="{divider: item.divider, active: item.active}" ng-repeat="item in content"><a role="menuitem" tabindex="-1" ng-href="{{item.href}}" ng-if="!item.divider && item.href" target="{{item.target || \'\'}}" ng-bind="item.text"></a> <a role="menuitem" tabindex="-1" href="javascript:void(0)" ng-if="!item.divider && item.click" ng-click="$eval(item.click);$hide()" ng-bind="item.text"></a></li></ul>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.popover').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('popover/popover.tpl.html', '<div class="popover" tabindex="-1"><div class="arrow"></div><h3 class="popover-title" ng-bind="title" ng-show="title"></h3><div class="popover-content" ng-bind="content"></div></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.select').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('select/select.tpl.html', '<ul tabindex="-1" class="select dropdown-menu" ng-show="$isVisible()" role="select"><li ng-if="$showAllNoneButtons"><div class="btn-group" style="margin-bottom: 5px; margin-left: 5px"><button type="button" class="btn btn-default btn-xs" ng-click="$selectAll()">{{$allText}}</button> <button type="button" class="btn btn-default btn-xs" ng-click="$selectNone()">{{$noneText}}</button></div></li><li role="presentation" ng-repeat="match in $matches" ng-class="{active: $isActive($index)}"><a style="cursor: default" role="menuitem" tabindex="-1" ng-click="$select($index, $event)"><i class="{{$iconCheckmark}} pull-right" ng-if="$isMultiple && $isActive($index)"></i> <span ng-bind="match.label"></span></a></li></ul>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.tab').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('tab/tab.tpl.html', '<ul class="nav" ng-class="$navClass" role="tablist"><li role="presentation" ng-repeat="$pane in $panes track by $index" ng-class="[ $isActive($pane, $index) ? $activeClass : \'\', $pane.disabled ? \'disabled\' : \'\' ]"><a role="tab" data-toggle="tab" ng-click="!$pane.disabled && $setActive($pane.name || $index)" data-index="{{ $index }}" ng-bind-html="$pane.title" aria-controls="$pane.title"></a></li></ul><div ng-transclude class="tab-content"></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.timepicker').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('timepicker/timepicker.tpl.html', '<div class="dropdown-menu timepicker" style="min-width: 0px;width: auto"><table height="100%"><thead><tr class="text-center"><th><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(-1, 0)"><i class="{{ $iconUp }}"></i></button></th><th>&nbsp;</th><th><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(-1, 1)"><i class="{{ $iconUp }}"></i></button></th><th ng-if="showSeconds">&nbsp;</th><th ng-if="showSeconds"><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(-1, 2)"><i class="{{ $iconUp }}"></i></button></th></tr></thead><tbody><tr ng-repeat="(i, row) in rows"><td class="text-center"><button tabindex="-1" style="width: 100%" type="button" class="btn btn-default" ng-class="{\'btn-primary\': row[0].selected}" ng-click="$select(row[0].date, 0)" ng-disabled="row[0].disabled"><span ng-class="{\'text-muted\': row[0].muted}" ng-bind="row[0].label"></span></button></td><td><span ng-bind="i == midIndex ? timeSeparator : \' \'"></span></td><td class="text-center"><button tabindex="-1" ng-if="row[1].date" style="width: 100%" type="button" class="btn btn-default" ng-class="{\'btn-primary\': row[1].selected}" ng-click="$select(row[1].date, 1)" ng-disabled="row[1].disabled"><span ng-class="{\'text-muted\': row[1].muted}" ng-bind="row[1].label"></span></button></td><td ng-if="showSeconds"><span ng-bind="i == midIndex ? timeSeparator : \' \'"></span></td><td ng-if="showSeconds" class="text-center"><button tabindex="-1" ng-if="row[2].date" style="width: 100%" type="button" class="btn btn-default" ng-class="{\'btn-primary\': row[2].selected}" ng-click="$select(row[2].date, 2)" ng-disabled="row[2].disabled"><span ng-class="{\'text-muted\': row[2].muted}" ng-bind="row[2].label"></span></button></td><td ng-if="showAM">&nbsp;</td><td ng-if="showAM"><button tabindex="-1" ng-show="i == midIndex - !isAM * 1" style="width: 100%" type="button" ng-class="{\'btn-primary\': !!isAM}" class="btn btn-default" ng-click="$switchMeridian()" ng-disabled="el.disabled">AM</button> <button tabindex="-1" ng-show="i == midIndex + 1 - !isAM * 1" style="width: 100%" type="button" ng-class="{\'btn-primary\': !isAM}" class="btn btn-default" ng-click="$switchMeridian()" ng-disabled="el.disabled">PM</button></td></tr></tbody><tfoot><tr class="text-center"><th><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(1, 0)"><i class="{{ $iconDown }}"></i></button></th><th>&nbsp;</th><th><button tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(1, 1)"><i class="{{ $iconDown }}"></i></button></th><th ng-if="showSeconds">&nbsp;</th><th ng-if="showSeconds"><button ng-if="showSeconds" tabindex="-1" type="button" class="btn btn-default pull-left" ng-click="$arrowAction(1, 2)"><i class="{{ $iconDown }}"></i></button></th></tr></tfoot></table></div>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.typeahead').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('typeahead/typeahead.tpl.html', '<ul tabindex="-1" class="typeahead dropdown-menu" ng-show="$isVisible()" role="select"><li role="presentation" ng-repeat="match in $matches" ng-class="{active: $index == $activeIndex}"><a role="menuitem" tabindex="-1" ng-click="$select($index, $event)" ng-bind="match.label"></a></li></ul>');
-	  } ]);
-	  angular.module('mgcrea.ngStrap.tooltip').run([ '$templateCache', function($templateCache) {
-	    $templateCache.put('tooltip/tooltip.tpl.html', '<div class="tooltip in" ng-show="title"><div class="tooltip-arrow"></div><div class="tooltip-inner" ng-bind="title"></div></div>');
-	  } ]);
-	})(window, document);
-
-/***/ },
-/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(18);
+	__webpack_require__(17);
 	module.exports = 'ngRoute';
 
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/**
@@ -35910,15 +31528,15 @@
 
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(20);
+	__webpack_require__(19);
 	module.exports = 'ngFlash';
 
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36056,15 +31674,15 @@
 
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(22);
+	__webpack_require__(21);
 	module.exports = 'ngMessages';
 
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -36792,29 +32410,77 @@
 
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	__webpack_require__(23);
+	module.exports = 'ngAside';
 
-	var angular = __webpack_require__(12);
-	__webpack_require__(17);
-	__webpack_require__(24);
-	__webpack_require__(19);
-	__webpack_require__(28);
-	__webpack_require__(117);
-	(function () {
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	
+	/*!
+	 * angular-aside - v1.3.2
+	 * https://github.com/dbtek/angular-aside
+	 * 2015-11-17
+	 * Copyright (c) 2015 İsmail Demirbilek
+	 * License: MIT
+	 */
+
+	(function() {
 	  'use strict';
 
-	  angular.module('home', ['ngRoute', 'ngFlash', 'angularMoment', 'ui.bootstrap']).config(["$routeProvider", function ($routeProvider) {
-	    $routeProvider.when('/', {
-	      template: __webpack_require__(119),
-	      controller: 'HomeController'
-	    }).when('/faq', {
-	      template: __webpack_require__(120)
-	    });
-	  }]);
+	  /**
+	   * @ngdoc overview
+	   * @name ngAside
+	   * @description
+	   * Main module for aside component.
+	   * @function
+	   * @author İsmail Demirbilek
+	   */
+	  angular.module('ngAside', ['ui.bootstrap.modal']);
 	})();
+
+	(function() {
+	  'use strict';
+
+	  angular.module('ngAside')
+	    /**
+	     * @ngdoc service
+	     * @name ngAside.services:$aside
+	     * @description
+	     * Factory to create a uibModal instance to use it as aside. It simply wraps $uibModal by overriding open() method and sets a class on modal window.
+	     * @function
+	     */
+	    .factory('$aside', ['$uibModal', function($uibModal) {
+	      var defaults = this.defaults = {
+	        placement: 'left'
+	      };
+
+	      var asideFactory = {
+	        // override open method
+	        open: function(config) {
+	          var options = angular.extend({}, defaults, config);
+	          // check placement is set correct
+	          if(['left', 'right', 'bottom', 'top'].indexOf(options.placement) === -1) {
+	            options.placement = defaults.placement;
+	          }
+	          var vertHoriz = ['left', 'right'].indexOf(options.placement) === -1 ? 'vertical' : 'horizontal';
+	          // set aside classes
+	          options.windowClass  = 'ng-aside ' + vertHoriz + ' ' + options.placement + (options.windowClass ? ' ' + options.windowClass : '');
+	          delete options.placement
+	          return $uibModal.open(options);
+	        }
+	      };
+
+	      // create $aside as extended $uibModal
+	      var $aside = angular.extend({}, $uibModal, asideFactory);
+	      return $aside;
+	    }]);
+	})();
+
 
 /***/ },
 /* 24 */
@@ -36822,8 +32488,33 @@
 
 	'use strict';
 
+	var angular = __webpack_require__(13);
+	__webpack_require__(16);
 	__webpack_require__(25);
+	__webpack_require__(18);
+	__webpack_require__(29);
+	__webpack_require__(118);
+	(function () {
+	  'use strict';
+
+	  angular.module('home', ['ngRoute', 'ngFlash', 'angularMoment', 'ui.bootstrap']).config(["$routeProvider", function ($routeProvider) {
+	    $routeProvider.when('/', {
+	      template: __webpack_require__(120),
+	      controller: 'HomeController'
+	    }).when('/faq', {
+	      template: __webpack_require__(121)
+	    });
+	  }]);
+	})();
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	__webpack_require__(26);
+	__webpack_require__(27);
 	(function () {
 	  'use strict';
 
@@ -36867,7 +32558,7 @@
 	    $scope.open = function (size, target_id, name) {
 	      var modalInstance = $uibModal.open({
 	        animation: $scope.animationsEnabled,
-	        template: __webpack_require__(27),
+	        template: __webpack_require__(28),
 	        size: size,
 	        controller: 'ModalInstanceCtrl',
 	        resolve: {
@@ -36886,7 +32577,7 @@
 	})();
 
 /***/ },
-/* 25 */
+/* 26 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36914,7 +32605,7 @@
 	})();
 
 /***/ },
-/* 26 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -36932,7 +32623,7 @@
 	}]);
 
 /***/ },
-/* 27 */
+/* 28 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -36940,7 +32631,7 @@
 	module.exports = "`<div class=\"modal-header\">\n   <h3 class=\"modal-title\">Photos for ${name}</h3>\n</div>\n<div class=\"modal-body\">\n   <ul>\n     <li ng-repeat=\"photo in photos\">\n       <img ng-src=\"{{photo.photo_url}}\" alt=\"\" />\n     </li>\n   </ul>\n\n</div>\n<div class=\"modal-footer\">\n   <button class=\"btn btn-primary\" type=\"button\" ng-click=\"ok()\">OK</button>\n</div>`\n";
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* angular-moment.js / v0.10.3 / (c) 2013, 2014, 2015 Uri Shaked / MIT Licence */
@@ -37567,7 +33258,7 @@
 		}
 
 		if (true) {
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(12), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(13), __webpack_require__(30)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else if (typeof module !== 'undefined' && module && module.exports) {
 			angularMoment(angular, require('moment'));
 			module.exports = 'angularMoment';
@@ -37578,7 +33269,7 @@
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
@@ -37849,7 +33540,7 @@
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(31)("./" + name);
+	                __webpack_require__(32)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -40776,10 +36467,10 @@
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(30)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(31)(module)))
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -40795,180 +36486,180 @@
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 32,
-		"./af.js": 32,
-		"./ar": 33,
-		"./ar-ma": 34,
-		"./ar-ma.js": 34,
-		"./ar-sa": 35,
-		"./ar-sa.js": 35,
-		"./ar-tn": 36,
-		"./ar-tn.js": 36,
-		"./ar.js": 33,
-		"./az": 37,
-		"./az.js": 37,
-		"./be": 38,
-		"./be.js": 38,
-		"./bg": 39,
-		"./bg.js": 39,
-		"./bn": 40,
-		"./bn.js": 40,
-		"./bo": 41,
-		"./bo.js": 41,
-		"./br": 42,
-		"./br.js": 42,
-		"./bs": 43,
-		"./bs.js": 43,
-		"./ca": 44,
-		"./ca.js": 44,
-		"./cs": 45,
-		"./cs.js": 45,
-		"./cv": 46,
-		"./cv.js": 46,
-		"./cy": 47,
-		"./cy.js": 47,
-		"./da": 48,
-		"./da.js": 48,
-		"./de": 49,
-		"./de-at": 50,
-		"./de-at.js": 50,
-		"./de.js": 49,
-		"./el": 51,
-		"./el.js": 51,
-		"./en-au": 52,
-		"./en-au.js": 52,
-		"./en-ca": 53,
-		"./en-ca.js": 53,
-		"./en-gb": 54,
-		"./en-gb.js": 54,
-		"./eo": 55,
-		"./eo.js": 55,
-		"./es": 56,
-		"./es.js": 56,
-		"./et": 57,
-		"./et.js": 57,
-		"./eu": 58,
-		"./eu.js": 58,
-		"./fa": 59,
-		"./fa.js": 59,
-		"./fi": 60,
-		"./fi.js": 60,
-		"./fo": 61,
-		"./fo.js": 61,
-		"./fr": 62,
-		"./fr-ca": 63,
-		"./fr-ca.js": 63,
-		"./fr.js": 62,
-		"./fy": 64,
-		"./fy.js": 64,
-		"./gl": 65,
-		"./gl.js": 65,
-		"./he": 66,
-		"./he.js": 66,
-		"./hi": 67,
-		"./hi.js": 67,
-		"./hr": 68,
-		"./hr.js": 68,
-		"./hu": 69,
-		"./hu.js": 69,
-		"./hy-am": 70,
-		"./hy-am.js": 70,
-		"./id": 71,
-		"./id.js": 71,
-		"./is": 72,
-		"./is.js": 72,
-		"./it": 73,
-		"./it.js": 73,
-		"./ja": 74,
-		"./ja.js": 74,
-		"./jv": 75,
-		"./jv.js": 75,
-		"./ka": 76,
-		"./ka.js": 76,
-		"./km": 77,
-		"./km.js": 77,
-		"./ko": 78,
-		"./ko.js": 78,
-		"./lb": 79,
-		"./lb.js": 79,
-		"./lt": 80,
-		"./lt.js": 80,
-		"./lv": 81,
-		"./lv.js": 81,
-		"./me": 82,
-		"./me.js": 82,
-		"./mk": 83,
-		"./mk.js": 83,
-		"./ml": 84,
-		"./ml.js": 84,
-		"./mr": 85,
-		"./mr.js": 85,
-		"./ms": 86,
-		"./ms-my": 87,
-		"./ms-my.js": 87,
-		"./ms.js": 86,
-		"./my": 88,
-		"./my.js": 88,
-		"./nb": 89,
-		"./nb.js": 89,
-		"./ne": 90,
-		"./ne.js": 90,
-		"./nl": 91,
-		"./nl.js": 91,
-		"./nn": 92,
-		"./nn.js": 92,
-		"./pl": 93,
-		"./pl.js": 93,
-		"./pt": 94,
-		"./pt-br": 95,
-		"./pt-br.js": 95,
-		"./pt.js": 94,
-		"./ro": 96,
-		"./ro.js": 96,
-		"./ru": 97,
-		"./ru.js": 97,
-		"./si": 98,
-		"./si.js": 98,
-		"./sk": 99,
-		"./sk.js": 99,
-		"./sl": 100,
-		"./sl.js": 100,
-		"./sq": 101,
-		"./sq.js": 101,
-		"./sr": 102,
-		"./sr-cyrl": 103,
-		"./sr-cyrl.js": 103,
-		"./sr.js": 102,
-		"./sv": 104,
-		"./sv.js": 104,
-		"./ta": 105,
-		"./ta.js": 105,
-		"./th": 106,
-		"./th.js": 106,
-		"./tl-ph": 107,
-		"./tl-ph.js": 107,
-		"./tr": 108,
-		"./tr.js": 108,
-		"./tzl": 109,
-		"./tzl.js": 109,
-		"./tzm": 110,
-		"./tzm-latn": 111,
-		"./tzm-latn.js": 111,
-		"./tzm.js": 110,
-		"./uk": 112,
-		"./uk.js": 112,
-		"./uz": 113,
-		"./uz.js": 113,
-		"./vi": 114,
-		"./vi.js": 114,
-		"./zh-cn": 115,
-		"./zh-cn.js": 115,
-		"./zh-tw": 116,
-		"./zh-tw.js": 116
+		"./af": 33,
+		"./af.js": 33,
+		"./ar": 34,
+		"./ar-ma": 35,
+		"./ar-ma.js": 35,
+		"./ar-sa": 36,
+		"./ar-sa.js": 36,
+		"./ar-tn": 37,
+		"./ar-tn.js": 37,
+		"./ar.js": 34,
+		"./az": 38,
+		"./az.js": 38,
+		"./be": 39,
+		"./be.js": 39,
+		"./bg": 40,
+		"./bg.js": 40,
+		"./bn": 41,
+		"./bn.js": 41,
+		"./bo": 42,
+		"./bo.js": 42,
+		"./br": 43,
+		"./br.js": 43,
+		"./bs": 44,
+		"./bs.js": 44,
+		"./ca": 45,
+		"./ca.js": 45,
+		"./cs": 46,
+		"./cs.js": 46,
+		"./cv": 47,
+		"./cv.js": 47,
+		"./cy": 48,
+		"./cy.js": 48,
+		"./da": 49,
+		"./da.js": 49,
+		"./de": 50,
+		"./de-at": 51,
+		"./de-at.js": 51,
+		"./de.js": 50,
+		"./el": 52,
+		"./el.js": 52,
+		"./en-au": 53,
+		"./en-au.js": 53,
+		"./en-ca": 54,
+		"./en-ca.js": 54,
+		"./en-gb": 55,
+		"./en-gb.js": 55,
+		"./eo": 56,
+		"./eo.js": 56,
+		"./es": 57,
+		"./es.js": 57,
+		"./et": 58,
+		"./et.js": 58,
+		"./eu": 59,
+		"./eu.js": 59,
+		"./fa": 60,
+		"./fa.js": 60,
+		"./fi": 61,
+		"./fi.js": 61,
+		"./fo": 62,
+		"./fo.js": 62,
+		"./fr": 63,
+		"./fr-ca": 64,
+		"./fr-ca.js": 64,
+		"./fr.js": 63,
+		"./fy": 65,
+		"./fy.js": 65,
+		"./gl": 66,
+		"./gl.js": 66,
+		"./he": 67,
+		"./he.js": 67,
+		"./hi": 68,
+		"./hi.js": 68,
+		"./hr": 69,
+		"./hr.js": 69,
+		"./hu": 70,
+		"./hu.js": 70,
+		"./hy-am": 71,
+		"./hy-am.js": 71,
+		"./id": 72,
+		"./id.js": 72,
+		"./is": 73,
+		"./is.js": 73,
+		"./it": 74,
+		"./it.js": 74,
+		"./ja": 75,
+		"./ja.js": 75,
+		"./jv": 76,
+		"./jv.js": 76,
+		"./ka": 77,
+		"./ka.js": 77,
+		"./km": 78,
+		"./km.js": 78,
+		"./ko": 79,
+		"./ko.js": 79,
+		"./lb": 80,
+		"./lb.js": 80,
+		"./lt": 81,
+		"./lt.js": 81,
+		"./lv": 82,
+		"./lv.js": 82,
+		"./me": 83,
+		"./me.js": 83,
+		"./mk": 84,
+		"./mk.js": 84,
+		"./ml": 85,
+		"./ml.js": 85,
+		"./mr": 86,
+		"./mr.js": 86,
+		"./ms": 87,
+		"./ms-my": 88,
+		"./ms-my.js": 88,
+		"./ms.js": 87,
+		"./my": 89,
+		"./my.js": 89,
+		"./nb": 90,
+		"./nb.js": 90,
+		"./ne": 91,
+		"./ne.js": 91,
+		"./nl": 92,
+		"./nl.js": 92,
+		"./nn": 93,
+		"./nn.js": 93,
+		"./pl": 94,
+		"./pl.js": 94,
+		"./pt": 95,
+		"./pt-br": 96,
+		"./pt-br.js": 96,
+		"./pt.js": 95,
+		"./ro": 97,
+		"./ro.js": 97,
+		"./ru": 98,
+		"./ru.js": 98,
+		"./si": 99,
+		"./si.js": 99,
+		"./sk": 100,
+		"./sk.js": 100,
+		"./sl": 101,
+		"./sl.js": 101,
+		"./sq": 102,
+		"./sq.js": 102,
+		"./sr": 103,
+		"./sr-cyrl": 104,
+		"./sr-cyrl.js": 104,
+		"./sr.js": 103,
+		"./sv": 105,
+		"./sv.js": 105,
+		"./ta": 106,
+		"./ta.js": 106,
+		"./th": 107,
+		"./th.js": 107,
+		"./tl-ph": 108,
+		"./tl-ph.js": 108,
+		"./tr": 109,
+		"./tr.js": 109,
+		"./tzl": 110,
+		"./tzl.js": 110,
+		"./tzm": 111,
+		"./tzm-latn": 112,
+		"./tzm-latn.js": 112,
+		"./tzm.js": 111,
+		"./uk": 113,
+		"./uk.js": 113,
+		"./uz": 114,
+		"./uz.js": 114,
+		"./vi": 115,
+		"./vi.js": 115,
+		"./zh-cn": 116,
+		"./zh-cn.js": 116,
+		"./zh-tw": 117,
+		"./zh-tw.js": 117
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -40981,11 +36672,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 31;
+	webpackContext.id = 32;
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40993,7 +36684,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41062,7 +36753,7 @@
 	}));
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41072,7 +36763,7 @@
 	//! Native plural forms: forabi https://github.com/forabi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41202,7 +36893,7 @@
 	}));
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41211,7 +36902,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41265,7 +36956,7 @@
 	}));
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41273,7 +36964,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41372,14 +37063,14 @@
 	}));
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41433,7 +37124,7 @@
 	}));
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41441,7 +37132,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41541,7 +37232,7 @@
 	}));
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41551,7 +37242,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41692,7 +37383,7 @@
 	}));
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41700,7 +37391,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41786,7 +37477,7 @@
 	}));
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41794,7 +37485,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41903,7 +37594,7 @@
 	}));
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41911,7 +37602,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42017,7 +37708,7 @@
 	}));
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42025,7 +37716,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42128,7 +37819,7 @@
 	}));
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42137,7 +37828,7 @@
 	//! based on (hr) translation by Bojan Marković
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42273,7 +37964,7 @@
 	}));
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42281,7 +37972,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42356,7 +38047,7 @@
 	}));
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42364,7 +38055,7 @@
 	//! author : petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42517,7 +38208,7 @@
 	}));
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42525,7 +38216,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42584,7 +38275,7 @@
 	}));
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42592,7 +38283,7 @@
 	//! author : Robert Allen
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42667,7 +38358,7 @@
 	}));
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42675,7 +38366,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42731,7 +38422,7 @@
 	}));
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42740,7 +38431,7 @@
 	//! author: Menelion Elensúle: https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42810,7 +38501,7 @@
 	}));
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42820,7 +38511,7 @@
 	//! author : Martin Groller : https://github.com/MadMG
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42890,7 +38581,7 @@
 	}));
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42898,7 +38589,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42988,14 +38679,14 @@
 	}));
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43058,7 +38749,7 @@
 	}));
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43066,7 +38757,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43125,7 +38816,7 @@
 	}));
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43133,7 +38824,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43196,7 +38887,7 @@
 	}));
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43206,7 +38897,7 @@
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43273,7 +38964,7 @@
 	}));
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43281,7 +38972,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43356,7 +39047,7 @@
 	}));
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43365,7 +39056,7 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43440,7 +39131,7 @@
 	}));
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43448,7 +39139,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43508,7 +39199,7 @@
 	}));
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43516,7 +39207,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43617,7 +39308,7 @@
 	}));
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43625,7 +39316,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43728,7 +39419,7 @@
 	}));
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43736,7 +39427,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43792,7 +39483,7 @@
 	}));
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43800,7 +39491,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43858,7 +39549,7 @@
 	}));
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43866,7 +39557,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43920,7 +39611,7 @@
 	}));
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -43928,7 +39619,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -43995,7 +39686,7 @@
 	}));
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44003,7 +39694,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44074,7 +39765,7 @@
 	}));
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44084,7 +39775,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44160,7 +39851,7 @@
 	}));
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44168,7 +39859,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44287,7 +39978,7 @@
 	}));
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44295,7 +39986,7 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44431,7 +40122,7 @@
 	}));
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44439,7 +40130,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44544,7 +40235,7 @@
 	}));
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44552,7 +40243,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44659,7 +40350,7 @@
 	}));
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44668,7 +40359,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44746,7 +40437,7 @@
 	}));
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44754,7 +40445,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44877,7 +40568,7 @@
 	}));
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44886,7 +40577,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -44951,7 +40642,7 @@
 	}));
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -44959,7 +40650,7 @@
 	//! author : LI Long : https://github.com/baryon
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45020,7 +40711,7 @@
 	}));
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45029,7 +40720,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45107,7 +40798,7 @@
 	}));
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45115,7 +40806,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45214,7 +40905,7 @@
 	}));
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45222,7 +40913,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45276,7 +40967,7 @@
 	}));
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45288,7 +40979,7 @@
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45348,7 +41039,7 @@
 	}));
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45356,7 +41047,7 @@
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45486,7 +41177,7 @@
 	}));
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45494,7 +41185,7 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45615,7 +41306,7 @@
 	}));
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45624,7 +41315,7 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45715,7 +41406,7 @@
 	}));
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45723,7 +41414,7 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45828,7 +41519,7 @@
 	}));
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45836,7 +41527,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45922,7 +41613,7 @@
 	}));
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -45930,7 +41621,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -45997,7 +41688,7 @@
 	}));
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46005,7 +41696,7 @@
 	//! author : Harshad Kale : https://github.com/kalehv
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46122,7 +41813,7 @@
 	}));
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46130,7 +41821,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46208,7 +41899,7 @@
 	}));
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46216,7 +41907,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46294,7 +41985,7 @@
 	}));
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46302,7 +41993,7 @@
 	//! author : Squar team, mysquar.com
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46391,7 +42082,7 @@
 	}));
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46400,7 +42091,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46456,7 +42147,7 @@
 	}));
 
 /***/ },
-/* 90 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46464,7 +42155,7 @@
 	//! author : suvash : https://github.com/suvash
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46583,7 +42274,7 @@
 	}));
 
 /***/ },
-/* 91 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46591,7 +42282,7 @@
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46658,7 +42349,7 @@
 	}));
 
 /***/ },
-/* 92 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46666,7 +42357,7 @@
 	//! author : https://github.com/mechuwind
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46722,7 +42413,7 @@
 	}));
 
 /***/ },
-/* 93 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46730,7 +42421,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46831,7 +42522,7 @@
 	}));
 
 /***/ },
-/* 94 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46839,7 +42530,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46899,7 +42590,7 @@
 	}));
 
 /***/ },
-/* 95 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46907,7 +42598,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -46963,7 +42654,7 @@
 	}));
 
 /***/ },
-/* 96 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -46972,7 +42663,7 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47041,7 +42732,7 @@
 	}));
 
 /***/ },
-/* 97 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47050,7 +42741,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47209,7 +42900,7 @@
 	}));
 
 /***/ },
-/* 98 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47217,7 +42908,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47278,7 +42969,7 @@
 	}));
 
 /***/ },
-/* 99 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47287,7 +42978,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47440,7 +43131,7 @@
 	}));
 
 /***/ },
-/* 100 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47448,7 +43139,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47604,7 +43295,7 @@
 	}));
 
 /***/ },
-/* 101 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47614,7 +43305,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47677,7 +43368,7 @@
 	}));
 
 /***/ },
-/* 102 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47685,7 +43376,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47789,7 +43480,7 @@
 	}));
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47797,7 +43488,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47901,7 +43592,7 @@
 	}));
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47909,7 +43600,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -47972,7 +43663,7 @@
 	}));
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -47980,7 +43671,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48071,7 +43762,7 @@
 	}));
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48079,7 +43770,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48140,7 +43831,7 @@
 	}));
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48148,7 +43839,7 @@
 	//! author : Dan Hagman
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48206,7 +43897,7 @@
 	}));
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48215,7 +43906,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48300,7 +43991,7 @@
 	}));
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48308,7 +43999,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48389,7 +44080,7 @@
 	}));
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48397,7 +44088,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48451,7 +44142,7 @@
 	}));
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48459,7 +44150,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48513,7 +44204,7 @@
 	}));
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48522,7 +44213,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48670,7 +44361,7 @@
 	}));
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48678,7 +44369,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48732,7 +44423,7 @@
 	}));
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48740,7 +44431,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48802,7 +44493,7 @@
 	}));
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48811,7 +44502,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -48933,7 +44624,7 @@
 	}));
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -48941,7 +44632,7 @@
 	//! author : Ben : https://github.com/ben-lin
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(29)) :
+	    true ? factory(__webpack_require__(30)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -49038,16 +44729,16 @@
 	}));
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(118);
+	__webpack_require__(119);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports) {
 
 	/*
@@ -56448,7 +52139,7 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56456,7 +52147,7 @@
 	module.exports = "\n<div class=\"container\" >\n   <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n\n      <uib-pagination\n        total-items=\"targets.length\"\n        ng-model=\"currentPage\"\n        max-size=\"maxSize\"\n        class=\"pagination-sm\"\n        boundary-link-numbers=\"true\">\n      </uib-pagination>\n\n      <div ng-repeat=\"target in filteredTargets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n          <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n              <h3 class=\"\">\n                  {{ target.name }}\n              </h3>\n              <div class=\"match-photo\">\n                  <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\" ng-click=\"open('lg',target.id, target.name)\">\n              </div>\n              <div class=\"match-info\">\n                <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n                <div class=\"match-bio\">\n                    <h5>{{ target.bio.slice(0,255) }}</h5>\n                </div>\n              </div>\n\n              <a href=\"#/account/{{target.fake_account_id}}/match/{{target.id}}/messages\"><button class=\"btn btn-success btn-lg\">Let's Chat</button></a>\n          </div>\n      </div>\n\n</div>\n<footer>\n  <ul>\n    <li>\n      Copyright &copy; 2016 Residual Stratosphere, LLC. All rights reserved\n    </li>\n    <li class=\"social-buttons\">\n      <div class=\"fb-share-button\" data-href=\"http://www.gotindergarten.com\" data-layout=\"button\"></div>\n      <a href=\"https://twitter.com/share\" class=\"twitter-share-button\" data-url=\"http://www.gotindergarten.com\" data-text=\"Help this guy get a date on Tinder!\" data-hashtags=\"gotindergarten\">Tweet</a>\n    </li>\n  </ul>\n</footer>\n";
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56464,35 +52155,35 @@
 	module.exports = "<div class=\"jumbotron container\">\n  <h1>Help me get a date!!</h1>\n  <p>I'm a simple programmer that is having the hardest time on TINDER! Help me land one for the team. <br>All of the <a href=\"/#/\">Matches</a>  are my actual matches through Tinder.  When you click on one, you see three things: <br> 1). Actual conversations (iphone) <br> 2). Suggestion window (middle) <br>3). Most Recent Chats with Tinderettes (right) </p>\n  <p>\n    What to do:\n    Suggest a message in the middle window.  The timer at the top is the amount of time before a new message is sent.  The highest upvoted message is sent on every 5 minute mark.\n  </p>\n  <p><a class=\"btn btn-primary btn-lg btn-success\" href=\"/#/\" role=\"button\">HELP ME DATE</a></p>\n\n  <p>\n    DISCLAIMER: DO NOT DO ANYTHING ILLEGAL.  I am not responsible for the actions of others.\n  </p>\n</div>\n";
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var angular = __webpack_require__(12);
-	__webpack_require__(17);
-	__webpack_require__(19);
+	var angular = __webpack_require__(13);
+	__webpack_require__(16);
+	__webpack_require__(18);
 	(function () {
 	  'use strict';
 
 	  angular.module('messages', ['ngRoute', 'ngFlash']).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/account/:account_id/match/:match_id/messages', {
-	      template: __webpack_require__(122),
+	      template: __webpack_require__(123),
 	      controller: 'MessagesController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(123);
 	__webpack_require__(124);
 	__webpack_require__(125);
-	__webpack_require__(127);
+	__webpack_require__(126);
 	__webpack_require__(128);
-	__webpack_require__(133);
+	__webpack_require__(129);
 	__webpack_require__(134);
+	__webpack_require__(135);
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56500,7 +52191,7 @@
 	module.exports = "  <div class=\"first-column\">\n\n    <section class=\"iphone-container\">\n        <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n        <div class=\"match-name\">\n          <a><span ng-cloak ng-click=\"getMatchInfo()\">{{match.name}}</span></a>\n        </div>\n        <div class=\"iphone-background\" scroll-bottom=\"messages\">\n          <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n              <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n                 {{ msg.message }}\n                 <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n              </p>\n          </div>\n        </div>\n    </section>\n\n    <section class=\"matches\">\n\n    </section>\n    <footer class='back-to-home no-show'>\n      <button type=\"button\" class='btn btn-lg' name=\"button\"><a href=\"/#/\">Back to Matches</a></button>\n    </footer>\n  </div>\n\n<!-- </div> -->\n\n\n<!-- <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12\"> -->\n  <!-- <ng-include src=\"'chat-window.html'\"></ng-include> -->\n<div class=\"second-column\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <section id=\"clock\" ng-if='secondsLeftToSend' timer='' seconds='{{secondsLeftToSend}}'></section>\n  <div class=\"chat-window\" id=\"chat-window\">\n      <div class='current-responses' id=\"current_responses\">\n          <div ng-repeat=\"resp in responses | orderBy: '-total_votes'\" class=\"response\">\n              <div class=\"arrows\">\n                  <div class=\"arrow-up\" ng-click-once=\"submitUpvote(resp.id)\"></div>\n                      <div class='votes'>{{resp.total_votes}}</div>\n                  <div class=\"arrow-down\" ng-click-once=\"submitDownvote(resp.id)\"></div>\n              </div>\n              <div class=\"response-text\" data-conversation-id=\"{{resp.conversation_id}}\">\n                  <p>{{resp.response_text}}</p>\n              </div>\n          </div>\n\n      </div>\n      <form>\n          <input class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"newResponse\"  placeholder=\"Submit a message to send to this match!\">\n          <input type=\"submit\" class='btn btn-success' name=\"submit\" value=\"Submit\" id=\"submit\" ng-click=\"submitResponse(newResponse)\">\n      </form>\n  </div>\n</div>\n\n<div class=\"third-column\">\n  <ul class=\"nav nav-tabs nav-justified\">\n    <li role=\"presentation\" ng-class=\"{active: mostRecentShow}\"><a ng-click=\"mostRecent()\">Most<br> Recent<br> Matches</a></li>\n    <li role=\"presentation\" ng-class=\"{active: groupChatShow}\"><a ng-click=\"showGroupChat()\">Chat <br>with <br> Gartners</a></li>\n  </ul>\n  <ul ng-if=\"mostRecentShow\" class='list-group' ng-show=\"mostRecentConvos\">\n    <li class='list-group-item' ng-repeat=\"recent in mostRecentConvos\">\n      <div class=\"\">\n        <img ng-src=\"{{recent.photo_url}}\" alt=\"\" />\n      </div>\n      <div class=\"\">\n        <a href=\"/#/account/{{recent.fake_account_id}}/match/{{recent.target_id}}/messages\">{{recent.name}}</a>\n        <br>\n        <span> {{recent.sent_date | amTimeAgo}} </span>\n      </div>\n    </li>\n  </ul>\n  <div class=\"gartner-chats\" ng-if=\"groupChatShow\">\n    <ul>\n      <li ng-repeat=\"chat in currentChats | orderBy: 'created_at'\">\n        <span>[{{chat.username}}]:</span>\n        <span ng-if=\"chat.roomId !== $routeParams.targetId\"><strong>Global</strong></span>\n        <span class=\"chat-text\">{{chat.text}}</span><br>\n        <span class=\"chat-date\">{{chat.created_at | amTimeAgo}}</span>\n      </li>\n    </ul>\n    <form ng-submit=\"sendChat(chat); clearText();\">\n      <input id=\"chatBox\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"chat\" placeholder=\"Send To Fellow Gartners\">\n      <button type=\"submit\" name=\"name\" class=\"chat-btn btn btn-lg btn-info\"  value=\"submitResponse\">Submit</button>\n    </form>\n  </div>\n\n\n</div>\n\n<footer class=\"tool-bar no-show\">\n  <ul>\n    <li ng-class=\"{active: iphoneShow}\"><a href=\"\" ng-click=\"showIphone()\">Actual</a></li>\n    <li ng-class=\"{active: chatShow}\"><a href=\"\" ng-click=\"showChats()\">Suggested</a></li>\n    <li ng-class=\"{active: recentShow}\"class=\"no-show\"><a href=\"\" ng-click=\"showRecent()\">Recent</a></li>\n  </ul>\n</footer>\n\n<!-- </div> -->\n";
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56526,7 +52217,7 @@
 	})();
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56547,12 +52238,12 @@
 	}]);
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	__webpack_require__(126);
+	__webpack_require__(127);
 
 	angular.module('cassanova').directive('timer', ["TimerService", "$interval", function (TimerService, $interval) {
 	  return {
@@ -56576,7 +52267,7 @@
 	}]);
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56598,7 +52289,7 @@
 	});
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56610,15 +52301,15 @@
 	})();
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-	__webpack_require__(129);
 	__webpack_require__(130);
+	__webpack_require__(131);
 
 	(function () {
 	  'use strict';
@@ -56676,7 +52367,7 @@
 	    $scope.getMatchInfo = function () {
 	      var modalInstance = $uibModal.open({
 	        animation: $scope.animationsEnabled,
-	        template: __webpack_require__(131),
+	        template: __webpack_require__(132),
 	        size: 'md',
 	        controller: 'ModalProfileCtrl',
 	        resolve: {
@@ -56881,7 +52572,7 @@
 	    function mustBeLoggedIn() {
 	      var modalInstance = $uibModal.open({
 	        animation: $scope.animationsEnabled,
-	        template: __webpack_require__(132),
+	        template: __webpack_require__(133),
 	        size: 'sm',
 	        controller: 'ModalLoginCtrl'
 	      });
@@ -56890,7 +52581,7 @@
 	})();
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56936,7 +52627,7 @@
 	})();
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -56962,7 +52653,7 @@
 	})();
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56970,7 +52661,7 @@
 	module.exports = " <div class=\"modal-body profile-modal\">\n   <div class=\"panel panel-primary match-panel\" data-id='{{ match.id }}' data-fake-account-id='{{match.fake_account_id}}'>\n       <h3 class=\"\">\n           {{ match.name }}\n       </h3>\n       <div class=\"match-photo\">\n           <img ng-src=\"{{ photos[0].photo_url }}\" alt=\"{{ match.name}}\">\n       </div>\n       <div class=\"match-info\">\n         <h4>{{ match.gender == 1 ? \"Female\" : \"Male\" }} | {{ match.age }}</h4>\n         <div class=\"match-bio\">\n             <h5>{{ match.bio.slice(0,255) }}</h5>\n         </div>\n       </div>\n       <ul>\n         <li ng-repeat=\"photo in photos\">\n           <img ng-src=\"{{photo.photo_url}}\" alt=\"\" />\n         </li>\n       </ul>\n   </div>\n </div>\n <div class=\"modal-footer\">\n     <button class=\"btn btn-primary\" type=\"button\" ng-click='ok()'>Ok</button>\n </div>\n";
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -56978,7 +52669,7 @@
 	module.exports = "`<div class=\"modal-body\">\n     <h4>You must be logged in to submit suggestions, upvote, or downvotes</h4>\n     <br>\n     <hr>\n     <div class=\"row text-center\">\n       <button class=\"btn btn-primary\" type=\"button\" ng-click=\"login()\">Login</button></a>\n       <button class=\"btn btn-success\" type=\"button\" ng-click=\"signup()\">Signup</button>\n       <button class=\"btn btn-info\" type=\"button\" ng-click='ok()'>Ok</button>\n     </div>\n </div>\n";
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57001,7 +52692,7 @@
 	}]);
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57021,7 +52712,7 @@
 	}]);
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57065,7 +52756,7 @@
 	})();
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57087,7 +52778,7 @@
 	})();
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57097,16 +52788,16 @@
 
 	  angular.module('users', ['ngMessages']).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/login', {
-	      template: __webpack_require__(138),
+	      template: __webpack_require__(139),
 	      controller: 'UsersController'
 	    }).when('/signup', {
-	      template: __webpack_require__(139),
+	      template: __webpack_require__(140),
 	      controller: 'UsersController'
 	    }).when('/logout', {
 	      template: null,
 	      controller: 'UsersController'
 	    }).when('/profile', {
-	      template: __webpack_require__(140),
+	      template: __webpack_require__(141),
 	      controller: "ProfileController",
 	      resolve: {
 	        authenticated: ["$q", "$location", "$auth", function authenticated($q, $location, $auth) {
@@ -57125,19 +52816,11 @@
 	  }]);
 	})();
 
-	__webpack_require__(141);
 	__webpack_require__(142);
 	__webpack_require__(143);
 	__webpack_require__(144);
 	__webpack_require__(145);
-
-/***/ },
-/* 138 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/signup\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
+	__webpack_require__(146);
 
 /***/ },
 /* 139 */
@@ -57145,7 +52828,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Log in</h2>\n        <form method=\"post\" ng-submit=\"login(user)\" name=\"loginForm\">\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required autofocus>\n            <span class=\"ion-at form-control-feedback\"></span>\n          </div>\n\n          <div class=\"form-group has-feedback\">\n            <input class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n          </div>\n\n          <button type=\"submit\" ng-disabled=\"loginForm.$invalid\" class=\"btn btn-lg  btn-block btn-success\">Log in</button>\n\n          <br/>\n\n          <p class=\"text-center\">\n            <a href=\"#\">Forgot your password?</a>\n          </p>\n\n          <p class=\"text-center text-muted\">\n            <small>Don't have an account yet? <a href=\"/#/signup\">Sign up</a></small>\n          </p>\n\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 140 */
@@ -57153,10 +52836,18 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <div class=\"panel center-form \">\n    <div class=\"panel-heading\"><h2>Profile</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> Edit My Profile</legend>\n      <form method=\"post\" ng-submit=\"updateProfile(user)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Username</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"user.username\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Email Address</label>\n          <input type=\"email\" class=\"form-control\" ng-model=\"user.email\" />\n        </div>\n        <button class=\"btn btn-lg btn-success\">Update Information</button>\n      </form>\n    </div>\n  </div>\n\n\n</div>\n";
+	module.exports = "<div class=\"container\">\n  <div class=\"row\">\n    <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n    <div class=\"center-form panel\">\n      <div class=\"panel-body\">\n        <h2 class=\"text-center\">Sign up</h2>\n        <form method=\"post\" ng-submit=\"signup(user)\" name=\"signupForm\">\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"text\" name=\"displayName\" ng-model=\"user.username\" placeholder=\"Username\" required autofocus>\n            <span class=\"ion-person form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.displayName.$dirty\" ng-messages=\"signupForm.displayName.$error\">\n              <div ng-message=\"required\">You must enter your name.</div>\n            </div>\n          </div>\n\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }\">\n            <input class=\"form-control input-lg\" type=\"email\" id=\"email\" name=\"email\" ng-model=\"user.email\" placeholder=\"Email\" required\n            ng-pattern=\"/^[A-z]+[a-z0-9._]+@[a-z]+\\.[a-z.]{2,5}$/\">\n            <span class=\"ion-at form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.email.$dirty\" ng-messages=\"signupForm.email.$error\">\n              <div ng-message=\"required\">Your email address is required.</div>\n              <div ng-message=\"pattern\">Your email address is invalid.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }\">\n            <input password-strength class=\"form-control input-lg\" type=\"password\" name=\"password\" ng-model=\"user.password\" placeholder=\"Password\" required>\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.password.$dirty\" ng-messages=\"signupForm.password.$error\">\n              <div ng-message=\"required\">Password is required.</div>\n            </div>\n          </div>\n\n          <div class=\"form-group has-feedback\" ng-class=\"{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }\">\n            <input password-match=\"user.password\" class=\"form-control input-lg\" type=\"password\" name=\"confirmPassword\" ng-model=\"user.confirmPassword\" placeholder=\"Confirm Password\">\n            <span class=\"ion-key form-control-feedback\"></span>\n            <div class=\"help-block text-danger\" ng-if=\"signupForm.confirmPassword.$dirty\" ng-messages=\"signupForm.confirmPassword.$error\">\n              <div ng-message=\"compareTo\">Password must match.</div>\n            </div>\n          </div>\n\n          <p class=\"text-center text-muted\"><small>By clicking on Sign up, you agree to <a href=\"#\">terms & conditions</a> and <a href=\"#\">privacy policy</a></small></p>\n\n          <button type=\"submit\" ng-disabled=\"signupForm.$invalid\" class=\"btn btn-lg btn-block btn-primary\">Sign up</button>\n          <br/>\n\n          <p class=\"text-center text-muted\">Already have an account? <a href=\"/#/login\">Log in now</a></p>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 141 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<div class=\"container\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <div class=\"panel center-form \">\n    <div class=\"panel-heading\"><h2>Profile</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> Edit My Profile</legend>\n      <form method=\"post\" ng-submit=\"updateProfile(user)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Username</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"user.username\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Email Address</label>\n          <input type=\"email\" class=\"form-control\" ng-model=\"user.email\" />\n        </div>\n        <button class=\"btn btn-lg btn-success\">Update Information</button>\n      </form>\n    </div>\n  </div>\n\n\n</div>\n";
+
+/***/ },
+/* 142 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57204,7 +52895,7 @@
 	})();
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57245,7 +52936,7 @@
 	})();
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57268,7 +52959,7 @@
 	});
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57390,7 +53081,7 @@
 	});
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57429,7 +53120,7 @@
 	})();
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57470,7 +53161,7 @@
 	}]);
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57480,25 +53171,17 @@
 
 	  angular.module('blocked', []).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/blocked-matches', {
-	      template: __webpack_require__(148),
+	      template: __webpack_require__(149),
 	      controller: 'BlockedController'
 	    }).when('/blocked-matches/:id', {
-	      template: __webpack_require__(149),
+	      template: __webpack_require__(150),
 	      controller: 'BlockedController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(150);
 	__webpack_require__(151);
-
-/***/ },
-/* 148 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
+	__webpack_require__(152);
 
 /***/ },
 /* 149 */
@@ -57506,10 +53189,18 @@
 
 	"use strict";
 
-	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <a><span ng-cloak ng-click=\"getMatchInfo()\">{{match.name}}</span></a>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 150 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <a><span ng-cloak ng-click=\"getMatchInfo()\">{{match.name}}</span></a>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+
+/***/ },
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57532,7 +53223,7 @@
 	    $scope.getMatchInfo = function () {
 	      var modalInstance = $uibModal.open({
 	        animation: $scope.animationsEnabled,
-	        template: __webpack_require__(131),
+	        template: __webpack_require__(132),
 	        size: 'md',
 	        controller: 'ModalProfileCtrl',
 	        resolve: {
@@ -57575,7 +53266,7 @@
 	})();
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -57603,12 +53294,12 @@
 	})();
 
 /***/ },
-/* 152 */
+/* 153 */
 /***/ function(module, exports) {
 
 	'use strict';
 
-	angular.module('cassanova').controller('NavbarCtrl', ["$scope", "$auth", "Flash", "$location", function ($scope, $auth, Flash, $location) {
+	angular.module('cassanova').controller('NavbarCtrl', ["$scope", "$auth", "Flash", "$location", "$aside", function ($scope, $auth, Flash, $location, $aside) {
 	  $scope.isAuthenticated = function () {
 	    return $auth.isAuthenticated();
 	  };
@@ -57622,6 +53313,34 @@
 	      Flash.create('success', message, 0, {}, true);
 	      $location.path('/');
 	    });
+	  };
+
+	  $scope.openAside = function (position, backdrop) {
+	    $scope.asideState = {
+	      open: true,
+	      position: position
+	    };
+
+	    function postClose() {
+	      $scope.asideState.open = false;
+	    }
+
+	    $aside.open({
+	      template: '<div class="modal-header">\n                         <h3 class="modal-title">ngAside</h3>\n                     </div>\n                     <div class="modal-body">\n                       Look i\'m in aside.\n                     </div>\n                     <div class="modal-footer">\n                         <button class="btn btn-primary" ng-click="ok($event)">OK</button>\n                         <button class="btn btn-warning" ng-click="cancel($event)">Cancel</button>\n                     </div>',
+	      placement: position,
+	      size: 'sm',
+	      backdrop: backdrop,
+	      controller: function controller($scope, $uibModalInstance) {
+	        $scope.ok = function (e) {
+	          $uibModalInstance.close();
+	          e.stopPropagation();
+	        };
+	        $scope.cancel = function (e) {
+	          $uibModalInstance.dismiss();
+	          e.stopPropagation();
+	        };
+	      }
+	    }).result.then(postClose, postClose);
 	  };
 	}]);
 

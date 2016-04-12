@@ -1,13 +1,14 @@
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import '../stylesheets/main.scss';
+
+import BootstrapJs from 'bootstrap/dist/js/bootstrap.min.js';
 
 import angular from 'angular';
 require('angular-route');
 require('angular-flash-alert');
 require('angular-messages');
+require('angular-aside');
 import satellizer from 'satellizer';
-import AngularStrap from 'angular-strap';
-import AngularStrapTpl from 'angular-strap/dist/angular-strap.tpl';
 
 angular.module('cassanova',[
   'ngRoute',
@@ -18,7 +19,7 @@ angular.module('cassanova',[
   'users',
   'ngMessages',
   'satellizer',
-  'mgcrea.ngStrap'
+  'ngAside'
 ])
 .config(function($routeProvider) {
   $routeProvider
