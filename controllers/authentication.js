@@ -87,6 +87,14 @@ router.route('/login')
     });
   });
 
+  router.get('/getTinderInfo', ensureAuthenticated, function(req,res,next) {
+    knex('users')
+    .select("*")
+    .where('email',req.user.email)
+    .then(function(data) {
+      res.json(data[0]).status(302);
+    });
+  });
 
   router.post('/getTinderized',ensureAuthenticated,function(req,res,next) {
     var fbemail = req.body.email

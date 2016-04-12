@@ -179,12 +179,12 @@ function TinderClient(options) {
           _this.token = body.token;
           _this.userId = body.user._id;
           _this.defaults = body;
-          knex('fake_accounts')
-            .where('facebook_user_id',_this.fbId)
-            .update({tinder_authentication_token: xAuthToken})
-            .returning('*')
-          .then(function(test) {
-          })
+          // knex('fake_accounts')
+          //   .where('facebook_user_id',_this.fbId)
+          //   .update({tinder_authentication_token: xAuthToken})
+          //   .returning('*')
+          // .then(function(test) {
+          // })
           if(callback) {
             callback(error, res, body);
           }

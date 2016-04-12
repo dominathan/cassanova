@@ -9,6 +9,8 @@
     UserService.getProfile()
     .success(function(data) {
       $scope.user = data;
+      $scope.myAccount = data.data;
+      // console.log(data);
     })
     .error(function(error) {
       console.log(eror)
@@ -17,8 +19,9 @@
   $scope.tinderizer = function(fb) {
     UserService.tinderizer(fb)
     .then(function(data) {
-      console.log(data);
-    })
+      // console.log(data);
+      $scope.myAccount = data.data
+    });
   }
 
   $scope.updateProfile = function(user) {
@@ -34,6 +37,14 @@
       // });
     });
   };
+
+  UserService.getTinderInfo()
+  .then(function(data) {
+    console.log(data);
+    $scope.myAccount = data.data;
+  });
+
+
 
 })
 

@@ -15,6 +15,8 @@ var casper = require('casper').create({
   2) facebook Email
   3) facebook password
 */
+
+
 var env = casper.cli.args[0]
 user.email = casper.cli.args[1].trim()
 user.password = casper.cli.args[2].trim();
@@ -35,7 +37,6 @@ casper.then(function() {
 
 casper.then(function() {
   var redirectUrl = this.getCurrentUrl();
-
   var idxExpiration = redirectUrl.indexOf("&expires_in");
   var idxToken = redirectUrl.indexOf('access_token=');
   var token = redirectUrl.slice(idxToken + 13,idxExpiration);
@@ -72,31 +73,5 @@ casper.then(function() {
     document.querySelectorAll("[data-gt='{\"ref\":\"async_menu\",\"logout_menu_click\":\"menu_logout\"}']")[0].click()
   })
 })
-
-// if(env === "development") {
-//   casper.thenOpen("http://localhost:3000/api/facebook/update/the/tokens/please", function() {
-//       this.echo("hit home DEV")
-//   });
-// }
-//
-// if(env === "staging") {
-//   casper.thenOpen("http://gotindergarten-staging.herokuapp.com/api/facebook/update/the/tokens/please", function() {
-//       this.echo("hit home STAGE")
-//   });
-// }
-//
-// if(env === "production") {
-//   casper.thenOpen("http://www.gotindergarten.com/api/facebook/update/the/tokens/please", function() {
-//       this.echo("hit home PROD")
-//   });
-// }
-//
-// casper.then(function() {
-//   this.echo("ADD DATA")
-//   this.fillSelectors('form', {
-//       'input[name="token"]':    data.token,
-//       'input[name="facebookId"]': data.fbId
-//   }, true);
-// })
 
 casper.run();

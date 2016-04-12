@@ -36,5 +36,20 @@
     </div>
   </div>
 
+  <div ng-if="myAccount" class="panel panel-primary match-panel" data-id='{{ myAccount.id }}' data-fake-account-id='{{myAccount.fake_account_id}}'>
+      <h3 class="">
+          {{ myAccount.name }}
+      </h3>
+      <div class="match-photo">
+          <img ng-src="{{ myAccount.photo_url }}" alt="{{ myAccount.name}}" ng-click="open('lg',myAccount.id, myAccount.name)">
+      </div>
+      <div class="match-info">
+        <h4>{{ myAccount.gender == 1 ? "Female" : "Male" }} | {{ myAccount.age }}</h4>
+        <div class="match-bio">
+            <h5>{{ myAccount.bio.slice(0,255) }}</h5>
+        </div>
+      </div>
+  </div>
+
 
 </div>

@@ -29,13 +29,18 @@
           return $http.post('/auth/getTinderized', fb);
         }
 
+        function getTinderInfo() {
+          return $http.get('/auth/getTinderInfo/');
+        }
+
         return {
           login: login,
           logout: logout,
           signup: signup,
           getProfile: getProfile,
           updateProfile: updateProfile,
-          tinderizer: tinderizer
+          tinderizer: tinderizer,
+          getTinderInfo: getTinderInfo
         };
 
 
