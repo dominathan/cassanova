@@ -108,7 +108,7 @@ router.get('/:id/allTargs/blocked', function(req,res,next) {
 
 router.get('/chats/:targetId', function(req,res,next) {
   knex('chats')
-  .select('text','created_at')
+  .select('text','created_at','username')
   .where('room_id',req.params.targetId)
   .then(function(data) {
     res.json(data).status(302);

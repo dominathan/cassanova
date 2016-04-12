@@ -34,7 +34,8 @@ require('../responses/responses.service');
                             .replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/\d{3}-\d{3}-\d{4}/gi,"PHONE NUMBER REMOVED")
                             .replace(/nigga|cunt|nigger/gi,"angel")
                             .replace(/(\d\s){9}/gi, "NUMBER REMOVED"),
-              created_at: el.created_at
+              created_at: el.created_at,
+              username: el.username ? el.username : "anon"
             };
           })
           $scope.currentChats = stuff;
@@ -91,19 +92,28 @@ require('../responses/responses.service');
         }
 
         $scope.sendChat = function(chat) {
-          if(chat) {
-            document.getElementById("chatBox").value = ""
-            SocketService.emit('new:chat', {
-              room_id: targetId,
-              text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                        .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
-                        .replace(/nigga|cunt|nigger/gi,"angel")
-                        .replace(/(\d\s){9}/gi, "NUMBER REMOVED")
-            });
+          if(!chat) return;
+          var token, chat;
+          var chat = {
+            room_id: targetId,
+            text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                      .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
+                      .replace(/nigga|cunt|nigger/gi,"angel")
+                      .replace(/(\d\s){9}/gi, "NUMBER REMOVED"),
           }
+          if($auth.isAuthenticated()) {
+            chat.token = $window.localStorage.satellizer_token
+          }
+          SocketService.emit('new:chat', chat);
+          document.getElementById("chatBox").value = ""
         };
 
         SocketService.on('new:chat', function(info) {
+          info.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
+                    .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
+                    .replace(/nigga|cunt|nigger/gi,"angel")
+                    .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
+          info.username = info.username || "anon";
           $scope.currentChats.push(info);
           setTimeout(function() {
             var elm = document.getElementsByClassName('gartner-chats')[0];
@@ -143,7 +153,7 @@ require('../responses/responses.service');
           .then(function(data) {
             if (data.data.length === 0) {
               $scope.responses = [{
-                                    response_text: "Help me get a date!",
+                                    response_text: "Help this guy get a date!",
                                     conversation_id: null,
                                     total_votes: null
                                   }];
@@ -177,7 +187,7 @@ require('../responses/responses.service');
             $scope.responses.push(newObj)
           }
         });
-        
+
         $scope.submitUpvote = function(responseId) {
           if($auth.isAuthenticated()) {
             var convoId = getConversationID();

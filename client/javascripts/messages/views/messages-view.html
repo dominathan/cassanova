@@ -54,8 +54,8 @@
 
 <div class="third-column">
   <ul class="nav nav-tabs nav-justified">
-    <li role="presentation" ng-class="{active: mostRecentShow}"><a ng-click="mostRecent()">Most Recent Matches</a></li>
-    <li role="presentation" ng-class="{active: groupChatShow}"><a ng-click="showGroupChat()">Chat with <br> Gartners</a></li>
+    <li role="presentation" ng-class="{active: mostRecentShow}"><a ng-click="mostRecent()">Most<br> Recent<br> Matches</a></li>
+    <li role="presentation" ng-class="{active: groupChatShow}"><a ng-click="showGroupChat()">Chat <br>with <br> Gartners</a></li>
   </ul>
   <ul ng-if="mostRecentShow" class='list-group' ng-show="mostRecentConvos">
     <li class='list-group-item' ng-repeat="recent in mostRecentConvos">
@@ -72,8 +72,8 @@
   <div class="gartner-chats" ng-if="groupChatShow">
     <ul>
       <li ng-repeat="chat in currentChats | orderBy: 'created_at'">
-        <!-- <span ng-if="currentUser" class="user-name">{{currentUser}}: </span>
-        <span ng-if="!currentUser">Unregistered: </span> -->
+        <span>[{{chat.username}}]:</span>
+        <span ng-if="chat.roomId !== $routeParams.targetId"><strong>Global</strong></span>
         <span class="chat-text">{{chat.text}}</span><br>
         <span class="chat-date">{{chat.created_at | amTimeAgo}}</span>
       </li>

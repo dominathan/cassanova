@@ -9,6 +9,7 @@ var env = process.env.NODE_ENV || 'development';
 var configDB = require("./knexfile");
 global.knex = require('knex')(configDB[env]);
 
+
 var CronExecutables = require('./services/cronTasks');
 var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');

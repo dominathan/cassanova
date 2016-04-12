@@ -56,12 +56,20 @@ function startSocket(server) {
     });
 
     socket.on('new:chat', function(data) {
-      var objToSave = {room_id: parseInt(data.room_id), text: data.text};
+      var user;
+      if(data.token) {
+        user = ensureSocketAuthenticated(data.token);
+      }
+      if(user) {
+        delete data.token
+        data.user_id = user.id;
+        data.username = user.username;
+      };
       knex('chats')
-      .insert(objToSave)
+      .insert(data)
       .returning('*')
-      .then(function(data) {
-        io.emit('new:chat',data[0]);
+      .then(function(newChat) {
+        io.emit('new:chat',newChat[0]);
       })
     });
   })
