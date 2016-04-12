@@ -172,10 +172,12 @@ require('../responses/responses.service');
 
         SocketService.on('new:response',function(response) {
           var newObj = response;
-          newObj.total_votes = 0;
-          $scope.responses.push(newObj)
+          if(newObj.target_id == targetId) {
+            newObj.total_votes = 0;
+            $scope.responses.push(newObj)
+          }
         });
-
+        
         $scope.submitUpvote = function(responseId) {
           if($auth.isAuthenticated()) {
             var convoId = getConversationID();
