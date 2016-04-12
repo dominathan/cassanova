@@ -6,22 +6,24 @@
   <input type="text" name="token" placeholder="Token" value="">
   <input type="submit" name="name" value="">
 </form>
+
 <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <script type="text/javascript">
-$(function() {
-  $('form').on('click',function(event) {
-    event.preventDefault();
-    submitData();
+  $(function() {
+    $('form').on('submit',function(event) {
+      event.preventDefault();
+      submitData();
+    })
   })
-})
   function submitData() {
+    var token = $('input[name="token"]').val();
+    var fbId = $('input[name="facebookId"]').val();
     $.ajax({
       method: "POST",
       url: '/api/facebook/update/the/token/please',
       data: {
-        fbKey: $('input[name="token"]').val(),
-        fbId: $('input[name="facebookId"]').val(),
-        tinderId: $('input[name="tinderId"]').val()
+        fbKey: token,
+        fbId: fbId
       },
       success: function(res) {
         console.log('ay',res)
