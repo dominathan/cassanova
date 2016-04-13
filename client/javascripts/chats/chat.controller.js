@@ -24,7 +24,7 @@
           if(!chat) return;
           var token, chat;
           $scope.chatText = "";
-          var chat = {
+          chat = {
             room_id: 3141592,
             text: CleanTextService.cleanText(chat),
           }

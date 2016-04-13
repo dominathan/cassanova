@@ -84,22 +84,17 @@ require('../responses/responses.service');
             }
           })
         }
-        console.log("OUTSIDE: ", $scope.thing);
         $scope.sendChat = function(chat) {
-          console.log("IN CHAT", chat);
-          console.log("BEFORE CLEAR", $scope.thing);
           if(!chat) return;
           var token, chat;
           $scope.thing = "";
-          console.log("AFTER CHAT THIGN CLEAR", $scope.thing);
-          var chat = {
+          chat = {
             room_id: targetId,
             text: CleanTextService.cleanText(chat)
           }
           if($auth.isAuthenticated()) {
             chat.token = $window.localStorage.satellizer_token
           }
-          console.log("FINAL TOKEN", chat);
           SocketService.emit('new:chat', chat);
         };
 
