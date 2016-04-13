@@ -2,14 +2,14 @@ import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import AngularAside from 'angular-aside/dist/css/angular-aside.min.css';
 import '../stylesheets/main.scss';
 
-import BootstrapJs from 'bootstrap/dist/js/bootstrap.min.js';
+require('bootstrap/dist/js/bootstrap.min.js');
 
-import angular from 'angular';
+var angular = require('angular');
 require('angular-route');
 require('angular-flash-alert');
 require('angular-messages');
 require('angular-aside');
-import satellizer from 'satellizer';
+require('satellizer');
 require('angularjs-scroll-glue');
 
 angular.module('cassanova',[
