@@ -10,7 +10,7 @@ var casper = require('casper').create({
 });
 
 /*
-  Arguments to gra proper user info and hwere to store
+  Arguments to grab proper user info and hwere to store
   1) environment to store in
   2) facebook Email
   3) facebook password
