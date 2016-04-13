@@ -3,7 +3,7 @@
     angular
       .module('chat')
       .controller('ChatsController', function($scope, $uibModalInstance,ChatService, SocketService,$window,$auth,CleanTextService) {
-        $scope.glued = true;
+        $scope.chatText = "";
         ChatService.getChats()
         .then(function(data) {
           var stuff = data.data.map(function(el) {
@@ -23,6 +23,7 @@
         $scope.sendChat = function(chat) {
           if(!chat) return;
           var token, chat;
+          $scope.chatText = "";
           var chat = {
             room_id: 3141592,
             text: CleanTextService.cleanText(chat),
@@ -31,7 +32,6 @@
             chat.token = $window.localStorage.satellizer_token
           }
           SocketService.emit('new:global-chat', chat);
-          document.getElementById("chatBox").value = ""
         }
 
         SocketService.on('new:global-chat', function(info) {

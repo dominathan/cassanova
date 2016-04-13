@@ -33,7 +33,6 @@ var Photo = require('../models/photos')();
       })
     });
   })
-  process.exit();
 })();
 
 function saveNewMatches(myNewMatches,fakeAccount) {

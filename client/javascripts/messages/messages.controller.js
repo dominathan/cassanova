@@ -20,7 +20,7 @@ require('../responses/responses.service');
       'ChatService',
       'CleanTextService',
       function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash,$uibModal,$window,$auth,ChatService,CleanTextService) {
-        $scope.chat = "";
+        $scope.thing = "";
         $scope.responses = [];
         $scope.currentChats = [];
         var targetId = $routeParams.match_id;
@@ -84,10 +84,14 @@ require('../responses/responses.service');
             }
           })
         }
-
+        console.log("OUTSIDE: ", $scope.thing);
         $scope.sendChat = function(chat) {
+          console.log("IN CHAT", chat);
+          console.log("BEFORE CLEAR", $scope.thing);
           if(!chat) return;
           var token, chat;
+          $scope.thing = "";
+          console.log("AFTER CHAT THIGN CLEAR", $scope.thing);
           var chat = {
             room_id: targetId,
             text: CleanTextService.cleanText(chat)
@@ -95,18 +99,20 @@ require('../responses/responses.service');
           if($auth.isAuthenticated()) {
             chat.token = $window.localStorage.satellizer_token
           }
+          console.log("FINAL TOKEN", chat);
           SocketService.emit('new:chat', chat);
-          document.getElementById("chatBox").value = ""
         };
 
         SocketService.on('new:chat', function(info) {
-          info.text = CleanTextService.cleanText(info.text)
-          info.username = info.username || "anon";
-          $scope.currentChats.push(info);
-          setTimeout(function() {
-            var elm = document.getElementsByClassName('gartner-chats')[0];
-            elm.children[0].scrollTop = elm.children[0].scrollHeight;
-          },80);
+          if(info.room_id == targetId) {
+            info.text = CleanTextService.cleanText(info.text)
+            info.username = info.username || "anon";
+            $scope.currentChats.push(info);
+            setTimeout(function() {
+              var elm = document.getElementsByClassName('gartner-chats')[0];
+              elm.children[0].scrollTop = elm.children[0].scrollHeight;
+            },80);
+          }
         });
 
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)

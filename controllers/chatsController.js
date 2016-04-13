@@ -22,7 +22,6 @@ router.get('/allchats', function(req,res,next) {
 });
 
 router.post('/create', function(req,res,next) {
-  console.log("TEST",req.body.text);
   knex('chats')
   insert(req.body.text)
   .then(function(data) {

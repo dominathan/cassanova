@@ -69,7 +69,7 @@
       </div>
     </li>
   </ul>
-  <div class="gartner-chats" ng-if="groupChatShow">
+  <div class="gartner-chats" ng-show="groupChatShow">
     <ul>
       <li ng-repeat="chat in currentChats | orderBy: 'created_at'">
         <span>[{{chat.username}}]:</span>
@@ -78,9 +78,9 @@
         <span class="chat-date">{{chat.created_at | amTimeAgo}}</span>
       </li>
     </ul>
-    <form ng-submit="sendChat(chat); clearText();">
-      <input id="chatBox" class="form-control" type="text" name="name" ng-model="chat" placeholder="Send To Fellow Gartners">
-      <button type="submit" name="name" class="chat-btn btn btn-lg btn-info"  value="submitResponse">Submit</button>
+    <form >
+      <input ng-model="thing" id="chatBox" class="form-control" type="text" name="name"  placeholder="Send To Fellow Gartners">
+      <button type="submit" name="name" class="chat-btn btn btn-lg btn-info"  value="submitResponse" ng-click="sendChat(thing)">Submit</button>
     </form>
   </div>
 
