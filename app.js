@@ -15,6 +15,7 @@ var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
 
 var routes = require('./controllers/index');
+var ChatController = require('./controllers/chatsController');
 var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');
 var ProfileController = require("./controllers/profileController");
@@ -37,6 +38,7 @@ app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
+app.use('/api/chats', ChatController);
 app.use('/auth', authenitcation);
 app.use('/api',ProfileController);
 

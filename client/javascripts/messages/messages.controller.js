@@ -17,23 +17,21 @@ require('../responses/responses.service');
       '$uibModal',
       '$window',
       '$auth',
-      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash,$uibModal,$window,$auth) {
+      'ChatService',
+      'CleanTextService',
+      function($scope,$routeParams,$location,ResponseService,MessageServices,SocketService,Flash,$uibModal,$window,$auth,ChatService,CleanTextService) {
         $scope.chat = "";
         $scope.responses = [];
         $scope.currentChats = [];
         var targetId = $routeParams.match_id;
 
-        MessageServices.getChats(targetId)
+        ChatService.getChatsRoom(targetId)
         .then(function(chats) {
           $scope.mostRecentShow = false;
           $scope.groupChatShow = true;
           var stuff = chats.data.map(function(el) {
             return {
-              text: el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                            .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
-                            .replace(/\d{9}/gi,"PHONE NUMBER REMOVED").replace(/\d{3}-\d{3}-\d{4}/gi,"PHONE NUMBER REMOVED")
-                            .replace(/nigga|cunt|nigger/gi,"angel")
-                            .replace(/(\d\s){9}/gi, "NUMBER REMOVED"),
+              text: CleanTextService.cleanText(el.text),
               created_at: el.created_at,
               username: el.username ? el.username : "anon"
             };
@@ -57,14 +55,10 @@ require('../responses/responses.service');
         $scope.showGroupChat = function() {
           $scope.mostRecentShow = false;
           $scope.groupChatShow = true;
-          MessageServices.getChats(targetId)
+          ChatService.getChatsRoom(targetId)
           .then(function(data) {
             data.data.forEach(function(el) {
-              el.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                      .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
-                      .replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
-                      .replace(/nigga|cunt|nigger/gi,"angel")
-                      .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
+              el.text = CleanTextService.cleanText(el.text)
             });
             $scope.currentChats = data.data;
             setTimeout(function() {
@@ -96,10 +90,7 @@ require('../responses/responses.service');
           var token, chat;
           var chat = {
             room_id: targetId,
-            text: chat.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                      .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
-                      .replace(/nigga|cunt|nigger/gi,"angel")
-                      .replace(/(\d\s){9}/gi, "NUMBER REMOVED"),
+            text: CleanTextService.cleanText(chat)
           }
           if($auth.isAuthenticated()) {
             chat.token = $window.localStorage.satellizer_token
@@ -109,10 +100,7 @@ require('../responses/responses.service');
         };
 
         SocketService.on('new:chat', function(info) {
-          info.text.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                    .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}").replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
-                    .replace(/nigga|cunt|nigger/gi,"angel")
-                    .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
+          info.text = CleanTextService.cleanText(info.text)
           info.username = info.username || "anon";
           $scope.currentChats.push(info);
           setTimeout(function() {
@@ -124,11 +112,7 @@ require('../responses/responses.service');
         MessageServices.getMessages($routeParams.account_id,$routeParams.match_id)
         .then(function(messages) {
           messages.data.conversations.forEach(function(el){
-             el.message = el.message.replace(/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/gi,"{PHONE NUMBER REMOVED}")
-                                    .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
-                                    .replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
-                                    .replace(/nigga|cunt|nigger/gi,"angel")
-                                    .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
+             el.message = CleanTextService.cleanText(el.message);
           });
           $scope.messages = messages.data.conversations;
           $scope.secondsLeftToSend = secondsLeft(messages.data.time,5);

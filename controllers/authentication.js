@@ -4,11 +4,7 @@ var request = require('request');
 var moment = require('moment');
 var jwt = require('jwt-simple');
 var config = require('../config/config');
-var env = process.env.NODE_ENV || 'development';
-var port = process.env.PORT || 3000;
-var db = require("../knexfile");
 var bcrypt = require('bcrypt');
-// var ensureAuthenticated = require('./helpers').ensureAuthenticated;
 
 /*
  |--------------------------------------------------------------------------

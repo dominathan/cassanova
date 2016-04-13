@@ -1,4 +1,5 @@
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import AngularAside from 'angular-aside/dist/css/angular-aside.min.css';
 import '../stylesheets/main.scss';
 
 import BootstrapJs from 'bootstrap/dist/js/bootstrap.min.js';
@@ -9,6 +10,7 @@ require('angular-flash-alert');
 require('angular-messages');
 require('angular-aside');
 import satellizer from 'satellizer';
+require('angularjs-scroll-glue');
 
 angular.module('cassanova',[
   'ngRoute',
@@ -19,7 +21,9 @@ angular.module('cassanova',[
   'users',
   'ngMessages',
   'satellizer',
-  'ngAside'
+  'ngAside',
+  'chat',
+  'luegg.directives'
 ])
 .config(function($routeProvider) {
   $routeProvider
@@ -32,10 +36,10 @@ angular.module('cassanova',[
 })
 
 require('./home/home.module');
+require('./chats/chat.module');
 require('./messages/messages.module');
 require('./utilities/socket.service');
-require('./utilities/pagination.service');
+require('./utilities/cleanText.service');
 require('./users/users.module');
-require('./utilities/tokenInterceptor');
 require('./blocked/blocked.module');
 require('./navbar/navbar.controller');
