@@ -6,14 +6,16 @@
         $scope.chatText = "";
         ChatService.getChats()
         .then(function(data) {
-          var stuff = data.data.map(function(el) {
+          $scope.currentChats = data.data.map(function(el) {
             return {
+              room_id: el.room_id,
               text: CleanTextService.cleanText(el.text),
               created_at: el.created_at,
               username: el.username ? el.username : "anon"
             };
-          })
-          $scope.currentChats = stuff;
+          }).filter(function(wrongRoom) {
+            return wrongRoom.room_id != "3141592";
+          });
           setTimeout(function() {
             var elm = document.getElementsByClassName('modal-content')[0];
             elm.scrollTop = elm.scrollHeight;
