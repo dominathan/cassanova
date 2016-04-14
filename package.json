@@ -8,6 +8,7 @@
     "watch": "node_modules/.bin/webpack -w",
     "start": "node ./bin/www",
     "build": "NODE_ENV=production node node_modules/.bin/webpack",
+    "stage": "npm run build && node_modules/.bin/node-sass ./client/stylesheets/main.scss ./client/stylesheets/styles.css && git add -A && git commit -m 'heroku staging push' && git push staging master",
     "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup"
   },
   "dependencies": {
