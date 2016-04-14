@@ -8,10 +8,9 @@ var PATHS = {
 }
 
 var config =  {
-  entry: PATHS.client,
+  entry: "./client/javascripts/app.module.js",
   output: {
-    path: PATHS.client,
-    filename: 'bundle.js'
+    filename: "./client/bundle.js"
   },
   plugins: [
     new webpack.DefinePlugin({
