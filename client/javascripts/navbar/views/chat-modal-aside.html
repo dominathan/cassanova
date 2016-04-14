@@ -3,7 +3,7 @@
  </div>
  <div class="modal-body gartner-chats">
    <ul>
-     <li ng-repeat="chat in currentChats | orderBy: 'created_at'">
+     <li ng-repeat="chat in globalChats | orderBy: 'created_at'">
        <span>[{{chat.username}}]:</span>
        <span ng-if="chat.roomId !== $routeParams.targetId"><strong>Global</strong></span>
        <span class="chat-text">{{chat.text}}</span><br>

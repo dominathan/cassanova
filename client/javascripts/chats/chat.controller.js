@@ -6,7 +6,7 @@
         $scope.chatText = "";
         ChatService.getChats()
         .then(function(data) {
-          $scope.currentChats = data.data.map(function(el) {
+          $scope.globalChats = data.data.map(function(el) {
             return {
               room_id: el.room_id,
               text: CleanTextService.cleanText(el.text),
@@ -37,13 +37,16 @@
         }
 
         SocketService.on('new:global-chat', function(info) {
-          info.text = CleanTextService.cleanText(info.text);
-          info.username = info.username || "anon";
-          $scope.currentChats.push(info);
-          setTimeout(function() {
-            var elm = document.getElementsByClassName('modal-content')[0];
-            elm.scrollTop = elm.scrollHeight;
-          },80);
+          console.log("WHY THIS?", info);
+          if(info.room_id == 3141592) {
+            info.text = CleanTextService.cleanText(info.text);
+            info.username = info.username || "anon";
+            $scope.globalChats.push(info);
+            setTimeout(function() {
+              var elm = document.getElementsByClassName('modal-content')[0];
+              elm.scrollTop = elm.scrollHeight;
+            },80);
+          }
         })
 
         $scope.ok = function(e) {
