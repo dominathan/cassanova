@@ -1,8 +1,5 @@
 var webpack = require('webpack');
 var path = require('path');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 var PATHS = {
   client: path.join(__dirname, 'client/javascripts/app.module.js'),
@@ -13,6 +10,7 @@ var PATHS = {
 var config =  {
   entry: PATHS.client,
   output: {
+    path: PATHS.client,
     filename: 'bundle.js'
   },
   plugins: [
@@ -23,16 +21,14 @@ var config =  {
   module: {
     loaders: [
       {
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|stylesheets)/,
         loader: 'ng-annotate!babel?presets=es2015'
       },
-
   // Load SCSS
-
 
       {  test: /\.html$/,
         loader: 'raw',
-        exclude: /node_modules/
+        exclude: /node_modules|stylesheets/
       }
     ]
   }

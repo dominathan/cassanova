@@ -1,7 +1,3 @@
-window.jQuery = window.$ =  require('jquery/dist/jquery.min');
-require('bootstrap/dist/js/bootstrap.min.js');
-
-
 var angular = require('angular');
 require('angular-route');
 require('angular-messages');
