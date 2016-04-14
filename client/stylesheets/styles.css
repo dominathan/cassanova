@@ -232,7 +232,8 @@ footer {
   display: inline-block;
   position: relative;
   width: 47%;
-  left: 0%; }
+  left: 0%;
+  height: auto !important; }
 
 .iphone-container img {
   position: absolute;
