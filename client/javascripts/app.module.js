@@ -1,9 +1,5 @@
 window.jQuery = window.$ =  require('jquery/dist/jquery.min');
-
-// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
-// import AngularAside from 'angular-aside/dist/css/angular-aside.css';
 require('bootstrap/dist/js/bootstrap.min.js');
-// require('../stylesheets/main.scss');
 
 
 var angular = require('angular');

@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('/', express.static(path.join(__dirname, 'app')));
 
 app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
