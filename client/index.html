@@ -42,6 +42,7 @@
             <li><a href="/#/faq">How It Works</a></li>
             <li ng-click="openAside('down', true)"><a>Chat</a></li>
             <li ng-if="!isAuthenticated()" ><a href="/#/login">Sign in</a></li>
+            <li ng-if="!isAuthenticated()" ><a href="/#/signup">Sign Up</a></li>
             <li ng-if="isAuthenticated()" class="dropdown">
              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
              <ul class="dropdown-menu">

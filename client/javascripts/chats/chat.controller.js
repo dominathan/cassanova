@@ -7,6 +7,7 @@
         ChatService.getChats()
         .then(function(data) {
           $scope.globalChats = data.data.map(function(el) {
+            console.log("CHATS", el);
             return {
               room_id: el.room_id,
               text: CleanTextService.cleanText(el.text),
@@ -22,6 +23,10 @@
           },80);
         });
 
+        $scope.$watch('globalChats', function(newV,oldV) {
+          console.log("global chats have changed", newV);
+        })
+
         $scope.sendChat = function(chat) {
           if(!chat) return;
           var token, chat;
@@ -33,11 +38,11 @@
           if($auth.isAuthenticated()) {
             chat.token = $window.localStorage.satellizer_token
           }
-          SocketService.emit('new:global-chat', chat);
+          SocketService.emit('global:chat', chat);
         }
 
-        SocketService.on('new:global-chat', function(info) {
-          console.log("WHY THIS?", info);
+        SocketService.on('global:chat', function(info) {
+          console.log("GETTING POSTED? ", info);
           if(info.room_id == 3141592) {
             info.text = CleanTextService.cleanText(info.text);
             info.username = info.username || "anon";
