@@ -325,6 +325,13 @@ footer {
   top: 0px;
   left: 36%; }
 
+.user-profile .panel {
+  display: inline-block;
+  margin-top: 6%;
+  margin-left: 14%;
+  min-height: 540px;
+  text-align: center; }
+
 * {
   font-family: Helvetica Neue, Futura,georgia,sans-serif; }
 

@@ -11,7 +11,6 @@
 
     UserService.getTinderInfo()
     .then(function(data) {
-      console.log('no go', data);
       $scope.myAccount = data.data;
     }).catch(function(err) {
       console.log('getting data', err)
@@ -23,8 +22,6 @@
     .then(function(data) {
       // console.log(data);
       // $scope.myAccount = data.data
-
-
     });
   }
 
