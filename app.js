@@ -8,6 +8,7 @@ var env = process.env.NODE_ENV || 'development';
 var configDB = require("./knexfile");
 global.knex = require('knex')(configDB[env]);
 
+
 var CronExecutables = require('./services/cronTasks');
 var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
@@ -15,6 +16,7 @@ var tinderInfo = require('./services/tinder-client');
 // CasperCaller('oliverbalkovec@outlook.com','pityfortheguilty12')
 
 var routes = require('./controllers/index');
+var ChatController = require('./controllers/chatsController');
 var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');
 var ProfileController = require("./controllers/profileController");
@@ -35,12 +37,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
-app.get('/', express.static(path.join(__dirname, 'app')));
 
 app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
+app.use('/api/chats', ChatController);
 app.use('/auth', authenitcation);
 app.use('/api',ProfileController);
 

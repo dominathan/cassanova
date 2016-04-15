@@ -4,32 +4,35 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "nodemon ./bin/www & node_modules/.bin/webpack -w",
+    "dev": "node_modules/.bin/webpack -w & node_modules/.bin/node-sass -w ./client/stylesheets/main.scss ./client/stylesheets/styles.css & nodemon ./bin/www ",
+    "watch": "node_modules/.bin/webpack -w",
     "start": "node ./bin/www",
     "build": "NODE_ENV=production node node_modules/.bin/webpack",
-    "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup",
-    "remakedb": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest"
+    "stage": "npm run build && node_modules/.bin/node-sass ./client/stylesheets/main.scss ./client/stylesheets/styles.css && git add -A && git commit -m 'heroku staging push' && git push staging master  && heroku open --app gotindergarten-staging",
+    "reseed": "dropdb tindergarten2_dev && createdb tindergarten2_dev && knex migrate:latest && node services/localTinderSetup"
   },
   "dependencies": {
     "angular": "^1.4.8",
     "angular-animate": "^1.5.3",
+    "angular-aside": "^1.3.2",
     "angular-bootstrap-npm": "^0.14.3",
     "angular-flash-alert": "^2.2.4",
     "angular-messages": "^1.5.3",
     "angular-moment": "^0.10.3",
+    "angular-motion": "^0.4.4",
     "angular-route": "^1.4.8",
+    "angular-strap": "^2.3.8",
     "angular-ui-bootstrap": "^1.2.5",
+    "angularjs-scroll-glue": "^2.0.4",
     "bcrypt": "^0.8.5",
     "body-parser": "~1.13.2",
-    "bookshelf": "^0.9.1",
     "bower": "^1.7.7",
     "cookie-parser": "~1.3.5",
     "cron": "^1.1.0",
     "debug": "~2.2.0",
     "ejs": "~2.3.3",
     "express": "~4.13.1",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "html-webpack-plugin": "^2.8.1",
+    "jquery": "^2.2.3",
     "jwt-simple": "^0.5.0",
     "knex": "^0.9.0",
     "lodash": "^3.10.1",
@@ -45,15 +48,28 @@
     "socket.io": "^1.4.5"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "babel-cli": "^6.7.5",
+=======
+    "autoprefixer-loader": "^3.2.0",
+>>>>>>> master
     "babel-core": "^6.4.0",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
+<<<<<<< HEAD
     "casperjs": "^1.1.0-beta5",
+=======
+    "bootstrap-sass": "^3.3.6",
+    "bootstrap-sass-loader": "^1.0.10",
+>>>>>>> master
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
     "flightplan": "^0.6.13",
     "fly": "^0.9.1",
+    "html-webpack-plugin": "^2.8.1",
+    "less-loader": "^2.2.3",
     "ng-annotate-loader": "^0.1.0",
     "ng-cache-loader": "0.0.15",
     "node-sass": "^3.4.2",
@@ -62,6 +78,7 @@
     "required-loader": "^0.2.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.10"
   }
 }

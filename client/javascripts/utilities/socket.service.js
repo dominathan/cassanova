@@ -3,7 +3,7 @@
 
   angular
     .module('cassanova')
-    .factory('SocketService', function ($rootScope) {
+    .service('SocketService', function ($rootScope) {
       var socket = io();
 
       function on(eventName,callback) {

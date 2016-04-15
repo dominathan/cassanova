@@ -1,4 +1,11 @@
 var webpack = require('webpack');
+var path = require('path');
+
+var PATHS = {
+  client: path.join(__dirname, 'client/javascripts/app.module.js'),
+  build: path.join(__dirname, 'build'),
+  styles: path.join(__dirname, 'client/stylesheets/main.scss')
+}
 
 var config =  {
   entry: "./client/javascripts/app.module.js",
@@ -13,16 +20,14 @@ var config =  {
   module: {
     loaders: [
       {
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components|stylesheets)/,
         loader: 'ng-annotate!babel?presets=es2015'
-      }, {
-        exclude: /(node_modules|bower_components)/,
-        test: /\.css$|\.scss$/, // Only .css files
-        loader: 'style!css!sass' // Run both loaders
-      }, {
-        test: /\.html$/,
+      },
+  // Load SCSS
+
+      {  test: /\.html$/,
         loader: 'raw',
-        exclude: /node_modules/
+        exclude: /node_modules|stylesheets/
       }
     ]
   }

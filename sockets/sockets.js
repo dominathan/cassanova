@@ -23,9 +23,7 @@ function startSocket(server) {
           .catch(function(err) {
             console.log("OH FUCK ERROR", err);
           })
-
       }
-
     });
 
     socket.on('new:vote', function(data) {
@@ -51,21 +49,50 @@ function startSocket(server) {
           }
         })
       }
-
-
     });
 
     socket.on('new:chat', function(data) {
-      var objToSave = {room_id: parseInt(data.room_id), text: data.text};
+      var user;
+      if(data.token) {
+        user = ensureSocketAuthenticated(data.token);
+      }
+      if(user) {
+        delete data.token
+        data.user_id = user.id;
+        data.username = user.username;
+      };
       knex('chats')
-      .insert(objToSave)
+      .insert(data)
       .returning('*')
-      .then(function(data) {
-        io.emit('new:chat',data[0]);
+      .then(function(newChat) {
+        io.emit('new:chat',newChat[0]);
       })
     });
+
+      socket.on('global:chat', function(data) {
+        var user;
+        if(data.token) {
+          user = ensureSocketAuthenticated(data.token);
+        }
+        if(user) {
+          delete data.token
+          data.user_id = user.id;
+          data.username = user.username;
+        };
+        if(!data.room_id) {
+          data.room_id = 3141592;
+        }
+        knex('chats')
+        .insert(data)
+        .returning('*')
+        .then(function(newChat) {
+          socket.emit('global:chat',newChat[0]);
+        })
+      });
+
   })
 }
+
 
 function ensureSocketAuthenticated(token) {
     var decoded = jwt.decode(token, config.TOKEN_SECRET);
@@ -75,16 +102,6 @@ function ensureSocketAuthenticated(token) {
       return false;
     }
 };
-
-function returnUserFromToken(token) {
-  var decoded = jwt.decode(token, config.TOKEN_SECRET);
-  var user;
-  if(decoded.sub) {
-    return decoded.sub
-  } else {
-    return null
-  }
-}
 
 
 module.exports = startSocket;

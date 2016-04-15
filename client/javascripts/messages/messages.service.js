@@ -15,17 +15,6 @@
         return $http.get(url);
       }
 
-      var getChats = function(roomNumber) {
-        var url = "/api/fake_accounts/chats/" + roomNumber;
-        return $http.get(url);
-      }
-
-      var postChat = function(roomNumber, chat) {
-        var url = "/api/fake_accounts/chats/";
-        var objToSave = {room_id: roomNumber, text: chat}
-        return $http.post(url,objToSave);
-      }
-
       var getMatch = function(matchId) {
         return $http.get('/api/targets/' + matchId);
       }
@@ -33,8 +22,6 @@
       return {
         getMessages: getMessages,
         getMostRecent: getMostRecent,
-        getChats: getChats,
-        postChat: postChat,
         getMatch: getMatch
       }
     })

@@ -1,0 +1,20 @@
+<div class="modal-header">
+     <h3 class="modal-title">Global Chat</h3>
+ </div>
+ <div class="modal-body gartner-chats">
+   <ul>
+     <li ng-repeat="chat in globalChats | orderBy: 'created_at'">
+       <span>[{{chat.username}}]:</span>
+       <span ng-if="chat.roomId !== $routeParams.targetId"><strong>Global</strong></span>
+       <span class="chat-text">{{chat.text}}</span><br>
+       <span class="chat-date">{{chat.created_at | amTimeAgo}}</span>
+     </li>
+   </ul>
+   <form ng-submit="sendChat(chatText)">
+     <input id="chatBox" class="form-control" type="text" name="name" ng-model="chatText" placeholder="Send To Fellow Gartners">
+     <button type="submit" name="name" class="chat-btn btn btn-lg btn-info"  value="submitResponse">Submit</button>
+   </form>
+ </div>
+ <div class="modal-footer">
+     <button class="btn btn-primary" ng-click="ok($event)">Close</button>
+ </div>
