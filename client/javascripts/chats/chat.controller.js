@@ -7,7 +7,6 @@
         ChatService.getChats()
         .then(function(data) {
           $scope.globalChats = data.data.map(function(el) {
-            console.log("CHATS", el);
             return {
               room_id: el.room_id,
               text: CleanTextService.cleanText(el.text),
@@ -22,10 +21,6 @@
             elm.scrollTop = elm.scrollHeight;
           },80);
         });
-
-        $scope.$watch('globalChats', function(newV,oldV) {
-          console.log("global chats have changed", newV);
-        })
 
         $scope.sendChat = function(chat) {
           if(!chat) return;
@@ -42,7 +37,6 @@
         }
 
         SocketService.on('global:chat', function(info) {
-          console.log("GETTING POSTED? ", info);
           if(info.room_id == 3141592) {
             info.text = CleanTextService.cleanText(info.text);
             info.username = info.username || "anon";

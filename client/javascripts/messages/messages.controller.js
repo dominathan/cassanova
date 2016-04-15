@@ -103,7 +103,6 @@ require('../responses/responses.service');
             info.text = CleanTextService.cleanText(info.text)
             info.username = info.username || "anon";
             $scope.currentChats.push(info);
-            console.log("RoomCHats", $scope.currentChats)
             setTimeout(function() {
               var elm = document.getElementsByClassName('gartner-chats')[0];
               elm.children[0].scrollTop = elm.children[0].scrollHeight;
