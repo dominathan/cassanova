@@ -29,7 +29,7 @@ router.get('/:id/targets', function(req,res,next) {
       return _.uniq(data.rows,'tinder_id');
     })
     .then(function(rows) {
-      res.json(rows).status(302);
+      res.json(rows).status(200);
     })
   })
 });
@@ -48,7 +48,7 @@ router.get('/getMostRecentConvos', function(req,res,next) {
       })
     })
     .then(function(uniqAndSorted) {
-      res.json(uniqAndSorted).status(302);
+      res.json(uniqAndSorted).status(200);
     })
 })
 
@@ -59,7 +59,7 @@ router.get('/getMostRecentConvos', function(req,res,next) {
 router.get("/:fake_account_id/targets/:target_id", function(req,res,next) {
   knex.raw(`SELECT tg.name, convo.target_id, convo.id, convo.sent_date, convo.received, convo.tinder_id, convo.fake_account_id, convo.message FROM targets AS tg LEFT JOIN conversations as convo ON tg.id = convo.target_id WHERE convo.target_id = ${req.params.target_id} AND tg.id = ${req.params.target_id} ORDER BY convo.sent_date`)
     .then(function(convos) {
-      res.json({conversations: convos.rows, time: new Date()}).status(302);
+      res.json({conversations: convos.rows, time: new Date()}).status(200);
     });
 });
 
@@ -67,7 +67,7 @@ router.get('/targets/:target_id/responses/:conversation_id', function(req,res,ne
   var timeBefore = timeUntil();
   knex.raw(`SELECT msg.response_text, msg.target_id, msg.id, msg.created_at, msg.conversation_id, SUM(v.up) as total_votes FROM responses as msg LEFT JOIN votes AS v ON msg.id = v.response_id WHERE msg.target_id = ${req.params.target_id} AND msg.created_at > '${timeBefore}' GROUP BY msg.id`)
       .then(function(rows) {
-        res.json(rows.rows).status(302);
+        res.json(rows.rows).status(200);
       })
 });
 
@@ -76,7 +76,7 @@ router.post('/responses/', ensureAuthenticated, function(req,res,next) {
     .insert(req.body.response)
     .returning('*')
     .then(function(data) {
-      res.json(data).status(302);
+      res.json(data).status(200);
     })
 })
 
@@ -85,14 +85,14 @@ router.post('/responses/:response_id/votes', ensureAuthenticated, function(req,r
     .insert(req.body.vote)
     .returning('*')
     .then(function(data) {
-      res.json(data).status(302);
+      res.json(data).status(202);
     })
 })
 
 router.get('/photos/target_id/:tinder_id',function(req,res,next) {
   knex('photos').where('target_id',req.params.tinder_id)
     .then(function(data) {
-      res.json(data).status(302);
+      res.json(data).status(200);
     })
 })
 
@@ -102,7 +102,7 @@ router.get('/:id/allTargs/blocked', function(req,res,next) {
     return _.uniq(data.rows,'tinder_id');
   })
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(200);
   });
 });
 

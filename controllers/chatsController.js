@@ -7,7 +7,7 @@ router.get('/room/:targetId', function(req,res,next) {
   .select('text','created_at','username')
   .where('room_id',req.params.targetId)
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(200);
   });
 });
 
@@ -18,7 +18,7 @@ router.get('/allchats', function(req,res,next) {
   .limit(100)
   .orderBy('created_at','desc')
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(200);
   });
 });
 
@@ -26,7 +26,7 @@ router.post('/create', function(req,res,next) {
   knex('chats')
   insert(req.body.text)
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(202);
   })
   .catch(function(err) {
     console.log(err);

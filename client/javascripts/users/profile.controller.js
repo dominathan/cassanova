@@ -2,23 +2,29 @@
   'use strict';
   angular
   .module('users')
-  .controller('ProfileController',function($scope, $auth,UserService, Flash,$window) {
+  .controller('ProfileController',function($http,$scope, $auth,UserService, Flash,$window) {
 
     UserService.getProfile()
     .success(function(data) {
       $scope.user = data;
-      $scope.myAccount = data.data;
-      // console.log(data);
     })
-    .error(function(error) {
-      console.log(eror)
-    });
+
+    UserService.getTinderInfo()
+    .then(function(data) {
+      console.log('no go', data);
+      $scope.myAccount = data.data;
+    }).catch(function(err) {
+      console.log('getting data', err)
+    })
+
 
   $scope.tinderizer = function(fb) {
     UserService.tinderizer(fb)
     .then(function(data) {
       // console.log(data);
-      $scope.myAccount = data.data
+      // $scope.myAccount = data.data
+
+
     });
   }
 
@@ -41,11 +47,6 @@
     })
   };
 
-  UserService.getTinderInfo()
-  .then(function(data) {
-    console.log(data);
-    $scope.myAccount = data.data;
-  });
 
 
 

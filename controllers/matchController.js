@@ -13,7 +13,7 @@ router.get('/:target_id', function(req,res,next) {
   .select('*')
   .where('id', req.params.target_id)
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(200);
   })
 });
 
@@ -22,7 +22,7 @@ router.get('/:target_id/photos', function(req,res,next) {
   .select('*')
   .where('target_id', req.params.target_id)
   .then(function(data) {
-    res.json(data).status(302);
+    res.json(data).status(200);
   })
 });
 

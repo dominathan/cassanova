@@ -1,38 +1,22 @@
 
 exports.up = function(knex, Promise) {
   return Promise.all([
-    knex.schema.table('users',function(table) {
-      table.date('birth_date');
-      table.string('gender');
-      table.string('latitude');
-      table.string('longitude');
-      table.string('name');
-      table.string('tinder_id').unique()
-      table.string('facebook_user_id').unique()
-      table.string('facebook_email');
-      table.string('facebook_password');
-      table.string('facebook_authentication_token');
-      table.string('tinder_authentication_token');
-      table.integer('facebook_expiration_time')
-      table.string('bio');
+    knex.schema.table('fake_accounts', function(table) {
+      table.integer('user_id').references('id').inTable('users').notNullable().defaultTo(1);
+      table.boolean('private').notNullable().defaultTo(false);
+      table.string('facebook_email').unique().notNullable().defaultTo("");
+      table.string('facebook_password').notNullable().defaultTo("");
     })
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.table('users',function(table) {
-      table.dropColumn('birth_date');
-      table.dropColumn('gender');
-      table.dropColumn('latitude');
-      table.dropColumn('longitude');
-      table.dropColumn('name');
-      table.dropColumn('tinder_id')
-      table.dropColumn('facebook_user_id')
-      table.dropColumn('facebook_authentication_token');
-      table.dropColumn('tinder_authentication_token');
-      table.dropColumn('facebook_expiration_time');
-      table.dropColumn('bio');
+    knex.schema.table('fake_accounts',function(table) {
+      table.dropColumn('user_id');
+      table.dropColumn('private');
+      table.dropColumn('facebook_email');
+      table.dropColumn('facebook_password');
     })
   ])
 };

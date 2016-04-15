@@ -8,12 +8,9 @@ var env = process.env.NODE_ENV || 'development';
 var configDB = require("./knexfile");
 global.knex = require('knex')(configDB[env]);
 
-
 var CronExecutables = require('./services/cronTasks');
 var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
-
-// CasperCaller('oliverbalkovec@outlook.com','pityfortheguilty12')
 
 var routes = require('./controllers/index');
 var ChatController = require('./controllers/chatsController');
@@ -53,7 +50,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+
 
 // development error handler
 // will print stacktrace

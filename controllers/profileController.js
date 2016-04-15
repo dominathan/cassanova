@@ -18,7 +18,7 @@ router.route('/me')
     .select('email','username')
     .where('email',req.user.email)
     .then(function(data) {
-      res.json(data[0]).status(302);
+      res.json(data[0]).status(200);
     });
   })
   .put(function(req, res) {
@@ -35,7 +35,7 @@ router.route('/me')
       delete data[0].password;
       var payload = { email: data[0].email, username: data[0].username, id: data[0].id }
       res.send({token: createToken(payload), data: data[0]})
-      res.send(payload).status(302);
+      res.send(payload).status(202);
     })
     .catch(function(error) {
       res.json(error).status(401);
