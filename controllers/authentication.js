@@ -128,8 +128,8 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
                }
              } else {
                saveMatches.saveNewMaches(updates.matches,fk_account[0],req.user.id);
-               saveUserPhotos(prof,fk_account.id)
-              //  saveMatches.saveNewMessages(updates);
+               saveUserPhotos(prof,fk_account[0])
+               saveMatches.saveNewMessages(updates,fk_account[0]);
               //  saveMatches.checkBlocks(updates);
              }
            }

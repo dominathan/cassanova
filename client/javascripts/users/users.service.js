@@ -38,7 +38,7 @@
         }
 
         function updateTargetAccesibility(target,toggle) {
-          return $http.put('/api/user-matches/targets/' + target.id, {accessible: toggle});
+          return $http.put('/api/user-matches/targets/' + target.target_id, {accessible: toggle});
         }
 
         return {

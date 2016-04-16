@@ -62,24 +62,30 @@ module.exports = {
     });
   },
 
-  saveNewMessages: function(updates) {
+  saveNewMessages: function(updates,fakeAccountId) {
     updates.matches.forEach(function(match) {
       if(match.messages.length > 0) {
           match.messages.forEach(function(msg) {
             knex('targets').select('*').where('match_id',msg.match_id)
             .then(function(data) {
-              knex('conversations').select('tinder_id').where('target_id',data[0].id)
+              knex('conversations')
+              .select('tinder_id')
+              .where('target_id',data[0].id)
               .then(function(idOfConversations) {
-                var ids = idOfConversations.map(function(el) {
-                  return el.tinder_id
-                })
-                if(ids.indexOf(msg._id) === -1) {
-                  var fakeAcc = {
-                    id: data[0].fake_account_id
+                  var ids = idOfConversations.map(function(el) {
+                    return el.tinder_id;
+                  })
+                  if(ids.indexOf(msg._id) === -1) {
+                    var convoSave = Conversation.getConversationInfo(msg,fakeAccountId,data[0]);
+                    knex('conversations').insert(convoSave).then(function(data) {
+                      console.log("HEY HEY HEY", data);
+                    })
                   }
-                  var convoSave = Conversation.getConversationInfo(msg,fakeAcc,data[0])
-                  }
+                }).catch(function(err) {
+                  console.log("CONVO ERROR", err);
                 })
+              }).catch(function(err) {
+                console.log("TARGET ERROR: ", err);
               })
           })
        }

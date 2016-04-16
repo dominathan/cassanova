@@ -9,14 +9,23 @@
 
     UserService.getUserMatches()
     .then(function(data) {
+      data.data.forEach(function(el) {
+        el.age = calculateAge(el.birth_date);
+      })
       $scope.targets = data.data;
     })
 
     $scope.updateTargetAccesibility = function(target,toggle) {
       UserService.updateTargetAccesibility(target,!!toggle)
       .then(function(data) {
-        console.log("RESPONSE", data.data[0]);
       })
+    }
+
+    function calculateAge(birthday) {
+      var jsBirthday = new Date(birthday);
+      var ageDifMs = Date.now() - jsBirthday.getTime();
+      var ageDate = new Date(ageDifMs);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
   })

@@ -2,9 +2,9 @@
 
 module.exports = function() {
   return {
-    getConversationInfo: function(convoObj,fakeAccount,target) {
+    getConversationInfo: function(convoObj,fakeAccountId,target) {
       return {
-        fake_account_id: fakeAccount.id,
+        fake_account_id: fakeAccountId,
         target_id: target.id,
         message: convoObj.message,
         sent_date: convoObj.sent_date,

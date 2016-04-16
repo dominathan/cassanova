@@ -66,8 +66,8 @@
 	__webpack_require__(127);
 	__webpack_require__(128);
 	__webpack_require__(129);
-	__webpack_require__(140);
-	__webpack_require__(145);
+	__webpack_require__(141);
+	__webpack_require__(146);
 
 /***/ },
 /* 1 */
@@ -52475,9 +52475,9 @@
 	__webpack_require__(135);
 	__webpack_require__(136);
 	__webpack_require__(137);
-	__webpack_require__(147);
 	__webpack_require__(138);
 	__webpack_require__(139);
+	__webpack_require__(140);
 
 /***/ },
 /* 130 */
@@ -52509,7 +52509,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ target.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name}}\" ng-click=\"open('lg',target.id, target.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ target.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n\n          <h3>Help Me Get Her!</h3>\n          <form ng-click=\"updateTargetAccesibility(target,target.accessible)\">\n            <switch id=\"enabled\" name=\"enabled\"  ng-model=\"target.accessible\" class=\"green\"></switch>\n            <br>\n          </form>\n      </div>\n  </div>\n</div>\n";
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ target.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name }}\" ng-click=\"open('lg',target.id, target.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ target.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n\n          <h3>Help Me Get Her!</h3>\n          <form ng-click=\"updateTargetAccesibility(target,target.accessible)\">\n            <switch id=\"enabled\" name=\"enabled\"  ng-model=\"target.accessible\" class=\"green\"></switch>\n            <br>\n          </form>\n      </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 134 */
@@ -52603,7 +52603,7 @@
 	    }
 
 	    function updateTargetAccesibility(target, toggle) {
-	      return $http.put('/api/user-matches/targets/' + target.id, { accessible: toggle });
+	      return $http.put('/api/user-matches/targets/' + target.target_id, { accessible: toggle });
 	    }
 
 	    return {
@@ -52771,6 +52771,39 @@
 
 	'use strict';
 
+	angular.module('cassanova').directive('switch', function () {
+	  return {
+	    restrict: 'AE',
+	    replace: true,
+	    transclude: true,
+	    template: function template(element, attrs) {
+	      var html = '';
+	      html += '<span';
+	      html += ' class="switch' + (attrs.class ? ' ' + attrs.class : '') + '"';
+	      html += attrs.ngModel ? ' ng-click="' + attrs.disabled + ' ? ' + attrs.ngModel + ' : ' + attrs.ngModel + '=!' + attrs.ngModel + (attrs.ngChange ? '; ' + attrs.ngChange + '()"' : '"') : '';
+	      html += ' ng-class="{ checked:' + attrs.ngModel + ', disabled:' + attrs.disabled + ' }"';
+	      html += '>';
+	      html += '<small></small>';
+	      html += '<input type="checkbox"';
+	      html += attrs.id ? ' id="' + attrs.id + '"' : '';
+	      html += attrs.name ? ' name="' + attrs.name + '"' : '';
+	      html += attrs.ngModel ? ' ng-model="' + attrs.ngModel + '"' : '';
+	      html += ' style="display:none" />';
+	      html += '<span class="switch-text">'; /*adding new container for switch text*/
+	      html += attrs.on ? '<span class="on">' + attrs.on + '</span>' : ''; /*switch text on value set by user in directive html markup*/
+	      html += attrs.off ? '<span class="off">' + attrs.off + '</span>' : ' '; /*switch text off value set by user in directive html markup*/
+	      html += '</span>';
+	      return html;
+	    }
+	  };
+	});
+
+/***/ },
+/* 139 */
+/***/ function(module, exports) {
+
+	'use strict';
+
 	(function () {
 	  'use strict';
 
@@ -52816,7 +52849,7 @@
 	})();
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52827,19 +52860,27 @@
 	  angular.module('users').controller('UserMatchesController', ["$scope", "$auth", "UserService", function ($scope, $auth, UserService) {
 
 	    UserService.getUserMatches().then(function (data) {
+	      data.data.forEach(function (el) {
+	        el.age = calculateAge(el.birth_date);
+	      });
 	      $scope.targets = data.data;
 	    });
 
 	    $scope.updateTargetAccesibility = function (target, toggle) {
-	      UserService.updateTargetAccesibility(target, !!toggle).then(function (data) {
-	        console.log("RESPONSE", data.data[0]);
-	      });
+	      UserService.updateTargetAccesibility(target, !!toggle).then(function (data) {});
 	    };
+
+	    function calculateAge(birthday) {
+	      var jsBirthday = new Date(birthday);
+	      var ageDifMs = Date.now() - jsBirthday.getTime();
+	      var ageDate = new Date(ageDifMs);
+	      return Math.abs(ageDate.getUTCFullYear() - 1970);
+	    }
 	  }]);
 	})();
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52849,25 +52890,17 @@
 
 	  angular.module('blocked', []).config(["$routeProvider", function ($routeProvider) {
 	    $routeProvider.when('/blocked-matches', {
-	      template: __webpack_require__(141),
+	      template: __webpack_require__(142),
 	      controller: 'BlockedController'
 	    }).when('/blocked-matches/:id', {
-	      template: __webpack_require__(142),
+	      template: __webpack_require__(143),
 	      controller: 'BlockedController'
 	    });
 	  }]);
 	})();
 
-	__webpack_require__(143);
 	__webpack_require__(144);
-
-/***/ },
-/* 141 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
+	__webpack_require__(145);
 
 /***/ },
 /* 142 */
@@ -52875,10 +52908,18 @@
 
 	"use strict";
 
-	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <a><span ng-cloak ng-click=\"getMatchInfo()\">{{match.name}}</span></a>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"block in blocks\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ block.id }}' data-fake-account-id='{{block.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ block.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ block.photo_url }}\" alt=\"{{ block.name}}\" ng-click=\"open('lg',block.id, block.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ block.gender == 1 ? \"Female\" : \"Male\" }} | {{ block.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ block.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n          <a href=\"#/blocked-matches/{{block.id}}/\"><button class=\"btn btn-success btn-lg\">Why She Blocked Me</button></a>\n      </div>\n  </div>\n\n</div>\n";
 
 /***/ },
 /* 143 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = "<section class=\"iphone-container blocked\">\n    <img src=\"images/phone-case.png\" alt=\"iphone-case\" />\n    <div class=\"match-name\">\n      <a><span ng-cloak ng-click=\"getMatchInfo()\">{{match.name}}</span></a>\n    </div>\n    <div class=\"iphone-background\" scroll-bottom=\"messages\">\n      <div ng-repeat=\"msg in messages\" class=\"{{msg.received === true ? 'text-left' : 'text-right' }}\">\n          <p class=\"white-shadow\" data-conversation-id=\"{{msg.id}}\">\n             {{ msg.message }}\n             <span ng-if=\"$last\" ng-init=\"getResponses(msg.id)\"></span>\n          </p>\n      </div>\n    </div>\n</section>\n";
+
+/***/ },
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52944,7 +52985,7 @@
 	})();
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -52972,7 +53013,7 @@
 	})();
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53004,7 +53045,7 @@
 	    }
 
 	    $aside.open({
-	      template: __webpack_require__(146),
+	      template: __webpack_require__(147),
 	      placement: position,
 	      size: 'sm',
 	      backdrop: backdrop,
@@ -53014,45 +53055,12 @@
 	}]);
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	module.exports = "<div class=\"modal-header\">\n     <h3 class=\"modal-title\">Global Chat</h3>\n </div>\n <div class=\"modal-body gartner-chats\">\n   <ul>\n     <li ng-repeat=\"chat in globalChats | orderBy: 'created_at'\">\n       <span>[{{chat.username}}]:</span>\n       <span ng-if=\"chat.roomId !== $routeParams.targetId\"><strong>Global</strong></span>\n       <span class=\"chat-text\">{{chat.text}}</span><br>\n       <span class=\"chat-date\">{{chat.created_at | amTimeAgo}}</span>\n     </li>\n   </ul>\n   <form ng-submit=\"sendChat(chatText)\">\n     <input id=\"chatBox\" class=\"form-control\" type=\"text\" name=\"name\" ng-model=\"chatText\" placeholder=\"Send To Fellow Gartners\">\n     <button type=\"submit\" name=\"name\" class=\"chat-btn btn btn-lg btn-info\"  value=\"submitResponse\">Submit</button>\n   </form>\n </div>\n <div class=\"modal-footer\">\n     <button class=\"btn btn-primary\" ng-click=\"ok($event)\">Close</button>\n </div>\n";
-
-/***/ },
-/* 147 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	angular.module('cassanova').directive('switch', function () {
-	  return {
-	    restrict: 'AE',
-	    replace: true,
-	    transclude: true,
-	    template: function template(element, attrs) {
-	      var html = '';
-	      html += '<span';
-	      html += ' class="switch' + (attrs.class ? ' ' + attrs.class : '') + '"';
-	      html += attrs.ngModel ? ' ng-click="' + attrs.disabled + ' ? ' + attrs.ngModel + ' : ' + attrs.ngModel + '=!' + attrs.ngModel + (attrs.ngChange ? '; ' + attrs.ngChange + '()"' : '"') : '';
-	      html += ' ng-class="{ checked:' + attrs.ngModel + ', disabled:' + attrs.disabled + ' }"';
-	      html += '>';
-	      html += '<small></small>';
-	      html += '<input type="checkbox"';
-	      html += attrs.id ? ' id="' + attrs.id + '"' : '';
-	      html += attrs.name ? ' name="' + attrs.name + '"' : '';
-	      html += attrs.ngModel ? ' ng-model="' + attrs.ngModel + '"' : '';
-	      html += ' style="display:none" />';
-	      html += '<span class="switch-text">'; /*adding new container for switch text*/
-	      html += attrs.on ? '<span class="on">' + attrs.on + '</span>' : ''; /*switch text on value set by user in directive html markup*/
-	      html += attrs.off ? '<span class="off">' + attrs.off + '</span>' : ' '; /*switch text off value set by user in directive html markup*/
-	      html += '</span>';
-	      return html;
-	    }
-	  };
-	});
 
 /***/ }
 /******/ ]);
