@@ -48,6 +48,9 @@ nav a {
 .navbar-default .navbar-nav > li > a {
   color: #FFF; }
 
+.dropdown-menu > li > a {
+  width: 100%; }
+
 .panel {
   border-color: #cfd9D7;
   border-radius: 2px;
@@ -228,6 +231,82 @@ footer {
     text-align: center;
     float: right; }
 
+.switch {
+  background: #fff;
+  border: 1px solid #dfdfdf;
+  position: relative;
+  display: inline-block;
+  box-sizing: content-box;
+  overflow: visible;
+  width: 52px;
+  height: 30px;
+  padding: 0px;
+  margin: 0px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: #dfdfdf 0px 0px 0px 0px inset;
+  transition: 0.3s ease-out all;
+  -webkit-transition: 0.3s ease-out all;
+  top: -1px; }
+
+/*adding a wide width for larger switch text*/
+.switch.wide {
+  width: 80px; }
+
+.switch small {
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: 0.3s ease-out all;
+  -webkit-transition: 0.3s ease-out all; }
+
+.switch.checked {
+  background: #64bd63;
+  border-color: #64bd63; }
+
+.switch.checked small {
+  left: 22px; }
+
+/*wider switch text moves small further to the right*/
+.switch.wide.checked small {
+  left: 52px; }
+
+/*styles for switch-text*/
+.switch .switch-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px; }
+
+.switch .off {
+  display: block;
+  position: absolute;
+  right: 10%;
+  top: 25%;
+  z-index: 0;
+  color: #A9A9A9; }
+
+.switch .on {
+  display: none;
+  z-index: 0;
+  color: #fff;
+  position: absolute;
+  top: 25%;
+  left: 9%; }
+
+.switch.checked .off {
+  display: none; }
+
+.switch.checked .on {
+  display: block; }
+
+.switch.disabled {
+  opacity: .50;
+  cursor: not-allowed; }
+
 .iphone-container div {
   display: inline-block;
   position: relative;
@@ -331,6 +410,9 @@ footer {
   margin-left: 14%;
   min-height: 540px;
   text-align: center; }
+
+.user-profile .tinderizer {
+  margin-left: 3%; }
 
 * {
   font-family: Helvetica Neue, Futura,georgia,sans-serif; }

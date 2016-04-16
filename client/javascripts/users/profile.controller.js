@@ -9,13 +9,13 @@
       $scope.user = data;
     })
 
-    UserService.getTinderInfo()
-    .then(function(data) {
-      $scope.myAccount = data.data;
-    }).catch(function(err) {
-      console.log('getting data', err)
-    })
-
+    // UserService.getTinderInfo()
+    // .then(function(data) {
+    //   $scope.myAccount = data.data;
+    // }).catch(function(err) {
+    //   console.log('getting data', err)
+    // })
+  
 
   $scope.tinderizer = function(fb) {
     UserService.tinderizer(fb)

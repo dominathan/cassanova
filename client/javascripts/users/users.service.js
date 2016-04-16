@@ -33,6 +33,14 @@
           return $http.get('/auth/getTinderInfo/');
         }
 
+        function getUserMatches() {
+          return $http.get('/api/user-matches/targets');
+        }
+
+        function updateTargetAccesibility(target,toggle) {
+          return $http.put('/api/user-matches/targets/' + target.id, {accessible: toggle});
+        }
+
         return {
           login: login,
           logout: logout,
@@ -40,7 +48,9 @@
           getProfile: getProfile,
           updateProfile: updateProfile,
           tinderizer: tinderizer,
-          getTinderInfo: getTinderInfo
+          getTinderInfo: getTinderInfo,
+          getUserMatches: getUserMatches,
+          updateTargetAccesibility: updateTargetAccesibility
         };
 
 

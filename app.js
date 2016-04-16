@@ -13,6 +13,7 @@ var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
 
 var routes = require('./controllers/index');
+var UserMatchesController = require('./controllers/userMatchesController')
 var ChatController = require('./controllers/chatsController');
 var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
+app.use('/api/user-matches', UserMatchesController);
 app.use('/api/facebook', facebookInfo);
 app.use('/api/tinder', tinderInfo);
 app.use('/api/chats', ChatController);

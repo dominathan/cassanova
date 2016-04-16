@@ -27,3 +27,28 @@ exports.createToken = function createToken(user) {
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
+
+exports.createTokenPassword = function(password) {
+  var payload = {
+    pass: password
+  };
+  return jwt.encode(payload, config.TOKEN_SECRET);
+};
+
+exports.createTokenWithFakeAccountId = function(user,fakeAccount) {
+  var payload = {
+    sub: {user: user, fakeAccount: fakeAccount},
+    iat: moment().unix(),
+    exp: moment().add(14,'days').unix()
+  };
+  return jwt.encode(payload, config.TOKEN_SECRET);
+}
+
+function createTokenWithFakeAccountId(user,fakeAccount) {
+  var payload = {
+    sub: {user: user, fakeAccount: fakeAccount},
+    iat: moment().unix(),
+    exp: moment().add(14,'days').unix()
+  };
+  return jwt.encode(payload, config.TOKEN_SECRET);
+}

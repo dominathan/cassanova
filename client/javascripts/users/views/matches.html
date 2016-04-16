@@ -1,0 +1,25 @@
+<div class="container">
+  <div ng-repeat="target in targets" class="col-lg-4 col-md-4 col-sm-6 col-xs-12" >
+      <div class="panel panel-primary match-panel" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>
+          <h3 class="">
+              {{ target.name }}
+          </h3>
+          <div class="match-photo">
+              <img ng-src="{{ target.photo_url }}" alt="{{ target.name}}" ng-click="open('lg',target.id, target.name)">
+          </div>
+          <div class="match-info">
+            <h4>{{ target.gender == 1 ? "Female" : "Male" }} | {{ target.age }}</h4>
+            <div class="match-bio">
+                <h5>{{ target.bio.slice(0,255) }}</h5>
+            </div>
+          </div>
+
+
+          <h3>Help Me Get Her!</h3>
+          <form ng-click="updateTargetAccesibility(target,target.accessible)">
+            <switch id="enabled" name="enabled"  ng-model="target.accessible" class="green"></switch>
+            <br>
+          </form>
+      </div>
+  </div>
+</div>

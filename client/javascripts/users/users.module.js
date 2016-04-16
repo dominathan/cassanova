@@ -35,6 +35,10 @@
              }
           }
         })
+        .when('/my-matches', {
+          template: require('./views/matches.html'),
+          controller: 'UserMatchesController'
+        })
     });
 
 }());
@@ -44,4 +48,6 @@ require('./users.controller');
 require('./users.service');
 require('./directives/passwordMatch');
 require('./directives/passwordStrength');
+require('../directives/iosSwitch');
 require('./profile.controller');
+require('./userMatches.controller')

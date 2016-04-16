@@ -3,7 +3,7 @@ require('angular-route');
 require('angular-messages');
 require('angular-aside');
 require('satellizer');
-require('angularjs-scroll-glue');
+
 
 angular.module('cassanova',[
   'ngRoute',
@@ -16,7 +16,7 @@ angular.module('cassanova',[
   'satellizer',
   'ngAside',
   'chat',
-  'luegg.directives'
+
 ])
 .config(function($routeProvider) {
   $routeProvider

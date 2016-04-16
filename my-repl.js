@@ -4,6 +4,7 @@ var db = require("./knexfile");
 var knex = require('knex')(db[env]);
 var config = require('./config/config')
 var jwt = require('jwt-simple');
+var moment = require('moment');
 
 var TinderClient = require('./services/tinder-client');
 var myProfile = require('./spec/fixtures/my_profile.json');
@@ -25,6 +26,7 @@ replServer.context.knex = knex;
 replServer.context.env = env;
 replServer.context.jwt = jwt;
 replServer.context.config = config;
+replServer.context.moment = moment;
 
 replServer.context.myProfile = myProfile;
 replServer.context.myUpdates = myUpdates;

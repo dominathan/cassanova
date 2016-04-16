@@ -6,31 +6,17 @@ var jwt = require('jwt-simple');
 var config = require('../config/config');
 var bcrypt = require('bcrypt');
 var ensureAuthenticated = require('./helpers').ensureAuthenticated;
+var createToken = require('./helpers').createToken;
 var CasperCaller = require('../services/callCasper');
 var TinderClient = require('../services/tinder-client');
 var FakeAccount = require('../models/fake_account')();
+var Target = require('../models/target')();
 var Photo = require('../models/photos')();
 var UserPhoto = require('../models/users_photos')();
-/*
- |--------------------------------------------------------------------------
- | Generate JSON Web Token
- |--------------------------------------------------------------------------
- */
-function createToken(user) {
-  var payload = {
-    sub: user,
-    iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
-  };
-  return jwt.encode(payload, config.TOKEN_SECRET);
-}
+var createTokenPassword = require('./helpers').createTokenPassword;
+var saveMatches = require('../services/saveMatches');
 
-function createTokenPassword(password) {
-  var payload = {
-    pass: password
-  };
-  return jwt.encode(payload, config.TOKEN_SECRET);
-};
+
 /*
  |--------------------------------------------------------------------------
  | Log in with Email
@@ -126,16 +112,33 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
         saveProfile.tinder_authentication_token = tc.getAuthToken();
         objToSave = Object.assign(objToSave,saveProfile);
         knex('fake_accounts').insert(objToSave).returning('id')
+        .then(function(fk_account) {
+          console.log("WHAT IS FAKE ACCOUNT", fk_account);
+          tc.getUpdates(function(err,updates) {
+           if(err) console.error("unable to reach tinder", err);
+           if(updates) {
+             if(parseInt(updates.status,10) > 399) {
+               switch(parseInt(updates.status)) {
+                 case 401:
+                   console.error('You are not authorized to sign in. Either reset the header or get another access token from facebook.')
+                   break;
+
+                 default:
+                   console.error('Something went wrong, check the status code', updates);
+               }
+             } else {
+               saveMatches.saveNewMaches(updates.matches,fk_account[0],req.user.id);
+               saveUserPhotos(prof,fk_account.id)
+              //  saveMatches.saveNewMessages(updates);
+              //  saveMatches.checkBlocks(updates);
+             }
+           }
+         })
+
+        })
         .then(function(data) {
-          prof.photos.forEach(function(pho) {
-            var photoToSave = UserPhoto.getPhotoInfo(pho,data[0])
-            knex('usersphotos')
-            .insert(photoToSave)
-            .then(function(data) {
-            }).catch(function(err) { console.log("GOD DAMN PHOTOS", err)});
-            res.status(202)
-          });
-        });
+
+        })
       })
     })
   }).catch(function(err) {
@@ -143,5 +146,22 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
     res.status(401).end();
   })
 })
+
+
+function saveUserPhotos(profileObject,fakeAccountId) {
+  profileObject.photos.forEach(function(pho) {
+
+    var photoToSave = UserPhoto.getPhotoInfo(pho,fakeAccountId)
+
+    knex('usersphotos')
+    .insert(photoToSave)
+    .then(function(data) {
+
+    }).catch(function(err) {
+      console.log("GOD DAMN PHOTOS", err);
+    });
+  });
+};
+
 
 module.exports = router;
