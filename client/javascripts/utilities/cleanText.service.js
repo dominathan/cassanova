@@ -9,7 +9,8 @@
                                .replace(/864-641-5380/gi,"{PHONE NUMBER REMOVED}")
                                .replace(/\d{9}/gi,"PHONE NUMBER REMOVED")
                                .replace(/nigga|cunt|nigger/gi,"angel")
-                               .replace(/(\d\s){9}/gi, "NUMBER REMOVED");
+                               .replace(/(\d\s){9}/gi, "NUMBER REMOVED")
+                               .replace(/\d{3}-\d{3}-\d{4}/gi,"NUMBER REMOVED");
       }
 
        return {

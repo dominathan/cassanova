@@ -9,10 +9,10 @@ var configDB = require("./knexfile");
 global.knex = require('knex')(configDB[env]);
 
 var CronExecutables = require('./services/cronTasks');
-var facebookInfo = require('./services/facebook-login');
 var tinderInfo = require('./services/tinder-client');
 
 var routes = require('./controllers/index');
+var facebookInfo = require('./controllers/facebook-login');
 var UserMatchesController = require('./controllers/userMatchesController')
 var ChatController = require('./controllers/chatsController');
 var authenitcation = require('./controllers/authentication');
