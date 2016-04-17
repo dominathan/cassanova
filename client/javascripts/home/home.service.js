@@ -7,7 +7,7 @@
     .factory('HomeServices', function($http, $q, $cacheFactory) {
 
       var getTargets = function(fakeAcccountID) {
-        var url = "api/fake_accounts/" + fakeAcccountID + "/targets/";
+        var url = "/api/targets/";
         return $http.get(url);
       }
 

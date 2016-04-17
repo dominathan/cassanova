@@ -35,7 +35,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client')));
 
-
+/*
+ * Routes for client to access
+ */
 app.use('/api/fake_accounts',routes);
 app.use('/api/targets',MatchController);
 app.use('/api/user-matches', UserMatchesController);
@@ -51,8 +53,6 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
-
-
 
 // development error handler
 // will print stacktrace

@@ -31935,10 +31935,7 @@
 	      data.data.forEach(function (el) {
 	        el.age = calculateAge(el.birth_date);
 	      });
-	      var females = data.data.filter(function (el) {
-	        return el.gender === '1';
-	      });
-	      $scope.targets = females;
+	      $scope.targets = data.data;
 	      $scope.$watch('currentPage + numPerPage', function () {
 	        var begin = ($scope.currentPage - 1) * $scope.numPerPage;
 	        var end = begin + $scope.numPerPage;
@@ -31987,7 +31984,7 @@
 	  angular.module('cassanova').factory('HomeServices', ["$http", "$q", "$cacheFactory", function ($http, $q, $cacheFactory) {
 
 	    var getTargets = function getTargets(fakeAcccountID) {
-	      var url = "api/fake_accounts/" + fakeAcccountID + "/targets/";
+	      var url = "/api/targets/";
 	      return $http.get(url);
 	    };
 

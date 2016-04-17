@@ -232,7 +232,7 @@ footer {
     float: right; }
 
 .switch {
-  background: #fff;
+  background: red;
   border: 1px solid #dfdfdf;
   position: relative;
   display: inline-block;

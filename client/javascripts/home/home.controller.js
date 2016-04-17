@@ -24,10 +24,7 @@ require('./modalInstance.controller');
           data.data.forEach(function(el) {
             el.age = calculateAge(el.birth_date);
           })
-          var females = data.data.filter(function(el) {
-            return el.gender === '1';
-          });
-          $scope.targets = females;
+          $scope.targets = data.data;
           $scope.$watch('currentPage + numPerPage', function() {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
             var end = begin + $scope.numPerPage;
