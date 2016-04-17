@@ -17,19 +17,18 @@ function CronExecutables(io) {
         io.emit('responses:clear-old', {});
     }, null, true, 'America/New_York');
 
+    // new CronJob('*/20 * * * * *', function() {
     new CronJob('58 4,9,14,19,24,29,34,39,44,49,54,59 * * * *', function() {
         console.log("SENDING MESSAGES:", new Date(Date.now()));
 
         getFakeAccounts()
         .then(function(allFakeAccounts) {
           allFakeAccounts.forEach(function(oneFakeAccount) {
-            console.log("DID I MAKE IT IN HERE??")
-              var tc = new TinderClient(tcOptions)
+              var tc = new TinderClient(oneFakeAccount)
               var responsesToSend = sumTopResponses(oneFakeAccount);
+
               responsesToSend.then(function(data) {
-                console.log("AUTHORIZATION CHECK");
                   if (tc.isAuthorized() && data.length > 0) {
-                    console.log("I AM AUTHORIZED!!")
                       data.forEach(function(msg) {
                           tc.sendMessage(msg.match_id, msg.response_text, function(err, data) {
                               if (err) {
@@ -50,7 +49,6 @@ function CronExecutables(io) {
       console.log("Checking for new matches: ", new Date(Date.now()));
       getFakeAccounts()
          .then(function(allFakeAccounts) {
-           console.log("WE ARE HERE");
            allFakeAccounts = Array.from(allFakeAccounts);
            allFakeAccounts.forEach(function(oneFakeAccount) {
               var tc = new TinderClient(oneFakeAccount);
@@ -66,7 +64,6 @@ function CronExecutables(io) {
                           }
                       } else {
                           data.results.forEach(function(el) {
-                            console.log("WE LIKED TOO MANY PEOPEL", el);
                               tc.like(el._id, function(err, data) {
                                   if (err) console.log(err);
                               })
@@ -139,6 +136,7 @@ function CronExecutables(io) {
     }
 
     function sumTopResponses(fakeAccount) {
+      console.log("THIS IS FAKE ACCONUT", fakeAccount);
         return new Promise(function(resolve, reject) {
             var timeBefore = timeUntilSqlTime();
             var messagesToSend = [];
