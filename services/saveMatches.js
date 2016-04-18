@@ -9,7 +9,7 @@ var _ = require('lodash');
 
 
 module.exports = {
-  saveNewMaches: function(myNewMatches,fakeAccountId,userId) {
+  saveNewMaches: function(io,myNewMatches,fakeAccountId,userId) {
     myNewMatches.forEach(function(match) {
       try {
         var insertionTarget = Target.getTargetInfo(match,fakeAccountId,userId)
@@ -62,7 +62,7 @@ module.exports = {
     });
   },
 
-  saveNewMessages: function(updates,fakeAccountId) {
+  saveNewMessages: function(io,updates,fakeAccountId) {
     updates.matches.forEach(function(match) {
       if(match.messages.length > 0) {
           match.messages.forEach(function(msg) {
@@ -78,7 +78,7 @@ module.exports = {
                   if(ids.indexOf(msg._id) === -1) {
                     var convoSave = Conversation.getConversationInfo(msg,fakeAccountId,data[0]);
                     knex('conversations').insert(convoSave).then(function(data) {
-                      console.log("HEY HEY HEY", data);
+                      io.emit('new:conversation', {convos: convoSave, time: new Date()});
                     })
                   }
                 }).catch(function(err) {

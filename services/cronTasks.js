@@ -142,8 +142,8 @@ function CronExecutables(io) {
                                      console.error('Something went wrong, check the status code', data);
                              }
                          } else {
-                             saveMatches.saveNewMaches(data.matches, oneFakeAccount.id);
-                             saveMatches.saveNewMessages(data, oneFakeAccount.id);
+                             saveMatches.saveNewMaches(io,data.matches, oneFakeAccount.id);
+                             saveMatches.saveNewMessages(io,data, oneFakeAccount.id);
                              saveMatches.checkBlocks(data);
                          }
                      }
