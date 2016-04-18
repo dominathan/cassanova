@@ -19,9 +19,9 @@ var authenitcation = require('./controllers/authentication');
 var MatchController = require('./controllers/matchController');
 var ProfileController = require("./controllers/profileController");
 
-// if(env === "production") {
-//   var newRelic = require('newrelic');
-// }
+if(env === "production") {
+  var newRelic = require('newrelic');
+}
 
 var app = express();
 

@@ -15,7 +15,7 @@
     // }).catch(function(err) {
     //   console.log('getting data', err)
     // })
-  
+
 
   $scope.tinderizer = function(fb) {
     UserService.tinderizer(fb)

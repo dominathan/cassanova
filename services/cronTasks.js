@@ -17,7 +17,6 @@ function CronExecutables(io) {
         io.emit('responses:clear-old', {});
     }, null, true, 'America/New_York');
 
-    // new CronJob('*/20 * * * * *', function() {
     new CronJob('58 4,9,14,19,24,29,34,39,44,49,54,59 * * * *', function() {
         console.log("SENDING MESSAGES:", new Date(Date.now()));
 
@@ -136,7 +135,6 @@ function CronExecutables(io) {
     }
 
     function sumTopResponses(fakeAccount) {
-      console.log("THIS IS FAKE ACCONUT", fakeAccount);
         return new Promise(function(resolve, reject) {
             var timeBefore = timeUntilSqlTime();
             var messagesToSend = [];
