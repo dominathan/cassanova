@@ -18,7 +18,7 @@
     </div>
   </div>
 
-  <div class="panel center-form tinderizer">
+  <div class="panel center-form tinderizer" ng-show="!myAccount">
     <div class="panel-heading"><h2>Add Tinder</h2></div>
     <div class="panel-body">
       <legend><i class="ion-clipboard"></i> TinderAccount</legend>
@@ -31,7 +31,21 @@
           <label class="control-label"><i class="ion-at"></i> Facebook Password</label>
           <input type="password" class="form-control" ng-model="fb.password" placeholder="Enter your facebook password"/>
         </div>
-        <button class="btn btn-lg btn-success"> GET TINDERIZING</button>
+        <button ng-disabled="loading" class="btn btn-lg btn-success"> GET TINDERIZING</button>
+        <div class="sk-circle" ng-show="loading">
+          <div class="sk-circle1 sk-child"></div>
+          <div class="sk-circle2 sk-child"></div>
+          <div class="sk-circle3 sk-child"></div>
+          <div class="sk-circle4 sk-child"></div>
+          <div class="sk-circle5 sk-child"></div>
+          <div class="sk-circle6 sk-child"></div>
+          <div class="sk-circle7 sk-child"></div>
+          <div class="sk-circle8 sk-child"></div>
+          <div class="sk-circle9 sk-child"></div>
+          <div class="sk-circle10 sk-child"></div>
+          <div class="sk-circle11 sk-child"></div>
+          <div class="sk-circle12 sk-child"></div>
+        </div>
       </form>
     </div>
   </div>

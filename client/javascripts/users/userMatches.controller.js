@@ -1,8 +1,6 @@
 (function() {
   'use strict';
-
-
-
+  
   angular
   .module('users')
   .controller('UserMatchesController',function($scope, $auth, UserService) {

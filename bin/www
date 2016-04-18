@@ -31,7 +31,7 @@ server.on('listening', onListening);
 /**
  * Sockets and CronJobs;
  */
- socketIO(server);
+socketIO(server);
 
  /**
   * Normalize a port into a number, string, or false.

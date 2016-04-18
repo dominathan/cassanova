@@ -131,6 +131,13 @@
     }
   }
 
+  .user-profile {
+    .match-panel {
+      position: relative;
+      bottom: 31px;
+    }
+  }
+
 }
 
 @media (min-width: 200px) and (max-width: 760px) {
@@ -255,6 +262,14 @@
 
   .container ul.pagination {
     padding-left: 0;
+  }
+
+  .user-profile {
+    .panel {
+      display: block;
+      width: 70%;
+    }
+
   }
 
 }

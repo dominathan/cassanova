@@ -52498,7 +52498,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container user-profile\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <div class=\"panel center-form \">\n    <div class=\"panel-heading\"><h2>Profile</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> Edit My Profile</legend>\n      <form method=\"post\" ng-submit=\"updateProfile(user)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Username</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"user.username\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Email Address</label>\n          <input type=\"email\" class=\"form-control\" ng-model=\"user.email\" />\n        </div>\n        <button class=\"btn btn-lg btn-success\">Update Information</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"panel center-form tinderizer\">\n    <div class=\"panel-heading\"><h2>Add Tinder</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> TinderAccount</legend>\n      <form method=\"post\" ng-submit=\"tinderizer(fb)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Facebook Email Address</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"fb.email\" placeholder=\"Enter your facebook email address\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Facebook Password</label>\n          <input type=\"password\" class=\"form-control\" ng-model=\"fb.password\" placeholder=\"Enter your facebook password\"/>\n        </div>\n        <button class=\"btn btn-lg btn-success\"> GET TINDERIZING</button>\n      </form>\n    </div>\n  </div>\n\n  <div ng-if=\"myAccount\" class=\"panel panel-primary match-panel\" data-id='{{ myAccount.id }}' data-fake-account-id='{{myAccount.fake_account_id}}'>\n      <h3 class=\"\">\n          {{ myAccount.name }}\n      </h3>\n      <div class=\"match-photo\">\n          <img ng-src=\"{{ myAccount.photo_url }}\" alt=\"{{ myAccount.name}}\" ng-click=\"open('lg',myAccount.id, myAccount.name)\">\n      </div>\n      <div class=\"match-info\">\n        <h4>{{ myAccount.gender == 1 ? \"Female\" : \"Male\" }} | {{ myAccount.age }}</h4>\n        <div class=\"match-bio\">\n            <h5>{{ myAccount.bio.slice(0,255) }}</h5>\n        </div>\n      </div>\n  </div>\n\n\n</div>\n";
+	module.exports = "<div class=\"container user-profile\">\n  <flash-message duration=\"5000\" show-close=\"true\"></flash-message>\n  <div class=\"panel center-form \">\n    <div class=\"panel-heading\"><h2>Profile</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> Edit My Profile</legend>\n      <form method=\"post\" ng-submit=\"updateProfile(user)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Username</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"user.username\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Email Address</label>\n          <input type=\"email\" class=\"form-control\" ng-model=\"user.email\" />\n        </div>\n        <button class=\"btn btn-lg btn-success\">Update Information</button>\n      </form>\n    </div>\n  </div>\n\n  <div class=\"panel center-form tinderizer\" ng-show=\"!myAccount\">\n    <div class=\"panel-heading\"><h2>Add Tinder</h2></div>\n    <div class=\"panel-body\">\n      <legend><i class=\"ion-clipboard\"></i> TinderAccount</legend>\n      <form method=\"post\" ng-submit=\"tinderizer(fb)\">\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-person\"></i>Facebook Email Address</label>\n          <input type=\"text\" class=\"form-control\" ng-model=\"fb.email\" placeholder=\"Enter your facebook email address\" />\n        </div>\n        <div class=\"form-group\">\n          <label class=\"control-label\"><i class=\"ion-at\"></i> Facebook Password</label>\n          <input type=\"password\" class=\"form-control\" ng-model=\"fb.password\" placeholder=\"Enter your facebook password\"/>\n        </div>\n        <button ng-disabled=\"loading\" class=\"btn btn-lg btn-success\"> GET TINDERIZING</button>\n        <div class=\"sk-circle\" ng-show=\"loading\">\n          <div class=\"sk-circle1 sk-child\"></div>\n          <div class=\"sk-circle2 sk-child\"></div>\n          <div class=\"sk-circle3 sk-child\"></div>\n          <div class=\"sk-circle4 sk-child\"></div>\n          <div class=\"sk-circle5 sk-child\"></div>\n          <div class=\"sk-circle6 sk-child\"></div>\n          <div class=\"sk-circle7 sk-child\"></div>\n          <div class=\"sk-circle8 sk-child\"></div>\n          <div class=\"sk-circle9 sk-child\"></div>\n          <div class=\"sk-circle10 sk-child\"></div>\n          <div class=\"sk-circle11 sk-child\"></div>\n          <div class=\"sk-circle12 sk-child\"></div>\n        </div>\n      </form>\n    </div>\n  </div>\n\n  <div ng-if=\"myAccount\" class=\"panel panel-primary match-panel\" data-id='{{ myAccount.id }}' data-fake-account-id='{{myAccount.fake_account_id}}'>\n      <h3 class=\"\">\n          {{ myAccount.name }}\n      </h3>\n      <div class=\"match-photo\">\n          <img ng-src=\"{{ myAccount.photo_url }}\" alt=\"{{ myAccount.name}}\" ng-click=\"open('lg',myAccount.id, myAccount.name)\">\n      </div>\n      <div class=\"match-info\">\n        <h4>{{ myAccount.gender == 1 ? \"Female\" : \"Male\" }} | {{ myAccount.age }}</h4>\n        <div class=\"match-bio\">\n            <h5>{{ myAccount.bio.slice(0,255) }}</h5>\n        </div>\n      </div>\n  </div>\n\n\n</div>\n";
 
 /***/ },
 /* 133 */
@@ -52506,7 +52506,7 @@
 
 	"use strict";
 
-	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ target.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name }}\" ng-click=\"open('lg',target.id, target.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ target.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n\n          <h3>Help Me Get Her!</h3>\n          <form ng-click=\"updateTargetAccesibility(target,target.accessible)\">\n            <switch id=\"enabled\" name=\"enabled\"  ng-model=\"target.accessible\" class=\"green\"></switch>\n            <br>\n          </form>\n      </div>\n  </div>\n</div>\n";
+	module.exports = "<div class=\"container\">\n  <div ng-repeat=\"target in targets\" class=\"col-lg-4 col-md-4 col-sm-6 col-xs-12\" >\n      <div class=\"panel panel-primary match-panel\" data-id='{{ target.id }}' data-fake-account-id='{{target.fake_account_id}}'>\n          <h3 class=\"\">\n              {{ target.name }}\n          </h3>\n          <div class=\"match-photo\">\n              <img ng-src=\"{{ target.photo_url }}\" alt=\"{{ target.name }}\" ng-click=\"open('lg',target.id, target.name)\">\n          </div>\n          <div class=\"match-info\">\n            <h4>{{ target.gender == 1 ? \"Female\" : \"Male\" }} | {{ target.age }}</h4>\n            <div class=\"match-bio\">\n                <h5>{{ target.bio.slice(0,255) }}</h5>\n            </div>\n          </div>\n\n\n          <h4>Get help with this match!</h4>\n          <form ng-click=\"updateTargetAccesibility(target,target.accessible)\">\n            <switch id=\"enabled\" name=\"enabled\"  ng-model=\"target.accessible\" class=\"green\"></switch>\n            <br>\n          </form>\n      </div>\n  </div>\n</div>\n";
 
 /***/ },
 /* 134 */
@@ -52805,22 +52805,30 @@
 	  'use strict';
 
 	  angular.module('users').controller('ProfileController', ["$http", "$scope", "$auth", "UserService", "Flash", "$window", function ($http, $scope, $auth, UserService, Flash, $window) {
+	    $scope.loading = false;
 
 	    UserService.getProfile().success(function (data) {
 	      $scope.user = data;
 	    });
 
-	    // UserService.getTinderInfo()
-	    // .then(function(data) {
-	    //   $scope.myAccount = data.data;
-	    // }).catch(function(err) {
-	    //   console.log('getting data', err)
-	    // })
+	    UserService.getTinderInfo().then(function (data) {
+	      console.log('match', data);
+	      $scope.myAccount = data.data;
+	    }).catch(function (err) {
+	      console.log('No match', err);
+	    });
 
 	    $scope.tinderizer = function (fb) {
-	      UserService.tinderizer(fb).then(function (data) {
-	        // console.log(data);
-	        // $scope.myAccount = data.data
+	      $scope.loading = true;
+	      UserService.tinderizer(fb).success(function (data) {
+	        var message = "<strong>Your account has been added successfully. Visit Profile -> My Matches to select the ones you want help dating!</strong>";
+	        Flash.create('success', message, 0, {}, true);
+	      }).error(function (err) {
+	        console.log('something went wrong', err);
+	        var message = "<strong> Failed to access your tinder account: Please try again in a few minutes.</strong>";
+	        Flash.create('danger', message, 0, {}, true);
+	      }).finally(function () {
+	        $scope.loading = false;
 	      });
 	    };
 

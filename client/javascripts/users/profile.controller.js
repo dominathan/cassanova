@@ -3,26 +3,37 @@
   angular
   .module('users')
   .controller('ProfileController',function($http,$scope, $auth,UserService, Flash,$window) {
+    $scope.loading = false;
 
     UserService.getProfile()
     .success(function(data) {
       $scope.user = data;
     })
 
-    // UserService.getTinderInfo()
-    // .then(function(data) {
-    //   $scope.myAccount = data.data;
-    // }).catch(function(err) {
-    //   console.log('getting data', err)
-    // })
+    UserService.getTinderInfo()
+    .then(function(data) {
+      console.log('match', data)
+      $scope.myAccount = data.data;
+    }).catch(function(err) {
+      console.log('No match', err)
+    })
 
 
   $scope.tinderizer = function(fb) {
+    $scope.loading = true
     UserService.tinderizer(fb)
-    .then(function(data) {
-      // console.log(data);
-      // $scope.myAccount = data.data
-    });
+    .success(function(data) {
+      var message = "<strong>Your account has been added successfully. Visit Profile -> My Matches to select the ones you want help dating!</strong>"
+      Flash.create('success',message,0,{},true);
+    })
+    .error(function(err) {
+      console.log('something went wrong', err);
+      var message = "<strong> Failed to access your tinder account: Please try again in a few minutes.</strong>"
+      Flash.create('danger',message,0,{},true);
+    })
+    .finally(function() {
+      $scope.loading = false;
+    })
   }
 
   $scope.updateProfile = function(user) {
