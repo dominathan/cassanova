@@ -167,6 +167,7 @@ function CronExecutables(io) {
             .join('targets', 'targets.id','conversations.target_id')
             .where('conversations.received', true)
             .where('targets.blocked', false)
+            .where('targets.accessible', true)
             .then(function(sortedByMsgSentDate) {
                 return _.uniq(sortedByMsgSentDate, function(chat) {
                     return chat.target_id;
