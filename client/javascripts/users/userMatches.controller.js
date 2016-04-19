@@ -7,14 +7,12 @@
 
     UserService.getUserMatches()
     .then(function(data) {
-      console.log("SUCCESS", data);
       data.data.forEach(function(el) {
         el.age = calculateAge(el.birth_date);
       })
       $scope.targets = data.data;
     })
     .catch(function(err) {
-      console.log("failure", err);
     })
 
     $scope.updateTargetAccesibility = function(target,toggle) {
