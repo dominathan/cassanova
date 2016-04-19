@@ -109,11 +109,11 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
     tc.authorize(tc.fbKey, tc.fbId, function(err, data) {
       tc.getProfile(function(err, prof) {
         var saveProfile = FakeAccount.getProfileInfo(prof)
-        saveUserPhotos(prof,fk_account[0])
         saveProfile.tinder_authentication_token = tc.getAuthToken();
         objToSave = Object.assign(objToSave,saveProfile);
         knex('fake_accounts').insert(objToSave).returning('id')
         .then(function(fk_account) {
+          saveUserPhotos(prof,fk_account[0])
           tc.getUpdates(function(err,updates) {
            if(err) console.error("unable to reach tinder", err);
            if(updates) {
