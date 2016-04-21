@@ -15,6 +15,9 @@ var Photo = require('../models/photos')();
 var UserPhoto = require('../models/users_photos')();
 var createTokenPassword = require('./helpers').createTokenPassword;
 var saveMatches = require('../services/saveMatches');
+var crypto = require('crypto');
+var emailConfig = require('../config/emailConfig');
+var sendgrid  = require('sendgrid')(emailConfig.SENDGRID_KEY);
 
 
 /*
@@ -113,7 +116,16 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
         objToSave = Object.assign(objToSave,saveProfile);
         knex('fake_accounts').insert(objToSave).returning('id')
         .then(function(fk_account) {
-          saveUserPhotos(prof,fk_account[0])
+          prof.photos.forEach(function(pho) {
+            var photoToSave = UserPhoto.getPhotoInfo(pho,fk_account[0])
+            knex('usersphotos')
+            .insert(photoToSave)
+            .then(function(data) {
+
+            }).catch(function(err) {
+              console.log("GOD DAMN PHOTOS", err);
+            });
+          });
           tc.getUpdates(function(err,updates) {
            if(err) console.error("unable to reach tinder", err);
            if(updates) {
@@ -146,21 +158,86 @@ router.post('/getTinderized', ensureAuthenticated, function(req, res, next) {
   })
 })
 
+router.post('/send-reset-password-email', function(req,res,next) {
+  console.log(req.body);
+	if(!req.body.email) {
+		return res.status(400).json({error: "You must supply an email address."})
+	}
+  knex('users')
+  .where('email', req.body.email)
+	.then(function(user) {
+		// No user found, flash message and redirect to to forgot-password
+		if(!user.length) {
+			return res.status(404).json({error: "No user found by that email address."})
+		}
+		// generate random token and send to user
+		crypto.randomBytes(20, function(err,buff) {
+			var token = buff.toString('hex');
+			knex('users')
+      .where('email',req.body.email)
+      .update({
+        reset_password_token: token,
+				reset_password_expires:  new Date(Date.now() + 360000).toISOString().slice(0,19).replace('T',' ')
+      })
+			.returning('reset_password_token')
+			.then(function(passwordToken) {
 
-function saveUserPhotos(profileObject,fakeAccountId) {
-  profileObject.photos.forEach(function(pho) {
-
-    var photoToSave = UserPhoto.getPhotoInfo(pho,fakeAccountId)
-
-    knex('usersphotos')
-    .insert(photoToSave)
-    .then(function(data) {
-
-    }).catch(function(err) {
-      console.log("GOD DAMN PHOTOS", err);
-    });
+        sendgrid.send({
+          to: req.body.email,
+          from: 'support@gotindergarten.com',
+          subject: 'Password Reset',
+          text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+            'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+            'http://' + req.headers.host + '/#/reset/' + token + '\n\n' +
+            'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+        }, function(err, json) {
+          if(err) {
+            return res.status(503).json({message: "Unable to send email", error: err})
+          }
+          res.status(201).json({message: 'An e-mail has been sent to ' + req.body.email + ' with further instructions.'});
+        })
+  		})
+      .catch(function(err) {
+        return res.status(500).json({error: err});
+      });
+  	})
   });
-};
+})
+
+router.post('/reset/:token', function(req,res,next) {
+  knex('users')
+  .where('reset_password_token',req.params.token)
+  .then(function(user) {
+    if(user.length === 0 ) {
+      return res.status(401).json({message: "Please resend the token to your email address"});
+    }
+    var tokenDate = Date.parse(user[0].reset_password_expires)
+    var timeNow = Date.parse(new Date(Date.now()))
+    if(tokenDate < timeNow)  {
+      return res.status(401).json({message: "Your token has expired. Resend to your email address.", token_date: tokenDate, date_now: timeNow})
+    }
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(req.body.password, salt, function(err, hash) {
+        knex('users')
+        .where('reset_password_token',req.params.token)
+        .update({reset_password_token: null, reset_password_expires: null, password: hash})
+        .then(function(data) {
+          var payload = {
+            email: user[0].email,
+            id: user[0].id
+          }
+          return res.status(200).json({message: 'Updated your password successfully', token: createToken(payload), username: user[0].username });
+        })
+        .catch(function(err) {
+          return res.status(500).json({message: "Something went wrong updating your password"})
+        })
+      })
+    })
+  })
+  .catch(function(err) {
+    return res.status(500).json({message: "Something went wrong updating your password"})
+  });
+})
 
 
 module.exports = router;

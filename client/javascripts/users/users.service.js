@@ -41,6 +41,14 @@
           return $http.put('/api/user-matches/targets/' + target.target_id, {accessible: toggle});
         }
 
+        function sendResetPasswordEmail(user) {
+          return $http.post('/auth/send-reset-password-email/', user);
+        }
+
+        function resetPassword(user, token) {
+          return $http.post('/auth/reset/' + token, user);
+        }
+
         return {
           login: login,
           logout: logout,
@@ -50,7 +58,9 @@
           tinderizer: tinderizer,
           getTinderInfo: getTinderInfo,
           getUserMatches: getUserMatches,
-          updateTargetAccesibility: updateTargetAccesibility
+          updateTargetAccesibility: updateTargetAccesibility,
+          sendResetPasswordEmail: sendResetPasswordEmail,
+          resetPassword: resetPassword
         };
 
 

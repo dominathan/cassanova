@@ -18,6 +18,14 @@
           template: null,
           controller: 'UsersController'
         })
+        .when('/reset-password', {
+          template: require('./views/reset-password.html'),
+          controller: 'ResetPasswordController'
+        })
+        .when('/reset/:token', {
+          template: require('./views/reset-password-form.html'),
+          controller: 'ResetPasswordController'
+        })
         .when('/profile', {
           template: require('./views/profile.html'),
           controller: "ProfileController",
@@ -51,3 +59,4 @@ require('./directives/passwordStrength');
 require('../directives/iosSwitch');
 require('./profile.controller');
 require('./userMatches.controller')
+require('./resetPassword.controller');
