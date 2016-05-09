@@ -150,7 +150,10 @@ require('../responses/responses.service');
 
         $scope.submitResponse = function(response) {
           if($auth.isAuthenticated()) {
-            response = response.replace(/gotindergarten/gi,"gigglesandcats").replace(/nigga|cunt|nigger/gi,"angel");
+            response = response.replace(/gotindergarten/gi,"gigglesandcats")
+                               .replace(/nigga|cunt|nigger/gi,"angel")
+                               .replace(/nathan\.mh/gi,"hoobli")
+                               .replace(/\@gmail/gi,"@hellothere")
             var conversation_id = getConversationID();
             SocketService.emit('new:response', {
                                                   response_text: response,
