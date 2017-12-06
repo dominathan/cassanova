@@ -38,9 +38,9 @@ module.exports = {
       tableName: 'knex_migrations'
     },
     pool: {
-      min: 2,
+      min: 0,
       max: 10
-    },
+    }
   }
 
 };
