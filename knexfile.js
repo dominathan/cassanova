@@ -37,10 +37,8 @@ module.exports = {
     migrations: {
       tableName: 'knex_migrations'
     },
-    pool: {
-      min: 0,
-      max: 10
-    }
+    searchPath: ['knex', 'public'],
+    acquireConnectionTimeout: 10000
   }
 
 };
